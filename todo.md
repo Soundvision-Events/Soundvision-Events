@@ -32,3 +32,5 @@
 - [ ] Gallery with user's own event photos
 - [x] Custom beat/waveform pulsation cursor effect on mouse hover
 - [x] 4 neon USP flashcards section (Persoonlijk Contact, Show op Maat, Geen Boekingsbureaus, 4th point)
+- [x] Bruiloft page: pink/rose neon accents on titles, buttons, borders
+- [x] Bruiloft page: slow gradient roll animation on backdrop
