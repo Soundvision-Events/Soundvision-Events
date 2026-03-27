@@ -30,3 +30,4 @@
 - [ ] Real contact details (phone, email)
 - [ ] Real social media links verification
 - [ ] Gallery with user's own event photos
+- [x] Custom beat/waveform pulsation cursor effect on mouse hover

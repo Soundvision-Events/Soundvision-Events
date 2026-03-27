@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StarCurtain from "@/components/StarCurtain";
+import BeatCursor from "@/components/BeatCursor";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -35,6 +36,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#080c10", color: "#f0f4f8" }}>
       <StarCurtain />
+      <BeatCursor />
       <Navbar />
       {children}
       <Footer />
