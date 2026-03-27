@@ -142,7 +142,7 @@ export default function ContactSection() {
                 {
                   icon: <MapPin size={18} color="#00c8ff" />,
                   label: "Regio",
-                  value: "Nederland & België",
+                  value: "Groningen & Noord-Nederland",
                   href: undefined,
                 },
               ].map((item) => (
@@ -273,7 +273,7 @@ export default function ContactSection() {
               }}
             >
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision-logo-banner_14f5adab.jpg"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision-logo-banner_upscaled_7472d161.jpg"
                 alt="SoundVision Events Logo"
                 className="w-full object-cover"
               />

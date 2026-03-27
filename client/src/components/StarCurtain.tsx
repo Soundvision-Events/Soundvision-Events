@@ -70,26 +70,26 @@ export default function StarCurtain() {
       const pageH = document.documentElement.scrollHeight;
       // Generate stars over the full page height so they exist everywhere
       const area = w * pageH;
-      const count = Math.floor(area / 2800);
+      const count = Math.floor(area / 400);
       const stars: Star[] = [];
 
       for (let i = 0; i < count; i++) {
-        // Assign layer: 60% far, 28% mid, 12% near
+        // Assign layer: 70% far (tiny dust), 22% mid, 8% near (still small)
         const roll = Math.random();
-        const layer = roll < 0.6 ? 0 : roll < 0.88 ? 1 : 2;
+        const layer = roll < 0.70 ? 0 : roll < 0.92 ? 1 : 2;
 
-        const isAccent = Math.random() < 0.08;
+        const isAccent = Math.random() < 0.06;
 
         // Size and brightness scale with layer
         const sizeRange = [
-          [0.3, 0.8],   // far: tiny
-          [0.6, 1.4],   // mid: small-medium
-          [1.2, 2.5],   // near: medium-large
+          [0.15, 0.4],   // far: dust-like pinpoints
+          [0.3, 0.7],    // mid: small dots
+          [0.5, 1.1],    // near: slightly brighter but still small
         ][layer];
         const opacityRange = [
-          [0.08, 0.25],  // far: dim
-          [0.15, 0.45],  // mid: moderate
-          [0.4, 0.9],    // near: bright
+          [0.06, 0.20],  // far: very faint dust
+          [0.15, 0.40],  // mid: subtle
+          [0.35, 0.80],  // near: visible but not overpowering
         ][layer];
 
         stars.push({
@@ -137,31 +137,29 @@ export default function StarCurtain() {
         ctx.fillStyle = `rgba(${star.color}, ${opacity})`;
         ctx.fill();
 
-        // Glow for near-layer bright stars
-        if (star.layer === 2 && star.baseOpacity > 0.5) {
+        // Subtle glow for near-layer bright stars (kept small for galaxy look)
+        if (star.layer === 2 && star.baseOpacity > 0.55) {
           ctx.beginPath();
-          ctx.arc(star.x, screenY, star.size * 3.5, 0, Math.PI * 2);
+          ctx.arc(star.x, screenY, star.size * 2.2, 0, Math.PI * 2);
           const gradient = ctx.createRadialGradient(
             star.x, screenY, 0,
-            star.x, screenY, star.size * 3.5
+            star.x, screenY, star.size * 2.2
           );
-          gradient.addColorStop(0, `rgba(${star.color}, ${opacity * 0.35})`);
+          gradient.addColorStop(0, `rgba(${star.color}, ${opacity * 0.25})`);
           gradient.addColorStop(1, `rgba(${star.color}, 0)`);
           ctx.fillStyle = gradient;
           ctx.fill();
         }
 
-        // Subtle cross-sparkle for the brightest near stars
-        if (star.layer === 2 && star.size > 2 && opacity > 0.5) {
-          const sparkleLen = star.size * 4;
-          ctx.strokeStyle = `rgba(${star.color}, ${opacity * 0.2})`;
-          ctx.lineWidth = 0.5;
-          // Horizontal line
+        // Tiny cross-sparkle only for the very brightest stars
+        if (star.layer === 2 && star.size > 0.9 && opacity > 0.6) {
+          const sparkleLen = star.size * 2.5;
+          ctx.strokeStyle = `rgba(${star.color}, ${opacity * 0.15})`;
+          ctx.lineWidth = 0.3;
           ctx.beginPath();
           ctx.moveTo(star.x - sparkleLen, screenY);
           ctx.lineTo(star.x + sparkleLen, screenY);
           ctx.stroke();
-          // Vertical line
           ctx.beginPath();
           ctx.moveTo(star.x, screenY - sparkleLen);
           ctx.lineTo(star.x, screenY + sparkleLen);

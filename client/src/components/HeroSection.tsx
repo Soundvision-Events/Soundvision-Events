@@ -26,7 +26,7 @@ export default function HeroSection() {
           poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-bg-k7KfhYH7TSMYQdtgs3D6zf.webp"
         >
           <source
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-loop_56923591.mp4"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-loop-new_5528fae7.mp4"
             type="video/mp4"
           />
         </video>
@@ -120,7 +120,7 @@ export default function HeroSection() {
               textTransform: "uppercase",
             }}
           >
-            Professionele DJ Shows
+            All-Round DJ Shows — Noord-Nederland
           </span>
         </div>
 
@@ -171,7 +171,7 @@ export default function HeroSection() {
             fontWeight: 300,
           }}
         >
-          Uw onvergetelijke feest begint hier. Professionele DJ shows voor bruiloften, bedrijfsfeesten en verjaardagen — op maat gemaakt voor uw perfecte avond.
+          Uw onvergetelijke feest begint hier. All-round DJ shows voor bruiloften, bedrijfsfeesten, studentenfeesten en privé gelegenheden in Groningen en Noord-Nederland.
         </p>
 
         {/* CTA Buttons */}

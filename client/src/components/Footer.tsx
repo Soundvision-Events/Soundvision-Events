@@ -1,16 +1,17 @@
 /**
- * SoundVision Events — Footer
- * Dark footer with links and branding
+ * SoundVision Events — Footer (Multi-page)
+ * Dark footer with route links and branding
  */
+import { Link } from "wouter";
 import { Instagram, Youtube, Mail } from "lucide-react";
 
 export default function Footer() {
-  const handleNavClick = (href: string) => {
-    const el = document.querySelector(href);
+  const currentYear = new Date().getFullYear();
+
+  const scrollToContact = () => {
+    const el = document.querySelector("#contact");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
-
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer
@@ -23,50 +24,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(0,200,255,0.05))",
-                  border: "1px solid rgba(0, 200, 255, 0.3)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 18V5l12-2v13" stroke="#00c8ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <circle cx="6" cy="18" r="3" stroke="#00c8ff" strokeWidth="2"/>
-                  <circle cx="18" cy="16" r="3" stroke="#ff5500" strokeWidth="2"/>
-                </svg>
-              </div>
-              <div>
-                <div
-                  style={{
-                    fontFamily: "'Bebas Neue', sans-serif",
-                    fontSize: "1.4rem",
-                    letterSpacing: "0.08em",
-                    color: "#f0f4f8",
-                    lineHeight: 1,
-                  }}
-                >
-                  SOUNDVISION
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Outfit', sans-serif",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.3em",
-                    color: "#00c8ff",
-                    lineHeight: 1,
-                    marginTop: "2px",
-                  }}
-                >
-                  EVENTS
-                </div>
-              </div>
+            <div className="mb-4">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/logo_dark_upscaled_50cc37d3.png"
+                alt="SoundVision Events"
+                style={{ height: "40px", width: "auto" }}
+              />
             </div>
             <p
               style={{
@@ -75,11 +38,11 @@ export default function Footer() {
                 color: "rgba(240, 244, 248, 0.5)",
                 lineHeight: 1.7,
                 fontWeight: 300,
-                maxWidth: "320px",
+                maxWidth: "360px",
                 marginBottom: "1.5rem",
               }}
             >
-              Professionele DJ shows voor bruiloften, bedrijfsfeesten en verjaardagen. Uw onvergetelijke avond begint hier.
+              Professionele DJ shows in Groningen en Noord-Nederland. Van bruiloften tot bedrijfsfeesten — uw onvergetelijke avond begint hier.
             </p>
             {/* Social links */}
             <div className="flex gap-3">
@@ -133,22 +96,19 @@ export default function Footer() {
                 marginBottom: "1.25rem",
               }}
             >
-              NAVIGATIE
+              DJ SHOWS
             </h4>
             <ul className="space-y-3">
               {[
-                { label: "Home", href: "#home" },
-                { label: "Over Ons", href: "#about" },
-                { label: "Evenementen", href: "#events" },
-                { label: "Pakketten", href: "#packages" },
-                { label: "Add-ons", href: "#addons" },
-                { label: "Galerij", href: "#gallery" },
-                { label: "Contact", href: "#contact" },
+                { label: "All-Round DJ Show", href: "/" },
+                { label: "Bruiloft DJ Show", href: "/bruiloft" },
+                { label: "Bedrijfsfeesten", href: "/bedrijfsfeesten" },
+                { label: "Studentenfeesten", href: "/studentenfeesten" },
+                { label: "Privé Feesten", href: "/prive" },
               ].map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
                     style={{
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: "0.875rem",
@@ -160,13 +120,13 @@ export default function Footer() {
                     onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240, 244, 248, 0.5)")}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Pakketten */}
+          {/* Pakketten & Contact */}
           <div>
             <h4
               style={{
@@ -186,33 +146,24 @@ export default function Footer() {
                 { label: "Large Show", desc: "Tot 8 uur" },
               ].map((pkg) => (
                 <li key={pkg.label}>
-                  <a
-                    href="#packages"
-                    onClick={(e) => { e.preventDefault(); handleNavClick("#packages"); }}
-                    style={{ textDecoration: "none" }}
+                  <div
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: "0.875rem",
+                      color: "rgba(240, 244, 248, 0.5)",
+                    }}
                   >
-                    <div
-                      style={{
-                        fontFamily: "'Outfit', sans-serif",
-                        fontSize: "0.875rem",
-                        color: "rgba(240, 244, 248, 0.5)",
-                        transition: "color 0.2s ease",
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "#00c8ff")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240, 244, 248, 0.5)")}
-                    >
-                      {pkg.label}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: "'Outfit', sans-serif",
-                        fontSize: "0.75rem",
-                        color: "rgba(240, 244, 248, 0.3)",
-                      }}
-                    >
-                      {pkg.desc}
-                    </div>
-                  </a>
+                    {pkg.label}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: "0.75rem",
+                      color: "rgba(240, 244, 248, 0.3)",
+                    }}
+                  >
+                    {pkg.desc}
+                  </div>
                 </li>
               ))}
             </ul>
@@ -221,7 +172,7 @@ export default function Footer() {
               <button
                 className="sv-btn-primary"
                 style={{ fontSize: "0.9rem", padding: "0.6rem 1.5rem" }}
-                onClick={() => handleNavClick("#contact")}
+                onClick={scrollToContact}
               >
                 Boek Nu
               </button>
@@ -250,7 +201,7 @@ export default function Footer() {
               color: "rgba(240, 244, 248, 0.3)",
             }}
           >
-            DJ Tonicity — Uw Allround DJ
+            Groningen & Noord-Nederland — DJ Tonicity
           </p>
         </div>
       </div>

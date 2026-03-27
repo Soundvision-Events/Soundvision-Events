@@ -30,7 +30,7 @@ export default function AboutSection() {
               }}
             >
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-tonicity_fabcd971.jpg"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-tonicity_upscaled_7a714cfd.jpg"
                 alt="DJ Tonicity — SoundVision Events"
                 className="w-full object-cover"
                 style={{ aspectRatio: "4/3" }}
@@ -137,7 +137,7 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Welkom bij SoundVision Events. Ik ben DJ Tonicity, uw allround DJ voor elke gelegenheid. Met meer dan 10 jaar ervaring in de DJ-wereld zorg ik ervoor dat uw feest een onvergetelijke ervaring wordt.
+                Welkom bij SoundVision Events. Ik ben DJ Tonicity, uw allround DJ in Groningen en Noord-Nederland. Met meer dan 10 jaar ervaring in de DJ-wereld zorg ik ervoor dat uw feest een onvergetelijke ervaring wordt — van Groningen tot Friesland, Drenthe en Overijssel.
               </p>
               <p
                 style={{
@@ -148,7 +148,7 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Van intieme bruiloften tot grote bedrijfsfeesten — ik pas mijn muziek en show volledig aan op uw wensen en de sfeer van uw evenement. Professionele apparatuur, betrouwbare service en een passie voor muziek zijn mijn garantie.
+                Van intieme bruiloften tot grote bedrijfsfeesten, studentenfeesten en privé gelegenheden — ik pas mijn muziek en show volledig aan op uw wensen en de sfeer van uw evenement. Professionele apparatuur, betrouwbare service en een passie voor muziek zijn mijn garantie.
               </p>
             </div>
 

@@ -5,11 +5,19 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Bruiloft from "./pages/Bruiloft";
+import Bedrijfsfeesten from "./pages/Bedrijfsfeesten";
+import Studentenfeesten from "./pages/Studentenfeesten";
+import Prive from "./pages/Prive";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/bruiloft"} component={Bruiloft} />
+      <Route path={"/bedrijfsfeesten"} component={Bedrijfsfeesten} />
+      <Route path={"/studentenfeesten"} component={Studentenfeesten} />
+      <Route path={"/prive"} component={Prive} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
