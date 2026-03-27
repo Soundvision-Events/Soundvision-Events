@@ -105,12 +105,7 @@
     font-family: 'Outfit', sans-serif;
   }
 
-  /* Custom beat cursor — hide default on desktop only */
-  @media (hover: hover) and (pointer: fine) {
-    body, body * {
-      cursor: none !important;
-    }
-  }
+  /* Beat cursor trails behind the default cursor — default cursor stays visible */
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
