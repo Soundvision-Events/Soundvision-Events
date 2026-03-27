@@ -15,6 +15,7 @@ import GallerySection from "@/components/GallerySection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import StarCurtain from "@/components/StarCurtain";
 
 export default function Home() {
   // Scroll animation observer
@@ -38,6 +39,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#080c10", color: "#f0f4f8" }}>
+      <StarCurtain />
       <Navbar />
       <HeroSection />
       <AboutSection />
