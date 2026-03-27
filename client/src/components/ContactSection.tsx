@@ -5,6 +5,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Instagram, Youtube } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 export default function ContactSection() {
   const [form, setForm] = useState({
@@ -24,23 +25,39 @@ export default function ContactSection() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const submitMutation = trpc.contact.submit.useMutation({
+    onSuccess: () => {
+      toast.success("Uw aanvraag is verstuurd! We nemen zo snel mogelijk contact met u op.", {
+        duration: 5000,
+      });
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        eventType: "",
+        eventDate: "",
+        package: "",
+        message: "",
+      });
+      setSubmitting(false);
+    },
+    onError: (err) => {
+      toast.error("Er ging iets mis. Probeer het opnieuw of neem direct contact op.");
+      setSubmitting(false);
+    },
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate form submission
-    await new Promise((r) => setTimeout(r, 1500));
-    setSubmitting(false);
-    toast.success("Uw aanvraag is verstuurd! We nemen zo snel mogelijk contact met u op.", {
-      duration: 5000,
-    });
-    setForm({
-      name: "",
-      email: "",
-      phone: "",
-      eventType: "",
-      eventDate: "",
-      package: "",
-      message: "",
+    submitMutation.mutate({
+      name: form.name,
+      email: form.email,
+      phone: form.phone || undefined,
+      eventType: form.eventType || undefined,
+      eventDate: form.eventDate || undefined,
+      packageType: form.package || undefined,
+      message: form.message || undefined,
     });
   };
 

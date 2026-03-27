@@ -1,0 +1,32 @@
+# SoundVision Events — Project TODO
+
+- [x] Basic homepage layout with Electric Dark Spectacle design
+- [x] Navigation menu
+- [x] Hero section with animated logo ring
+- [x] About section with DJ Tonicity
+- [x] Event types section (Bruiloft, Bedrijfsfeest, Verjaardag)
+- [x] Packages section (Small, Medium, Large)
+- [x] Add-ons section (12 add-ons)
+- [x] Gallery section
+- [x] Testimonials section
+- [x] Contact form section
+- [x] Footer with social links
+- [x] Star curtain animation overlay
+- [x] Parallax scroll effect on star curtain
+- [x] Hero background video (user-provided)
+- [x] Official logo replacement
+- [x] Image upscaling for all assets
+- [x] Galaxy-style smaller stars effect
+- [x] Multi-page restructure (Home, Bruiloft, Bedrijfsfeesten, Studentenfeesten, Privé)
+- [x] Region update to Groningen & Noord-Nederland
+- [x] New hero video replacement
+- [x] Full-stack upgrade (database, backend, user management)
+- [x] Database schema (users, contact_submissions, files)
+- [x] Contact form wired to tRPC backend with database persistence
+- [x] File storage integration (S3 + database metadata)
+- [x] Owner notification on new booking requests
+- [x] Vitest tests for all routers (9 tests passing)
+- [ ] Trustoo widget integration for reviews
+- [ ] Real contact details (phone, email)
+- [ ] Real social media links verification
+- [ ] Gallery with user's own event photos
