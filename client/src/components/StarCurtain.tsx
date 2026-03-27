@@ -1,8 +1,12 @@
 /**
- * SoundVision Events — Star Curtain Overlay
- * An animated curtain of twinkling stars/glitter particles
- * layered over the entire page. Stars vary in size, brightness,
- * and twinkle speed for a realistic night-sky / stage-curtain effect.
+ * SoundVision Events — Star Curtain Overlay with Parallax
+ * An animated curtain of twinkling stars/glitter particles with
+ * multi-layer parallax: stars are assigned to depth layers that
+ * scroll at different speeds, creating a 3D depth illusion.
+ *
+ * Layer 0 (far):   tiny, dim stars — move at 0.15x scroll speed
+ * Layer 1 (mid):   medium stars   — move at 0.35x scroll speed
+ * Layer 2 (near):  bright stars   — move at 0.6x scroll speed
  */
 import { useEffect, useRef } from "react";
 
@@ -14,6 +18,7 @@ interface Star {
   twinkleSpeed: number;
   twinkleOffset: number;
   color: string;
+  layer: number; // 0 = far, 1 = mid, 2 = near
 }
 
 const STAR_COLORS = [
@@ -25,10 +30,14 @@ const STAR_COLORS = [
   "255, 200, 150",     // soft amber
 ];
 
+// Parallax speed multipliers per layer (0 = no movement, 1 = full scroll)
+const LAYER_SPEEDS = [0.15, 0.35, 0.6];
+
 export default function StarCurtain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
   const starsRef = useRef<Star[]>([]);
+  const scrollRef = useRef<number>(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -37,43 +46,63 @@ export default function StarCurtain() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Track scroll position smoothly
+    const onScroll = () => {
+      scrollRef.current = window.scrollY;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    scrollRef.current = window.scrollY;
+
     const resizeCanvas = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = document.documentElement.scrollHeight * dpr;
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${document.documentElement.scrollHeight}px`;
-      ctx.scale(dpr, dpr);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       generateStars();
     };
 
     const generateStars = () => {
-      const width = window.innerWidth;
-      const height = document.documentElement.scrollHeight;
-      // Density: ~1 star per 3000px² for a subtle but visible effect
-      const area = width * height;
-      const count = Math.floor(area / 2500);
+      const w = window.innerWidth;
+      const pageH = document.documentElement.scrollHeight;
+      // Generate stars over the full page height so they exist everywhere
+      const area = w * pageH;
+      const count = Math.floor(area / 2800);
       const stars: Star[] = [];
 
       for (let i = 0; i < count; i++) {
-        // Most stars are tiny and dim, a few are brighter
-        const isBright = Math.random() < 0.12;
+        // Assign layer: 60% far, 28% mid, 12% near
+        const roll = Math.random();
+        const layer = roll < 0.6 ? 0 : roll < 0.88 ? 1 : 2;
+
         const isAccent = Math.random() < 0.08;
 
+        // Size and brightness scale with layer
+        const sizeRange = [
+          [0.3, 0.8],   // far: tiny
+          [0.6, 1.4],   // mid: small-medium
+          [1.2, 2.5],   // near: medium-large
+        ][layer];
+        const opacityRange = [
+          [0.08, 0.25],  // far: dim
+          [0.15, 0.45],  // mid: moderate
+          [0.4, 0.9],    // near: bright
+        ][layer];
+
         stars.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          size: isBright
-            ? 1.2 + Math.random() * 1.8
-            : 0.4 + Math.random() * 1.0,
-          baseOpacity: isBright
-            ? 0.5 + Math.random() * 0.5
-            : 0.1 + Math.random() * 0.35,
-          twinkleSpeed: 0.5 + Math.random() * 2.5,
+          x: Math.random() * w,
+          y: Math.random() * pageH,
+          size: sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]),
+          baseOpacity: opacityRange[0] + Math.random() * (opacityRange[1] - opacityRange[0]),
+          twinkleSpeed: 0.4 + Math.random() * 2.5,
           twinkleOffset: Math.random() * Math.PI * 2,
           color: isAccent
             ? STAR_COLORS[3 + Math.floor(Math.random() * 3)]
             : STAR_COLORS[Math.floor(Math.random() * 3)],
+          layer,
         });
       }
 
@@ -81,40 +110,62 @@ export default function StarCurtain() {
     };
 
     const draw = (time: number) => {
-      const width = window.innerWidth;
-      const height = document.documentElement.scrollHeight;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, width, height);
-
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const scrollY = scrollRef.current;
       const t = time / 1000;
 
+      ctx.clearRect(0, 0, w, h);
+
       for (const star of starsRef.current) {
-        // Twinkle: sinusoidal oscillation with unique speed and offset
+        // Parallax: offset the star's y position based on its layer speed
+        // Stars at layer 0 barely move, layer 2 moves almost with scroll
+        const parallaxOffset = scrollY * LAYER_SPEEDS[star.layer];
+        const screenY = star.y - scrollY + (scrollY - parallaxOffset);
+
+        // Only draw if the star is visible on screen (with some margin)
+        if (screenY < -20 || screenY > h + 20) continue;
+
+        // Twinkle
         const twinkle = Math.sin(t * star.twinkleSpeed + star.twinkleOffset);
-        // Map from [-1, 1] to [0.3, 1.0] range for opacity multiplier
         const opacityMultiplier = 0.3 + (twinkle + 1) * 0.35;
         const opacity = star.baseOpacity * opacityMultiplier;
 
-        // Draw the star
+        // Draw the star dot
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.arc(star.x, screenY, star.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${star.color}, ${opacity})`;
         ctx.fill();
 
-        // Add a subtle glow for brighter stars
-        if (star.baseOpacity > 0.5 && star.size > 1.5) {
+        // Glow for near-layer bright stars
+        if (star.layer === 2 && star.baseOpacity > 0.5) {
           ctx.beginPath();
-          ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
+          ctx.arc(star.x, screenY, star.size * 3.5, 0, Math.PI * 2);
           const gradient = ctx.createRadialGradient(
-            star.x, star.y, 0,
-            star.x, star.y, star.size * 3
+            star.x, screenY, 0,
+            star.x, screenY, star.size * 3.5
           );
-          gradient.addColorStop(0, `rgba(${star.color}, ${opacity * 0.4})`);
+          gradient.addColorStop(0, `rgba(${star.color}, ${opacity * 0.35})`);
           gradient.addColorStop(1, `rgba(${star.color}, 0)`);
           ctx.fillStyle = gradient;
           ctx.fill();
+        }
+
+        // Subtle cross-sparkle for the brightest near stars
+        if (star.layer === 2 && star.size > 2 && opacity > 0.5) {
+          const sparkleLen = star.size * 4;
+          ctx.strokeStyle = `rgba(${star.color}, ${opacity * 0.2})`;
+          ctx.lineWidth = 0.5;
+          // Horizontal line
+          ctx.beginPath();
+          ctx.moveTo(star.x - sparkleLen, screenY);
+          ctx.lineTo(star.x + sparkleLen, screenY);
+          ctx.stroke();
+          // Vertical line
+          ctx.beginPath();
+          ctx.moveTo(star.x, screenY - sparkleLen);
+          ctx.lineTo(star.x, screenY + sparkleLen);
+          ctx.stroke();
         }
       }
 
@@ -124,24 +175,22 @@ export default function StarCurtain() {
     resizeCanvas();
     animationRef.current = requestAnimationFrame(draw);
 
-    // Debounced resize handler
     let resizeTimeout: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(resizeCanvas, 200);
     };
-
     window.addEventListener("resize", handleResize);
 
-    // Also update canvas height when content changes (e.g. after images load)
     const resizeObserver = new ResizeObserver(() => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(resizeCanvas, 200);
+      resizeTimeout = setTimeout(resizeCanvas, 300);
     });
     resizeObserver.observe(document.documentElement);
 
     return () => {
       cancelAnimationFrame(animationRef.current);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", handleResize);
       resizeObserver.disconnect();
       clearTimeout(resizeTimeout);
