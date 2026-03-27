@@ -1,6 +1,6 @@
 /**
  * SoundVision Events — Hero Section
- * Full-screen hero with animated ring, background image, and CTA
+ * Full-screen hero with animated ring, looping background VIDEO, and CTA
  */
 export default function HeroSection() {
   const handleScroll = (href: string) => {
@@ -14,13 +14,23 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "#080c10" }}
     >
-      {/* Background image with overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-bg-k7KfhYH7TSMYQdtgs3D6zf.webp)`,
-        }}
-      />
+      {/* Background video loop */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+          poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-bg-k7KfhYH7TSMYQdtgs3D6zf.webp"
+        >
+          <source
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-loop_56923591.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
       {/* Dark gradient overlay */}
       <div
         className="absolute inset-0"
