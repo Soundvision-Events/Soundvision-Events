@@ -7,6 +7,7 @@ import EventPageHero from "@/components/EventPageHero";
 import PackagesSection from "@/components/PackagesSection";
 import AddOnsSection from "@/components/AddOnsSection";
 import ContactSection from "@/components/ContactSection";
+import USPSection from "@/components/USPSection";
 
 export default function Studentenfeesten() {
   return (
@@ -131,6 +132,7 @@ export default function Studentenfeesten() {
         </div>
       </section>
 
+      <USPSection />
       <PackagesSection />
       <AddOnsSection />
       <ContactSection />

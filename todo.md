@@ -31,3 +31,4 @@
 - [ ] Real social media links verification
 - [ ] Gallery with user's own event photos
 - [x] Custom beat/waveform pulsation cursor effect on mouse hover
+- [x] 4 neon USP flashcards section (Persoonlijk Contact, Show op Maat, Geen Boekingsbureaus, 4th point)

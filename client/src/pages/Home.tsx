@@ -11,11 +11,13 @@ import AddOnsSection from "@/components/AddOnsSection";
 import GallerySection from "@/components/GallerySection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
+import USPSection from "@/components/USPSection";
 
 export default function Home() {
   return (
     <PageLayout>
       <HeroSection />
+      <USPSection />
       <AboutSection />
       <PackagesSection />
       <AddOnsSection />
