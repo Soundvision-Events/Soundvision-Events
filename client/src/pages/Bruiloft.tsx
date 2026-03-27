@@ -21,30 +21,41 @@ export default function Bruiloft() {
   return (
     <PageLayout>
 
-      {/* ── Slow gradient backdrop roll (full-page, behind everything) ── */}
+      {/* ── Full-length rose gradient backdrop wrapper ── */}
+      <div style={{ position: "relative", minHeight: "100vh" }}>
+
       <style>{`
         @keyframes gradientRoll {
-          0%   { background-position: 0% 50%; }
-          50%  { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          0%   { background-position: 50% 0%; }
+          50%  { background-position: 50% 100%; }
+          100% { background-position: 50% 0%; }
         }
         .bruiloft-backdrop {
-          position: fixed;
-          inset: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          min-height: 100%;
           z-index: 0;
           pointer-events: none;
           background: linear-gradient(
-            135deg,
+            180deg,
             #080c10 0%,
-            #12071a 20%,
-            #1a0515 40%,
-            #0d0a1a 60%,
-            #080c10 80%,
+            #120818 8%,
+            #1a0a20 16%,
+            #220a1e 24%,
+            #2a0a1c 32%,
+            #300a1a 40%,
+            #2a0818 50%,
+            #1e0614 60%,
+            #160510 70%,
+            #1a0515 80%,
+            #200618 90%,
             #1a0515 100%
           );
-          background-size: 400% 400%;
-          animation: gradientRoll 18s ease infinite;
-          opacity: 0.85;
+          background-size: 100% 400%;
+          animation: gradientRoll 22s ease infinite;
         }
 
         /* Rose neon pulse for icon circles */
@@ -224,6 +235,8 @@ export default function Bruiloft() {
         <AddOnsSection />
         <ContactSection />
       </div>
+
+      </div>{/* end bruiloft-backdrop wrapper */}
 
     </PageLayout>
   );

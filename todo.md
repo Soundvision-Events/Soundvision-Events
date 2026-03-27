@@ -34,3 +34,4 @@
 - [x] 4 neon USP flashcards section (Persoonlijk Contact, Show op Maat, Geen Boekingsbureaus, 4th point)
 - [x] Bruiloft page: pink/rose neon accents on titles, buttons, borders
 - [x] Bruiloft page: slow gradient roll animation on backdrop
+- [x] Bruiloft page: full vertical rose gradient from top to bottom over entire page length
