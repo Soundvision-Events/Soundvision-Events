@@ -1,0 +1,390 @@
+/**
+ * SoundVision Events — Packages Section
+ * Small, Medium, Large DJ show packages with glassmorphism cards
+ */
+import { Check } from "lucide-react";
+
+const packages = [
+  {
+    id: "small",
+    name: "SMALL SHOW",
+    tagline: "Compact & Krachtig",
+    price: "Op aanvraag",
+    duration: "Tot 4 uur",
+    highlight: false,
+    color: "#0090ff",
+    features: [
+      "Professionele DJ setup (Pioneer)",
+      "Muziek op maat voor uw feest",
+      "Draadloze microfoon",
+      "2x actieve speakers (1500W)",
+      "Basis lichtshow (4x PAR LED)",
+      "Opbouw & afbouw inbegrepen",
+      "Voorbesprekingsgesprek",
+      "Muziekwensen lijst",
+    ],
+    ideal: "Ideaal voor: Kleine feesten, verjaardagen, huisfeesten",
+    icon: "🎵",
+  },
+  {
+    id: "medium",
+    name: "MEDIUM SHOW",
+    tagline: "Meest Gekozen",
+    price: "Op aanvraag",
+    duration: "Tot 6 uur",
+    highlight: true,
+    color: "#00c8ff",
+    features: [
+      "Professionele DJ setup (Pioneer CDJ)",
+      "Muziek volledig op maat",
+      "2x draadloze microfoons",
+      "4x actieve speakers (3000W totaal)",
+      "Uitgebreide lichtshow (moving heads + PAR)",
+      "Rookmachine",
+      "DJ booth met LED verlichting",
+      "Opbouw & afbouw inbegrepen",
+      "Uitgebreid voorbesprekingsgesprek",
+      "Muziekwensen lijst + persoonlijke intro",
+    ],
+    ideal: "Ideaal voor: Bruiloften, bedrijfsfeesten, verjaardagen",
+    icon: "🎛️",
+  },
+  {
+    id: "large",
+    name: "LARGE SHOW",
+    tagline: "Spectaculair & Groots",
+    price: "Op aanvraag",
+    duration: "Tot 8 uur",
+    highlight: false,
+    color: "#ff5500",
+    features: [
+      "Professionele DJ setup (Pioneer CDJ-3000)",
+      "Volledig gepersonaliseerde muziekervaring",
+      "4x draadloze microfoons",
+      "6x actieve speakers + subwoofers (6000W)",
+      "Volledige lichtshow (moving heads, lasers, strobes)",
+      "CO2 jets & rookmachines",
+      "Professionele DJ booth met LED wall",
+      "Confetti kanon (optioneel)",
+      "Opbouw & afbouw inbegrepen",
+      "Meerdere voorbesprekingen",
+      "Muziekwensen + persoonlijke intro + surprises",
+    ],
+    ideal: "Ideaal voor: Grote bruiloften, grote bedrijfsevents, festivals",
+    icon: "🚀",
+  },
+];
+
+export default function PackagesSection() {
+  const handleContact = () => {
+    const el = document.querySelector("#contact");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section
+      id="packages"
+      className="relative py-24 overflow-hidden"
+      style={{ backgroundColor: "#0a0f15" }}
+    >
+      {/* Background decoration */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `radial-gradient(ellipse at 50% 0%, rgba(0, 200, 255, 0.08) 0%, transparent 60%)`,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Large decorative text */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+        style={{
+          fontFamily: "'Bebas Neue', sans-serif",
+          fontSize: "20vw",
+          color: "rgba(255, 255, 255, 0.015)",
+          letterSpacing: "0.1em",
+          whiteSpace: "nowrap",
+        }}
+      >
+        SHOWS
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section header */}
+        <div className="text-center mb-16 sv-fade-up">
+          <span
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "0.75rem",
+              letterSpacing: "0.3em",
+              color: "#00c8ff",
+              textTransform: "uppercase",
+            }}
+          >
+            Pakketten
+          </span>
+          <h2
+            className="mt-3"
+            style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              letterSpacing: "0.05em",
+              lineHeight: 1.05,
+              color: "#f0f4f8",
+            }}
+          >
+            KIES UW
+            <span
+              style={{
+                background: "linear-gradient(135deg, #00c8ff, #0090ff)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              {" "}PERFECTE SHOW
+            </span>
+          </h2>
+          <p
+            className="mt-4 max-w-2xl mx-auto"
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "1rem",
+              color: "rgba(240, 244, 248, 0.6)",
+              lineHeight: 1.7,
+              fontWeight: 300,
+            }}
+          >
+            Drie zorgvuldig samengestelde pakketten voor elk type evenement en budget. Alle prijzen zijn op aanvraag — neem contact op voor een vrijblijvende offerte.
+          </p>
+        </div>
+
+        {/* Package cards */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {packages.map((pkg, i) => (
+            <div
+              key={pkg.id}
+              className={`sv-fade-up relative rounded-2xl flex flex-col ${pkg.highlight ? "sv-package-featured" : ""}`}
+              style={{
+                animationDelay: `${i * 0.15}s`,
+                background: pkg.highlight
+                  ? "linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 144, 255, 0.05))"
+                  : "rgba(255, 255, 255, 0.03)",
+                border: `1px solid ${pkg.highlight ? "rgba(0, 200, 255, 0.35)" : "rgba(255, 255, 255, 0.07)"}`,
+                boxShadow: pkg.highlight
+                  ? "0 0 40px rgba(0, 200, 255, 0.12), 0 0 80px rgba(0, 200, 255, 0.05)"
+                  : "none",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                if (!pkg.highlight) {
+                  e.currentTarget.style.transform = "translateY(-6px)";
+                  e.currentTarget.style.borderColor = `${pkg.color}44`;
+                } else {
+                  e.currentTarget.style.transform = "translateY(-6px)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                if (!pkg.highlight) {
+                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.07)";
+                }
+              }}
+            >
+              {/* Most popular badge */}
+              {pkg.highlight && (
+                <div
+                  className="absolute -top-4 left-1/2 -translate-x-1/2"
+                  style={{
+                    background: "linear-gradient(135deg, #00c8ff, #0090ff)",
+                    color: "#080c10",
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "0.85rem",
+                    letterSpacing: "0.15em",
+                    padding: "0.35rem 1.25rem",
+                    borderRadius: "100px",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  MEEST GEKOZEN
+                </div>
+              )}
+
+              <div className="p-8 flex flex-col flex-1">
+                {/* Package header */}
+                <div className="mb-6">
+                  <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{pkg.icon}</div>
+                  <div
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.2em",
+                      color: pkg.color,
+                      textTransform: "uppercase",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {pkg.tagline}
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "'Bebas Neue', sans-serif",
+                      fontSize: "2rem",
+                      letterSpacing: "0.08em",
+                      color: "#f0f4f8",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {pkg.name}
+                  </h3>
+                  <div
+                    className="mt-3 flex items-center gap-3"
+                    style={{
+                      paddingBottom: "1.25rem",
+                      borderBottom: "1px solid rgba(255, 255, 255, 0.07)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "'Outfit', sans-serif",
+                        fontSize: "1.25rem",
+                        fontWeight: 600,
+                        color: pkg.color,
+                      }}
+                    >
+                      {pkg.price}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "'Outfit', sans-serif",
+                        fontSize: "0.8rem",
+                        color: "rgba(240, 244, 248, 0.4)",
+                        padding: "0.2rem 0.6rem",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        borderRadius: "100px",
+                      }}
+                    >
+                      {pkg.duration}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Features list */}
+                <ul className="space-y-3 flex-1 mb-6">
+                  {pkg.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <div
+                        className="flex-shrink-0 mt-0.5"
+                        style={{
+                          width: "18px",
+                          height: "18px",
+                          borderRadius: "50%",
+                          background: `${pkg.color}22`,
+                          border: `1px solid ${pkg.color}66`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Check size={10} color={pkg.color} />
+                      </div>
+                      <span
+                        style={{
+                          fontFamily: "'Outfit', sans-serif",
+                          fontSize: "0.875rem",
+                          color: "rgba(240, 244, 248, 0.75)",
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Ideal for */}
+                <div
+                  className="mb-6 p-3 rounded-lg"
+                  style={{
+                    background: `${pkg.color}0d`,
+                    border: `1px solid ${pkg.color}22`,
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: "0.75rem",
+                      color: pkg.color,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {pkg.ideal}
+                  </p>
+                </div>
+
+                {/* CTA */}
+                <button
+                  onClick={handleContact}
+                  style={{
+                    width: "100%",
+                    padding: "0.875rem",
+                    borderRadius: "8px",
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "1rem",
+                    letterSpacing: "0.1em",
+                    transition: "all 0.3s ease",
+                    ...(pkg.highlight
+                      ? {
+                          background: "linear-gradient(135deg, #00c8ff, #0090cc)",
+                          color: "#080c10",
+                          border: "none",
+                        }
+                      : {
+                          background: "transparent",
+                          color: pkg.color,
+                          border: `1px solid ${pkg.color}66`,
+                        }),
+                  }}
+                  onMouseEnter={(e) => {
+                    if (pkg.highlight) {
+                      e.currentTarget.style.boxShadow = "0 0 25px rgba(0, 200, 255, 0.5)";
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                    } else {
+                      e.currentTarget.style.background = `${pkg.color}15`;
+                      e.currentTarget.style.borderColor = pkg.color;
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (pkg.highlight) {
+                      e.currentTarget.style.boxShadow = "none";
+                      e.currentTarget.style.transform = "translateY(0)";
+                    } else {
+                      e.currentTarget.style.background = "transparent";
+                      e.currentTarget.style.borderColor = `${pkg.color}66`;
+                    }
+                  }}
+                >
+                  Offerte Aanvragen
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom note */}
+        <div className="text-center mt-10 sv-fade-up">
+          <p
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "0.875rem",
+              color: "rgba(240, 244, 248, 0.45)",
+            }}
+          >
+            Alle pakketten zijn aanpasbaar. Neem contact op voor een persoonlijk adviesgesprek en offerte op maat.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
