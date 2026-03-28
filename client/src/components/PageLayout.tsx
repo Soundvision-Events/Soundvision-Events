@@ -5,7 +5,7 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import YouTubeBackground from "@/components/YouTubeBackground";
+import VideoBackground from "@/components/VideoBackground";
 import BeatCursor from "@/components/BeatCursor";
 
 interface PageLayoutProps {
@@ -35,7 +35,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#080c10", color: "#f0f4f8" }}>
-      <YouTubeBackground />
+      <VideoBackground />
       <BeatCursor />
       <Navbar />
       {children}

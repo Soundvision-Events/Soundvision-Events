@@ -65,3 +65,4 @@
 - [x] Set all section background overlays to 50% opacity site-wide (AddOns, Testimonials, Contact, Gallery), text/cards/titles at 100% opacity
 - [x] Fix backdrop: switch to correct YouTube video wLsU8GaKFJY starting at t=297s
 - [x] Increase backdrop luminosity: global overlay 55%→35%, hero video 60%→40%, hero gradient lightened, all section overlays 50%→30%, Packages teal 82%→55%, About 50%→30%
+- [x] Download teal particles video, hue-shift to midnight blue, create 20s loop at 720p60, upload to CDN, replace YouTube iframe with self-hosted VideoBackground component
