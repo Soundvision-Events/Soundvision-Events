@@ -18,8 +18,8 @@ interface YouTubeBackgroundProps {
 }
 
 export default function YouTubeBackground({
-  videoId = "iGpuQ0ioPrM",
-  startAt = 5,
+  videoId = "QsqbmKPngSU",
+  startAt = 0,
   overlayOpacity = 0.55,
 }: YouTubeBackgroundProps) {
   const src =
