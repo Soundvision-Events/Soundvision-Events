@@ -54,3 +54,4 @@
 - [x] Remove fake add-ons: LED screens, photo booth, live musician, MC service, extra moving heads, confetti cannon, CO2 jets — from AddOnsSection, PackagesSection, Bruiloft, Studentenfeesten, AboutSection, TestimonialsSection
 - [x] Replace StarCurtain with Canvas particle background: deep teal/black vignette, glowing white-cyan particles drifting upward with organic sway, parallax depth, fade lifecycle (matching YouTube reference iGpuQ0ioPrM)
 - [x] Replace Canvas ParticleBackground with actual YouTube video (iGpuQ0ioPrM) as full-screen muted autoplay looped background
+- [x] Apply deep teal colour overlay to PackagesSection to make it visually distinct

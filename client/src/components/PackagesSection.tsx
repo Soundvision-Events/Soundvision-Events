@@ -89,14 +89,24 @@ export default function PackagesSection() {
     <section
       id="packages"
       className="relative py-24 overflow-hidden"
-      style={{ backgroundColor: "#0a0f15" }}
+      style={{ position: "relative" }}
     >
-      {/* Background decoration */}
+      {/* Deep teal section overlay — sits above the YouTube background */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `radial-gradient(ellipse at 50% 0%, rgba(0, 200, 255, 0.08) 0%, transparent 60%)`,
+          background: "linear-gradient(180deg, rgba(0,60,70,0.82) 0%, rgba(0,40,55,0.90) 50%, rgba(0,30,45,0.82) 100%)",
           pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      {/* Radial accent glow at top */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `radial-gradient(ellipse at 50% 0%, rgba(0, 200, 200, 0.12) 0%, transparent 60%)`,
+          pointerEvents: "none",
+          zIndex: 0,
         }}
       />
 
