@@ -195,11 +195,11 @@ export default function HeroSection() {
         {/* Stats row */}
         <div
           className="flex flex-wrap justify-center gap-8 mt-16"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "2rem" }}
+          style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: '0px', paddingRight: '22px', paddingBottom: '125px' }}
         >
           {[
             { value: "500+", label: "Shows Gespeeld" },
-            { value: "10+", label: "Jaar Ervaring" },
+            { value: "15+", label: "Jaar Ervaring" },
             { value: "3", label: "Show Pakketten" },
             { value: "100%", label: "Tevredenheid" },
           ].map((stat) => (
