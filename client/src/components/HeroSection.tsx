@@ -125,29 +125,51 @@ export default function HeroSection() {
           </span>
         </div>
 
-        {/* Main heading */}
-        <h1
+        {/* Main heading with turntable icon */}
+        <div
           style={{
-            fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "clamp(3.5rem, 10vw, 8rem)",
-            letterSpacing: "0.05em",
-            lineHeight: 1,
-            color: "#f0f4f8",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "clamp(0.5rem, 2vw, 1.5rem)",
             marginBottom: "0.5rem",
           }}
         >
-          SOUND
-          <span
+          <h1
             style={{
-              background: "linear-gradient(135deg, #00c8ff, #0090ff)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: "clamp(3.5rem, 10vw, 8rem)",
+              letterSpacing: "0.05em",
+              lineHeight: 1,
+              color: "#f0f4f8",
+              margin: 0,
             }}
           >
-            VISION
-          </span>
-        </h1>
+            SOUND
+            <span
+              style={{
+                background: "linear-gradient(135deg, #00c8ff, #0090ff)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              VISION
+            </span>
+          </h1>
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_turntable_a6e305c0.png"
+            alt="Vinyl Turntable"
+            className="sv-vinyl-spin"
+            style={{
+              width: "clamp(60px, 8vw, 120px)",
+              height: "clamp(60px, 8vw, 120px)",
+              objectFit: "contain",
+              filter: "drop-shadow(0 0 20px rgba(0,200,255,0.6))",
+              flexShrink: 0,
+            }}
+          />
+        </div>
         <h2
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
