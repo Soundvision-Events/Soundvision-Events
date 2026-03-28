@@ -163,15 +163,18 @@ export default function HeroSection() {
         <p
           style={{
             fontFamily: "'Outfit', sans-serif",
-            fontSize: "clamp(1rem, 2vw, 1.25rem)",
-            color: "rgba(240, 244, 248, 0.7)",
-            maxWidth: "600px",
+            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+            color: "#04f1ca",
+            maxWidth: "640px",
             margin: "0 auto 2.5rem",
-            lineHeight: 1.7,
-            fontWeight: 300,
+            lineHeight: 1.5,
+            fontWeight: 100,
+            opacity: 1,
           }}
         >
-          Uw onvergetelijke feest begint hier. All-round DJ shows voor bruiloften, bedrijfsfeesten, studentenfeesten en privé gelegenheden in Groningen en Noord-Nederland.
+          Uw Persoonlijke Allround DJ &amp; Partner,{" "}
+          <br />
+          Van Algemeen tot Ziens
         </p>
 
         {/* CTA Buttons */}
