@@ -47,3 +47,4 @@
 - [x] Lights video: place in Elite package card in PackagesSection (not in add-ons)
 - [x] Remove lights video from AddOnsSection (restored original add-on grid)
 - [x] Fix BentoGallery: proper asymmetric CSS grid-template-areas bento layout (2fr 1fr 1fr, 2 rows)
+- [x] StarCurtain: higher density (1 star per 380px² vs 600px²), organic sinusoidal drift per star (x+y wander with unique freq/amp per layer), slightly faster flash spawning

@@ -1,35 +1,43 @@
 /**
- * SoundVision Events — Star Curtain Overlay with Parallax + Flash Events
+ * SoundVision Events — Star Curtain Overlay
  *
- * Three depth layers with medium-sized stars (between the old tiny galaxy
- * and the original large stars). Scattered among the regular stars are
- * "transmitter" flash events: random stars that suddenly burst bright,
- * hold for a moment, then fade — like signal flashes or camera flickers.
+ * Three depth layers with organic floating/drifting motion on every star,
+ * higher density, parallax scroll, and transmitter flash events.
  *
- * Layer 0 (far):   small dim dust  — 0.15x parallax
- * Layer 1 (mid):   medium stars    — 0.35x parallax
- * Layer 2 (near):  bright stars    — 0.6x  parallax
- * Flash pool:      any layer can flash — burst bright then decay
+ * Layer 0 (far):   small dim dust  — slow drift, 0.10x parallax
+ * Layer 1 (mid):   medium stars    — medium drift, 0.30x parallax
+ * Layer 2 (near):  bright stars    — faster drift, 0.55x parallax
+ * Flash pool:      random stars burst bright with cross-sparkle glow
+ *
+ * Drift model: each star has an independent sinusoidal x+y wander
+ * with a unique frequency and amplitude, giving a gentle floating feel.
  */
 import { useEffect, useRef } from "react";
 
 interface Star {
-  x: number;
-  y: number;
+  x: number;          // base x position (canvas coords)
+  y: number;          // base y position (page coords)
   size: number;
   baseOpacity: number;
   twinkleSpeed: number;
   twinkleOffset: number;
   color: string;
   layer: number;
+  // Drift parameters
+  driftAmpX: number;   // horizontal drift amplitude (px)
+  driftAmpY: number;   // vertical drift amplitude (px)
+  driftFreqX: number;  // horizontal drift frequency (rad/s)
+  driftFreqY: number;  // vertical drift frequency (rad/s)
+  driftPhaseX: number; // phase offset
+  driftPhaseY: number;
 }
 
 interface Flash {
-  starIndex: number;   // which star is flashing
-  startTime: number;   // when the flash began (seconds)
-  duration: number;    // total flash duration (seconds)
-  peakOpacity: number; // how bright at peak
-  size: number;        // flash glow radius
+  starIndex: number;
+  startTime: number;
+  duration: number;
+  peakOpacity: number;
+  size: number;
 }
 
 const STAR_COLORS = [
@@ -39,10 +47,29 @@ const STAR_COLORS = [
   "0, 200, 255",     // cyan (brand)
   "180, 200, 255",   // pale blue
   "255, 200, 150",   // soft amber
-  "255, 255, 180",   // warm yellow flash
+  "255, 255, 180",   // warm yellow
 ];
 
-const LAYER_SPEEDS = [0.15, 0.35, 0.6];
+// Parallax scroll multipliers per layer
+const LAYER_SPEEDS = [0.10, 0.30, 0.55];
+
+// Drift amplitude ranges per layer (pixels)
+const DRIFT_AMP = [
+  { x: [1.5, 4.0],  y: [1.0, 3.0]  },  // far  — subtle
+  { x: [3.0, 8.0],  y: [2.0, 6.0]  },  // mid  — moderate
+  { x: [5.0, 14.0], y: [3.0, 10.0] },  // near — noticeable
+];
+
+// Drift frequency ranges per layer (rad/s) — lower = slower float
+const DRIFT_FREQ = [
+  { x: [0.08, 0.22], y: [0.06, 0.18] },  // far
+  { x: [0.12, 0.30], y: [0.10, 0.25] },  // mid
+  { x: [0.18, 0.40], y: [0.14, 0.35] },  // near
+];
+
+function rand(min: number, max: number) {
+  return min + Math.random() * (max - min);
+}
 
 export default function StarCurtain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -77,43 +104,50 @@ export default function StarCurtain() {
     const generateStars = () => {
       const w = window.innerWidth;
       const pageH = document.documentElement.scrollHeight;
-      // Medium density — 1 star per ~600px² (between old 400 and 1200)
+      // Higher density: 1 star per ~380px² (was 600)
       const area = w * pageH;
-      const count = Math.floor(area / 600);
+      const count = Math.floor(area / 380);
       const stars: Star[] = [];
 
       for (let i = 0; i < count; i++) {
-        // Layer distribution: 60% far, 28% mid, 12% near
+        // Layer distribution: 55% far, 30% mid, 15% near
         const roll = Math.random();
-        const layer = roll < 0.60 ? 0 : roll < 0.88 ? 1 : 2;
+        const layer = roll < 0.55 ? 0 : roll < 0.85 ? 1 : 2;
 
-        const isAccent = Math.random() < 0.08;
+        const isAccent = Math.random() < 0.10;
 
-        // Medium sizes — noticeably bigger than the tiny galaxy version
-        // but not as large as the original
         const sizeRange = [
-          [0.3, 0.75],   // far: small but visible dots
-          [0.6, 1.2],    // mid: clear medium stars
-          [0.9, 1.8],    // near: bright prominent stars
+          [0.3, 0.8],   // far
+          [0.6, 1.3],   // mid
+          [1.0, 2.0],   // near
         ][layer];
 
         const opacityRange = [
-          [0.08, 0.28],  // far
-          [0.20, 0.50],  // mid
-          [0.40, 0.85],  // near
+          [0.07, 0.30],  // far
+          [0.18, 0.55],  // mid
+          [0.38, 0.90],  // near
         ][layer];
+
+        const da = DRIFT_AMP[layer];
+        const df = DRIFT_FREQ[layer];
 
         stars.push({
           x: Math.random() * w,
           y: Math.random() * pageH,
-          size: sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]),
-          baseOpacity: opacityRange[0] + Math.random() * (opacityRange[1] - opacityRange[0]),
-          twinkleSpeed: 0.3 + Math.random() * 2.0,
+          size: rand(sizeRange[0], sizeRange[1]),
+          baseOpacity: rand(opacityRange[0], opacityRange[1]),
+          twinkleSpeed: 0.3 + Math.random() * 2.2,
           twinkleOffset: Math.random() * Math.PI * 2,
           color: isAccent
             ? STAR_COLORS[3 + Math.floor(Math.random() * 4)]
             : STAR_COLORS[Math.floor(Math.random() * 3)],
           layer,
+          driftAmpX:  rand(da.x[0], da.x[1]),
+          driftAmpY:  rand(da.y[0], da.y[1]),
+          driftFreqX: rand(df.x[0], df.x[1]),
+          driftFreqY: rand(df.y[0], df.y[1]),
+          driftPhaseX: Math.random() * Math.PI * 2,
+          driftPhaseY: Math.random() * Math.PI * 2,
         });
       }
 
@@ -121,7 +155,6 @@ export default function StarCurtain() {
       flashesRef.current = [];
     };
 
-    // Spawn a new transmitter flash on a random visible star
     const spawnFlash = (t: number) => {
       const stars = starsRef.current;
       if (stars.length === 0) return;
@@ -129,7 +162,6 @@ export default function StarCurtain() {
       const h = window.innerHeight;
       const scrollY = scrollRef.current;
 
-      // Pick a random star that is currently visible on screen
       const visibleIndices: number[] = [];
       for (let i = 0; i < stars.length; i++) {
         const star = stars[i];
@@ -144,16 +176,14 @@ export default function StarCurtain() {
       const idx = visibleIndices[Math.floor(Math.random() * visibleIndices.length)];
       const star = stars[idx];
 
-      // Don't double-flash the same star
-      const alreadyFlashing = flashesRef.current.some(f => f.starIndex === idx);
-      if (alreadyFlashing) return;
+      if (flashesRef.current.some(f => f.starIndex === idx)) return;
 
       flashesRef.current.push({
         starIndex: idx,
         startTime: t,
-        duration: 0.4 + Math.random() * 0.8,   // 0.4–1.2 seconds
-        peakOpacity: 0.7 + Math.random() * 0.3, // 0.7–1.0
-        size: (star.size + 1) * (3 + Math.random() * 4), // glow radius
+        duration: 0.4 + Math.random() * 0.9,
+        peakOpacity: 0.65 + Math.random() * 0.35,
+        size: (star.size + 1) * (3 + Math.random() * 5),
       });
     };
 
@@ -163,94 +193,92 @@ export default function StarCurtain() {
       const scrollY = scrollRef.current;
       const t = time / 1000;
 
-      // Spawn flashes at random intervals (avg every 0.15–0.35 seconds)
+      // Spawn flashes
       const timeSinceLast = t - lastFlashTimeRef.current;
-      const nextInterval = 0.12 + Math.random() * 0.25;
+      const nextInterval = 0.10 + Math.random() * 0.22;
       if (timeSinceLast > nextInterval) {
-        // Spawn 1–3 flashes at once for a burst feel
-        const burst = Math.random() < 0.3 ? 2 : 1;
+        const burst = Math.random() < 0.35 ? 2 : 1;
         for (let b = 0; b < burst; b++) spawnFlash(t);
         lastFlashTimeRef.current = t;
       }
 
-      // Remove expired flashes
+      // Expire old flashes
       flashesRef.current = flashesRef.current.filter(
         f => t - f.startTime < f.duration
       );
 
       ctx.clearRect(0, 0, w, h);
 
-      // Build a quick lookup for active flashes by star index
       const flashMap = new Map<number, Flash>();
-      for (const f of flashesRef.current) {
-        flashMap.set(f.starIndex, f);
-      }
+      for (const f of flashesRef.current) flashMap.set(f.starIndex, f);
 
       for (let i = 0; i < starsRef.current.length; i++) {
         const star = starsRef.current[i];
 
+        // Parallax offset from scroll
         const parallaxOffset = scrollY * LAYER_SPEEDS[star.layer];
-        const screenY = star.y - scrollY + (scrollY - parallaxOffset);
+        const baseScreenY = star.y - scrollY + (scrollY - parallaxOffset);
 
-        if (screenY < -40 || screenY > h + 40) continue;
+        // Skip if off-screen (with generous margin for drift)
+        if (baseScreenY < -60 || baseScreenY > h + 60) continue;
 
-        // Base twinkle
+        // Organic drift: sinusoidal wander around base position
+        const driftX = star.driftAmpX * Math.sin(t * star.driftFreqX + star.driftPhaseX);
+        const driftY = star.driftAmpY * Math.sin(t * star.driftFreqY + star.driftPhaseY);
+
+        const screenX = star.x + driftX;
+        const screenY = baseScreenY + driftY;
+
+        // Twinkle
         const twinkle = Math.sin(t * star.twinkleSpeed + star.twinkleOffset);
-        const opacityMultiplier = 0.3 + (twinkle + 1) * 0.35;
+        const opacityMultiplier = 0.28 + (twinkle + 1) * 0.36;
         let opacity = star.baseOpacity * opacityMultiplier;
 
-        // Check if this star is flashing
+        // Flash handling
         const flash = flashMap.get(i);
         if (flash) {
           const elapsed = t - flash.startTime;
           const progress = elapsed / flash.duration;
 
-          // Envelope: quick rise (0→0.2), hold (0.2→0.6), slow decay (0.6→1.0)
           let envelope: number;
           if (progress < 0.2) {
-            envelope = progress / 0.2; // rise
+            envelope = progress / 0.2;
           } else if (progress < 0.6) {
-            envelope = 1.0; // hold
+            envelope = 1.0;
           } else {
-            envelope = 1.0 - (progress - 0.6) / 0.4; // decay
+            envelope = 1.0 - (progress - 0.6) / 0.4;
           }
 
           const flashOpacity = flash.peakOpacity * envelope;
-
-          // Draw the flash glow halo
-          const gx = star.x;
-          const gy = screenY;
           const gr = flash.size * envelope;
 
           if (gr > 0.5) {
-            const gradient = ctx.createRadialGradient(gx, gy, 0, gx, gy, gr);
+            const gradient = ctx.createRadialGradient(screenX, screenY, 0, screenX, screenY, gr);
             gradient.addColorStop(0, `rgba(${star.color}, ${flashOpacity * 0.9})`);
             gradient.addColorStop(0.3, `rgba(${star.color}, ${flashOpacity * 0.4})`);
             gradient.addColorStop(1, `rgba(${star.color}, 0)`);
             ctx.beginPath();
-            ctx.arc(gx, gy, gr, 0, Math.PI * 2);
+            ctx.arc(screenX, screenY, gr, 0, Math.PI * 2);
             ctx.fillStyle = gradient;
             ctx.fill();
 
-            // Cross sparkle on flash peak
             if (envelope > 0.5) {
               const arm = gr * 0.7;
               ctx.strokeStyle = `rgba(${star.color}, ${flashOpacity * 0.6})`;
               ctx.lineWidth = 0.5;
               ctx.beginPath();
-              ctx.moveTo(gx - arm, gy); ctx.lineTo(gx + arm, gy);
+              ctx.moveTo(screenX - arm, screenY); ctx.lineTo(screenX + arm, screenY);
               ctx.stroke();
               ctx.beginPath();
-              ctx.moveTo(gx, gy - arm); ctx.lineTo(gx, gy + arm);
+              ctx.moveTo(screenX, screenY - arm); ctx.lineTo(screenX, screenY + arm);
               ctx.stroke();
-              // Diagonal arms (shorter)
               const diag = arm * 0.5;
               ctx.strokeStyle = `rgba(${star.color}, ${flashOpacity * 0.3})`;
               ctx.beginPath();
-              ctx.moveTo(gx - diag, gy - diag); ctx.lineTo(gx + diag, gy + diag);
+              ctx.moveTo(screenX - diag, screenY - diag); ctx.lineTo(screenX + diag, screenY + diag);
               ctx.stroke();
               ctx.beginPath();
-              ctx.moveTo(gx + diag, gy - diag); ctx.lineTo(gx - diag, gy + diag);
+              ctx.moveTo(screenX + diag, screenY - diag); ctx.lineTo(screenX - diag, screenY + diag);
               ctx.stroke();
             }
 
@@ -258,26 +286,23 @@ export default function StarCurtain() {
           }
         }
 
-        // Draw the star dot
+        // Draw star dot
         ctx.shadowColor = `rgba(${star.color}, ${opacity * 0.5})`;
-        ctx.shadowBlur = star.layer === 2 ? 4 : 2;
+        ctx.shadowBlur = star.layer === 2 ? 5 : 2;
         ctx.beginPath();
-        ctx.arc(star.x, screenY, star.size, 0, Math.PI * 2);
+        ctx.arc(screenX, screenY, star.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${star.color}, ${opacity})`;
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Subtle glow for near-layer bright stars
-        if (star.layer === 2 && star.baseOpacity > 0.5) {
-          const gr2 = star.size * 2.8;
-          const gradient = ctx.createRadialGradient(
-            star.x, screenY, 0,
-            star.x, screenY, gr2
-          );
-          gradient.addColorStop(0, `rgba(${star.color}, ${opacity * 0.3})`);
+        // Soft glow halo for bright near-layer stars
+        if (star.layer === 2 && star.baseOpacity > 0.45) {
+          const gr2 = star.size * 3.2;
+          const gradient = ctx.createRadialGradient(screenX, screenY, 0, screenX, screenY, gr2);
+          gradient.addColorStop(0, `rgba(${star.color}, ${opacity * 0.35})`);
           gradient.addColorStop(1, `rgba(${star.color}, 0)`);
           ctx.beginPath();
-          ctx.arc(star.x, screenY, gr2, 0, Math.PI * 2);
+          ctx.arc(screenX, screenY, gr2, 0, Math.PI * 2);
           ctx.fillStyle = gradient;
           ctx.fill();
         }
