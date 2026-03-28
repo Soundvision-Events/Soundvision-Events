@@ -159,38 +159,46 @@ export default function HeroSection() {
           EVENTS
         </h2>
 
-        {/* Anime lightning icon */}
-        <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_lightning_e92b8a67.png"
-          alt="Lightning"
+        {/* Subtitle with inline lightning icon */}
+        <div
           style={{
-            width: "90px",
-            height: "90px",
-            objectFit: "contain",
-            display: "block",
-            margin: "0 auto 0.75rem",
-            filter: "drop-shadow(0 0 18px rgba(255,210,0,0.7))",
-            animation: "sv-float 3s ease-in-out infinite",
-          }}
-        />
-
-        {/* Subtitle */}
-        <p
-          style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-            color: "#04f1ca",
-            maxWidth: "640px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "1rem",
+            maxWidth: "720px",
             margin: "0 auto 2.5rem",
-            lineHeight: 1.5,
-            fontWeight: 100,
-            opacity: 1,
           }}
         >
-          Uw Persoonlijke Allround DJ &amp; Partner,{" "}
-          <br />
-          Van Algemeen tot Ziens
-        </p>
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_lightning_e92b8a67.png"
+            alt="Lightning"
+            style={{
+              width: "80px",
+              height: "80px",
+              objectFit: "contain",
+              flexShrink: 0,
+              filter: "drop-shadow(0 0 18px rgba(255,210,0,0.7))",
+              animation: "sv-float 3s ease-in-out infinite",
+            }}
+          />
+          <p
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              color: "#04f1ca",
+              lineHeight: 1.5,
+              fontWeight: 100,
+              opacity: 1,
+              margin: 0,
+              textAlign: "left",
+            }}
+          >
+            Uw Persoonlijke Allround DJ &amp; Partner,{" "}
+            <br />
+            Van Algemeen tot Ziens
+          </p>
+        </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
