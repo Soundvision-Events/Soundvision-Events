@@ -57,3 +57,4 @@
 - [x] Apply deep teal colour overlay to PackagesSection to make it visually distinct
 - [x] Swap YouTube background video to QsqbmKPngSU (replaces iGpuQ0ioPrM)
 - [x] AboutSection: replace solid dark background with 50% opacity overlay so YouTube video shows through
+- [x] Add second backdrop option lNLeRmnkug8 (glowing particles) — both options documented in YouTubeBackground.tsx, Option B now active

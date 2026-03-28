@@ -6,6 +6,12 @@
  * The iframe is scaled up and centered (the "cover" technique) so it always
  * fills the viewport regardless of aspect ratio, with a dark overlay on top
  * to keep text readable.
+ *
+ * Available backdrop options:
+ *   Option A — QsqbmKPngSU  (laser show / crowd energy)
+ *   Option B — lNLeRmnkug8  (glowing particles / atmospheric)
+ *
+ * To switch, change the videoId default below.
  */
 
 interface YouTubeBackgroundProps {
@@ -18,7 +24,7 @@ interface YouTubeBackgroundProps {
 }
 
 export default function YouTubeBackground({
-  videoId = "QsqbmKPngSU",
+  videoId = "lNLeRmnkug8",
   startAt = 0,
   overlayOpacity = 0.55,
 }: YouTubeBackgroundProps) {
