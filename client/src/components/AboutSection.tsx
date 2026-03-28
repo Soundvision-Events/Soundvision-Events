@@ -7,14 +7,23 @@ export default function AboutSection() {
     <section
       id="about"
       className="relative py-24 overflow-hidden"
-      style={{ backgroundColor: "#0a0f15" }}
     >
-      {/* Background decoration */}
+      {/* 50% dark overlay — lets YouTube background show through */}
       <div
-        className="absolute right-0 top-0 w-1/2 h-full opacity-5"
+        className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at right center, #00c8ff 0%, transparent 60%)",
+          backgroundColor: "rgba(8, 12, 16, 0.50)",
           pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      {/* Subtle right-side cyan glow */}
+      <div
+        className="absolute right-0 top-0 w-1/2 h-full"
+        style={{
+          background: "radial-gradient(ellipse at right center, rgba(0,200,255,0.06) 0%, transparent 60%)",
+          pointerEvents: "none",
+          zIndex: 0,
         }}
       />
 
