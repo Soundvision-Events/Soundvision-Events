@@ -1,11 +1,11 @@
 /**
  * SoundVision Events — Shared Page Layout
- * Wraps every page with Navbar, StarCurtain, Footer, and scroll observer.
+ * Wraps every page with Navbar, ParticleBackground, Footer, and scroll observer.
  */
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import StarCurtain from "@/components/StarCurtain";
+import ParticleBackground from "@/components/ParticleBackground";
 import BeatCursor from "@/components/BeatCursor";
 
 interface PageLayoutProps {
@@ -35,7 +35,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#080c10", color: "#f0f4f8" }}>
-      <StarCurtain />
+      <ParticleBackground />
       <BeatCursor />
       <Navbar />
       {children}

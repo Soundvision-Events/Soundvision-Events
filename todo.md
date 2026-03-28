@@ -52,3 +52,4 @@
 - [ ] Add anime lightning icon to homepage: replace SVG in "Geen Boekingsbureaus" USP card + floating hero accent
 - [x] Add unique anime icon to each event sub-page hero: Bruiloft=heart, Bedrijfsfeesten=rocket, Studentenfeesten=fire, Privé=star
 - [x] Remove fake add-ons: LED screens, photo booth, live musician, MC service, extra moving heads, confetti cannon, CO2 jets — from AddOnsSection, PackagesSection, Bruiloft, Studentenfeesten, AboutSection, TestimonialsSection
+- [x] Replace StarCurtain with Canvas particle background: deep teal/black vignette, glowing white-cyan particles drifting upward with organic sway, parallax depth, fade lifecycle (matching YouTube reference iGpuQ0ioPrM)
