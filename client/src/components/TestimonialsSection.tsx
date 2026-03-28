@@ -54,14 +54,19 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       className="relative py-24 overflow-hidden"
-      style={{ backgroundColor: "#080c10" }}
     >
+      {/* 50% dark overlay — lets YouTube backdrop show through */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(8, 12, 16, 0.50)", pointerEvents: "none", zIndex: 0 }}
+      />
       {/* Background */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage: `radial-gradient(ellipse at 50% 50%, rgba(0, 200, 255, 0.04) 0%, transparent 60%)`,
           pointerEvents: "none",
+          zIndex: 0,
         }}
       />
 

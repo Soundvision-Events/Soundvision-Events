@@ -40,9 +40,13 @@ export default function GallerySection() {
     <section
       id="gallery"
       className="relative py-24 overflow-hidden"
-      style={{ backgroundColor: "#0a0f15" }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 50% dark overlay — lets YouTube backdrop show through */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(8, 12, 16, 0.50)", pointerEvents: "none", zIndex: 0 }}
+      />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <div className="text-center mb-12 sv-fade-up">
           <span

@@ -49,8 +49,12 @@ export default function AddOnsSection() {
     <section
       id="addons"
       className="relative py-24 overflow-hidden"
-      style={{ backgroundColor: "#080c10" }}
     >
+      {/* 50% dark overlay — lets YouTube backdrop show through */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(8, 12, 16, 0.50)", pointerEvents: "none", zIndex: 0 }}
+      />
       {/* Background decoration */}
       <div
         className="absolute bottom-0 left-0 right-0 h-1/2 opacity-20"

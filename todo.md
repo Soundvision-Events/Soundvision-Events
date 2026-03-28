@@ -61,3 +61,5 @@
 - [x] HeroSection overlay reduced to ~50% opacity so YouTube background shows through more strongly
 - [x] Remove local video from HeroSection so YouTube background shows through the hero
 - [x] Restore hero video at 60% opacity layered over YouTube backdrop — both visible simultaneously
+- [x] Switch YouTube backdrop to B0TjyJIIWLA (Option C)
+- [x] Set all section background overlays to 50% opacity site-wide (AddOns, Testimonials, Contact, Gallery), text/cards/titles at 100% opacity
