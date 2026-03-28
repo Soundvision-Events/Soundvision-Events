@@ -51,3 +51,4 @@
 - [x] Upload 10 anime icons to CDN and register in shared/assets.ts library (fire, heart, lightning, microphone, musicNote, rocket, speaker, star, turntable, visionEye)
 - [ ] Add anime lightning icon to homepage: replace SVG in "Geen Boekingsbureaus" USP card + floating hero accent
 - [x] Add unique anime icon to each event sub-page hero: Bruiloft=heart, Bedrijfsfeesten=rocket, Studentenfeesten=fire, Privé=star
+- [x] Remove fake add-ons: LED screens, photo booth, live musician, MC service, extra moving heads, confetti cannon, CO2 jets — from AddOnsSection, PackagesSection, Bruiloft, Studentenfeesten, AboutSection, TestimonialsSection

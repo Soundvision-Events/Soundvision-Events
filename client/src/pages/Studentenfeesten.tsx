@@ -83,7 +83,7 @@ export default function Studentenfeesten() {
                     fontWeight: 300,
                   }}
                 >
-                  Van CO2 jets en confetti tot een volledige lichtshow met lasers — wij maken er een spectakel van dat iedereen nog weken bespreekt. Geschikt voor studentenverenigingen, middelbare scholen en HBO/WO evenementen.
+                  Van een volledige lichtshow met lasers tot harde beats op maat — wij maken er een spectakel van dat iedereen nog weken bespreekt. Geschikt voor studentenverenigingen, middelbare scholen en HBO/WO evenementen.
                 </p>
               </div>
             </div>
@@ -94,7 +94,6 @@ export default function Studentenfeesten() {
                   { icon: "🎓", title: "Gala's", desc: "Stijlvol studentengala met de juiste beats" },
                   { icon: "🎉", title: "Introfeesten", desc: "Onvergetelijke introductieweek feesten" },
                   { icon: "🏫", title: "Schoolfeesten", desc: "Eindfeest, diploma-uitreiking of thema-avond" },
-                  { icon: "💨", title: "CO2 & Effecten", desc: "Spectaculaire effecten voor maximale impact" },
                   { icon: "🔴", title: "Laser Show", desc: "Professionele lasers die de zaal vullen" },
                   { icon: "🎵", title: "Alle Genres", desc: "Van hardstyle tot hiphop — wij draaien alles" },
                 ].map((item) => (

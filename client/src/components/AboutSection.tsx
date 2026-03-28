@@ -158,7 +158,7 @@ export default function AboutSection() {
                 { icon: "🎵", title: "Muziek op Maat", desc: "Volledig afgestemd op uw wensen" },
                 { icon: "🎛️", title: "Pro Apparatuur", desc: "Pioneer DJ setup" },
                 { icon: "💡", title: "Lichtshow", desc: "Professionele verlichting" },
-                { icon: "🎤", title: "MC Service", desc: "Presentatie & aankondigingen" },
+                { icon: "🎵", title: "Persoonlijk Intro", desc: "Op maat gemixte intro voor uw feest" },
               ].map((feat) => (
                 <div
                   key={feat.title}

@@ -1,62 +1,20 @@
 /**
  * SoundVision Events — Add-ons Section
- * Optional extras to enhance any show package
+ * Optional extras to enhance any show package — only real services offered by SoundVision Events
  */
 
 const addons = [
   {
     icon: "🎤",
     title: "Extra Microfoon",
-    description: "Draadloze microfoon voor speeches, zang of presentatie door gasten.",
+    description: "Draadloze microfoon voor speeches of zang door gasten.",
     category: "Audio",
-  },
-  {
-    icon: "💨",
-    title: "CO2 Jets",
-    description: "Spectaculaire CO2 jets voor een explosief effect op het hoogtepunt van de avond.",
-    category: "Effecten",
-  },
-  {
-    icon: "🎊",
-    title: "Confetti Kanon",
-    description: "Kleurrijke confetti explosie voor een feestelijk moment — perfect voor de eerste dans of een verrassing.",
-    category: "Effecten",
-  },
-  {
-    icon: "💡",
-    title: "Extra Moving Heads",
-    description: "Aanvullende moving head spots voor een nog indrukwekkendere lichtshow.",
-    category: "Licht",
   },
   {
     icon: "🔴",
     title: "Laser Show",
     description: "Professionele lasershow die de ruimte vult met kleurrijke lichtstralen.",
     category: "Licht",
-  },
-  {
-    icon: "📺",
-    title: "LED Scherm / Backdrop",
-    description: "LED backdrop of scherm voor visuele content, foto's of video's tijdens uw feest.",
-    category: "Visueel",
-  },
-  {
-    icon: "📸",
-    title: "Fotobooth",
-    description: "Interactieve fotobooth met rekwisieten voor leuke herinneringen voor uw gasten.",
-    category: "Entertainment",
-  },
-  {
-    icon: "🎸",
-    title: "Live Muzikant",
-    description: "Combinatie van live muzikant (saxofoon, gitaar, etc.) met DJ set voor een unieke ervaring.",
-    category: "Muziek",
-  },
-  {
-    icon: "🎙️",
-    title: "MC Service",
-    description: "Professionele MC/presentator voor aankondigingen, spelletjes en het leiden van het programma.",
-    category: "Entertainment",
   },
   {
     icon: "🚗",
@@ -80,10 +38,7 @@ const addons = [
 
 const categoryColors: Record<string, string> = {
   Audio: "#00c8ff",
-  Effecten: "#ff5500",
   Licht: "#ffaa00",
-  Visueel: "#aa44ff",
-  Entertainment: "#00ff88",
   Muziek: "#ff4488",
   Logistiek: "#aaaaaa",
   Tijd: "#44aaff",
@@ -155,10 +110,8 @@ export default function AddOnsSection() {
           </p>
         </div>
 
-        {/* Add-ons grid — 4 columns on large */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-
-          {/* Add-on cards */}
+        {/* Add-ons grid */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {addons.map((addon, i) => {
             const color = categoryColors[addon.category] || "#00c8ff";
             return (
@@ -166,7 +119,7 @@ export default function AddOnsSection() {
                 key={addon.title}
                 className="sv-fade-up group rounded-xl p-5"
                 style={{
-                  animationDelay: `${(i % 4) * 0.1}s`,
+                  animationDelay: `${i * 0.1}s`,
                   background: "rgba(255, 255, 255, 0.03)",
                   border: "1px solid rgba(255, 255, 255, 0.06)",
                   transition: "all 0.3s ease",

@@ -22,7 +22,7 @@ const testimonials = [
   {
     name: "Lisa Janssen",
     event: "Verjaardag 30 jaar",
-    text: "Wat een geweldige avond! De DJ wist precies welke muziek hij moest draaien om iedereen op de dansvloer te krijgen. De CO2 jets en confetti waren het hoogtepunt van de avond!",
+    text: "Wat een geweldige avond! De DJ wist precies welke muziek hij moest draaien om iedereen op de dansvloer te krijgen. De lichtshow en lasereffecten waren het hoogtepunt van de avond!",
     rating: 5,
     avatar: "LJ",
   },

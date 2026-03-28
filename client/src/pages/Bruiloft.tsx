@@ -192,7 +192,6 @@ export default function Bruiloft() {
                   { icon: "🎵", title: "Ceremonie Muziek", desc: "Sfeervolle begeleiding tijdens de ceremonie" },
                   { icon: "🍽️", title: "Diner DJ", desc: "Achtergrondmuziek tijdens het diner" },
                   { icon: "🎉", title: "Avondfeest", desc: "De dansvloer vol van begin tot eind" },
-                  { icon: "🎤", title: "MC Service", desc: "Professionele aankondigingen en presentatie" },
                   { icon: "💡", title: "Sfeerverlichting", desc: "Romantische en feestelijke verlichting" },
                 ].map((item) => (
                   <div
