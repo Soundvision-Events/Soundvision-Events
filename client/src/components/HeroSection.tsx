@@ -174,9 +174,9 @@ export default function HeroSection() {
             src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_lightning_e92b8a67.png"
             alt="Lightning"
             style={{
-              width: "80px",
-              height: "80px",
-              objectFit: "contain",
+              width: '100px',
+              height: '95px',
+              objectFit: 'contain',
               flexShrink: 0,
               filter: "drop-shadow(0 0 18px rgba(255,210,0,0.7))",
               animation: "sv-float 3s ease-in-out infinite",
