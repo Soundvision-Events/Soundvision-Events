@@ -100,7 +100,7 @@ export default function AboutSection() {
                   textTransform: "uppercase",
                 }}
               >
-                Over Ons
+                Over DJ Tonicity (Bert)
               </span>
               <h2
                 className="mt-3 mb-6"
