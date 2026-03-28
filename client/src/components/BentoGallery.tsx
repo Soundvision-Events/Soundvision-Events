@@ -1,15 +1,22 @@
 /**
  * SoundVision Events — BentoGallery
- * A reusable bento-grid gallery section with configurable accent color.
- * Each page provides its own accent color and optional custom images.
+ * Asymmetric bento-style photo grid using CSS grid-template-areas.
+ * Layout (desktop, 4 cols × 2 rows):
+ *   ┌──────────────┬─────────┬─────────┐
+ *   │              │    b    │    c    │
+ *   │      a       ├─────────┴─────────┤
+ *   │  (2col×2row) │    e  (wide 2col) │
+ *   ├──────────────┴───────────────────┤
+ *   │              d  (full width)     │
+ *   └──────────────────────────────────┘
  */
 
 interface BentoItem {
   src: string;
   alt: string;
   label: string;
-  /** Grid span class — e.g. "col-span-2 row-span-2", "col-span-1 row-span-1" */
-  span?: string;
+  /** CSS grid-area name: "a" | "b" | "c" | "d" | "e" */
+  area: "a" | "b" | "c" | "d" | "e";
 }
 
 interface BentoGalleryProps {
@@ -24,37 +31,31 @@ const DEFAULT_ITEMS: BentoItem[] = [
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-show-1-2x_JzPjSqAKqcKZZxjEEFJxLd.webp",
     alt: "DJ Show",
     label: "Sfeer & Energie",
-    span: "col-span-2 row-span-2",
+    area: "a",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-equipment-2x_7YnFqWLqPHXVBkJsVAYLJP.webp",
     alt: "DJ Equipment",
     label: "Professionele Apparatuur",
-    span: "col-span-1 row-span-1",
+    area: "b",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/party-dj-2x_RLBxVBqWLqPHXVBkJsVAYLJP.webp",
     alt: "Party DJ",
     label: "Dansende Gasten",
-    span: "col-span-1 row-span-1",
+    area: "c",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/wedding-dj-DqtALdSvgWVVw3zhZFPk6b.webp",
     alt: "Wedding DJ",
     label: "Onvergetelijke Momenten",
-    span: "col-span-1 row-span-2",
+    area: "d",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/corporate-event-2x_JzPjSqAKqcKZZxjEEFJxLd.webp",
     alt: "Corporate Event",
     label: "Bedrijfsfeest",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-show-2-2x_JzPjSqAKqcKZZxjEEFJxLd.webp",
-    alt: "DJ Show 2",
-    label: "Lichtshow",
-    span: "col-span-1 row-span-1",
+    area: "e",
   },
 ];
 
@@ -132,23 +133,34 @@ export default function BentoGallery({
           </h2>
         </div>
 
-        {/* Bento grid */}
+        {/* ── Asymmetric bento grid ── */}
         <div
-          className="grid grid-cols-3 gap-3 sv-fade-up"
-          style={{ gridAutoRows: "200px" }}
+          className="sv-fade-up bento-grid"
+          style={{
+            display: "grid",
+            gap: "10px",
+            gridTemplateColumns: "2fr 1fr 1fr",
+            gridTemplateRows: "260px 200px",
+            gridTemplateAreas: `
+              "a b c"
+              "a e e"
+            `,
+          }}
         >
-          {items.map((item, i) => (
+          {items.map((item) => (
             <div
-              key={i}
-              className={`relative overflow-hidden rounded-2xl group ${item.span || "col-span-1 row-span-1"}`}
+              key={item.area}
+              className="relative overflow-hidden rounded-2xl group"
               style={{
+                gridArea: item.area,
                 border: `1px solid ${glowRgba}`,
                 transition: "border-color 0.3s ease, box-shadow 0.3s ease",
                 cursor: "pointer",
+                background: "rgba(255,255,255,0.03)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = glowStrong;
-                e.currentTarget.style.boxShadow = `0 0 24px ${glowRgba}, 0 8px 32px rgba(0,0,0,0.4)`;
+                e.currentTarget.style.boxShadow = `0 0 28px ${glowRgba}, 0 8px 32px rgba(0,0,0,0.5)`;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = glowRgba;
@@ -165,12 +177,12 @@ export default function BentoGallery({
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  transition: "transform 0.5s ease",
+                  transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }}
                 className="group-hover:scale-110"
                 onError={(e) => {
-                  // Fallback gradient if image fails to load
-                  (e.currentTarget as HTMLImageElement).style.display = "none";
+                  const el = e.currentTarget as HTMLImageElement;
+                  el.src = `https://placehold.co/800x600/0a0f15/444?text=${encodeURIComponent(item.alt)}`;
                 }}
               />
 
@@ -179,12 +191,12 @@ export default function BentoGallery({
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(to top, rgba(8,12,16,0.85) 0%, rgba(8,12,16,0.2) 50%, transparent 100%)",
-                  transition: "opacity 0.3s ease",
+                  background:
+                    "linear-gradient(to top, rgba(8,12,16,0.88) 0%, rgba(8,12,16,0.2) 50%, transparent 100%)",
                 }}
               />
 
-              {/* Accent color overlay on hover */}
+              {/* Accent tint on hover */}
               <div
                 className="opacity-0 group-hover:opacity-100"
                 style={{
@@ -200,25 +212,10 @@ export default function BentoGallery({
                 style={{
                   position: "absolute",
                   bottom: "1rem",
-                  left: "1rem",
-                  right: "1rem",
+                  left: "1.1rem",
+                  right: "1.1rem",
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "'Outfit', sans-serif",
-                    fontSize: "0.7rem",
-                    letterSpacing: "0.15em",
-                    color: accentColor,
-                    textTransform: "uppercase",
-                    display: "block",
-                    marginBottom: "0.25rem",
-                    opacity: 0,
-                    transform: "translateY(6px)",
-                    transition: "opacity 0.3s ease, transform 0.3s ease",
-                  }}
-                  className="group-hover:opacity-100 group-hover:translate-y-0"
-                />
                 <p
                   style={{
                     fontFamily: "'Outfit', sans-serif",
@@ -226,6 +223,7 @@ export default function BentoGallery({
                     fontWeight: 600,
                     color: "#f0f4f8",
                     margin: 0,
+                    textShadow: "0 1px 4px rgba(0,0,0,0.8)",
                   }}
                 >
                   {item.label}
@@ -238,17 +236,40 @@ export default function BentoGallery({
                   position: "absolute",
                   top: "0.75rem",
                   right: "0.75rem",
-                  width: "8px",
-                  height: "8px",
+                  width: "7px",
+                  height: "7px",
                   borderRadius: "50%",
                   background: accentColor,
                   boxShadow: `0 0 8px ${accentColor}`,
-                  opacity: 0.7,
+                  opacity: 0.75,
                 }}
               />
             </div>
           ))}
         </div>
+
+        {/* Mobile responsive styles */}
+        <style>{`
+          @media (max-width: 640px) {
+            .bento-grid {
+              grid-template-columns: 1fr 1fr !important;
+              grid-template-rows: 160px 160px 160px !important;
+              grid-template-areas:
+                "a a"
+                "b c"
+                "e e" !important;
+            }
+          }
+          @media (min-width: 641px) and (max-width: 900px) {
+            .bento-grid {
+              grid-template-columns: 1fr 1fr !important;
+              grid-template-rows: 220px 180px !important;
+              grid-template-areas:
+                "a b"
+                "e e" !important;
+            }
+          }
+        `}</style>
 
         {/* Upload CTA */}
         <div className="text-center mt-10 sv-fade-up">

@@ -1,18 +1,22 @@
 /**
  * SoundVision Events — Packages Section
- * Small, Medium, Large DJ show packages with glassmorphism cards
+ * Intiem / Luxe / Elite DJ show packages with glassmorphism cards
+ * Elite package features the lights video showcase
  */
 import { Check } from "lucide-react";
 
+const LIGHTS_VIDEO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Lights_change_colours_202603270757-5eMFKZjbLFBcMUFMcBxFzH.mp4";
+
 const packages = [
   {
-    id: "small",
-    name: "SMALL SHOW",
+    id: "intiem",
+    name: "INTIEM",
     tagline: "Compact & Krachtig",
     price: "Op aanvraag",
     duration: "Tot 4 uur",
     highlight: false,
     color: "#0090ff",
+    video: null,
     features: [
       "Professionele DJ setup (Pioneer)",
       "Muziek op maat voor uw feest",
@@ -27,13 +31,14 @@ const packages = [
     icon: "🎵",
   },
   {
-    id: "medium",
-    name: "MEDIUM SHOW",
+    id: "luxe",
+    name: "LUXE",
     tagline: "Meest Gekozen",
     price: "Op aanvraag",
     duration: "Tot 6 uur",
     highlight: true,
     color: "#00c8ff",
+    video: null,
     features: [
       "Professionele DJ setup (Pioneer CDJ)",
       "Muziek volledig op maat",
@@ -50,13 +55,14 @@ const packages = [
     icon: "🎛️",
   },
   {
-    id: "large",
-    name: "LARGE SHOW",
+    id: "elite",
+    name: "ELITE",
     tagline: "Spectaculair & Groots",
     price: "Op aanvraag",
     duration: "Tot 8 uur",
     highlight: false,
     color: "#ff5500",
+    video: LIGHTS_VIDEO_URL,
     features: [
       "Professionele DJ setup (Pioneer CDJ-3000)",
       "Volledig gepersonaliseerde muziekervaring",
@@ -165,7 +171,7 @@ export default function PackagesSection() {
           {packages.map((pkg, i) => (
             <div
               key={pkg.id}
-              className={`sv-fade-up relative rounded-2xl flex flex-col ${pkg.highlight ? "sv-package-featured" : ""}`}
+              className={`sv-fade-up relative rounded-2xl flex flex-col overflow-hidden ${pkg.highlight ? "sv-package-featured" : ""}`}
               style={{
                 animationDelay: `${i * 0.15}s`,
                 background: pkg.highlight
@@ -192,6 +198,49 @@ export default function PackagesSection() {
                 }
               }}
             >
+              {/* Elite package: video showcase at top */}
+              {pkg.video && (
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ height: "180px", flexShrink: 0 }}
+                >
+                  <video
+                    src={pkg.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                  {/* Gradient overlay so card content blends in */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(to bottom, rgba(10,15,21,0) 40%, rgba(10,15,21,0.95) 100%)",
+                    }}
+                  />
+                  {/* Elite badge on video */}
+                  <div
+                    className="absolute top-3 right-3"
+                    style={{
+                      background: "linear-gradient(135deg, #ff5500, #ff8800)",
+                      color: "#fff",
+                      fontFamily: "'Bebas Neue', sans-serif",
+                      fontSize: "0.8rem",
+                      letterSpacing: "0.15em",
+                      padding: "0.25rem 0.75rem",
+                      borderRadius: "100px",
+                    }}
+                  >
+                    ELITE SHOW
+                  </div>
+                </div>
+              )}
+
               {/* Most popular badge */}
               {pkg.highlight && (
                 <div
@@ -314,7 +363,7 @@ export default function PackagesSection() {
                   <p
                     style={{
                       fontFamily: "'Outfit', sans-serif",
-                      fontSize: "0.75rem",
+                      fontSize: "0.8rem",
                       color: pkg.color,
                       lineHeight: 1.5,
                     }}
@@ -323,49 +372,38 @@ export default function PackagesSection() {
                   </p>
                 </div>
 
-                {/* CTA */}
+                {/* CTA Button */}
                 <button
                   onClick={handleContact}
                   style={{
                     width: "100%",
-                    padding: "0.875rem",
+                    padding: "0.875rem 1.5rem",
                     borderRadius: "8px",
                     fontFamily: "'Bebas Neue', sans-serif",
                     fontSize: "1rem",
-                    letterSpacing: "0.1em",
+                    letterSpacing: "0.15em",
+                    cursor: "pointer",
                     transition: "all 0.3s ease",
-                    ...(pkg.highlight
-                      ? {
-                          background: "linear-gradient(135deg, #00c8ff, #0090cc)",
-                          color: "#080c10",
-                          border: "none",
-                        }
-                      : {
-                          background: "transparent",
-                          color: pkg.color,
-                          border: `1px solid ${pkg.color}66`,
-                        }),
+                    background: pkg.highlight
+                      ? "linear-gradient(135deg, #00c8ff, #0090ff)"
+                      : "transparent",
+                    color: pkg.highlight ? "#080c10" : pkg.color,
+                    border: pkg.highlight ? "none" : `1px solid ${pkg.color}66`,
                   }}
                   onMouseEnter={(e) => {
-                    if (pkg.highlight) {
-                      e.currentTarget.style.boxShadow = "0 0 25px rgba(0, 200, 255, 0.5)";
-                      e.currentTarget.style.transform = "translateY(-2px)";
-                    } else {
-                      e.currentTarget.style.background = `${pkg.color}15`;
-                      e.currentTarget.style.borderColor = pkg.color;
+                    if (!pkg.highlight) {
+                      (e.currentTarget as HTMLButtonElement).style.background = `${pkg.color}22`;
+                      (e.currentTarget as HTMLButtonElement).style.borderColor = pkg.color;
                     }
                   }}
                   onMouseLeave={(e) => {
-                    if (pkg.highlight) {
-                      e.currentTarget.style.boxShadow = "none";
-                      e.currentTarget.style.transform = "translateY(0)";
-                    } else {
-                      e.currentTarget.style.background = "transparent";
-                      e.currentTarget.style.borderColor = `${pkg.color}66`;
+                    if (!pkg.highlight) {
+                      (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+                      (e.currentTarget as HTMLButtonElement).style.borderColor = `${pkg.color}66`;
                     }
                   }}
                 >
-                  Offerte Aanvragen
+                  OFFERTE AANVRAGEN
                 </button>
               </div>
             </div>
@@ -373,15 +411,16 @@ export default function PackagesSection() {
         </div>
 
         {/* Bottom note */}
-        <div className="text-center mt-10 sv-fade-up">
+        <div className="text-center mt-12 sv-fade-up">
           <p
             style={{
               fontFamily: "'Outfit', sans-serif",
               fontSize: "0.875rem",
-              color: "rgba(240, 244, 248, 0.45)",
+              color: "rgba(240, 244, 248, 0.4)",
             }}
           >
-            Alle pakketten zijn aanpasbaar. Neem contact op voor een persoonlijk adviesgesprek en offerte op maat.
+            Alle pakketten zijn uitbreidbaar met{" "}
+            <span style={{ color: "#00c8ff" }}>add-ons</span>. Prijzen op aanvraag — geen verborgen kosten.
           </p>
         </div>
       </div>

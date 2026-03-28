@@ -3,9 +3,6 @@
  * Optional extras to enhance any show package
  */
 
-const LIGHTS_VIDEO_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/lights-video_050df4bb.mp4";
-
 const addons = [
   {
     icon: "🎤",
@@ -158,87 +155,10 @@ export default function AddOnsSection() {
           </p>
         </div>
 
-        {/* Add-ons grid — 4 columns on large, video card spans 2 cols */}
+        {/* Add-ons grid — 4 columns on large */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
-          {/* Featured video card — spans 2 columns */}
-          <div
-            className="sv-fade-up rounded-xl overflow-hidden relative sm:col-span-2"
-            style={{
-              minHeight: "220px",
-              border: "1px solid rgba(255, 170, 0, 0.25)",
-              boxShadow: "0 0 24px rgba(255, 170, 0, 0.08)",
-            }}
-          >
-            <video
-              src={LIGHTS_VIDEO_URL}
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
-            {/* Overlay label */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "linear-gradient(to top, rgba(8,12,16,0.85) 0%, transparent 60%)",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
-                padding: "1.25rem",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.2em",
-                  color: "#ffaa00",
-                  textTransform: "uppercase",
-                  marginBottom: "0.4rem",
-                  border: "1px solid rgba(255,170,0,0.4)",
-                  borderRadius: "100px",
-                  padding: "0.2rem 0.6rem",
-                  display: "inline-block",
-                  width: "fit-content",
-                }}
-              >
-                Licht
-              </span>
-              <h3
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: "#f0f4f8",
-                  marginBottom: "0.25rem",
-                }}
-              >
-                Kleurwisselende Lichtshow
-              </h3>
-              <p
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.78rem",
-                  color: "rgba(240, 244, 248, 0.65)",
-                  lineHeight: 1.5,
-                  fontWeight: 300,
-                }}
-              >
-                Dynamische kleurwisselende lichten die de sfeer van uw feest compleet maken.
-              </p>
-            </div>
-          </div>
-
-          {/* Regular add-on cards */}
+          {/* Add-on cards */}
           {addons.map((addon, i) => {
             const color = categoryColors[addon.category] || "#00c8ff";
             return (

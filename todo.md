@@ -43,3 +43,7 @@
 - [x] Bedrijfsfeesten page: bento gallery with amber/gold accents
 - [x] Studentenfeesten page: bento gallery with neon-green accents
 - [x] Privé page: bento gallery with purple accents
+- [x] Rename packages: Large→Elite, Medium→Luxe, Small→Intiem everywhere
+- [x] Lights video: place in Elite package card in PackagesSection (not in add-ons)
+- [x] Remove lights video from AddOnsSection (restored original add-on grid)
+- [x] Fix BentoGallery: proper asymmetric CSS grid-template-areas bento layout (2fr 1fr 1fr, 2 rows)
