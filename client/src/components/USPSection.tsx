@@ -186,6 +186,7 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             gap: "1rem",
             padding: "2rem",
             boxShadow: `0 0 30px ${card.glowColor}, 0 0 60px ${card.glowColor}`,
+            backgroundColor: 'rgba(117, 195, 255, 0.08)',
           }}
         >
           {/* Neon number badge */}
