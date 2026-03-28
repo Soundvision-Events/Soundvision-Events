@@ -36,7 +36,7 @@ export default function HeroSection() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(8,12,16,0.75) 0%, rgba(8,12,16,0.55) 40%, rgba(8,12,16,0.85) 80%, rgba(8,12,16,1) 100%)",
+            "linear-gradient(to bottom, rgba(8,12,16,0.50) 0%, rgba(8,12,16,0.35) 40%, rgba(8,12,16,0.60) 80%, rgba(8,12,16,0.85) 100%)",
         }}
       />
       {/* Cyan radial glow at top */}

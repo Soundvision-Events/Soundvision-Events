@@ -58,3 +58,4 @@
 - [x] Swap YouTube background video to QsqbmKPngSU (replaces iGpuQ0ioPrM)
 - [x] AboutSection: replace solid dark background with 50% opacity overlay so YouTube video shows through
 - [x] Add second backdrop option lNLeRmnkug8 (glowing particles) — both options documented in YouTubeBackground.tsx, Option B now active
+- [x] HeroSection overlay reduced to ~50% opacity so YouTube background shows through more strongly
