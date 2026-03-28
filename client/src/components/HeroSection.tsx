@@ -12,31 +12,15 @@ export default function HeroSection() {
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ backgroundColor: "#080c10" }}
+      style={{ backgroundColor: "transparent" }}
     >
-      {/* Background video loop */}
-      <div className="absolute inset-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-          poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-bg-k7KfhYH7TSMYQdtgs3D6zf.webp"
-        >
-          <source
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-loop-new_5528fae7.mp4"
-            type="video/mp4"
-          />
-        </video>
-      </div>
-      {/* Dark gradient overlay */}
+      {/* Subtle gradient overlay — lets YouTube background show through fully */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(8,12,16,0.50) 0%, rgba(8,12,16,0.35) 40%, rgba(8,12,16,0.60) 80%, rgba(8,12,16,0.85) 100%)",
+            "linear-gradient(to bottom, rgba(8,12,16,0.20) 0%, rgba(8,12,16,0.10) 40%, rgba(8,12,16,0.30) 80%, rgba(8,12,16,0.60) 100%)",
+          pointerEvents: "none",
         }}
       />
       {/* Cyan radial glow at top */}
