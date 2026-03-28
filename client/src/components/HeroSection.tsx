@@ -125,7 +125,7 @@ export default function HeroSection() {
           </span>
         </div>
 
-        {/* Main heading with turntable icon */}
+        {/* Main heading with turntable icon on the left */}
         <div
           style={{
             display: "flex",
@@ -135,6 +135,18 @@ export default function HeroSection() {
             marginBottom: "0.5rem",
           }}
         >
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_turntable_a6e305c0.png"
+            alt="Vinyl Turntable"
+            className="sv-vinyl-spin"
+            style={{
+              width: "clamp(60px, 8vw, 120px)",
+              height: "clamp(60px, 8vw, 120px)",
+              objectFit: "contain",
+              filter: "drop-shadow(0 0 20px rgba(0,200,255,0.6))",
+              flexShrink: 0,
+            }}
+          />
           <h1
             style={{
               fontFamily: "'Bebas Neue', sans-serif",
@@ -157,18 +169,6 @@ export default function HeroSection() {
               VISION
             </span>
           </h1>
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_turntable_a6e305c0.png"
-            alt="Vinyl Turntable"
-            className="sv-vinyl-spin"
-            style={{
-              width: "clamp(60px, 8vw, 120px)",
-              height: "clamp(60px, 8vw, 120px)",
-              objectFit: "contain",
-              filter: "drop-shadow(0 0 20px rgba(0,200,255,0.6))",
-              flexShrink: 0,
-            }}
-          />
         </div>
         <h2
           style={{
