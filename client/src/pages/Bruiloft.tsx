@@ -10,6 +10,7 @@ import PackagesSection from "@/components/PackagesSection";
 import AddOnsSection from "@/components/AddOnsSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
+import BentoGallery from "@/components/BentoGallery";
 
 /* ─── Wedding colour tokens ─────────────────────────── */
 const ROSE        = "#ff3d8a";
@@ -227,6 +228,15 @@ export default function Bruiloft() {
 
       {/* ── Divider with rose glow ── */}
       <div style={{ height: "1px", background: `linear-gradient(90deg, transparent, ${ROSE}66, transparent)`, boxShadow: `0 0 12px ${ROSE_GLOW}`, margin: "0 2rem", position: "relative", zIndex: 1 }} />
+
+      {/* ── Bento Gallery ── */}
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <BentoGallery
+          accentColor={ROSE}
+          title="BRUILOFT IMPRESSIES"
+          subtitle="Onze Bruiloftsshows"
+        />
+      </div>
 
       {/* ── USP, Packages, Add-ons, Contact ── */}
       <div style={{ position: "relative", zIndex: 1 }}>

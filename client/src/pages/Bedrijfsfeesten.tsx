@@ -8,6 +8,7 @@ import PackagesSection from "@/components/PackagesSection";
 import AddOnsSection from "@/components/AddOnsSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
+import BentoGallery from "@/components/BentoGallery";
 
 export default function Bedrijfsfeesten() {
   return (
@@ -132,6 +133,11 @@ export default function Bedrijfsfeesten() {
         </div>
       </section>
 
+      <BentoGallery
+        accentColor="#ffaa00"
+        title="BEDRIJFSFEEST IMPRESSIES"
+        subtitle="Onze Zakelijke Shows"
+      />
       <USPSection />
       <PackagesSection />
       <AddOnsSection />

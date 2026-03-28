@@ -38,3 +38,8 @@
 - [x] Beat cursor: restore default cursor as click point, wave trails behind with slight lag
 - [x] StarCurtain: medium star sizes + random flash/blink transmitter effects for liveliness
 - [x] Place lights video in add-ons grid, clean up duplicate display:none styles
+- [x] BentoGallery reusable component with accent color prop
+- [x] Bruiloft page: bento gallery with pink accents
+- [x] Bedrijfsfeesten page: bento gallery with amber/gold accents
+- [x] Studentenfeesten page: bento gallery with neon-green accents
+- [x] Privé page: bento gallery with purple accents

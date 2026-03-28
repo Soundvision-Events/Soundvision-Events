@@ -9,6 +9,7 @@ import PackagesSection from "@/components/PackagesSection";
 import AddOnsSection from "@/components/AddOnsSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
+import BentoGallery from "@/components/BentoGallery";
 
 export default function Prive() {
   return (
@@ -133,6 +134,11 @@ export default function Prive() {
         </div>
       </section>
 
+      <BentoGallery
+        accentColor="#9b59b6"
+        title="PRIVÉ IMPRESSIES"
+        subtitle="Onze Privé Shows"
+      />
       <USPSection />
       <PackagesSection />
       <AddOnsSection />
