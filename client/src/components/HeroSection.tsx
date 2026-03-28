@@ -53,59 +53,6 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Animated logo ring */}
-        <div className="relative inline-block mb-8 sv-float">
-          {/* Outer rotating ring */}
-          <div
-            className="sv-ring-1"
-            style={{
-              width: "160px",
-              height: "160px",
-              borderRadius: "50%",
-              border: "2px solid transparent",
-              background: "linear-gradient(#080c10, #080c10) padding-box, linear-gradient(135deg, #00c8ff, transparent, #ff5500) border-box",
-              position: "relative",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto",
-            }}
-          >
-            {/* Inner ring */}
-            <div
-              className="sv-ring-2"
-              style={{
-                width: "120px",
-                height: "120px",
-                borderRadius: "50%",
-                border: "1px solid rgba(0, 200, 255, 0.3)",
-                position: "absolute",
-              }}
-            />
-            {/* Logo center */}
-            <div
-              style={{
-                width: "80px",
-                height: "80px",
-                borderRadius: "50%",
-                background: "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(255,85,0,0.1))",
-                border: "1px solid rgba(0,200,255,0.4)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                zIndex: 2,
-              }}
-            >
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <path d="M15 30V10l20-4v20" stroke="#00c8ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="10" cy="30" r="5" stroke="#00c8ff" strokeWidth="2.5"/>
-                <circle cx="30" cy="26" r="5" stroke="#ff5500" strokeWidth="2.5"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
         {/* Badge */}
         <div className="flex justify-center mb-4">
           <span
