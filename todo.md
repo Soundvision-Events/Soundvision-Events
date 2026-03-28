@@ -66,3 +66,4 @@
 - [x] Fix backdrop: switch to correct YouTube video wLsU8GaKFJY starting at t=297s
 - [x] Increase backdrop luminosity: global overlay 55%→35%, hero video 60%→40%, hero gradient lightened, all section overlays 50%→30%, Packages teal 82%→55%, About 50%→30%
 - [x] Download teal particles video, hue-shift to midnight blue, create 20s loop at 720p60, upload to CDN, replace YouTube iframe with self-hosted VideoBackground component
+- [x] Re-encode backdrop video at 0.5x slow motion (40s loop, 30fps, 7.5MB), upload to CDN, update VideoBackground

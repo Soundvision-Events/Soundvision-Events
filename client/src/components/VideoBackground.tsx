@@ -4,7 +4,7 @@
  * Autoplay, muted, looped — no external dependencies (no YouTube iframe).
  *
  * Current backdrop: midnight blue particles (hue-shifted from teal source)
- * CDN-hosted 20s loop, 1280×720, 60fps, ~6MB
+ * CDN-hosted 40s loop (0.5x slow motion), 1280×720, 30fps, ~7.5MB
  */
 
 interface VideoBackgroundProps {
@@ -17,7 +17,7 @@ interface VideoBackgroundProps {
 }
 
 const DEFAULT_SRC =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop_midnight_blue_loop_86f8fd68.mp4";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop_midnight_blue_slowmo_d62c22a8.mp4";
 
 export default function VideoBackground({
   src = DEFAULT_SRC,
