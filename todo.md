@@ -37,3 +37,4 @@
 - [x] Bruiloft page: full vertical rose gradient from top to bottom over entire page length
 - [x] Beat cursor: restore default cursor as click point, wave trails behind with slight lag
 - [x] StarCurtain: medium star sizes + random flash/blink transmitter effects for liveliness
+- [x] Place lights video in add-ons grid, clean up duplicate display:none styles
