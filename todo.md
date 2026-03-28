@@ -27,7 +27,7 @@
 - [x] Owner notification on new booking requests
 - [x] Vitest tests for all routers (9 tests passing)
 - [ ] Trustoo widget integration for reviews
-- [ ] Real contact details (phone, email)
+- [x] Real contact details (phone, email) — +31 6 12345678 / contact@soundvision.com
 - [ ] Real social media links verification
 - [ ] Gallery with user's own event photos
 - [x] Custom beat/waveform pulsation cursor effect on mouse hover
@@ -67,3 +67,6 @@
 - [x] Increase backdrop luminosity: global overlay 55%→35%, hero video 60%→40%, hero gradient lightened, all section overlays 50%→30%, Packages teal 82%→55%, About 50%→30%
 - [x] Download teal particles video, hue-shift to midnight blue, create 20s loop at 720p60, upload to CDN, replace YouTube iframe with self-hosted VideoBackground component
 - [x] Re-encode backdrop video at 0.5x slow motion (40s loop, 30fps, 7.5MB), upload to CDN, update VideoBackground
+- [x] Place anime turntable/vinyl icon as floating accent next to SOUNDVISION h1 title, with continuous spin animation
+- [x] Remove animated logo ring (outer/inner ring + SVG music note) from hero — only turntable icon left of h1 remains
+- [x] Move turntable icon to LEFT side of SOUNDVISION h1 title
