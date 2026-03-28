@@ -334,19 +334,10 @@
     transform-origin: center bottom;
   }
 
-  .sv-vinyl-spin {
-    animation: vinyl-spin 8s linear infinite;
-  }
-
   .sv-gradient-text-amber {
     background: linear-gradient(135deg, #ff5500, #ffaa00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-}
-
-@keyframes vinyl-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
