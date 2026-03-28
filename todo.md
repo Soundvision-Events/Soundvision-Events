@@ -49,3 +49,4 @@
 - [x] Fix BentoGallery: proper asymmetric CSS grid-template-areas bento layout (2fr 1fr 1fr, 2 rows)
 - [x] StarCurtain: higher density (1 star per 380px² vs 600px²), organic sinusoidal drift per star (x+y wander with unique freq/amp per layer), slightly faster flash spawning
 - [x] Upload 10 anime icons to CDN and register in shared/assets.ts library (fire, heart, lightning, microphone, musicNote, rocket, speaker, star, turntable, visionEye)
+- [ ] Add anime lightning icon to homepage: replace SVG in "Geen Boekingsbureaus" USP card + floating hero accent

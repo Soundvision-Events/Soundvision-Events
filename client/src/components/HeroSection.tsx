@@ -159,6 +159,21 @@ export default function HeroSection() {
           EVENTS
         </h2>
 
+        {/* Anime lightning icon */}
+        <img
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_lightning_e92b8a67.png"
+          alt="Lightning"
+          style={{
+            width: "90px",
+            height: "90px",
+            objectFit: "contain",
+            display: "block",
+            margin: "0 auto 0.75rem",
+            filter: "drop-shadow(0 0 18px rgba(255,210,0,0.7))",
+            animation: "sv-float 3s ease-in-out infinite",
+          }}
+        />
+
         {/* Subtitle */}
         <p
           style={{
