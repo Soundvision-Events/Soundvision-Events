@@ -12,7 +12,7 @@ export default function AboutSection() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundColor: "rgba(8, 12, 16, 0.50)",
+          backgroundColor: "rgba(8, 12, 16, 0.30)",
           pointerEvents: "none",
           zIndex: 0,
         }}

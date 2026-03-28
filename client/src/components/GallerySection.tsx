@@ -44,7 +44,7 @@ export default function GallerySection() {
       {/* 50% dark overlay — lets YouTube backdrop show through */}
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: "rgba(8, 12, 16, 0.50)", pointerEvents: "none", zIndex: 0 }}
+        style={{ backgroundColor: "rgba(8, 12, 16, 0.30)", pointerEvents: "none", zIndex: 0 }}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}

@@ -28,7 +28,7 @@ interface YouTubeBackgroundProps {
 export default function YouTubeBackground({
   videoId = "wLsU8GaKFJY",
   startAt = 297,
-  overlayOpacity = 0.55,
+  overlayOpacity = 0.35,
 }: YouTubeBackgroundProps) {
   const src =
     `https://www.youtube-nocookie.com/embed/${videoId}` +
