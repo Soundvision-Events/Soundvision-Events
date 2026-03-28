@@ -117,8 +117,9 @@ export default function Bruiloft() {
         description="Van de ceremonie tot de laatste dans — wij zorgen voor de perfecte muzikale begeleiding van uw trouwdag. Romantisch, elegant en onvergetelijk. Afgestemd op uw smaak en de sfeer van uw bruiloft."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/wedding-dj-DqtALdSvgWVVw3zhZFPk6b.webp"
         accentColor={ROSE}
+        iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_heart_82e6d4ab.png"
+        iconAlt="Anime Heart"
       />
-
       {/* ── Wedding intro content ── */}
       <section
         className="relative py-20 overflow-hidden"

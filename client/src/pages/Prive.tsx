@@ -20,6 +20,8 @@ export default function Prive() {
         description="Jubileum, verjaardag, familiefeest of een andere bijzondere gelegenheid — wij maken er een feest van dat bij u past. Persoonlijk, op maat en onvergetelijk."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-equipment-kHkQsh8fv4YHpAoghakmXA.webp"
         accentColor="#9b59b6"
+        iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_star_8f6a17c1.png"
+        iconAlt="Anime Star"
       />
 
       {/* Private events content */}

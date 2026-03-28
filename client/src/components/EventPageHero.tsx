@@ -1,6 +1,7 @@
 /**
  * SoundVision Events — Event Page Hero
- * Reusable hero banner for event-type sub-pages
+ * Reusable hero banner for event-type sub-pages.
+ * Accepts an optional iconUrl to display an anime icon inline beside the page title.
  */
 interface EventPageHeroProps {
   title: string;
@@ -8,6 +9,8 @@ interface EventPageHeroProps {
   description: string;
   image: string;
   accentColor?: string;
+  iconUrl?: string;
+  iconAlt?: string;
 }
 
 export default function EventPageHero({
@@ -16,6 +19,8 @@ export default function EventPageHero({
   description,
   image,
   accentColor = "#00c8ff",
+  iconUrl,
+  iconAlt = "icon",
 }: EventPageHeroProps) {
   const scrollToContact = () => {
     const el = document.querySelector("#contact");
@@ -74,18 +79,39 @@ export default function EventPageHero({
           >
             {subtitle}
           </span>
-          <h1
+
+          {/* Title row — icon floats left of the heading */}
+          <div
             className="sv-fade-up"
-            style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(3rem, 7vw, 5.5rem)",
-              letterSpacing: "0.04em",
-              lineHeight: 1.05,
-              color: "#f0f4f8",
-            }}
+            style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}
           >
-            {title}
-          </h1>
+            {iconUrl && (
+              <img
+                src={iconUrl}
+                alt={iconAlt}
+                style={{
+                  width: "90px",
+                  height: "90px",
+                  objectFit: "contain",
+                  flexShrink: 0,
+                  filter: `drop-shadow(0 0 20px ${accentColor}99)`,
+                  animation: "sv-float 3s ease-in-out infinite",
+                }}
+              />
+            )}
+            <h1
+              style={{
+                fontFamily: "'Bebas Neue', sans-serif",
+                fontSize: "clamp(3rem, 7vw, 5.5rem)",
+                letterSpacing: "0.04em",
+                lineHeight: 1.05,
+                color: "#f0f4f8",
+              }}
+            >
+              {title}
+            </h1>
+          </div>
+
           <p
             className="sv-fade-up mt-6"
             style={{

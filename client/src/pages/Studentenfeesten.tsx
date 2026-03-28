@@ -19,6 +19,8 @@ export default function Studentenfeesten() {
         description="Introweek, gala, eindfeest of schoolfeest — wij brengen de energie die studenten en scholieren verwachten. Harde beats, spectaculaire effecten en een volle dansvloer."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/party-dj-2QDn4hBrwJPQD44Ji8JRhm.webp"
         accentColor="#ff5500"
+        iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_fire_fb70ea64.png"
+        iconAlt="Anime Fire"
       />
 
       {/* Student-specific content */}

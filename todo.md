@@ -50,3 +50,4 @@
 - [x] StarCurtain: higher density (1 star per 380px² vs 600px²), organic sinusoidal drift per star (x+y wander with unique freq/amp per layer), slightly faster flash spawning
 - [x] Upload 10 anime icons to CDN and register in shared/assets.ts library (fire, heart, lightning, microphone, musicNote, rocket, speaker, star, turntable, visionEye)
 - [ ] Add anime lightning icon to homepage: replace SVG in "Geen Boekingsbureaus" USP card + floating hero accent
+- [x] Add unique anime icon to each event sub-page hero: Bruiloft=heart, Bedrijfsfeesten=rocket, Studentenfeesten=fire, Privé=star

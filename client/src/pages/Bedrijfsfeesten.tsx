@@ -19,6 +19,8 @@ export default function Bedrijfsfeesten() {
         description="Teambuilding, jubileumfeest, bedrijfsgala of personeelsfeest — wij leveren een professionele DJ show die past bij uw bedrijfscultuur en uw gasten imponeert."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/corporate-event-Efxd4ZRCNusPmXbgkrD8mM.webp"
         accentColor="#0090ff"
+        iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_rocket_80e1c8ce.png"
+        iconAlt="Anime Rocket"
       />
 
       {/* Corporate-specific content */}
