@@ -63,3 +63,4 @@
 - [x] Restore hero video at 60% opacity layered over YouTube backdrop — both visible simultaneously
 - [x] Switch YouTube backdrop to B0TjyJIIWLA (Option C)
 - [x] Set all section background overlays to 50% opacity site-wide (AddOns, Testimonials, Contact, Gallery), text/cards/titles at 100% opacity
+- [x] Fix backdrop: switch to correct YouTube video wLsU8GaKFJY starting at t=297s

@@ -10,7 +10,8 @@
  * Available backdrop options:
  *   Option A — QsqbmKPngSU  (laser show / crowd energy)
  *   Option B — lNLeRmnkug8  (glowing particles / atmospheric)
- *   Option C — B0TjyJIIWLA  (user selected — currently active)
+ *   Option C — B0TjyJIIWLA
+ *   Option D — wLsU8GaKFJY  (correct backdrop — currently active)
  *
  * To switch, change the videoId default below.
  */
@@ -25,8 +26,8 @@ interface YouTubeBackgroundProps {
 }
 
 export default function YouTubeBackground({
-  videoId = "B0TjyJIIWLA",
-  startAt = 0,
+  videoId = "wLsU8GaKFJY",
+  startAt = 297,
   overlayOpacity = 0.55,
 }: YouTubeBackgroundProps) {
   const src =
