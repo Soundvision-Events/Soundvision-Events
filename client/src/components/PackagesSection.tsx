@@ -352,6 +352,7 @@ export default function PackagesSection() {
                           fontSize: "0.875rem",
                           color: "rgba(240, 244, 248, 0.75)",
                           lineHeight: 1.5,
+                          opacity: 1,
                         }}
                       >
                         {feature}

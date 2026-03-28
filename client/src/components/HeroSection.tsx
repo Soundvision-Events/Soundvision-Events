@@ -185,7 +185,7 @@ export default function HeroSection() {
           <p
             style={{
               fontFamily: "'Outfit', sans-serif",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontSize: '33px',
               color: "#04f1ca",
               lineHeight: 1.5,
               fontWeight: 100,
