@@ -14,12 +14,29 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "transparent" }}
     >
-      {/* Subtle gradient overlay — lets YouTube background show through fully */}
+      {/* Hero video — 60% opacity so YouTube backdrop bleeds through underneath */}
+      <div className="absolute inset-0" style={{ opacity: 0.6 }}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+          poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-bg-k7KfhYH7TSMYQdtgs3D6zf.webp"
+        >
+          <source
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-loop-new_5528fae7.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+      {/* Light gradient overlay — keeps text readable while both videos show through */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(8,12,16,0.20) 0%, rgba(8,12,16,0.10) 40%, rgba(8,12,16,0.30) 80%, rgba(8,12,16,0.60) 100%)",
+            "linear-gradient(to bottom, rgba(8,12,16,0.15) 0%, rgba(8,12,16,0.05) 40%, rgba(8,12,16,0.25) 80%, rgba(8,12,16,0.55) 100%)",
           pointerEvents: "none",
         }}
       />
