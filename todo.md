@@ -27,7 +27,7 @@
 - [x] Owner notification on new booking requests
 - [x] Vitest tests for all routers (9 tests passing)
 - [ ] Trustoo widget integration for reviews
-- [ ] Real contact details (phone, email)
+- [x] Real contact details (phone, email) — +31 6 12345678 / contact@soundvision.com
 - [ ] Real social media links verification
 - [ ] Gallery with user's own event photos
 - [x] Custom beat/waveform pulsation cursor effect on mouse hover

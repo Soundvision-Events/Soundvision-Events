@@ -152,14 +152,14 @@ export default function ContactSection() {
                 {
                   icon: <Phone size={18} color="#00c8ff" />,
                   label: "Telefoon",
-                  value: "+31 (0)6 XX XX XX XX",
-                  href: "tel:+31600000000",
+                  value: "+31 6 12345678",
+                  href: "tel:+31612345678",
                 },
                 {
                   icon: <Mail size={18} color="#00c8ff" />,
                   label: "E-mail",
-                  value: "info@soundvisionevents.nl",
-                  href: "mailto:info@soundvisionevents.nl",
+                  value: "contact@soundvision.com",
+                  href: "mailto:contact@soundvision.com",
                 },
                 {
                   icon: <MapPin size={18} color="#00c8ff" />,
