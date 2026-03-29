@@ -53,7 +53,12 @@ export default function Navbar() {
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision-logo_e5b2fca8.png"
               alt="SoundVision Events"
-              style={{ height: "40px", width: "auto" }}
+              style={{
+                height: "56px",
+                width: "auto",
+                mixBlendMode: "screen",
+                filter: "brightness(1.1) contrast(1.05)",
+              }}
             />
           </Link>
 
