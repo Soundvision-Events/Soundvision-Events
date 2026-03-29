@@ -88,3 +88,4 @@
 - [x] Update Bruiloft backdrop to YouTube video c7qIEesCHFE
 - [x] Update Bedrijfsfeesten backdrop to YouTube video WbRaePTyQDU
 - [x] Set Studentenfeesten backdrop to YouTube video NwhOxUrjZcU
+- [x] Set Privé backdrop to YouTube video 7koSYjb5jdo

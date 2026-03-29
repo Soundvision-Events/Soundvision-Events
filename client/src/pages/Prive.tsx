@@ -2,6 +2,7 @@
  * SoundVision Events — Privé Feesten DJ Show Page
  * Design: Electric Dark Spectacle — Private events variant
  * Jubilea, verjaardagen, familiefeesten, etc.
+ * Backdrop: YouTube video 7koSYjb5jdo (privé feest energy)
  */
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
@@ -9,10 +10,19 @@ import UitbreidingenSection from "@/components/UitbreidingenSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
+import YouTubeBackground from "@/components/YouTubeBackground";
 
 export default function Prive() {
   return (
-    <PageLayout>
+    <PageLayout
+      backgroundOverride={
+        <YouTubeBackground
+          videoId="7koSYjb5jdo"
+          startAt={0}
+          overlayOpacity={0.45}
+        />
+      }
+    >
       <EventPageHero
         title="PRIVÉ FEESTEN"
         subtitle="SoundVision Events — Privé"
