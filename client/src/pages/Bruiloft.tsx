@@ -6,8 +6,7 @@
  */
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
-import PackagesSection from "@/components/PackagesSection";
-import AddOnsSection from "@/components/AddOnsSection";
+import UitbreidingenSection from "@/components/UitbreidingenSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
@@ -241,8 +240,7 @@ export default function Bruiloft() {
       {/* ── USP, Packages, Add-ons, Contact ── */}
       <div style={{ position: "relative", zIndex: 1 }}>
         <USPSection />
-        <PackagesSection />
-        <AddOnsSection />
+        <UitbreidingenSection />
         <ContactSection />
       </div>
 

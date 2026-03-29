@@ -70,3 +70,4 @@
 - [x] Place anime turntable/vinyl icon as floating accent next to SOUNDVISION h1 title, with continuous spin animation
 - [x] Remove animated logo ring (outer/inner ring + SVG music note) from hero — only turntable icon left of h1 remains
 - [x] Move turntable icon to LEFT side of SOUNDVISION h1 title
+- [x] Combine PackagesSection + AddOnsSection into single UitbreidingenSection with title 'Uitbreidingen', divider between packages and add-ons, updated across all pages

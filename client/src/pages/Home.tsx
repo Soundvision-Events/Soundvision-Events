@@ -6,8 +6,7 @@
 import PageLayout from "@/components/PageLayout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import PackagesSection from "@/components/PackagesSection";
-import AddOnsSection from "@/components/AddOnsSection";
+import UitbreidingenSection from "@/components/UitbreidingenSection";
 import GallerySection from "@/components/GallerySection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
@@ -19,8 +18,7 @@ export default function Home() {
       <HeroSection />
       <USPSection />
       <AboutSection />
-      <PackagesSection />
-      <AddOnsSection />
+      <UitbreidingenSection />
       <GallerySection />
       <TestimonialsSection />
       <ContactSection />
