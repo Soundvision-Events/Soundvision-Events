@@ -309,7 +309,8 @@ export default function ContactSection() {
               className="rounded-2xl p-8"
               style={{
                 background: "rgba(255, 255, 255, 0.03)",
-                border: "1px solid rgba(255, 255, 255, 0.07)",
+                border: "1px solid rgba(0, 8, 31, 0.85)",
+                backgroundColor: 'rgba(0, 8, 31, 0.60)',
               }}
             >
               <div className="grid sm:grid-cols-2 gap-5">

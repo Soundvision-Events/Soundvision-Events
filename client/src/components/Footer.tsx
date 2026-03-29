@@ -18,6 +18,7 @@ export default function Footer() {
       style={{
         backgroundColor: "rgba(5, 8, 16, 0.75)",
         borderTop: "1px solid rgba(0, 200, 255, 0.1)",
+        opacity: 0.9,
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
