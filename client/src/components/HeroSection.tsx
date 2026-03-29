@@ -185,27 +185,16 @@ export default function HeroSection() {
             margin: "0 auto 2.5rem",
           }}
         >
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_lightning_e92b8a67.png"
-            alt="Lightning"
-            className="sv-lightning"
-            style={{
-              width: '100px',
-              height: '95px',
-              objectFit: 'contain',
-              flexShrink: 0,
-            }}
-          />
           <p
             style={{
               fontFamily: "'Outfit', sans-serif",
-              fontSize: '33px',
+              fontSize: '30px',
               color: "#04f1ca",
               lineHeight: 1.5,
               fontWeight: 100,
               opacity: 1,
               margin: 0,
-              textAlign: "left",
+              textAlign: "center",
             }}
           >
             Uw Persoonlijke Allround DJ &amp; Partner,{" "}
