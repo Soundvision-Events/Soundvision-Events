@@ -1,8 +1,12 @@
 /**
  * SoundVision Events — Event Page Hero
  * Reusable hero banner for event-type sub-pages.
- * Accepts an optional iconUrl to display an anime icon inline beside the page title.
+ * When showPhoto is provided, the photo fills the full screen as a background
+ * with a dark gradient overlay and the text centred on top (fullscreen slider mode).
+ * Without showPhoto, the YouTube backdrop shows through (transparent mode).
  */
+import { useState, useEffect } from "react";
+
 interface EventPageHeroProps {
   title: string;
   subtitle: string;
@@ -11,7 +15,8 @@ interface EventPageHeroProps {
   accentColor?: string;
   iconUrl?: string;
   iconAlt?: string;
-  showPhoto?: string;
+  /** One or more photo URLs. When provided the hero switches to fullscreen photo mode. */
+  showPhoto?: string | string[];
 }
 
 export default function EventPageHero({
@@ -24,6 +29,37 @@ export default function EventPageHero({
   iconAlt = "icon",
   showPhoto,
 }: EventPageHeroProps) {
+  const photos: string[] = showPhoto
+    ? Array.isArray(showPhoto)
+      ? showPhoto
+      : [showPhoto]
+    : [];
+
+  const [current, setCurrent] = useState(0);
+  const [fading, setFading] = useState(false);
+
+  /* Auto-advance when multiple photos are supplied */
+  useEffect(() => {
+    if (photos.length <= 1) return;
+    const id = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setCurrent((c) => (c + 1) % photos.length);
+        setFading(false);
+      }, 600);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [photos.length]);
+
+  const goTo = (idx: number) => {
+    if (idx === current) return;
+    setFading(true);
+    setTimeout(() => {
+      setCurrent(idx);
+      setFading(false);
+    }, 400);
+  };
+
   const scrollToContact = () => {
     const el = document.querySelector("#contact");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -34,45 +70,67 @@ export default function EventPageHero({
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  return (
-    <section
-      className="relative min-h-[70vh] flex items-center overflow-hidden"
-      style={{ backgroundColor: "rgba(8, 12, 16, 0.55)" }}
-    >
-      {/* Background image and gradient overlay removed — YouTube backdrop shows through */}
-      {/* Accent glow */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2"
-        style={{
-          width: "600px",
-          height: "300px",
-          background: `radial-gradient(ellipse, ${accentColor}15 0%, transparent 70%)`,
-          pointerEvents: "none",
-        }}
-      />
+  /* ── Fullscreen photo mode ── */
+  if (photos.length > 0) {
+    return (
+      <section className="relative w-full min-h-screen flex items-center overflow-hidden">
+        {/* Fullscreen photo background */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${photos[current]})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            transition: "opacity 0.6s ease",
+            opacity: fading ? 0 : 1,
+          }}
+        />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-28 pb-16">
-        <div className={showPhoto ? "grid lg:grid-cols-2 gap-10 items-center" : "max-w-3xl"}>
-        <div style={{ background: "rgba(8,12,16,0.50)", borderRadius: "1.25rem", backdropFilter: "blur(4px)", padding: "2.5rem 2rem" }}>
+        {/* Dark gradient overlay so text stays readable */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(
+              to bottom,
+              rgba(8,12,16,0.55) 0%,
+              rgba(8,12,16,0.35) 40%,
+              rgba(8,12,16,0.70) 80%,
+              rgba(8,12,16,0.92) 100%
+            )`,
+          }}
+        />
+
+        {/* Accent glow top-centre */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
+          style={{
+            width: "700px",
+            height: "350px",
+            background: `radial-gradient(ellipse, ${accentColor}20 0%, transparent 70%)`,
+          }}
+        />
+
+        {/* Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-24 flex flex-col items-center text-center">
           <span
             className="sv-fade-up"
             style={{
               fontFamily: "'Outfit', sans-serif",
               fontSize: "0.75rem",
-              letterSpacing: "0.3em",
+              letterSpacing: "0.35em",
               color: accentColor,
               textTransform: "uppercase",
+              marginBottom: "1.25rem",
               display: "block",
-              marginBottom: "1rem",
             }}
           >
             {subtitle}
           </span>
 
-          {/* Title row — icon floats left of the heading */}
+          {/* Icon + Title */}
           <div
             className="sv-fade-up"
-            style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}
+            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1.25rem" }}
           >
             {iconUrl && (
               <img
@@ -83,7 +141,7 @@ export default function EventPageHero({
                   height: "90px",
                   objectFit: "contain",
                   flexShrink: 0,
-                  filter: `drop-shadow(0 0 20px ${accentColor}99)`,
+                  filter: `drop-shadow(0 0 24px ${accentColor}cc)`,
                   animation: "sv-float 3s ease-in-out infinite",
                 }}
               />
@@ -91,10 +149,11 @@ export default function EventPageHero({
             <h1
               style={{
                 fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: "clamp(3rem, 7vw, 5.5rem)",
-                letterSpacing: "0.04em",
-                lineHeight: 1.05,
+                fontSize: "clamp(3.5rem, 9vw, 7rem)",
+                letterSpacing: "0.05em",
+                lineHeight: 1,
                 color: "#f0f4f8",
+                textShadow: `0 0 40px ${accentColor}66, 0 4px 20px rgba(0,0,0,0.8)`,
               }}
             >
               {title}
@@ -106,15 +165,18 @@ export default function EventPageHero({
             style={{
               fontFamily: "'Outfit', sans-serif",
               fontSize: "1.1rem",
-              color: "rgba(240, 244, 248, 0.7)",
+              color: "rgba(240,244,248,0.80)",
               lineHeight: 1.8,
               fontWeight: 300,
-              maxWidth: "600px",
+              maxWidth: "640px",
+              textShadow: "0 2px 10px rgba(0,0,0,0.7)",
             }}
           >
             {description}
           </p>
-          <div className="sv-fade-up flex flex-wrap gap-4 mt-8">
+
+          {/* CTA buttons */}
+          <div className="sv-fade-up flex flex-wrap gap-4 mt-10 justify-center">
             <button className="sv-btn-primary" onClick={scrollToContact}>
               Offerte Aanvragen
             </button>
@@ -128,48 +190,168 @@ export default function EventPageHero({
                 borderRadius: "6px",
                 background: "transparent",
                 color: "#f0f4f8",
-                border: "1px solid rgba(240, 244, 248, 0.25)",
+                border: "1px solid rgba(240,244,248,0.30)",
                 transition: "all 0.3s ease",
+                cursor: "pointer",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = accentColor;
                 e.currentTarget.style.color = accentColor;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(240, 244, 248, 0.25)";
+                e.currentTarget.style.borderColor = "rgba(240,244,248,0.30)";
                 e.currentTarget.style.color = "#f0f4f8";
               }}
             >
               Bekijk Pakketten
             </button>
           </div>
-        </div>
 
-        {/* Show photo panel — only rendered when showPhoto is provided */}
-        {showPhoto && (
+          {/* Dot indicators — only shown when multiple photos */}
+          {photos.length > 1 && (
+            <div className="flex gap-2 mt-10">
+              {photos.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goTo(idx)}
+                  style={{
+                    width: idx === current ? "28px" : "10px",
+                    height: "10px",
+                    borderRadius: "5px",
+                    background: idx === current ? accentColor : "rgba(255,255,255,0.35)",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "all 0.4s ease",
+                    padding: 0,
+                  }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Scroll-down chevron */}
           <div
-            className="sv-fade-up hidden lg:block"
-            style={{
-              borderRadius: "1.25rem",
-              overflow: "hidden",
-              boxShadow: `0 0 40px ${accentColor}33, 0 20px 60px rgba(0,0,0,0.6)`,
-              border: `1px solid ${accentColor}44`,
-              aspectRatio: "4/3",
-            }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            style={{ animation: "sv-float 2s ease-in-out infinite", opacity: 0.6 }}
           >
-            <img
-              src={showPhoto}
-              alt={title}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center",
-              }}
-            />
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={accentColor} strokeWidth="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
           </div>
-        )}
+        </div>
+      </section>
+    );
+  }
 
+  /* ── Transparent mode (YouTube backdrop shows through) ── */
+  return (
+    <section
+      className="relative min-h-[70vh] flex items-center overflow-hidden"
+      style={{ backgroundColor: "rgba(8, 12, 16, 0.55)" }}
+    >
+      {/* Accent glow */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
+        style={{
+          width: "600px",
+          height: "300px",
+          background: `radial-gradient(ellipse, ${accentColor}15 0%, transparent 70%)`,
+        }}
+      />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-28 pb-16">
+        <div className="max-w-3xl">
+          <div style={{ background: "rgba(8,12,16,0.50)", borderRadius: "1.25rem", backdropFilter: "blur(4px)", padding: "2.5rem 2rem" }}>
+            <span
+              className="sv-fade-up"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "0.75rem",
+                letterSpacing: "0.3em",
+                color: accentColor,
+                textTransform: "uppercase",
+                display: "block",
+                marginBottom: "1rem",
+              }}
+            >
+              {subtitle}
+            </span>
+
+            <div
+              className="sv-fade-up"
+              style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}
+            >
+              {iconUrl && (
+                <img
+                  src={iconUrl}
+                  alt={iconAlt}
+                  style={{
+                    width: "90px",
+                    height: "90px",
+                    objectFit: "contain",
+                    flexShrink: 0,
+                    filter: `drop-shadow(0 0 20px ${accentColor}99)`,
+                    animation: "sv-float 3s ease-in-out infinite",
+                  }}
+                />
+              )}
+              <h1
+                style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: "clamp(3rem, 7vw, 5.5rem)",
+                  letterSpacing: "0.04em",
+                  lineHeight: 1.05,
+                  color: "#f0f4f8",
+                }}
+              >
+                {title}
+              </h1>
+            </div>
+
+            <p
+              className="sv-fade-up mt-6"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "1.1rem",
+                color: "rgba(240, 244, 248, 0.7)",
+                lineHeight: 1.8,
+                fontWeight: 300,
+                maxWidth: "600px",
+              }}
+            >
+              {description}
+            </p>
+            <div className="sv-fade-up flex flex-wrap gap-4 mt-8">
+              <button className="sv-btn-primary" onClick={scrollToContact}>
+                Offerte Aanvragen
+              </button>
+              <button
+                onClick={scrollToPackages}
+                style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: "0.95rem",
+                  letterSpacing: "0.1em",
+                  padding: "0.75rem 2rem",
+                  borderRadius: "6px",
+                  background: "transparent",
+                  color: "#f0f4f8",
+                  border: "1px solid rgba(240, 244, 248, 0.25)",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = accentColor;
+                  e.currentTarget.style.color = accentColor;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(240, 244, 248, 0.25)";
+                  e.currentTarget.style.color = "#f0f4f8";
+                }}
+              >
+                Bekijk Pakketten
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

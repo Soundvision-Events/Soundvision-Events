@@ -127,7 +127,11 @@ export default function Bruiloft() {
         accentColor={ROSE}
         iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_heart_82e6d4ab.png"
         iconAlt="Anime Heart"
-        showPhoto="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans116_aa3b0634.jpg"
+        showPhoto={[
+          "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans116_aa3b0634.jpg",
+          "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans117_6b3efa5b.webp",
+          "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/bruiloft_reportage3_a784e486.webp",
+        ]}
       />
       {/* ── Wedding intro content ── */}
       <section
