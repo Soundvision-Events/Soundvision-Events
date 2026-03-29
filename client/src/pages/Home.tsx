@@ -11,16 +11,15 @@ import BentoGallery from "@/components/BentoGallery";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
-import YouTubeBackground from "@/components/YouTubeBackground";
+import VideoBackground from "@/components/VideoBackground";
 
 export default function Home() {
   return (
     <PageLayout
       backgroundOverride={
-        <YouTubeBackground
-          videoId="NwhOxUrjZcU"
-          startAt={0}
-          overlayOpacity={0.40}
+        <VideoBackground
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision_animated_15s_final_ef6c5683.mp4"
+          overlayOpacity={0.30}
         />
       }
     >
