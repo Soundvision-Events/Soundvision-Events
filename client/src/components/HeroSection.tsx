@@ -53,25 +53,6 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto" style={{ padding: "clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem)" }}>
-        {/* Badge */}
-        <div className="flex justify-center mb-6">
-          <span
-            style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: "0.75rem",
-              letterSpacing: "0.3em",
-              color: "#00c8ff",
-              padding: "0.4rem 1.2rem",
-              border: "1px solid rgba(0, 200, 255, 0.3)",
-              borderRadius: "100px",
-              background: "rgba(0, 200, 255, 0.08)",
-              textTransform: "uppercase",
-            }}
-          >
-            All-Round DJ Shows — Noord-Nederland
-          </span>
-        </div>
-
         {/* Main heading: animated logo ring LEFT of h1 */}
         <div
           style={{
@@ -82,8 +63,8 @@ export default function HeroSection() {
             marginBottom: "0.5rem",
           }}
         >
-          {/* Animated logo ring — left of title */}
-          <div className="relative sv-float flex-shrink-0">
+          {/* Animated logo ring — left of title, badge overlaid at bottom */}
+          <div className="relative sv-float flex-shrink-0" style={{ paddingBottom: "1.8rem" }}>
             <div
               className="sv-ring-1"
               style={{
@@ -128,6 +109,33 @@ export default function HeroSection() {
                   <circle cx="30" cy="26" r="5" stroke="#ff5500" strokeWidth="2.5"/>
                 </svg>
               </div>
+            </div>
+            {/* Badge overlay — positioned below the ring, centered */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: "50%",
+                transform: "translateX(-50%)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.2em",
+                  color: "#00c8ff",
+                  padding: "0.25rem 0.75rem",
+                  border: "1px solid rgba(0, 200, 255, 0.4)",
+                  borderRadius: "100px",
+                  background: "rgba(0, 200, 255, 0.1)",
+                  textTransform: "uppercase",
+                  backdropFilter: "blur(4px)",
+                }}
+              >
+                All-Round DJ Shows
+              </span>
             </div>
           </div>
 

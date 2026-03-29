@@ -84,3 +84,4 @@
 - [x] Move BentoGallery before UitbreidingenSection (pricing) on all pages
 - [ ] Activate contact form — send booking inquiries directly to owner email via tRPC + notifyOwner
 - [x] Move animated logo ring to left of h1 title (inline row layout), remove frosted glass background from hero content block
+- [x] Place 'All-Round DJ Shows' badge as overlay on the animated logo ring in HeroSection
