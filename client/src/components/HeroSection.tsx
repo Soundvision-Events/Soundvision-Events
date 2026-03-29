@@ -22,7 +22,7 @@ export default function HeroSection() {
           muted
           playsInline
           className="w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: '1038px', objectFit: "cover", marginTop: '-181px', marginRight: '92px', marginBottom: '-49px', marginLeft: '4px' }}
           poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-bg-k7KfhYH7TSMYQdtgs3D6zf.webp"
         >
           <source
