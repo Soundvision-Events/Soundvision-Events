@@ -95,3 +95,4 @@
 - [x] Set homepage backdrop to Studentenfeesten YouTube video (NwhOxUrjZcU)
 - [x] Embed YouTube video k6ZE7QYA8ug in 'Over de DJ' section (AboutSection) replacing portrait photo
 - [x] Autoplay DJ intro video (k6ZE7QYA8ug) muted in Over de DJ section on homepage — intersection observer triggers at 30% visibility
+- [x] Upload SoundVision logo (66498651.png) to CDN and set as navbar logo + favicon

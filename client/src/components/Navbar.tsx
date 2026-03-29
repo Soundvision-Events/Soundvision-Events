@@ -51,7 +51,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/logo_dark_upscaled_50cc37d3.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision-logo_e5b2fca8.png"
               alt="SoundVision Events"
               style={{ height: "40px", width: "auto" }}
             />
