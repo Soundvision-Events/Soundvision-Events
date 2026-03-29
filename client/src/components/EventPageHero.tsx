@@ -74,7 +74,7 @@ export default function EventPageHero({
   if (photos.length > 0) {
     return (
       <section className="relative w-full min-h-screen flex items-center overflow-hidden">
-        {/* Fullscreen photo background */}
+        {/* Fullscreen photo background — semi-transparent so YouTube backdrop shines through */}
         <div
           className="absolute inset-0"
           style={{
@@ -82,7 +82,8 @@ export default function EventPageHero({
             backgroundSize: "cover",
             backgroundPosition: "center",
             transition: "opacity 0.6s ease",
-            opacity: fading ? 0 : 1,
+            opacity: fading ? 0 : 0.55,
+            mixBlendMode: "luminosity",
           }}
         />
 

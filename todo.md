@@ -101,3 +101,4 @@
 - [x] Replace navbar logo with white version (logo_dark.png) — clean on dark background, no mix-blend-mode needed
 - [x] Replace contact section image with alround.png logo (mix-blend-mode screen for transparent look)
 - [x] Remove white background from allround logo in contact section — transparent container, mix-blend-mode screen + brightness/contrast filter
+- [x] Bruiloft hero: YouTube backdrop shines through — photos at 55% opacity with luminosity blend mode
