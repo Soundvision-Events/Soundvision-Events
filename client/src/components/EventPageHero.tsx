@@ -110,134 +110,149 @@ export default function EventPageHero({
           }}
         />
 
-        {/* Content */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-24 flex flex-col items-center text-center">
-          <span
-            className="sv-fade-up"
-            style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: "0.75rem",
-              letterSpacing: "0.35em",
-              color: accentColor,
-              textTransform: "uppercase",
-              marginBottom: "1.25rem",
-              display: "block",
-            }}
-          >
-            {subtitle}
-          </span>
+        {/* Two-column layout: left = empty (photo shows through), right = content */}
+        <div className="w-full min-h-screen flex items-center relative z-10">
+          {/* Left half — spacer so photo shows through */}
+          <div className="hidden lg:block w-1/2" />
 
-          {/* Icon + Title */}
+          {/* Right half — content stacked top-down */}
           <div
-            className="sv-fade-up"
-            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1.25rem" }}
-          >
-            {iconUrl && (
-              <img
-                src={iconUrl}
-                alt={iconAlt}
-                style={{
-                  width: "90px",
-                  height: "90px",
-                  objectFit: "contain",
-                  flexShrink: 0,
-                  filter: `drop-shadow(0 0 24px ${accentColor}cc)`,
-                  animation: "sv-float 3s ease-in-out infinite",
-                }}
-              />
-            )}
-            <h1
-              style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: "clamp(3.5rem, 9vw, 7rem)",
-                letterSpacing: "0.05em",
-                lineHeight: 1,
-                color: "#f0f4f8",
-                textShadow: `0 0 40px ${accentColor}66, 0 4px 20px rgba(0,0,0,0.8)`,
-              }}
-            >
-              {title}
-            </h1>
-          </div>
-
-          <p
-            className="sv-fade-up mt-6"
+            className="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-14 pt-32 pb-24"
             style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: "1.1rem",
-              color: "rgba(240,244,248,0.80)",
-              lineHeight: 1.8,
-              fontWeight: 300,
-              maxWidth: "640px",
-              textShadow: "0 2px 10px rgba(0,0,0,0.7)",
+              background: "linear-gradient(to right, transparent 0%, rgba(8,12,16,0.75) 30%, rgba(8,12,16,0.88) 100%)",
+              minHeight: "100vh",
             }}
           >
-            {description}
-          </p>
-
-          {/* CTA buttons */}
-          <div className="sv-fade-up flex flex-wrap gap-4 mt-10 justify-center">
-            <button className="sv-btn-primary" onClick={scrollToContact}>
-              Offerte Aanvragen
-            </button>
-            <button
-              onClick={scrollToPackages}
+            {/* Subtitle */}
+            <span
+              className="sv-fade-up"
               style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: "0.95rem",
-                letterSpacing: "0.1em",
-                padding: "0.75rem 2rem",
-                borderRadius: "6px",
-                background: "transparent",
-                color: "#f0f4f8",
-                border: "1px solid rgba(240,244,248,0.30)",
-                transition: "all 0.3s ease",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = accentColor;
-                e.currentTarget.style.color = accentColor;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(240,244,248,0.30)";
-                e.currentTarget.style.color = "#f0f4f8";
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "0.75rem",
+                letterSpacing: "0.35em",
+                color: accentColor,
+                textTransform: "uppercase",
+                marginBottom: "1.25rem",
+                display: "block",
               }}
             >
-              Bekijk Pakketten
-            </button>
-          </div>
+              {subtitle}
+            </span>
 
-          {/* Dot indicators — only shown when multiple photos */}
-          {photos.length > 1 && (
-            <div className="flex gap-2 mt-10">
-              {photos.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => goTo(idx)}
+            {/* Icon + Title */}
+            <div
+              className="sv-fade-up"
+              style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}
+            >
+              {iconUrl && (
+                <img
+                  src={iconUrl}
+                  alt={iconAlt}
                   style={{
-                    width: idx === current ? "28px" : "10px",
-                    height: "10px",
-                    borderRadius: "5px",
-                    background: idx === current ? accentColor : "rgba(255,255,255,0.35)",
-                    border: "none",
-                    cursor: "pointer",
-                    transition: "all 0.4s ease",
-                    padding: 0,
+                    width: "70px",
+                    height: "70px",
+                    objectFit: "contain",
+                    flexShrink: 0,
+                    filter: `drop-shadow(0 0 20px ${accentColor}cc)`,
+                    animation: "sv-float 3s ease-in-out infinite",
                   }}
                 />
-              ))}
+              )}
+              <h1
+                style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
+                  letterSpacing: "0.05em",
+                  lineHeight: 1,
+                  color: "#f0f4f8",
+                  textShadow: `0 0 40px ${accentColor}66, 0 4px 20px rgba(0,0,0,0.8)`,
+                }}
+              >
+                {title}
+              </h1>
             </div>
-          )}
 
-          {/* Scroll-down chevron */}
-          <div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            style={{ animation: "sv-float 2s ease-in-out infinite", opacity: 0.6 }}
-          >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={accentColor} strokeWidth="2">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
+            {/* Description */}
+            <p
+              className="sv-fade-up"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "1.05rem",
+                color: "rgba(240,244,248,0.82)",
+                lineHeight: 1.8,
+                fontWeight: 300,
+                maxWidth: "520px",
+                textShadow: "0 2px 10px rgba(0,0,0,0.7)",
+                marginBottom: "2rem",
+              }}
+            >
+              {description}
+            </p>
+
+            {/* CTA buttons */}
+            <div className="sv-fade-up flex flex-wrap gap-4" style={{ marginBottom: "2.5rem" }}>
+              <button className="sv-btn-primary" onClick={scrollToContact}>
+                Offerte Aanvragen
+              </button>
+              <button
+                onClick={scrollToPackages}
+                style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: "0.95rem",
+                  letterSpacing: "0.1em",
+                  padding: "0.75rem 2rem",
+                  borderRadius: "6px",
+                  background: "transparent",
+                  color: "#f0f4f8",
+                  border: "1px solid rgba(240,244,248,0.30)",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = accentColor;
+                  e.currentTarget.style.color = accentColor;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(240,244,248,0.30)";
+                  e.currentTarget.style.color = "#f0f4f8";
+                }}
+              >
+                Bekijk Pakketten
+              </button>
+            </div>
+
+            {/* Dot indicators */}
+            {photos.length > 1 && (
+              <div className="flex gap-2">
+                {photos.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => goTo(idx)}
+                    style={{
+                      width: idx === current ? "28px" : "10px",
+                      height: "10px",
+                      borderRadius: "5px",
+                      background: idx === current ? accentColor : "rgba(255,255,255,0.35)",
+                      border: "none",
+                      cursor: "pointer",
+                      transition: "all 0.4s ease",
+                      padding: 0,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
           </div>
+        </div>
+
+        {/* Scroll-down chevron */}
+        <div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+          style={{ animation: "sv-float 2s ease-in-out infinite", opacity: 0.6 }}
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={accentColor} strokeWidth="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
       </section>
     );
