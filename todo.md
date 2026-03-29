@@ -102,3 +102,5 @@
 - [x] Replace contact section image with alround.png logo (mix-blend-mode screen for transparent look)
 - [x] Remove white background from allround logo in contact section — transparent container, mix-blend-mode screen + brightness/contrast filter
 - [x] Bruiloft hero: YouTube backdrop shines through — photos at 55% opacity with luminosity blend mode
+- [x] Set Bruiloft page YouTube backdrop to c7qIEesCHFE (already active)
+- [x] Bruiloft page: YouTube backdrop visible through sections below hero — bruiloft-backdrop made semi-transparent (55-62% opacity), white section background removed

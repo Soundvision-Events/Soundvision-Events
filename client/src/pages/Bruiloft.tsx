@@ -50,18 +50,18 @@ export default function Bruiloft() {
           pointer-events: none;
           background: linear-gradient(
             180deg,
-            #080c10 0%,
-            #120818 8%,
-            #1a0a20 16%,
-            #220a1e 24%,
-            #2a0a1c 32%,
-            #300a1a 40%,
-            #2a0818 50%,
-            #1e0614 60%,
-            #160510 70%,
-            #1a0515 80%,
-            #200618 90%,
-            #1a0515 100%
+            rgba(8,12,16,0.0) 0%,
+            rgba(18,8,24,0.55) 8%,
+            rgba(26,10,32,0.60) 16%,
+            rgba(34,10,30,0.62) 24%,
+            rgba(42,10,28,0.62) 32%,
+            rgba(48,10,26,0.60) 40%,
+            rgba(42,8,24,0.58) 50%,
+            rgba(30,6,20,0.55) 60%,
+            rgba(22,5,16,0.55) 70%,
+            rgba(26,5,21,0.55) 80%,
+            rgba(32,6,24,0.55) 90%,
+            rgba(26,5,21,0.55) 100%
           );
           background-size: 100% 400%;
           animation: gradientRoll 22s ease infinite;
@@ -137,7 +137,7 @@ export default function Bruiloft() {
       {/* ── Wedding intro content ── */}
       <section
         className="relative py-20 overflow-hidden"
-        style={{ position: "relative", zIndex: 1, backgroundColor: 'rgba(255, 255, 255, 0.55)' }}
+        style={{ position: "relative", zIndex: 1, backgroundColor: 'transparent' }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
