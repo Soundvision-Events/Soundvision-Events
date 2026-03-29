@@ -113,7 +113,7 @@ export default function TestimonialsSection() {
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className="sv-fade-up rounded-2xl p-6"
+              className="sv-fade-up sv-tilt rounded-2xl p-6"
               style={{
                 animationDelay: `${(i % 3) * 0.1}s`,
                 background: "rgba(255, 255, 255, 0.03)",

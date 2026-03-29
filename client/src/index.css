@@ -403,3 +403,43 @@
 .sv-zoom-reveal:nth-child(3) { transition-delay: 0.2s; }
 .sv-zoom-reveal:nth-child(4) { transition-delay: 0.3s; }
 .sv-zoom-reveal:nth-child(5) { transition-delay: 0.4s; }
+
+/* ============================================================
+   TILT / HOVER DEPTH — applied to .sv-tilt elements via JS
+   ============================================================ */
+
+.sv-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
+}
+
+/* Glow ring on hover for cards */
+.sv-tilt:hover {
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 200, 255, 0.15),
+    0 0 40px rgba(0, 200, 255, 0.08);
+}
+
+/* Floating lift for non-tilt hover elements */
+.sv-hover-lift {
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.sv-hover-lift:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 200, 255, 0.1);
+}
+
+/* Parallax depth layers — children inside .sv-tilt can use these */
+.sv-depth-1 { transform: translateZ(20px); }
+.sv-depth-2 { transform: translateZ(40px); }
+.sv-depth-3 { transform: translateZ(60px); }
+
+/* Scroll-driven float for decorative elements */
+.sv-float-scroll {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}

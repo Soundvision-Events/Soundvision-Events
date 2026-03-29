@@ -150,7 +150,7 @@ export default function BentoGallery({
           {items.map((item) => (
             <div
               key={item.area}
-              className="relative overflow-hidden rounded-2xl group"
+              className="relative overflow-hidden rounded-2xl group sv-tilt"
               style={{
                 gridArea: item.area,
                 border: `1px solid ${glowRgba}`,

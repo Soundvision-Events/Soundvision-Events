@@ -106,7 +106,7 @@ export default function EventTypesSection() {
           {eventTypes.map((event, i) => (
             <div
               key={event.id}
-              className="sv-fade-up group relative rounded-2xl overflow-hidden cursor-pointer"
+              className="sv-fade-up sv-tilt group relative rounded-2xl overflow-hidden cursor-pointer"
               style={{
                 animationDelay: `${i * 0.15}s`,
                 border: "1px solid rgba(255, 255, 255, 0.07)",

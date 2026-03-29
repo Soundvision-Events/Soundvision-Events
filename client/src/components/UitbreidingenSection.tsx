@@ -208,7 +208,7 @@ export default function UitbreidingenSection() {
           {packages.map((pkg, i) => (
             <div
               key={pkg.id}
-              className={`sv-fade-up relative rounded-2xl flex flex-col overflow-hidden ${pkg.highlight ? "sv-package-featured" : ""}`}
+              className={`sv-fade-up sv-tilt relative rounded-2xl flex flex-col overflow-hidden ${pkg.highlight ? "sv-package-featured" : ""}`}
               style={{
                 animationDelay: `${i * 0.15}s`,
                 background: pkg.highlight
@@ -472,7 +472,7 @@ export default function UitbreidingenSection() {
             return (
               <div
                 key={addon.title}
-                className="sv-fade-up group rounded-xl p-5"
+                className="sv-fade-up sv-tilt group rounded-xl p-5"
                 style={{
                   animationDelay: `${i * 0.1}s`,
                   background: "rgba(255, 255, 255, 0.03)",

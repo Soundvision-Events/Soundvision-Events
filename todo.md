@@ -78,3 +78,4 @@
 - [x] Make hero section content blocks 50% transparent on all pages
 - [x] Add smooth scroll behavior to all pages (CSS scroll-behavior: smooth)
 - [x] Add parallax zoom-in scroll effect to section backgrounds on all pages
+- [x] Enhance parallax: stronger scroll depth, mouse-tracking tilt on cards, spring transitions, hover depth effects
