@@ -33,7 +33,7 @@ export default function Studentenfeesten() {
       />
 
       {/* Student-specific content */}
-      <section className="relative py-20 overflow-hidden" style={{ backgroundColor: "rgba(10, 15, 21, 0.55)" }}>
+      <section className="relative py-20 overflow-hidden" style={{ backgroundColor: "rgba(10, 15, 21, 0.0)" }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="sv-fade-up">
@@ -110,8 +110,8 @@ export default function Studentenfeesten() {
                     key={item.title}
                     className="p-4 rounded-xl"
                     style={{
-                      background: "rgba(255, 255, 255, 0.04)",
-                      border: "1px solid rgba(255, 255, 255, 0.07)",
+                      background: "rgba(255, 255, 255, 0.0)",
+                      border: "1px solid rgba(255, 255, 255, 0.12)",
                     }}
                   >
                     <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{item.icon}</div>
