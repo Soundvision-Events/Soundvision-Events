@@ -52,62 +52,9 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto" style={{ paddingTop: "clamp(4rem, 10vh, 8rem)", background: "rgba(8,12,16,0.50)", borderRadius: "1.5rem", backdropFilter: "blur(4px)", padding: "clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem)" }}>
-        {/* Animated logo ring */}
-        <div className="relative inline-block mb-8 sv-float">
-          {/* Outer rotating ring */}
-          <div
-            className="sv-ring-1"
-            style={{
-              width: "160px",
-              height: "160px",
-              borderRadius: "50%",
-              border: "2px solid transparent",
-              background: "linear-gradient(#080c10, #080c10) padding-box, linear-gradient(135deg, #00c8ff, transparent, #ff5500) border-box",
-              position: "relative",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto",
-            }}
-          >
-            {/* Inner ring */}
-            <div
-              className="sv-ring-2"
-              style={{
-                width: "120px",
-                height: "120px",
-                borderRadius: "50%",
-                border: "1px solid rgba(0, 200, 255, 0.3)",
-                position: "absolute",
-              }}
-            />
-            {/* Logo center */}
-            <div
-              style={{
-                width: "80px",
-                height: "80px",
-                borderRadius: "50%",
-                background: "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(255,85,0,0.1))",
-                border: "1px solid rgba(0,200,255,0.4)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                zIndex: 2,
-              }}
-            >
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <path d="M15 30V10l20-4v20" stroke="#00c8ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="10" cy="30" r="5" stroke="#00c8ff" strokeWidth="2.5"/>
-                <circle cx="30" cy="26" r="5" stroke="#ff5500" strokeWidth="2.5"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto" style={{ padding: "clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem)" }}>
         {/* Badge */}
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-6">
           <span
             style={{
               fontFamily: "'Outfit', sans-serif",
@@ -125,16 +72,65 @@ export default function HeroSection() {
           </span>
         </div>
 
-        {/* Main heading with turntable icon on the right */}
+        {/* Main heading: animated logo ring LEFT of h1 */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "clamp(0.5rem, 2vw, 1.5rem)",
+            gap: "clamp(1rem, 3vw, 2rem)",
             marginBottom: "0.5rem",
           }}
         >
+          {/* Animated logo ring — left of title */}
+          <div className="relative sv-float flex-shrink-0">
+            <div
+              className="sv-ring-1"
+              style={{
+                width: "120px",
+                height: "120px",
+                borderRadius: "50%",
+                border: "2px solid transparent",
+                background: "linear-gradient(#080c10, #080c10) padding-box, linear-gradient(135deg, #00c8ff, transparent, #ff5500) border-box",
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <div
+                className="sv-ring-2"
+                style={{
+                  width: "90px",
+                  height: "90px",
+                  borderRadius: "50%",
+                  border: "1px solid rgba(0, 200, 255, 0.3)",
+                  position: "absolute",
+                }}
+              />
+              <div
+                style={{
+                  width: "60px",
+                  height: "60px",
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(255,85,0,0.1))",
+                  border: "1px solid rgba(0,200,255,0.4)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  position: "relative",
+                  zIndex: 2,
+                }}
+              >
+                <svg width="30" height="30" viewBox="0 0 40 40" fill="none">
+                  <path d="M15 30V10l20-4v20" stroke="#00c8ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="10" cy="30" r="5" stroke="#00c8ff" strokeWidth="2.5"/>
+                  <circle cx="30" cy="26" r="5" stroke="#ff5500" strokeWidth="2.5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
           <h1
             style={{
               fontFamily: "'Bebas Neue', sans-serif",

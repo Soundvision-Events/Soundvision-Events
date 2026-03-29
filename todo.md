@@ -82,3 +82,5 @@
 - [x] Change 3D tilt MAX_TILT from 12° to 18° for stronger mouse-tracking effect
 - [x] Upload elitehero.mp4 to CDN and add as video cell in Home BentoGallery (area 'a', autoplay muted loop)
 - [x] Move BentoGallery before UitbreidingenSection (pricing) on all pages
+- [ ] Activate contact form — send booking inquiries directly to owner email via tRPC + notifyOwner
+- [x] Move animated logo ring to left of h1 title (inline row layout), remove frosted glass background from hero content block
