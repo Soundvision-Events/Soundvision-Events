@@ -1,6 +1,6 @@
 /**
- * SoundVision Events — About Section
- * DJ Tonicity introduction with asymmetric layout
+ * SoundVision Events — Over de DJ Section
+ * DJ Tonicity (Bert) — portrait + personal story from Introsolo video
  */
 export default function AboutSection() {
   return (
@@ -8,47 +8,48 @@ export default function AboutSection() {
       id="about"
       className="relative py-24 overflow-hidden"
     >
-      {/* 50% dark overlay — lets YouTube background show through */}
+      {/* Semi-dark overlay — lets YouTube background show through */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundColor: "rgba(8, 12, 16, 0.30)",
+          backgroundColor: "rgba(8, 12, 16, 0.55)",
           pointerEvents: "none",
           zIndex: 0,
         }}
       />
-      {/* Subtle right-side cyan glow */}
+      {/* Subtle cyan glow right side */}
       <div
         className="absolute right-0 top-0 w-1/2 h-full"
         style={{
-          background: "radial-gradient(ellipse at right center, rgba(0,200,255,0.06) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at right center, rgba(0,200,255,0.07) 0%, transparent 60%)",
           pointerEvents: "none",
           zIndex: 0,
         }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image side */}
+
+          {/* ── Portrait side ── */}
           <div className="relative sv-fade-up order-2 lg:order-1">
             <div
               className="relative rounded-2xl overflow-hidden"
               style={{
-                border: "1px solid rgba(0, 200, 255, 0.2)",
-                boxShadow: "0 0 40px rgba(0, 200, 255, 0.1)",
+                border: "1px solid rgba(0, 200, 255, 0.25)",
+                boxShadow: "0 0 60px rgba(0, 200, 255, 0.12), 0 20px 60px rgba(0,0,0,0.5)",
               }}
             >
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-tonicity_upscaled_7a714cfd.jpg"
-                alt="DJ Tonicity — SoundVision Events"
-                className="w-full object-cover"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/frame_3s5_8183df12.jpg"
+                alt="DJ Tonicity (Bert) — SoundVision Events"
+                className="w-full object-cover object-top"
                 style={{ aspectRatio: "4/3" }}
               />
-              {/* Overlay gradient */}
+              {/* Bottom gradient for badge readability */}
               <div
                 className="absolute inset-0"
                 style={{
-                  background: "linear-gradient(to top, rgba(8,12,16,0.8) 0%, transparent 50%)",
+                  background: "linear-gradient(to top, rgba(8,12,16,0.85) 0%, transparent 55%)",
                 }}
               />
               {/* Name badge */}
@@ -87,17 +88,17 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* Decorative element */}
+            {/* Decorative glow blob */}
             <div
               className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full opacity-20"
               style={{
-                background: "radial-gradient(circle, #ff5500 0%, transparent 70%)",
+                background: "radial-gradient(circle, #00c8ff 0%, transparent 70%)",
                 pointerEvents: "none",
               }}
             />
           </div>
 
-          {/* Text side */}
+          {/* ── Story side ── */}
           <div className="order-1 lg:order-2">
             <div className="sv-fade-up">
               <span
@@ -109,7 +110,7 @@ export default function AboutSection() {
                   textTransform: "uppercase",
                 }}
               >
-                Over DJ Tonicity (Bert)
+                Over de DJ
               </span>
               <h2
                 className="mt-3 mb-6"
@@ -131,50 +132,68 @@ export default function AboutSection() {
                     backgroundClip: "text",
                   }}
                 >
-                  VOOR ELKE GELEGENHEID
+                  BERT — DJ TONICITY
                 </span>
               </h2>
             </div>
 
-            <div className="sv-fade-up space-y-4">
+            <div className="sv-fade-up space-y-5">
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.75)",
-                  lineHeight: 1.8,
+                  fontSize: "1.05rem",
+                  color: "rgba(240, 244, 248, 0.82)",
+                  lineHeight: 1.85,
                   fontWeight: 300,
                 }}
               >
-                Welkom bij SoundVision Events. Ik ben DJ Tonicity, uw allround DJ in Groningen en Noord-Nederland. Met meer dan 10 jaar ervaring in de DJ-wereld zorg ik ervoor dat uw feest een onvergetelijke ervaring wordt — van Groningen tot Friesland, Drenthe en Overijssel.
+                Hoi, ik ben <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>DJ Tonicity</strong> — uw allround DJ bij SoundVision Events. Al ruim <strong style={{ color: "#00c8ff", fontWeight: 600 }}>15 jaar</strong> voorzien wij feesten van sfeervolle DJ-shows volledig op maat.
               </p>
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.75)",
-                  lineHeight: 1.8,
+                  fontSize: "1.05rem",
+                  color: "rgba(240, 244, 248, 0.82)",
+                  lineHeight: 1.85,
                   fontWeight: 300,
                 }}
               >
-                Van intieme bruiloften tot grote bedrijfsfeesten, studentenfeesten en privé gelegenheden — ik pas mijn muziek en show volledig aan op uw wensen en de sfeer van uw evenement. Professionele apparatuur, betrouwbare service en een passie voor muziek zijn mijn garantie.
+                Wat mij onderscheidt? <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Altijd direct en persoonlijk contact.</strong> DJ en klant vinden inspiratie bij elkaar — betrokkenheid zonder tussenpersonen. Zo wordt uw feest precies wat u voor ogen heeft.
+              </p>
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "1.05rem",
+                  color: "rgba(240, 244, 248, 0.82)",
+                  lineHeight: 1.85,
+                  fontWeight: 300,
+                }}
+              >
+                Van intieme bruiloften tot grote bedrijfsfeesten in Groningen, Friesland, Drenthe en Overijssel — ik pas muziek en show volledig aan op de sfeer van uw evenement.
               </p>
             </div>
 
-            {/* Features */}
+            {/* Feature tiles */}
             <div className="sv-fade-up grid grid-cols-2 gap-4 mt-8">
               {[
-                { icon: "🎵", title: "Muziek op Maat", desc: "Volledig afgestemd op uw wensen" },
-                { icon: "🎛️", title: "Pro Apparatuur", desc: "Pioneer DJ setup" },
-                { icon: "💡", title: "Lichtshow", desc: "Professionele verlichting" },
-                { icon: "🎵", title: "Persoonlijk Intro", desc: "Op maat gemixte intro voor uw feest" },
+                { icon: "🎵", title: "15+ Jaar Ervaring", desc: "Bewezen allround DJ-shows" },
+                { icon: "🎛️", title: "Pioneer DJ Setup", desc: "Professionele apparatuur" },
+                { icon: "🤝", title: "Persoonlijk Contact", desc: "Geen tussenpersonen" },
+                { icon: "✨", title: "Show op Maat", desc: "Volledig afgestemd op u" },
               ].map((feat) => (
                 <div
                   key={feat.title}
                   className="p-4 rounded-xl"
                   style={{
                     background: "rgba(255, 255, 255, 0.04)",
-                    border: "1px solid rgba(255, 255, 255, 0.07)",
+                    border: "1px solid rgba(0, 200, 255, 0.10)",
+                    transition: "border-color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,200,255,0.30)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,200,255,0.10)";
                   }}
                 >
                   <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{feat.icon}</div>
@@ -214,6 +233,7 @@ export default function AboutSection() {
               </button>
             </div>
           </div>
+
         </div>
       </div>
     </section>

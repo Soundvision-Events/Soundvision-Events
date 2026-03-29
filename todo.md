@@ -91,3 +91,4 @@
 - [x] Set Privé backdrop to YouTube video 7koSYjb5jdo
 - [x] EventPageHero: remove gradient overlay and hero background image — YouTube backdrop shows through fully on all event pages
 - [x] Bruiloft hero: fullscreen photo slider met 3 foto's (openingsdans116, openingsdans117, bruiloft_reportage3) — auto-advance elke 5s, dot-navigatie, rose glow, scroll-chevron
+- [x] Add 'Over de DJ' section to homepage with Bert's portrait and personal story from Introsolo.mp4
