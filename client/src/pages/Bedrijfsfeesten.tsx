@@ -1,6 +1,7 @@
 /**
  * SoundVision Events — Bedrijfsfeesten DJ Show Page
  * Design: Electric Dark Spectacle — Corporate variant
+ * Backdrop: YouTube video tRDzriLk5MA (bass drop / corporate energy)
  */
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
@@ -8,10 +9,19 @@ import UitbreidingenSection from "@/components/UitbreidingenSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
+import YouTubeBackground from "@/components/YouTubeBackground";
 
 export default function Bedrijfsfeesten() {
   return (
-    <PageLayout>
+    <PageLayout
+      backgroundOverride={
+        <YouTubeBackground
+          videoId="tRDzriLk5MA"
+          startAt={0}
+          overlayOpacity={0.45}
+        />
+      }
+    >
       <EventPageHero
         title="BEDRIJFSFEESTEN DJ SHOW"
         subtitle="SoundVision Events — Zakelijk"
@@ -93,7 +103,7 @@ export default function Bedrijfsfeesten() {
                   { icon: "🏢", title: "Bedrijfsgala", desc: "Stijlvol entertainment voor uw gala-avond" },
                   { icon: "🎊", title: "Jubileumfeest", desc: "Vier uw bedrijfsjubileum in stijl" },
                   { icon: "🤝", title: "Teambuilding", desc: "Muziek die verbindt en energie geeft" },
-                  { icon: "🎤", title: "Presentatie", desc: "MC service voor uw programma" },
+                  { icon: "🎤", title: "Presentatie", desc: "Presentatie service voor uw programma" },
                   { icon: "🎵", title: "Achtergrondmuziek", desc: "Sfeervolle muziek tijdens netwerkmomenten" },
                   { icon: "💡", title: "Professioneel Licht", desc: "Verlichting afgestemd op uw locatie" },
                 ].map((item) => (

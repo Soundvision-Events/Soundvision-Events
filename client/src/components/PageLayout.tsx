@@ -1,6 +1,6 @@
 /**
  * SoundVision Events — Shared Page Layout
- * Wraps every page with Navbar, YouTubeBackground, Footer, and scroll observer.
+ * Wraps every page with Navbar, VideoBackground (or custom override), Footer, and scroll observer.
  */
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
@@ -10,9 +10,11 @@ import BeatCursor from "@/components/BeatCursor";
 
 interface PageLayoutProps {
   children: React.ReactNode;
+  /** Optional custom background component — replaces the default VideoBackground */
+  backgroundOverride?: React.ReactNode;
 }
 
-export default function PageLayout({ children }: PageLayoutProps) {
+export default function PageLayout({ children, backgroundOverride }: PageLayoutProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -35,7 +37,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#080c10", color: "#f0f4f8" }}>
-      <VideoBackground />
+      {backgroundOverride ?? <VideoBackground />}
       <BeatCursor />
       <Navbar />
       {children}
