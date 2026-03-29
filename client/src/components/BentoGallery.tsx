@@ -1,18 +1,18 @@
 /**
  * SoundVision Events — BentoGallery
- * Asymmetric bento-style photo grid using CSS grid-template-areas.
- * Layout (desktop, 4 cols × 2 rows):
+ * Asymmetric bento-style photo/video grid using CSS grid-template-areas.
+ * Layout (desktop, 3 cols × 2 rows):
  *   ┌──────────────┬─────────┬─────────┐
  *   │              │    b    │    c    │
  *   │      a       ├─────────┴─────────┤
  *   │  (2col×2row) │    e  (wide 2col) │
- *   ├──────────────┴───────────────────┤
- *   │              d  (full width)     │
- *   └──────────────────────────────────┘
+ *   └──────────────┴───────────────────┘
+ * Items support both image (src) and video (videoSrc) types.
  */
 
 interface BentoItem {
-  src: string;
+  src?: string;
+  videoSrc?: string;
   alt: string;
   label: string;
   /** CSS grid-area name: "a" | "b" | "c" | "d" | "e" */
@@ -28,9 +28,9 @@ interface BentoGalleryProps {
 
 const DEFAULT_ITEMS: BentoItem[] = [
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-show-1-2x_JzPjSqAKqcKZZxjEEFJxLd.webp",
-    alt: "DJ Show",
-    label: "Sfeer & Energie",
+    videoSrc: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/elitehero_b0a6d286.mp4",
+    alt: "Elite Show",
+    label: "Elite Show — Sfeer & Energie",
     area: "a",
   },
   {
@@ -44,12 +44,6 @@ const DEFAULT_ITEMS: BentoItem[] = [
     alt: "Party DJ",
     label: "Dansende Gasten",
     area: "c",
-  },
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/wedding-dj-DqtALdSvgWVVw3zhZFPk6b.webp",
-    alt: "Wedding DJ",
-    label: "Onvergetelijke Momenten",
-    area: "d",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/corporate-event-2x_JzPjSqAKqcKZZxjEEFJxLd.webp",
@@ -167,24 +161,43 @@ export default function BentoGallery({
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              {/* Image */}
-              <img
-                src={item.src}
-                alt={item.alt}
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                }}
-                className="group-hover:scale-110"
-                onError={(e) => {
-                  const el = e.currentTarget as HTMLImageElement;
-                  el.src = `https://placehold.co/800x600/0a0f15/444?text=${encodeURIComponent(item.alt)}`;
-                }}
-              />
+              {/* Video or Image */}
+              {item.videoSrc ? (
+                <video
+                  src={item.videoSrc}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                  }}
+                  className="group-hover:scale-105"
+                />
+              ) : (
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                  }}
+                  className="group-hover:scale-110"
+                  onError={(e) => {
+                    const el = e.currentTarget as HTMLImageElement;
+                    el.src = `https://placehold.co/800x600/0a0f15/444?text=${encodeURIComponent(item.alt)}`;
+                  }}
+                />
+              )}
 
               {/* Dark gradient overlay */}
               <div
@@ -206,6 +219,28 @@ export default function BentoGallery({
                   transition: "opacity 0.3s ease",
                 }}
               />
+
+              {/* Video badge */}
+              {item.videoSrc && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "0.75rem",
+                    left: "0.75rem",
+                    background: "rgba(0,0,0,0.55)",
+                    border: `1px solid ${accentColor}55`,
+                    borderRadius: "6px",
+                    padding: "2px 8px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "4px",
+                  }}
+                >
+                  <span style={{ fontSize: "0.6rem", color: accentColor, letterSpacing: "0.12em", fontFamily: "'Outfit', sans-serif", textTransform: "uppercase" }}>
+                    ▶ Video
+                  </span>
+                </div>
+              )}
 
               {/* Label */}
               <div

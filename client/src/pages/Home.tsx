@@ -18,12 +18,12 @@ export default function Home() {
       <HeroSection />
       <USPSection />
       <AboutSection />
-      <UitbreidingenSection />
       <BentoGallery
         accentColor="#00c8ff"
         title="DE SHOW IN BEELD"
         subtitle="Galerij"
       />
+      <UitbreidingenSection />
       <TestimonialsSection />
       <ContactSection />
     </PageLayout>

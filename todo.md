@@ -80,3 +80,5 @@
 - [x] Add parallax zoom-in scroll effect to section backgrounds on all pages
 - [x] Enhance parallax: stronger scroll depth, mouse-tracking tilt on cards, spring transitions, hover depth effects
 - [x] Change 3D tilt MAX_TILT from 12° to 18° for stronger mouse-tracking effect
+- [x] Upload elitehero.mp4 to CDN and add as video cell in Home BentoGallery (area 'a', autoplay muted loop)
+- [x] Move BentoGallery before UitbreidingenSection (pricing) on all pages
