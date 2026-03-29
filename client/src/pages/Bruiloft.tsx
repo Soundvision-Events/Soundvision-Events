@@ -131,6 +131,7 @@ export default function Bruiloft() {
           "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans116_aa3b0634.jpg",
           "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans117_6b3efa5b.webp",
           "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/bruiloft_reportage3_a784e486.webp",
+          "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/bruiloftfeest_64ee6a35.webp",
         ]}
       />
       {/* ── Wedding intro content ── */}
