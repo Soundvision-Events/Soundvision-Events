@@ -11,10 +11,19 @@ import BentoGallery from "@/components/BentoGallery";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
+import YouTubeBackground from "@/components/YouTubeBackground";
 
 export default function Home() {
   return (
-    <PageLayout>
+    <PageLayout
+      backgroundOverride={
+        <YouTubeBackground
+          videoId="NwhOxUrjZcU"
+          startAt={0}
+          overlayOpacity={0.40}
+        />
+      }
+    >
       <HeroSection />
       <USPSection />
       <AboutSection />
