@@ -99,3 +99,4 @@
 - [x] Remove old animated ring/vinyl logo from navbar, keep only new SoundVision logo image
 - [x] Navbar logo: increase size (56px) and apply mix-blend-mode screen to remove white background on dark nav
 - [x] Replace navbar logo with white version (logo_dark.png) — clean on dark background, no mix-blend-mode needed
+- [x] Replace contact section image with alround.png logo (mix-blend-mode screen for transparent look)
