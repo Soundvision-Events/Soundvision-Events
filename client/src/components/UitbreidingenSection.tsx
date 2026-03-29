@@ -253,6 +253,7 @@ export default function UitbreidingenSection() {
                     className="absolute inset-0"
                     style={{
                       background: "linear-gradient(to bottom, rgba(10,15,21,0) 40%, rgba(10,15,21,0.95) 100%)",
+                      height: '49px',
                     }}
                   />
                   <div
