@@ -85,3 +85,6 @@
 - [ ] Activate contact form — send booking inquiries directly to owner email via tRPC + notifyOwner
 - [x] Move animated logo ring to left of h1 title (inline row layout), remove frosted glass background from hero content block
 - [x] Place 'All-Round DJ Shows' badge as overlay on the animated logo ring in HeroSection
+- [x] Update Bruiloft backdrop to YouTube video c7qIEesCHFE
+- [x] Update Bedrijfsfeesten backdrop to YouTube video WbRaePTyQDU
+- [x] Set Studentenfeesten backdrop to YouTube video NwhOxUrjZcU

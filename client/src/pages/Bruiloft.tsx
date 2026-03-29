@@ -2,7 +2,7 @@
  * SoundVision Events — Bruiloft DJ Show Page
  * Design: Electric Dark Spectacle — Wedding variant
  * Accent: Rose/Pink neon (#ff3d8a) + warm blush (#ffb3cc)
- * Backdrop: YouTube video gxeXkfY02HY (romantic / wedding energy)
+ * Backdrop: YouTube video c7qIEesCHFE (romantic / wedding energy)
  */
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
@@ -23,7 +23,7 @@ export default function Bruiloft() {
     <PageLayout
       backgroundOverride={
         <YouTubeBackground
-          videoId="gxeXkfY02HY"
+          videoId="c7qIEesCHFE"
           startAt={0}
           overlayOpacity={0.45}
         />

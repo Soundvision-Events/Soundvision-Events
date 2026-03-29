@@ -1,7 +1,7 @@
 /**
  * SoundVision Events — Bedrijfsfeesten DJ Show Page
  * Design: Electric Dark Spectacle — Corporate variant
- * Backdrop: YouTube video tRDzriLk5MA (bass drop / corporate energy)
+ * Backdrop: YouTube video WbRaePTyQDU (bass drop / corporate energy)
  */
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
@@ -16,7 +16,7 @@ export default function Bedrijfsfeesten() {
     <PageLayout
       backgroundOverride={
         <YouTubeBackground
-          videoId="tRDzriLk5MA"
+          videoId="WbRaePTyQDU"
           startAt={0}
           overlayOpacity={0.45}
         />

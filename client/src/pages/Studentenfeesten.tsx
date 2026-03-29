@@ -1,6 +1,7 @@
 /**
  * SoundVision Events — Studentenfeesten / Schoolfeesten DJ Show Page
  * Design: Electric Dark Spectacle — Student/School variant
+ * Backdrop: YouTube video NwhOxUrjZcU (student energy)
  */
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
@@ -8,10 +9,19 @@ import UitbreidingenSection from "@/components/UitbreidingenSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
+import YouTubeBackground from "@/components/YouTubeBackground";
 
 export default function Studentenfeesten() {
   return (
-    <PageLayout>
+    <PageLayout
+      backgroundOverride={
+        <YouTubeBackground
+          videoId="NwhOxUrjZcU"
+          startAt={0}
+          overlayOpacity={0.45}
+        />
+      }
+    >
       <EventPageHero
         title="STUDENTEN & SCHOOLFEESTEN"
         subtitle="SoundVision Events — Studenten"
