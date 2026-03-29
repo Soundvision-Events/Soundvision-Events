@@ -1,11 +1,40 @@
 /**
  * SoundVision Events — Over de DJ Section
- * DJ Tonicity (Bert) — portrait + personal story from Introsolo video
+ * DJ Tonicity (Bert) — autoplay muted intro video + personal story
  */
+import { useEffect, useRef, useState } from "react";
+
 export default function AboutSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [autoplayUrl, setAutoplayUrl] = useState(
+    "https://www.youtube-nocookie.com/embed/k6ZE7QYA8ug?rel=0&modestbranding=1&color=white"
+  );
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Switch to autoplay+mute URL when section scrolls into view
+            setAutoplayUrl(
+              "https://www.youtube-nocookie.com/embed/k6ZE7QYA8ug?autoplay=1&mute=1&rel=0&modestbranding=1&color=white&playsinline=1"
+            );
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="about"
+      ref={containerRef}
       className="relative py-24 overflow-hidden"
     >
       {/* Semi-dark overlay — lets YouTube background show through */}
@@ -30,61 +59,64 @@ export default function AboutSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* ── Portrait side ── */}
+          {/* ── Video side ── */}
           <div className="relative sv-fade-up order-2 lg:order-1">
             <div
               className="relative rounded-2xl overflow-hidden"
               style={{
                 border: "1px solid rgba(0, 200, 255, 0.25)",
                 boxShadow: "0 0 60px rgba(0, 200, 255, 0.12), 0 20px 60px rgba(0,0,0,0.5)",
+                aspectRatio: "16/9",
               }}
             >
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/frame_3s5_8183df12.jpg"
-                alt="DJ Tonicity (Bert) — SoundVision Events"
-                className="w-full object-cover object-top"
-                style={{ aspectRatio: "4/3" }}
-              />
-              {/* Bottom gradient for badge readability */}
-              <div
-                className="absolute inset-0"
+              <iframe
+                src={autoplayUrl}
+                title="DJ Tonicity — SoundVision Events Intro"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
                 style={{
-                  background: "linear-gradient(to top, rgba(8,12,16,0.85) 0%, transparent 55%)",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
                 }}
               />
-              {/* Name badge */}
+            </div>
+
+            {/* Name badge below video */}
+            <div
+              className="mt-4 px-4 py-3 rounded-xl"
+              style={{
+                background: "rgba(8, 12, 16, 0.75)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(0, 200, 255, 0.2)",
+                display: "inline-flex",
+                flexDirection: "column",
+              }}
+            >
               <div
-                className="absolute bottom-6 left-6"
                 style={{
-                  background: "rgba(8, 12, 16, 0.85)",
-                  backdropFilter: "blur(8px)",
-                  border: "1px solid rgba(0, 200, 255, 0.3)",
-                  borderRadius: "8px",
-                  padding: "0.75rem 1.25rem",
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: "1.3rem",
+                  letterSpacing: "0.08em",
+                  color: "#f0f4f8",
+                  lineHeight: 1,
                 }}
               >
-                <div
-                  style={{
-                    fontFamily: "'Bebas Neue', sans-serif",
-                    fontSize: "1.4rem",
-                    letterSpacing: "0.08em",
-                    color: "#f0f4f8",
-                    lineHeight: 1,
-                  }}
-                >
-                  DJ TONICITY
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Outfit', sans-serif",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.2em",
-                    color: "#00c8ff",
-                    marginTop: "2px",
-                  }}
-                >
-                  ALLROUND DJ @ SOUNDVISION EVENTS
-                </div>
+                DJ TONICITY
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.75rem",
+                  letterSpacing: "0.2em",
+                  color: "#00c8ff",
+                  marginTop: "2px",
+                }}
+              >
+                ALLROUND DJ @ SOUNDVISION EVENTS
               </div>
             </div>
 

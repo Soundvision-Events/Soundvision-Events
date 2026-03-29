@@ -93,3 +93,5 @@
 - [x] Bruiloft hero: fullscreen photo slider met 3 foto's (openingsdans116, openingsdans117, bruiloft_reportage3) — auto-advance elke 5s, dot-navigatie, rose glow, scroll-chevron
 - [x] Add 'Over de DJ' section to homepage with Bert's portrait and personal story from Introsolo.mp4
 - [x] Set homepage backdrop to Studentenfeesten YouTube video (NwhOxUrjZcU)
+- [x] Embed YouTube video k6ZE7QYA8ug in 'Over de DJ' section (AboutSection) replacing portrait photo
+- [x] Autoplay DJ intro video (k6ZE7QYA8ug) muted in Over de DJ section on homepage — intersection observer triggers at 30% visibility
