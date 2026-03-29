@@ -54,7 +54,7 @@ export default function HeroSection() {
       {/* Content */}
       <div
         className="relative z-10 text-center px-4 max-w-5xl mx-auto"
-        style={{ padding: "clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem)" }}
+        style={{ paddingTop: '157px', paddingRight: '22px', paddingBottom: '335px', paddingLeft: '21px', height: '1073px' }}
       >
         {/* Main heading: animated logo ring LEFT of h1 */}
         <div
