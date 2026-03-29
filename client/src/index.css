@@ -298,11 +298,11 @@
   }
 
   .sv-ring-1 {
-    animation: ring-rotate 20s linear infinite;
+    animation: ring-rotate 10s linear infinite;
   }
 
   .sv-ring-2 {
-    animation: ring-rotate-reverse 15s linear infinite;
+    animation: ring-rotate-reverse 7.5s linear infinite;
   }
 
   .sv-float {
