@@ -37,8 +37,8 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         background: scrolled
-          ? "rgba(8, 12, 16, 0.92)"
-          : "rgba(8, 12, 16, 0.4)",
+          ? "rgba(10, 0, 82, 0.92)"
+          : "rgba(10, 0, 82, 0.40)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
         borderBottom: scrolled
@@ -47,7 +47,7 @@ export default function Navbar() {
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between" style={{height: '74px'}}>
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img
