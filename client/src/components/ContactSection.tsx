@@ -289,16 +289,18 @@ export default function ContactSection() {
 
             {/* Logo banner */}
             <div
-              className="mt-10 rounded-2xl overflow-hidden"
-              style={{
-                border: "1px solid rgba(0, 200, 255, 0.15)",
-              }}
+              className="mt-10 flex items-center justify-center"
+              style={{ background: "transparent" }}
             >
               <img
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/alround_67b4215d.png"
                 alt="SoundVision Events — Allround DJ Shows"
                 className="w-full object-contain"
-                style={{ mixBlendMode: "screen" }}
+                style={{
+                  mixBlendMode: "screen",
+                  filter: "brightness(1.15) contrast(1.1) saturate(1.2)",
+                  background: "transparent",
+                }}
               />
             </div>
           </div>

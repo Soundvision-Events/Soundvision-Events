@@ -100,3 +100,4 @@
 - [x] Navbar logo: increase size (56px) and apply mix-blend-mode screen to remove white background on dark nav
 - [x] Replace navbar logo with white version (logo_dark.png) — clean on dark background, no mix-blend-mode needed
 - [x] Replace contact section image with alround.png logo (mix-blend-mode screen for transparent look)
+- [x] Remove white background from allround logo in contact section — transparent container, mix-blend-mode screen + brightness/contrast filter
