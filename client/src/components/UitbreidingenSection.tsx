@@ -165,7 +165,7 @@ export default function UitbreidingenSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ── SECTION HEADER ── */}
-        <div className="text-center mb-16 sv-fade-up">
+        <div className="text-center mb-16 sv-fade-up sv-zoom-reveal">
           <span
             style={{
               fontFamily: "'Outfit', sans-serif",
@@ -440,7 +440,7 @@ export default function UitbreidingenSection() {
 
         {/* ── DIVIDER ── */}
         <div
-          className="mb-16 sv-fade-up"
+          className="mb-16 sv-fade-up sv-zoom-reveal"
           style={{
             borderTop: "1px solid rgba(255,255,255,0.08)",
             position: "relative",

@@ -98,6 +98,7 @@
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-background text-foreground;
     background-color: #080c10;
@@ -350,3 +351,55 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* ============================================================
+   PARALLAX ZOOM-IN — section background images
+   Usage: add class sv-parallax to any section with a bg image.
+   The inner .sv-parallax-bg div will scale and translate on scroll.
+   ============================================================ */
+
+@keyframes sv-zoom-in-enter {
+  from {
+    opacity: 0;
+    transform: scale(1.08) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Sections that use JS-driven parallax scroll */
+.sv-parallax {
+  overflow: hidden;
+  position: relative;
+}
+
+.sv-parallax-bg {
+  position: absolute;
+  inset: -15%;
+  width: 130%;
+  height: 130%;
+  will-change: transform;
+  transition: transform 0.05s linear;
+  transform-origin: center center;
+}
+
+/* Zoom-in reveal animation for sections entering the viewport */
+.sv-zoom-reveal {
+  opacity: 0;
+  transform: scale(1.06) translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sv-zoom-reveal.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Stagger delays for child elements */
+.sv-zoom-reveal:nth-child(2) { transition-delay: 0.1s; }
+.sv-zoom-reveal:nth-child(3) { transition-delay: 0.2s; }
+.sv-zoom-reveal:nth-child(4) { transition-delay: 0.3s; }
+.sv-zoom-reveal:nth-child(5) { transition-delay: 0.4s; }

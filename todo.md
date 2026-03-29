@@ -76,3 +76,5 @@
 - [x] Make all section blocks semi-transparent on all pages so background videos show through
 - [x] Use the same BentoGallery template on every page (Home, Bruiloft, Bedrijfsfeesten, Studentenfeesten, Privé)
 - [x] Make hero section content blocks 50% transparent on all pages
+- [x] Add smooth scroll behavior to all pages (CSS scroll-behavior: smooth)
+- [x] Add parallax zoom-in scroll effect to section backgrounds on all pages

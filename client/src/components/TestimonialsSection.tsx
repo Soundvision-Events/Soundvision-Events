@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16 sv-fade-up">
+        <div className="text-center mb-16 sv-fade-up sv-zoom-reveal">
           <span
             style={{
               fontFamily: "'Outfit', sans-serif",

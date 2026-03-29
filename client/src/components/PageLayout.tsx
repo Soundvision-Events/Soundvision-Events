@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VideoBackground from "@/components/VideoBackground";
 import BeatCursor from "@/components/BeatCursor";
+import { useParallax } from "@/hooks/useParallax";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -15,6 +16,8 @@ interface PageLayoutProps {
 }
 
 export default function PageLayout({ children, backgroundOverride }: PageLayoutProps) {
+  useParallax();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
