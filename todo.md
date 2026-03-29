@@ -75,3 +75,4 @@
 - [x] Use YouTube video gxeXkfY02HY as backdrop for Bruiloft page
 - [x] Make all section blocks semi-transparent on all pages so background videos show through
 - [x] Use the same BentoGallery template on every page (Home, Bruiloft, Bedrijfsfeesten, Studentenfeesten, Privé)
+- [x] Make hero section content blocks 50% transparent on all pages

@@ -52,7 +52,7 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto" style={{ paddingTop: "clamp(4rem, 10vh, 8rem)" }}>
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto" style={{ paddingTop: "clamp(4rem, 10vh, 8rem)", background: "rgba(8,12,16,0.50)", borderRadius: "1.5rem", backdropFilter: "blur(4px)", padding: "clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem)" }}>
         {/* Animated logo ring */}
         <div className="relative inline-block mb-8 sv-float">
           {/* Outer rotating ring */}

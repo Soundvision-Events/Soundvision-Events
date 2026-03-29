@@ -64,7 +64,7 @@ export default function EventPageHero({
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-28 pb-16">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl" style={{ background: "rgba(8,12,16,0.50)", borderRadius: "1.25rem", backdropFilter: "blur(4px)", padding: "2.5rem 2rem" }}>
           <span
             className="sv-fade-up"
             style={{
