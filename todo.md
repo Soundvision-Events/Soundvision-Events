@@ -89,3 +89,4 @@
 - [x] Update Bedrijfsfeesten backdrop to YouTube video WbRaePTyQDU
 - [x] Set Studentenfeesten backdrop to YouTube video NwhOxUrjZcU
 - [x] Set Privé backdrop to YouTube video 7koSYjb5jdo
+- [x] EventPageHero: remove gradient overlay and hero background image — YouTube backdrop shows through fully on all event pages

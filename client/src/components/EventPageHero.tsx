@@ -37,21 +37,7 @@ export default function EventPageHero({
       className="relative min-h-[70vh] flex items-center overflow-hidden"
       style={{ backgroundColor: "rgba(8, 12, 16, 0.55)" }}
     >
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
-      </div>
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(to bottom, rgba(8,12,16,0.7) 0%, rgba(8,12,16,0.5) 40%, rgba(8,12,16,0.85) 80%, rgba(8,12,16,1) 100%)`,
-        }}
-      />
+      {/* Background image and gradient overlay removed — YouTube backdrop shows through */}
       {/* Accent glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2"
