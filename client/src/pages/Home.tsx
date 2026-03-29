@@ -7,7 +7,7 @@ import PageLayout from "@/components/PageLayout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import UitbreidingenSection from "@/components/UitbreidingenSection";
-import GallerySection from "@/components/GallerySection";
+import BentoGallery from "@/components/BentoGallery";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
@@ -19,7 +19,11 @@ export default function Home() {
       <USPSection />
       <AboutSection />
       <UitbreidingenSection />
-      <GallerySection />
+      <BentoGallery
+        accentColor="#00c8ff"
+        title="DE SHOW IN BEELD"
+        subtitle="Galerij"
+      />
       <TestimonialsSection />
       <ContactSection />
     </PageLayout>

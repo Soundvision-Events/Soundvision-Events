@@ -74,3 +74,4 @@
 - [x] Use YouTube video tRDzriLk5MA as backdrop for Bedrijfsfeesten page (page-specific YouTubeBackground override)
 - [x] Use YouTube video gxeXkfY02HY as backdrop for Bruiloft page
 - [x] Make all section blocks semi-transparent on all pages so background videos show through
+- [x] Use the same BentoGallery template on every page (Home, Bruiloft, Bedrijfsfeesten, Studentenfeesten, Privé)
