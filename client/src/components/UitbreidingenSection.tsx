@@ -212,8 +212,8 @@ export default function UitbreidingenSection() {
               style={{
                 animationDelay: `${i * 0.15}s`,
                 background: pkg.highlight
-                  ? "linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 144, 255, 0.05))"
-                  : "rgba(255, 255, 255, 0.03)",
+                  ? "linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(20, 10, 60, 0.30))"
+                  : "rgba(20, 8, 50, 0.30)",
                 border: `1px solid ${pkg.highlight ? "rgba(0, 200, 255, 0.35)" : "rgba(255, 255, 255, 0.07)"}`,
                 boxShadow: pkg.highlight
                   ? "0 0 40px rgba(0, 200, 255, 0.12), 0 0 80px rgba(0, 200, 255, 0.05)"
@@ -475,8 +475,8 @@ export default function UitbreidingenSection() {
                 className="sv-fade-up sv-tilt group rounded-xl p-5"
                 style={{
                   animationDelay: `${i * 0.1}s`,
-                  background: "rgba(255, 255, 255, 0.0)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  background: "rgba(20, 8, 50, 0.30)",
+                  border: "1px solid rgba(100, 60, 200, 0.25)",
                   transition: "all 0.3s ease",
                   cursor: "default",
                 }}
@@ -486,8 +486,8 @@ export default function UitbreidingenSection() {
                   e.currentTarget.style.transform = "translateY(-4px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.03)";
-                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.06)";
+                  e.currentTarget.style.background = "rgba(20, 8, 50, 0.30)";
+                  e.currentTarget.style.borderColor = "rgba(100, 60, 200, 0.25)";
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >

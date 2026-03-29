@@ -262,8 +262,8 @@ export default function ContactSection() {
                       alignItems: "center",
                       gap: "0.5rem",
                       padding: "0.6rem 1rem",
-                      background: "rgba(255, 255, 255, 0.04)",
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      background: "rgba(20, 8, 50, 0.30)",
+                      border: "1px solid rgba(100, 60, 200, 0.25)",
                       borderRadius: "8px",
                       color: "rgba(240, 244, 248, 0.7)",
                       fontFamily: "'Outfit', sans-serif",
@@ -311,9 +311,9 @@ export default function ContactSection() {
               onSubmit={handleSubmit}
               className="rounded-2xl p-8"
               style={{
-                background: "rgba(255, 255, 255, 0.0)",
-                border: "1px solid rgba(0, 200, 255, 0.15)",
-                backgroundColor: 'rgba(0, 8, 31, 0.20)',
+                background: "rgba(20, 8, 50, 0.30)",
+                border: "1px solid rgba(100, 60, 200, 0.30)",
+                backgroundColor: 'rgba(20, 8, 50, 0.30)'
               }}
             >
               <div className="grid sm:grid-cols-2 gap-5">

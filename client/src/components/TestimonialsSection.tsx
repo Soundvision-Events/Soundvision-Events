@@ -116,8 +116,8 @@ export default function TestimonialsSection() {
               className="sv-fade-up sv-tilt rounded-2xl p-6"
               style={{
                 animationDelay: `${(i % 3) * 0.1}s`,
-                background: "rgba(255, 255, 255, 0.03)",
-                border: "1px solid rgba(255, 255, 255, 0.07)",
+                background: "rgba(20, 8, 50, 0.30)",
+                border: "1px solid rgba(100, 60, 200, 0.25)",
                 transition: "transform 0.3s ease, border-color 0.3s ease",
               }}
               onMouseEnter={(e) => {

@@ -212,7 +212,7 @@ export default function Bruiloft() {
                     key={item.title}
                     className="p-4 rounded-xl"
                     style={{
-                      background: `linear-gradient(135deg, ${ROSE_GLOW_S}, rgba(255,255,255,0.02))`,
+                      background: `linear-gradient(135deg, rgba(20,8,50,0.30), ${ROSE_GLOW_S})`,
                       border: `1px solid ${ROSE}33`,
                       transition: "border-color 0.3s ease, box-shadow 0.3s ease",
                     }}

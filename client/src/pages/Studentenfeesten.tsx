@@ -110,8 +110,8 @@ export default function Studentenfeesten() {
                     key={item.title}
                     className="p-4 rounded-xl"
                     style={{
-                      background: "rgba(255, 255, 255, 0.0)",
-                      border: "1px solid rgba(255, 255, 255, 0.12)",
+                      background: "rgba(20, 8, 50, 0.30)",
+                      border: "1px solid rgba(100, 60, 200, 0.25)",
                     }}
                   >
                     <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{item.icon}</div>

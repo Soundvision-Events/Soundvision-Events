@@ -217,8 +217,8 @@ export default function AboutSection() {
                   key={feat.title}
                   className="p-4 rounded-xl"
                   style={{
-                    background: "rgba(255, 255, 255, 0.0)",
-                    border: "1px solid rgba(0, 200, 255, 0.15)",
+                    background: "rgba(20, 8, 50, 0.30)",
+                    border: "1px solid rgba(100, 60, 200, 0.30)",
                     transition: "border-color 0.3s ease",
                   }}
                   onMouseEnter={(e) => {

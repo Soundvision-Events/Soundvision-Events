@@ -155,7 +155,7 @@ export default function EventTypesSection() {
               {/* Content */}
               <div
                 className="p-6"
-                style={{ background: "rgba(10, 15, 21, 0.55)" }}
+                style={{ background: "rgba(20, 8, 50, 0.30)" }}
               >
                 <div
                   style={{

@@ -150,7 +150,7 @@ export default function BentoGallery({
                 border: `1px solid ${glowRgba}`,
                 transition: "border-color 0.3s ease, box-shadow 0.3s ease",
                 cursor: "pointer",
-                background: "rgba(255,255,255,0.03)",
+                background: "rgba(20, 8, 50, 0.30)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = glowStrong;
