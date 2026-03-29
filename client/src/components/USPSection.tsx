@@ -255,6 +255,8 @@ export default function USPSection() {
         padding: "6rem 0",
         position: "relative",
         overflow: "hidden",
+        paddingTop: '65px',
+        paddingBottom: '53px',
       }}
     >
       {/* Subtle background grid — hidden */}
@@ -284,7 +286,7 @@ export default function USPSection() {
               textShadow: "0 0 40px rgba(0,200,255,0.2)",
             }}
           >
-            Onze 4 Kernpunten
+            Ónze Visie, Úw Beleving
           </h2>
         </div>
 
