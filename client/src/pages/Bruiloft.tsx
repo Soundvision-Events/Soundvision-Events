@@ -164,12 +164,12 @@ export default function Bruiloft() {
                 <br />
                 <span
                   style={{
-                    background: `linear-gradient(135deg, ${ROSE}, ${ROSE_SOFT})`,
+                    background: "linear-gradient(135deg, #5e00bd, #9b59b6)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                     textShadow: "none",
-                    filter: `drop-shadow(0 0 12px ${ROSE_GLOW})`,
+                    filter: `drop-shadow(0 0 12px rgba(94,0,189,0.45))`,
                   }}
                 >
                   MUZIKALE ERVARING
