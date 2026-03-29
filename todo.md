@@ -72,3 +72,4 @@
 - [x] Move turntable icon to LEFT side of SOUNDVISION h1 title
 - [x] Combine PackagesSection + AddOnsSection into single UitbreidingenSection with title 'Uitbreidingen', divider between packages and add-ons, updated across all pages
 - [x] Use YouTube video tRDzriLk5MA as backdrop for Bedrijfsfeesten page (page-specific YouTubeBackground override)
+- [x] Use YouTube video gxeXkfY02HY as backdrop for Bruiloft page

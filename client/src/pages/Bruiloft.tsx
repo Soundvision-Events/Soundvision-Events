@@ -2,7 +2,7 @@
  * SoundVision Events — Bruiloft DJ Show Page
  * Design: Electric Dark Spectacle — Wedding variant
  * Accent: Rose/Pink neon (#ff3d8a) + warm blush (#ffb3cc)
- * Special: Slow gradient roll animation on backdrop
+ * Backdrop: YouTube video gxeXkfY02HY (romantic / wedding energy)
  */
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
@@ -10,6 +10,7 @@ import UitbreidingenSection from "@/components/UitbreidingenSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
+import YouTubeBackground from "@/components/YouTubeBackground";
 
 /* ─── Wedding colour tokens ─────────────────────────── */
 const ROSE        = "#ff3d8a";
@@ -19,7 +20,15 @@ const ROSE_GLOW_S = "rgba(255,61,138,0.12)";
 
 export default function Bruiloft() {
   return (
-    <PageLayout>
+    <PageLayout
+      backgroundOverride={
+        <YouTubeBackground
+          videoId="gxeXkfY02HY"
+          startAt={0}
+          overlayOpacity={0.45}
+        />
+      }
+    >
 
       {/* ── Full-length rose gradient backdrop wrapper ── */}
       <div style={{ position: "relative", minHeight: "100vh" }}>
