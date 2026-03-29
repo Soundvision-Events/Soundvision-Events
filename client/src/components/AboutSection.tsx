@@ -132,7 +132,7 @@ export default function AboutSection() {
 
           {/* ── Story side ── */}
           <div className="order-1 lg:order-2">
-            <div className="sv-fade-up">
+            <div className="sv-fade-up" style={{paddingLeft: '8px'}}>
               <span
                 style={{
                   fontFamily: "'Outfit', sans-serif",
@@ -152,6 +152,9 @@ export default function AboutSection() {
                   letterSpacing: "0.05em",
                   lineHeight: 1.05,
                   color: "#f0f4f8",
+                  marginRight: '38px',
+                  marginLeft: '-267px',
+                  width: '629px',
                 }}
               >
                 UW ALLROUND DJ
