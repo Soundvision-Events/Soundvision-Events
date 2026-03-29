@@ -110,3 +110,4 @@
 - [x] Replace homepage YouTube backdrop with soundvision_animated_15s_final.mp4 (looping MP4 video backdrop, CDN hosted, overlayOpacity 0.30)
 - [x] HeroSection content div: paddingTop 157px, paddingBottom 335px, height 1073px (visual editor adjustment)
 - [x] Alle tabel/grid-kolommen op alle pagina's: neon donker paars/blauw achtergrond met 30% opaciteit
+- [x] Scroll effect: backdrop wordt donkerder naarmate gebruiker verder naar beneden scrolt
