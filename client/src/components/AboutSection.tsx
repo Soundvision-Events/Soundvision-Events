@@ -41,7 +41,7 @@ export default function AboutSection() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundColor: "rgba(8, 12, 16, 0.55)",
+          backgroundColor: "rgba(8, 12, 16, 0.20)",
           pointerEvents: "none",
           zIndex: 0,
         }}
@@ -217,8 +217,8 @@ export default function AboutSection() {
                   key={feat.title}
                   className="p-4 rounded-xl"
                   style={{
-                    background: "rgba(255, 255, 255, 0.04)",
-                    border: "1px solid rgba(0, 200, 255, 0.10)",
+                    background: "rgba(255, 255, 255, 0.0)",
+                    border: "1px solid rgba(0, 200, 255, 0.15)",
                     transition: "border-color 0.3s ease",
                   }}
                   onMouseEnter={(e) => {

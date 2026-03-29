@@ -134,7 +134,7 @@ export default function UitbreidingenSection() {
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(180deg, rgba(0,60,70,0.35) 0%, rgba(0,40,55,0.40) 50%, rgba(0,30,45,0.35) 100%)",
+          background: "linear-gradient(180deg, rgba(0,60,70,0.10) 0%, rgba(0,40,55,0.12) 50%, rgba(0,30,45,0.10) 100%)",
           pointerEvents: "none",
           zIndex: 0,
         }}
@@ -452,7 +452,7 @@ export default function UitbreidingenSection() {
               position: "relative",
               top: "-0.75rem",
               display: "inline-block",
-              background: "rgba(0,40,55,0.9)",
+              background: "rgba(0,40,55,0.25)",
               padding: "0 1.5rem",
               fontFamily: "'Outfit', sans-serif",
               fontSize: "0.75rem",
@@ -475,8 +475,8 @@ export default function UitbreidingenSection() {
                 className="sv-fade-up sv-tilt group rounded-xl p-5"
                 style={{
                   animationDelay: `${i * 0.1}s`,
-                  background: "rgba(255, 255, 255, 0.03)",
-                  border: "1px solid rgba(255, 255, 255, 0.06)",
+                  background: "rgba(255, 255, 255, 0.0)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
                   transition: "all 0.3s ease",
                   cursor: "default",
                 }}

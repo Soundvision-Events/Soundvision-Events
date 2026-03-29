@@ -106,3 +106,4 @@
 - [x] Bruiloft page: YouTube backdrop visible through sections below hero — bruiloft-backdrop made semi-transparent (55-62% opacity), white section background removed
 - [x] BentoGallery section opacity set to 0.6 so YouTube backdrop shines through
 - [x] Studentenfeesten: title + gallery content at full opacity, grid/container layers transparent — BentoGallery opacity removed, section bg transparent, grid cards transparent
+- [x] Site-wide opacity rule applied: CTA buttons/cards/titles/media at 100% opacity; section/grid container backgrounds transparent — USPSection cards (0.30), UitbreidingenSection overlay (0.10), BentoGallery (rgba only no opacity), AboutSection overlay (0.20), ContactSection panel (0.25), Bedrijfsfeesten section (0.10), Privé section (0.10), Studentenfeesten (0.10)
