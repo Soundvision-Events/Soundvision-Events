@@ -65,7 +65,7 @@ export default function BentoGallery({
   return (
     <section
       className="relative py-20 overflow-hidden"
-      style={{ backgroundColor: 'rgba(117, 102, 115, 0.50)' }}
+      style={{ backgroundColor: 'rgba(143, 150, 255, 0.50)', paddingTop: '83px', marginTop: '44px' }}
     >
       {/* Subtle radial glow */}
       <div
