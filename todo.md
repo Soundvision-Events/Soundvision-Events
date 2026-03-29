@@ -79,3 +79,4 @@
 - [x] Add smooth scroll behavior to all pages (CSS scroll-behavior: smooth)
 - [x] Add parallax zoom-in scroll effect to section backgrounds on all pages
 - [x] Enhance parallax: stronger scroll depth, mouse-tracking tilt on cards, spring transitions, hover depth effects
+- [x] Change 3D tilt MAX_TILT from 12° to 18° for stronger mouse-tracking effect

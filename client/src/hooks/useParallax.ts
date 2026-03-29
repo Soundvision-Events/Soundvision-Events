@@ -101,7 +101,7 @@ export function useParallax() {
 
   // ── 3: Mouse-tracking tilt on .sv-tilt elements ─────────────────────────
   useEffect(() => {
-    const MAX_TILT = 12; // degrees
+    const MAX_TILT = 18; // degrees
     const GLARE_OPACITY = 0.18;
 
     const handleMouseMove = (e: MouseEvent) => {
