@@ -11,6 +11,7 @@ interface EventPageHeroProps {
   accentColor?: string;
   iconUrl?: string;
   iconAlt?: string;
+  showPhoto?: string;
 }
 
 export default function EventPageHero({
@@ -21,6 +22,7 @@ export default function EventPageHero({
   accentColor = "#00c8ff",
   iconUrl,
   iconAlt = "icon",
+  showPhoto,
 }: EventPageHeroProps) {
   const scrollToContact = () => {
     const el = document.querySelector("#contact");
@@ -50,7 +52,8 @@ export default function EventPageHero({
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-28 pb-16">
-        <div className="max-w-3xl" style={{ background: "rgba(8,12,16,0.50)", borderRadius: "1.25rem", backdropFilter: "blur(4px)", padding: "2.5rem 2rem" }}>
+        <div className={showPhoto ? "grid lg:grid-cols-2 gap-10 items-center" : "max-w-3xl"}>
+        <div style={{ background: "rgba(8,12,16,0.50)", borderRadius: "1.25rem", backdropFilter: "blur(4px)", padding: "2.5rem 2rem" }}>
           <span
             className="sv-fade-up"
             style={{
@@ -140,6 +143,33 @@ export default function EventPageHero({
               Bekijk Pakketten
             </button>
           </div>
+        </div>
+
+        {/* Show photo panel — only rendered when showPhoto is provided */}
+        {showPhoto && (
+          <div
+            className="sv-fade-up hidden lg:block"
+            style={{
+              borderRadius: "1.25rem",
+              overflow: "hidden",
+              boxShadow: `0 0 40px ${accentColor}33, 0 20px 60px rgba(0,0,0,0.6)`,
+              border: `1px solid ${accentColor}44`,
+              aspectRatio: "4/3",
+            }}
+          >
+            <img
+              src={showPhoto}
+              alt={title}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
+            />
+          </div>
+        )}
+
         </div>
       </div>
     </section>
