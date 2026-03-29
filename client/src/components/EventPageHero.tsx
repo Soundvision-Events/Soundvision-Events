@@ -35,7 +35,7 @@ export default function EventPageHero({
   return (
     <section
       className="relative min-h-[70vh] flex items-center overflow-hidden"
-      style={{ backgroundColor: "#080c10" }}
+      style={{ backgroundColor: "rgba(8, 12, 16, 0.55)" }}
     >
       {/* Background image */}
       <div className="absolute inset-0">

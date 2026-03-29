@@ -33,7 +33,7 @@ export default function Bedrijfsfeesten() {
       />
 
       {/* Corporate-specific content */}
-      <section className="relative py-20 overflow-hidden" style={{ backgroundColor: "#0a0f15" }}>
+      <section className="relative py-20 overflow-hidden" style={{ backgroundColor: "rgba(10, 15, 21, 0.55)" }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="sv-fade-up">

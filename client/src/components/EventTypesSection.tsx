@@ -37,7 +37,7 @@ export default function EventTypesSection() {
     <section
       id="events"
       className="relative py-24 overflow-hidden"
-      style={{ backgroundColor: "#080c10" }}
+      style={{ backgroundColor: "rgba(8, 12, 16, 0.55)" }}
     >
       {/* Background decoration */}
       <div
@@ -155,7 +155,7 @@ export default function EventTypesSection() {
               {/* Content */}
               <div
                 className="p-6"
-                style={{ background: "rgba(10, 15, 21, 0.95)" }}
+                style={{ background: "rgba(10, 15, 21, 0.55)" }}
               >
                 <div
                   style={{
