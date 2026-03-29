@@ -14,7 +14,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "transparent" }}
     >
-      {/* Hero video — 60% opacity so YouTube backdrop bleeds through underneath */}
+      {/* Hero video — 40% opacity so YouTube backdrop bleeds through underneath */}
       <div className="absolute inset-0" style={{ opacity: 0.4 }}>
         <video
           autoPlay
@@ -22,7 +22,7 @@ export default function HeroSection() {
           muted
           playsInline
           className="w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
           poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-bg-k7KfhYH7TSMYQdtgs3D6zf.webp"
         >
           <source
@@ -52,7 +52,10 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto" style={{ padding: "clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem)" }}>
+      <div
+        className="relative z-10 text-center px-4 max-w-5xl mx-auto"
+        style={{ padding: "clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem)" }}
+      >
         {/* Main heading: animated logo ring LEFT of h1 */}
         <div
           style={{
@@ -162,49 +165,22 @@ export default function HeroSection() {
             </span>
           </h1>
         </div>
+
+        {/* EVENTS subtitle */}
         <h2
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
             fontSize: "clamp(1.5rem, 4vw, 3rem)",
             letterSpacing: "0.4em",
-            color: "rgba(240, 244, 248, 0.6)",
+            color: "#f0f0f0",
             marginBottom: "1.5rem",
           }}
         >
           EVENTS
         </h2>
 
-        {/* Subtitle with inline lightning icon */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1rem",
-            maxWidth: "720px",
-            margin: "0 auto 2.5rem",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: '30px',
-              color: "#04f1ca",
-              lineHeight: 1.5,
-              fontWeight: 100,
-              opacity: 1,
-              margin: 0,
-              textAlign: "center",
-            }}
-          >
-            Uw Persoonlijke Allround DJ &amp; Partner,{" "}
-            <br />
-            Van Algemeen tot Ziens
-          </p>
-        </div>
-
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ paddingTop: "21px" }}>
           <button
             className="sv-btn-primary"
             style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}
@@ -224,7 +200,7 @@ export default function HeroSection() {
         {/* Stats row */}
         <div
           className="flex flex-wrap justify-center gap-8 mt-16"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: '0px', paddingRight: '22px', paddingBottom: '125px' }}
+          style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.5rem" }}
         >
           {[
             { value: "500+", label: "Shows Gespeeld" },
