@@ -113,3 +113,4 @@
 - [x] Scroll effect: backdrop wordt donkerder naarmate gebruiker verder naar beneden scrolt
 - [x] Backdrop animatie start pas na hero sectie bij scrollen (scroll parallax trigger)
 - [x] Navbar frosted glass effect
+- [x] Nieuwe backdrop animatie: openart-sample_0 MP4 als achtergrond instellen

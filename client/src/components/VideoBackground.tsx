@@ -3,8 +3,8 @@
  * Plays a self-hosted looping video as a full-screen fixed background.
  * Autoplay, muted, looped — no external dependencies (no YouTube iframe).
  *
- * Current backdrop: midnight blue particles (hue-shifted from teal source)
- * CDN-hosted 40s loop (0.5x slow motion), 1280×720, 30fps, ~7.5MB
+ * Current backdrop: openart custom animation (user-uploaded)
+ * CDN-hosted loop, ~5MB
  *
  * Scroll behaviour: backdrop is invisible while hero is in view.
  * It fades in smoothly as the user scrolls past the hero section.
@@ -21,7 +21,7 @@ interface VideoBackgroundProps {
 }
 
 const DEFAULT_SRC =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop_midnight_blue_slowmo_d62c22a8.mp4";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop_openart_new_32292bdd.mp4";
 
 // Hero section height in px — backdrop starts fading in after this scroll depth
 const HERO_HEIGHT = 1073;
