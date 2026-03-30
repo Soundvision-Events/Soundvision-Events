@@ -5,7 +5,11 @@
  *
  * Current backdrop: midnight blue particles (hue-shifted from teal source)
  * CDN-hosted 40s loop (0.5x slow motion), 1280×720, 30fps, ~7.5MB
+ *
+ * Scroll behaviour: backdrop is invisible while hero is in view.
+ * It fades in smoothly as the user scrolls past the hero section.
  */
+import { useEffect, useRef } from "react";
 
 interface VideoBackgroundProps {
   /** CDN URL of the background video */
@@ -19,12 +23,57 @@ interface VideoBackgroundProps {
 const DEFAULT_SRC =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop_midnight_blue_slowmo_d62c22a8.mp4";
 
+// Hero section height in px — backdrop starts fading in after this scroll depth
+const HERO_HEIGHT = 1073;
+// Transition distance (px) over which backdrop fades from 0 → 1
+const FADE_RANGE = 400;
+
+function lerp(a: number, b: number, t: number) {
+  return a + (b - a) * t;
+}
+
 export default function VideoBackground({
   src = DEFAULT_SRC,
   overlayOpacity = 0.30,
 }: VideoBackgroundProps) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+
+    let currentOpacity = 0;
+    let targetOpacity = 0;
+    let rafId: number;
+    let running = true;
+
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      // Start fading in when scroll reaches HERO_HEIGHT, fully visible after HERO_HEIGHT + FADE_RANGE
+      const progress = Math.max(0, Math.min(1, (scrollY - HERO_HEIGHT) / FADE_RANGE));
+      targetOpacity = progress;
+    };
+
+    const tick = () => {
+      if (!running) return;
+      currentOpacity = lerp(currentOpacity, targetOpacity, 0.06);
+      wrapper.style.opacity = currentOpacity.toFixed(4);
+      rafId = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // initialise to current scroll position
+    tick();
+
+    return () => {
+      running = false;
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
-    <>
+    <div ref={wrapperRef} style={{ opacity: 0 }}>
       {/* Video element — fixed behind all content */}
       <div
         style={{
@@ -66,6 +115,6 @@ export default function VideoBackground({
           pointerEvents: "none",
         }}
       />
-    </>
+    </div>
   );
 }
