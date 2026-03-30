@@ -21,12 +21,12 @@ interface VideoBackgroundProps {
 }
 
 const DEFAULT_SRC =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop_openart_new_32292bdd.mp4";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop-v3-hd_d354f7b7.mp4";
 
 // Hero section height in px — backdrop starts fading in after this scroll depth
-const HERO_HEIGHT = 1073;
+const HERO_HEIGHT = 800;
 // Transition distance (px) over which backdrop fades from 0 → 1
-const FADE_RANGE = 900;
+const FADE_RANGE = 400;
 
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
@@ -56,7 +56,7 @@ export default function VideoBackground({
 
     const tick = () => {
       if (!running) return;
-      currentOpacity = lerp(currentOpacity, targetOpacity, 0.035);
+      currentOpacity = lerp(currentOpacity, targetOpacity, 0.07);
       wrapper.style.opacity = currentOpacity.toFixed(4);
       rafId = requestAnimationFrame(tick);
     };

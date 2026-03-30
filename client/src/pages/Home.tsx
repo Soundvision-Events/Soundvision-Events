@@ -23,7 +23,7 @@ export default function Home() {
     <PageLayout
       backgroundOverride={
         <VideoBackground
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision_animated_15s_final_ef6c5683.mp4"
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop-v3-hd_d354f7b7.mp4"
           overlayOpacity={0.30}
         />
       }

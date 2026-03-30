@@ -115,3 +115,6 @@
 - [x] Navbar frosted glass effect
 - [x] Nieuwe backdrop animatie: openart-sample_0 MP4 als achtergrond instellen
 - [x] Admin-notificaties: ontvang Manus-melding bij contactformulier / boekingsaanvraag
+- [x] Nieuwe backdrop v3: verwerk met verhoogd contrast/helderheid, upload CDN
+- [x] USP-sectie uitlijnen op onderkant hero sectie
+- [x] Backdrop fade-in sneller en eerder bij scrollen

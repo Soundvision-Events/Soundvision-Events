@@ -257,8 +257,8 @@ export default function USPSection() {
         overflow: "hidden",
         paddingTop: '65px',
         paddingBottom: '53px',
-        marginTop: '-47px',
-        marginBottom: '-37px',
+        marginTop: '0px',
+        marginBottom: '0px',
       }}
     >
       {/* Subtle background grid — hidden */}
