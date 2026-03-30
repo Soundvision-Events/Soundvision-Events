@@ -114,4 +114,4 @@
 - [x] Backdrop animatie start pas na hero sectie bij scrollen (scroll parallax trigger)
 - [x] Navbar frosted glass effect
 - [x] Nieuwe backdrop animatie: openart-sample_0 MP4 als achtergrond instellen
-- [x] Backdrop video upscalen naar 1080p, contrast en helderheid verhogen
+- [x] Admin-notificaties: ontvang Manus-melding bij contactformulier / boekingsaanvraag
