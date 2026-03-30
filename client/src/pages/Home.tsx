@@ -3,6 +3,7 @@
  * Design: Electric Dark Spectacle
  * This is the main landing page for all-round DJ show bookings
  */
+import { useEffect } from "react";
 import PageLayout from "@/components/PageLayout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -14,6 +15,10 @@ import USPSection from "@/components/USPSection";
 import VideoBackground from "@/components/VideoBackground";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "SoundVision Events — DJ Bert Tonicity | Groningen";
+  }, []);
+
   return (
     <PageLayout
       backgroundOverride={
