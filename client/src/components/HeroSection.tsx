@@ -15,7 +15,7 @@ export default function HeroSection() {
       style={{ backgroundColor: "transparent" }}
     >
       {/* Hero video — 40% opacity so YouTube backdrop bleeds through underneath */}
-      <div className="absolute inset-0" style={{ opacity: 0.4 }}>
+      <div className="absolute inset-0" style={{ opacity: 0.75 }}>
         <video
           autoPlay
           loop
@@ -36,7 +36,7 @@ export default function HeroSection() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(8,12,16,0.08) 0%, rgba(8,12,16,0.02) 40%, rgba(8,12,16,0.15) 80%, rgba(8,12,16,0.40) 100%)",
+            "linear-gradient(to bottom, rgba(8,12,16,0.04) 0%, rgba(8,12,16,0.01) 40%, rgba(8,12,16,0.08) 80%, rgba(8,12,16,0.20) 100%)",
           pointerEvents: "none",
         }}
       />
