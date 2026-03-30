@@ -148,16 +148,18 @@ export default function AboutSection() {
                 className="mt-3 mb-6"
                 style={{
                   fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                  fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
                   letterSpacing: "0.05em",
-                  lineHeight: 1.05,
-                  color: "#f0f4f8",
-                  marginRight: '38px',
-                  marginLeft: '-267px',
-                  width: '629px',
+                  lineHeight: 1.15,
+                  color: "#ffffff",
+                  fontWeight: 100,
+                  textAlign: "center",
+                  paddingTop: "10px",
+                  paddingBottom: "15px",
+                  paddingLeft: "14px",
                 }}
               >
-                UW ALLROUND DJ
+                Uw vaste DJ en Partner: Vanaf het eerste gesprek tot het draaien op uw feest, en meer!
                 <br />
                 <span
                   style={{
@@ -165,9 +167,11 @@ export default function AboutSection() {
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
+                    fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
+                    marginLeft: "-117px",
                   }}
                 >
-                  BERT — DJ TONICITY
+                  DJ: TONICITY (Bert)
                 </span>
               </h2>
             </div>
