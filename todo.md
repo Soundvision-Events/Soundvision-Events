@@ -118,3 +118,4 @@
 - [x] Nieuwe backdrop v3: verwerk met verhoogd contrast/helderheid, upload CDN
 - [x] USP-sectie uitlijnen op onderkant hero sectie
 - [x] Backdrop fade-in sneller en eerder bij scrollen
+- [x] Navbar: "Vraag Offerte Aan" knop met smooth scroll naar contactformulier
