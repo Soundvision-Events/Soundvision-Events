@@ -112,3 +112,4 @@
 - [x] Alle tabel/grid-kolommen op alle pagina's: neon donker paars/blauw achtergrond met 30% opaciteit
 - [x] Scroll effect: backdrop wordt donkerder naarmate gebruiker verder naar beneden scrolt
 - [x] Backdrop animatie start pas na hero sectie bij scrollen (scroll parallax trigger)
+- [x] Navbar frosted glass effect
