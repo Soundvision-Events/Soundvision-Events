@@ -26,7 +26,7 @@ const DEFAULT_SRC =
 // Hero section height in px — backdrop starts fading in after this scroll depth
 const HERO_HEIGHT = 1073;
 // Transition distance (px) over which backdrop fades from 0 → 1
-const FADE_RANGE = 400;
+const FADE_RANGE = 900;
 
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
@@ -56,7 +56,7 @@ export default function VideoBackground({
 
     const tick = () => {
       if (!running) return;
-      currentOpacity = lerp(currentOpacity, targetOpacity, 0.06);
+      currentOpacity = lerp(currentOpacity, targetOpacity, 0.035);
       wrapper.style.opacity = currentOpacity.toFixed(4);
       rafId = requestAnimationFrame(tick);
     };
