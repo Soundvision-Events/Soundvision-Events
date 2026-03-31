@@ -276,16 +276,20 @@ export default function UitbreidingenSection() {
               {/* Most popular badge */}
               {pkg.highlight && (
                 <div
-                  className="absolute -top-4 left-1/2 -translate-x-1/2"
+                  className="absolute left-1/2 -translate-x-1/2"
                   style={{
+                    top: "-12px",
+                    zIndex: 20,
                     background: "linear-gradient(135deg, #00c8ff, #0090ff)",
                     color: "#080c10",
                     fontFamily: "'Bebas Neue', sans-serif",
                     fontSize: "0.85rem",
                     letterSpacing: "0.15em",
-                    padding: "0.35rem 1.25rem",
+                    padding: "0.4rem 1.5rem",
                     borderRadius: "100px",
                     whiteSpace: "nowrap",
+                    boxShadow: "0 4px 16px rgba(0, 200, 255, 0.25)",
+                    fontWeight: 700,
                   }}
                 >
                   MEEST GEKOZEN
