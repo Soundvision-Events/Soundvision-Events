@@ -119,3 +119,4 @@
 - [x] USP-sectie uitlijnen op onderkant hero sectie
 - [x] Backdrop fade-in sneller en eerder bij scrollen
 - [x] Navbar: "Vraag Offerte Aan" knop met smooth scroll naar contactformulier
+- [x] USP sectie "Ónze Visie, Úw Beleving": helderheid 100% (opacity 1 op container)

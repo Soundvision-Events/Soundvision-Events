@@ -111,7 +111,7 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             inset: 0,
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            background: "linear-gradient(135deg, rgba(30,10,60,0.65) 0%, rgba(10,20,60,0.65) 100%)",
+            background: "linear-gradient(135deg, rgba(30,10,60,1) 0%, rgba(10,20,60,1) 100%)",
             border: `1px solid ${card.color}33`,
             borderRadius: "1.5rem",
             display: "flex",
@@ -186,7 +186,7 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             gap: "1rem",
             padding: "2rem",
             boxShadow: `0 0 30px ${card.glowColor}, 0 0 60px ${card.glowColor}`,
-            backgroundColor: 'rgba(53,0,122,0.65)',
+            backgroundColor: 'rgba(53,0,122,1)',
           }}
         >
           {/* Neon number badge */}
