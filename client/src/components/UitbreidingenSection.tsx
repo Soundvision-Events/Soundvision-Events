@@ -187,7 +187,7 @@ export default function UitbreidingenSection() {
               color: "#f0f4f8",
             }}
           >
-            UITBREIDINGEN
+            ALLROUND DJ SHOWS OP MAAT
           </h2>
           <p
             className="mt-4 max-w-2xl mx-auto"
