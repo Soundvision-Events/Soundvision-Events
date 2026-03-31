@@ -125,3 +125,4 @@
 - [x] Notificatie 2: Site-brede aankondigingsbanner bovenaan de pagina
 - [x] Notificatie 3: Browser push-notificaties opt-in voor bezoekers
 - [x] Notificatie 4: Gmail e-mail notificatie bij contactformulier inzending
+- [x] USP flip cards: alle 4 kaarten dezelfde kleur als "Boek Nu" CTA knop (cyan #00c8ff / gradient #00c8ff→#0090cc)
