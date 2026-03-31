@@ -263,7 +263,7 @@ export default function USPSection() {
     >
       {/* Subtle background grid — hidden */}
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem", opacity: 1 }}>
         {/* Section header */}
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p
