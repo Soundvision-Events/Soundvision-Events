@@ -10,6 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
 import YouTubeBackground from "@/components/YouTubeBackground";
+import SEOHead from "@/components/SEOHead";
 
 export default function Bedrijfsfeesten() {
   return (
@@ -22,6 +23,12 @@ export default function Bedrijfsfeesten() {
         />
       }
     >
+      <SEOHead
+        title="Bedrijfsfeesten DJ — Professionele DJ Show voor Zakelijke Events"
+        description="DJ voor uw bedrijfsfeest in Groningen, Drenthe of Friesland? SoundVision Events levert professionele DJ shows voor teambuilding, jubilea, gala's en personeelsfeesten."
+        path="/bedrijfsfeesten"
+        keywords="bedrijfsfeest DJ, zakelijk DJ, corporate DJ Groningen, DJ personeelsfeest, bedrijfsgala entertainment"
+      />
       <EventPageHero
         title="BEDRIJFSFEESTEN DJ SHOW"
         subtitle="SoundVision Events — Zakelijk"

@@ -10,6 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
 import YouTubeBackground from "@/components/YouTubeBackground";
+import SEOHead from "@/components/SEOHead";
 
 export default function Studentenfeesten() {
   return (
@@ -22,6 +23,12 @@ export default function Studentenfeesten() {
         />
       }
     >
+      <SEOHead
+        title="Studentenfeesten DJ — Energieke DJ Show voor Studenten & Schoolfeesten"
+        description="DJ voor studentenfeest of schoolfeest in Groningen? SoundVision Events brengt harde beats, spectaculaire effecten en een volle dansvloer. Introweek, gala of eindfeest."
+        path="/studentenfeesten"
+        keywords="studentenfeest DJ, schoolfeest DJ, DJ introweek, gala DJ Groningen, studentenfeest entertainment"
+      />
       <EventPageHero
         title="STUDENTEN & SCHOOLFEESTEN"
         subtitle="SoundVision Events — Studenten"

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /404
+
+Sitemap: https://soundvision-6rh3pkve.manus.space/sitemap.xml

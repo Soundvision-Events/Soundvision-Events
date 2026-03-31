@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
 import YouTubeBackground from "@/components/YouTubeBackground";
+import SEOHead from "@/components/SEOHead";
 
 export default function Prive() {
   return (
@@ -23,6 +24,12 @@ export default function Prive() {
         />
       }
     >
+      <SEOHead
+        title="Privé Feesten DJ — DJ Show voor Verjaardagen, Jubilea & Familiefeesten"
+        description="DJ voor uw privéfeest? SoundVision Events verzorgt persoonlijke DJ shows voor verjaardagen, jubilea en familiefeesten in Groningen en Noord-Nederland. Op maat en onvergetelijk."
+        path="/prive"
+        keywords="privéfeest DJ, verjaardag DJ, jubileum DJ, familiefeest DJ, DJ inhuren Groningen, feest DJ Noord-Nederland"
+      />
       <EventPageHero
         title="PRIVÉ FEESTEN"
         subtitle="SoundVision Events — Privé"

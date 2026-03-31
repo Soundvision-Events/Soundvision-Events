@@ -3,7 +3,6 @@
  * Design: Electric Dark Spectacle
  * This is the main landing page for all-round DJ show bookings
  */
-import { useEffect } from "react";
 import PageLayout from "@/components/PageLayout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -13,12 +12,9 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import VideoBackground from "@/components/VideoBackground";
+import SEOHead from "@/components/SEOHead";
 
 export default function Home() {
-  useEffect(() => {
-    document.title = "SoundVision Events — DJ Bert Tonicity | Groningen";
-  }, []);
-
   return (
     <PageLayout
       backgroundOverride={
@@ -28,6 +24,12 @@ export default function Home() {
         />
       }
     >
+      <SEOHead
+        title="Allround DJ Shows op Maat — DJ Tonicity Groningen"
+        description="SoundVision Events biedt professionele allround DJ shows voor bruiloften, bedrijfsfeesten, studentenfeesten en privéfeesten in Groningen, Drenthe, Friesland en Overijssel. Persoonlijk contact, maatwerk en ervaren crowd-reading."
+        path="/"
+        keywords="DJ boeken Groningen, allround DJ show, bruiloft DJ, bedrijfsfeest DJ, DJ Tonicity, SoundVision Events, DJ inhuren Noord-Nederland"
+      />
       <HeroSection />
       <USPSection />
       <AboutSection />

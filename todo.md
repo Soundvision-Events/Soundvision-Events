@@ -129,3 +129,8 @@
 - [x] Sectietitel "UITBREIDINGEN" wijzigen naar "ALLROUND DJ SHOWS OP MAAT"
 - [x] "MEEST GEKOZEN" badge: tekst wordt afgesneden — positioning en overflow repareren
 - [x] Contactgegevens bijwerken: telefoonnummer 0622764233 en e-mailadres info@soundvisionevents.nl
+- [x] SEO: Meta description, keywords en Open Graph tags in index.html
+- [x] SEO: JSON-LD structured data (LocalBusiness + DJ EventService)
+- [x] SEO: robots.txt en sitemap.xml
+- [x] SEO: Per-pagina dynamische titels en meta-beschrijvingen (react-helmet-async)
+- [x] SEO: Semantische HTML verbeteren (alt-teksten, aria-labels)

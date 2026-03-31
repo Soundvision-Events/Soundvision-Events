@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
 import YouTubeBackground from "@/components/YouTubeBackground";
+import SEOHead from "@/components/SEOHead";
 
 /* ─── Wedding colour tokens ─────────────────────────── */
 const ROSE        = "#ff3d8a";
@@ -29,6 +30,12 @@ export default function Bruiloft() {
         />
       }
     >
+      <SEOHead
+        title="Bruiloft DJ — Onvergetelijke Trouwfeest DJ Show"
+        description="Zoekt u een bruiloft DJ in Groningen, Drenthe of Friesland? SoundVision Events verzorgt romantische en energieke DJ shows op maat voor uw trouwdag. Persoonlijk contact met DJ Tonicity."
+        path="/bruiloft"
+        keywords="bruiloft DJ, trouwfeest DJ, wedding DJ Groningen, DJ huwelijksfeest, bruiloft entertainment Noord-Nederland"
+      />
 
       {/* ── Full-length rose gradient backdrop wrapper ── */}
       <div style={{ position: "relative", minHeight: "100vh" }}>
