@@ -9,6 +9,9 @@ import Bruiloft from "./pages/Bruiloft";
 import Bedrijfsfeesten from "./pages/Bedrijfsfeesten";
 import Studentenfeesten from "./pages/Studentenfeesten";
 import Prive from "./pages/Prive";
+import SocialProofPopup from "./components/SocialProofPopup";
+import AnnouncementBanner from "./components/AnnouncementBanner";
+import PushNotificationPrompt from "./components/PushNotificationPrompt";
 
 function Router() {
   return (
@@ -29,8 +32,11 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
+          <AnnouncementBanner />
           <Toaster />
           <Router />
+          <SocialProofPopup />
+          <PushNotificationPrompt />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

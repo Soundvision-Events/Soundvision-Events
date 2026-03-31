@@ -6,6 +6,7 @@ import { z } from "zod";
 import { createContactSubmission, getContactSubmissions, updateContactStatus, createFileRecord, getFiles, deleteFileRecord } from "./db";
 import { storagePut } from "./storage";
 import { notifyOwner } from "./_core/notification";
+import { sendGmailNotification } from "./_core/gmailNotification";
 import { nanoid } from "nanoid";
 
 export const appRouter = router({
@@ -40,6 +41,8 @@ export const appRouter = router({
           title: `Nieuwe boeking van ${input.name}`,
           content: `Type: ${input.eventType || "Niet opgegeven"}\nDatum: ${input.eventDate || "Niet opgegeven"}\nLocatie: ${input.location || "Niet opgegeven"}\nPakket: ${input.packageType || "Niet opgegeven"}\nE-mail: ${input.email}\nTelefoon: ${input.phone || "Niet opgegeven"}\nBericht: ${input.message || "-"}`,
         });
+        // Also send Gmail email notification
+        await sendGmailNotification(input);
         return { success: true };
       }),
 

@@ -121,3 +121,7 @@
 - [x] Navbar: "Vraag Offerte Aan" knop met smooth scroll naar contactformulier
 - [x] USP sectie "Ónze Visie, Úw Beleving": helderheid 100% (opacity 1 op container)
 - [x] Verwijder scroll fade-in opacity effect van backdrop — alleen parallax + smooth scroll behouden
+- [x] Notificatie 1: Social-proof bezoeker pop-up ("Iemand uit Groningen heeft zojuist geboekt")
+- [x] Notificatie 2: Site-brede aankondigingsbanner bovenaan de pagina
+- [x] Notificatie 3: Browser push-notificaties opt-in voor bezoekers
+- [x] Notificatie 4: Gmail e-mail notificatie bij contactformulier inzending
