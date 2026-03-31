@@ -128,3 +128,4 @@
 - [x] USP flip cards: alle 4 kaarten dezelfde kleur als "Boek Nu" CTA knop (cyan #00c8ff / gradient #00c8ff→#0090cc)
 - [x] Sectietitel "UITBREIDINGEN" wijzigen naar "ALLROUND DJ SHOWS OP MAAT"
 - [x] "MEEST GEKOZEN" badge: tekst wordt afgesneden — positioning en overflow repareren
+- [x] Contactgegevens bijwerken: telefoonnummer 0622764233 en e-mailadres info@soundvisionevents.nl
