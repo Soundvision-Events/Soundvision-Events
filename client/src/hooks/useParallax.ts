@@ -18,10 +18,6 @@
  * 4. SCROLL-DRIVEN FLOAT (.sv-float-scroll)
  *    Decorative elements drift up/down based on scroll position.
  *
- * 5. SCROLL-DRIVEN BACKDROP DIMMING (#sv-scroll-dim)
- *    A fixed overlay that gradually darkens the backdrop as the user
- *    scrolls down — opacity 0 at top, up to 0.55 at full scroll depth.
- *    Spring-lerp for smooth transitions.
  */
 import { useEffect } from "react";
 
@@ -102,56 +98,6 @@ export function useParallax() {
     const els = document.querySelectorAll(".sv-zoom-reveal, .sv-fade-up");
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
-
-  // ── 5: Scroll-driven backdrop dimming ────────────────────────────────────
-  useEffect(() => {
-    // Create a fixed overlay div that darkens as user scrolls
-    const dimOverlay = document.createElement("div");
-    dimOverlay.id = "sv-scroll-dim";
-    dimOverlay.style.cssText = [
-      "position:fixed",
-      "inset:0",
-      "z-index:2",
-      "pointer-events:none",
-      "background:rgba(0,0,0,0)",
-      "will-change:opacity",
-      "transition:none",
-    ].join(";");
-    document.body.appendChild(dimOverlay);
-
-    // Max extra darkness added by scroll (on top of existing overlays)
-    const MAX_DIM = 0.55;
-    // Scroll distance (px) over which full dimming is reached
-    const DIM_RANGE = 1200;
-
-    let currentOpacity = 0;
-    let targetOpacity = 0;
-    let rafId: number;
-    let running = true;
-
-    const onScroll = () => {
-      const scrollY = window.scrollY;
-      targetOpacity = Math.min(scrollY / DIM_RANGE, 1) * MAX_DIM;
-    };
-
-    const tick = () => {
-      if (!running) return;
-      currentOpacity = lerp(currentOpacity, targetOpacity, 0.06);
-      dimOverlay.style.background = `rgba(0,0,0,${currentOpacity.toFixed(4)})`;
-      rafId = requestAnimationFrame(tick);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // initialise
-    tick();
-
-    return () => {
-      running = false;
-      cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", onScroll);
-      dimOverlay.remove();
-    };
   }, []);
 
   // ── 3: Mouse-tracking tilt on .sv-tilt elements ─────────────────────────

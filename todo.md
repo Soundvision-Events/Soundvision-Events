@@ -120,3 +120,4 @@
 - [x] Backdrop fade-in sneller en eerder bij scrollen
 - [x] Navbar: "Vraag Offerte Aan" knop met smooth scroll naar contactformulier
 - [x] USP sectie "Ónze Visie, Úw Beleving": helderheid 100% (opacity 1 op container)
+- [x] Verwijder scroll fade-in opacity effect van backdrop — alleen parallax + smooth scroll behouden
