@@ -141,3 +141,4 @@
 - [x] USP flip cards: paars-blauw verloop toepassen (zelfde als "Offerte Aanvragen" pop-up)
 - [ ] Site-breed kleurthema: paars (#7300ff) naar helder blauw (#00c8ff) verloop doorvoeren op alle componenten
 - [x] Prijstabellen symmetrisch maken: Elite Show kaart uitlijning, "MEEST GEKOZEN" badge en titel volledig zichtbaar
+- [x] Prijstabellen redesign: scroll fade-in transparantie, gelijke paarse kolommen, gloeiende lichtblauwe borders, featured kaart groter, flip-card met foto placeholder voorkant
