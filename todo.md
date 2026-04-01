@@ -139,3 +139,5 @@
 - [x] YouTube account wijzigen naar https://youtube.com/@soundvision.events
 - [ ] Site publiceren naar SoundVisionEvents.nl
 - [x] USP flip cards: paars-blauw verloop toepassen (zelfde als "Offerte Aanvragen" pop-up)
+- [ ] Site-breed kleurthema: paars (#7300ff) naar helder blauw (#00c8ff) verloop doorvoeren op alle componenten
+- [x] Prijstabellen symmetrisch maken: Elite Show kaart uitlijning, "MEEST GEKOZEN" badge en titel volledig zichtbaar

@@ -204,12 +204,13 @@ export default function UitbreidingenSection() {
         </div>
 
         {/* ── PACKAGES ── */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-20">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-20 items-start" style={{ paddingTop: "24px" }}>
           {packages.map((pkg, i) => (
             <div
               key={pkg.id}
-              className={`sv-fade-up sv-tilt relative rounded-2xl flex flex-col overflow-hidden ${pkg.highlight ? "sv-package-featured" : ""}`}
+              className={`sv-fade-up sv-tilt relative rounded-2xl flex flex-col ${pkg.highlight ? "sv-package-featured" : ""}`}
               style={{
+                overflow: "visible",
                 animationDelay: `${i * 0.15}s`,
                 background: pkg.highlight
                   ? "linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(20, 10, 60, 0.30))"
@@ -239,7 +240,7 @@ export default function UitbreidingenSection() {
               {pkg.video && (
                 <div
                   className="relative w-full overflow-hidden"
-                  style={{ height: "180px", flexShrink: 0 }}
+                  style={{ height: "160px", flexShrink: 0, borderRadius: "1rem 1rem 0 0" }}
                 >
                   <video
                     src={pkg.video}
@@ -273,30 +274,33 @@ export default function UitbreidingenSection() {
                 </div>
               )}
 
-              {/* Most popular badge */}
+              {/* Most popular badge — sits above the card, outside overflow */}
               {pkg.highlight && (
                 <div
-                  className="absolute left-1/2 -translate-x-1/2"
                   style={{
-                    top: "-12px",
-                    zIndex: 20,
-                    background: "linear-gradient(135deg, #00c8ff, #0090ff)",
-                    color: "#080c10",
+                    position: "absolute",
+                    top: "-18px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    zIndex: 30,
+                    background: "linear-gradient(135deg, #7300ff, #00c8ff)",
+                    color: "#fff",
                     fontFamily: "'Bebas Neue', sans-serif",
                     fontSize: "0.85rem",
                     letterSpacing: "0.15em",
                     padding: "0.4rem 1.5rem",
                     borderRadius: "100px",
                     whiteSpace: "nowrap",
-                    boxShadow: "0 4px 16px rgba(0, 200, 255, 0.25)",
+                    boxShadow: "0 4px 20px rgba(115,0,255,0.4)",
                     fontWeight: 700,
+                    pointerEvents: "none",
                   }}
                 >
                   MEEST GEKOZEN
                 </div>
               )}
 
-              <div className="p-8 flex flex-col flex-1">
+              <div className="flex flex-col flex-1" style={{ padding: pkg.highlight ? "2.5rem 2rem 2rem" : "2rem" }}>
                 <div className="mb-6">
                   <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{pkg.icon}</div>
                   <div
