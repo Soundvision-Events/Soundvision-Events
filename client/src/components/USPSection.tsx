@@ -16,10 +16,10 @@ interface USPCard {
   glowColor: string;   // rgba for box-shadow
 }
 
-// ── Boek Nu button color: linear-gradient(135deg, #00c8ff, #0090cc)
-// All 4 cards share the same cyan accent to match the primary CTA.
-const CARD_COLOR = "#00c8ff";
-const CARD_GLOW = "rgba(0,200,255,0.35)";
+// ── Matching the AnnouncementBanner purple-blue gradient: #060033 → #35007a → #7300ff → #00c8ff
+const CARD_COLOR = "#7300ff";
+const CARD_GLOW = "rgba(115,0,255,0.40)";
+const CARD_COLOR_ACCENT = "#00c8ff";
 
 const USPS: USPCard[] = [
   {
@@ -116,8 +116,8 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             inset: 0,
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            background: "linear-gradient(135deg, rgba(0,40,60,1) 0%, rgba(0,20,50,1) 100%)",
-            border: `1px solid ${card.color}33`,
+            background: "linear-gradient(135deg, #060033 0%, #35007a 100%)",
+            border: `1px solid ${card.color}44`,
             borderRadius: "1.5rem",
             display: "flex",
             flexDirection: "column",
@@ -125,7 +125,7 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             justifyContent: "center",
             gap: "1.25rem",
             padding: "2rem",
-            boxShadow: `0 0 0 1px ${card.color}22, inset 0 1px 0 ${card.color}11`,
+            boxShadow: `0 0 0 1px ${card.color}33, inset 0 1px 0 ${card.color}22`,
             transition: "box-shadow 0.3s ease",
           }}
         >
@@ -162,7 +162,7 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             >
               {card.title}
             </h3>
-            <p style={{ fontSize: "0.75rem", color: card.color, letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.85 }}>
+            <p style={{ fontSize: "0.75rem", color: CARD_COLOR_ACCENT, letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.85 }}>
               {card.subtitle}
             </p>
           </div>
@@ -181,8 +181,8 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: `linear-gradient(135deg, rgba(0,100,140,1) 0%, rgba(0,60,100,1) 100%)`,
-            border: `1.5px solid ${card.color}88`,
+            background: `linear-gradient(135deg, #35007a 0%, #060033 100%)`,
+            border: `1.5px solid ${card.color}99`,
             borderRadius: "1.5rem",
             display: "flex",
             flexDirection: "column",
@@ -240,8 +240,8 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             style={{
               height: "2px",
               width: "60%",
-              background: `linear-gradient(90deg, transparent, ${card.color}, transparent)`,
-              boxShadow: `0 0 8px ${card.color}`,
+            background: `linear-gradient(90deg, transparent, #7300ff, #00c8ff, transparent)`,
+            boxShadow: `0 0 8px #7300ff, 0 0 16px #00c8ff44`,
               borderRadius: "999px",
               marginTop: "0.5rem",
             }}
