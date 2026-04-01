@@ -47,7 +47,7 @@ export default function Footer() {
             {/* Social links */}
             <div className="flex gap-3">
               {[
-                { icon: <Instagram size={16} />, href: "https://www.instagram.com/soundvisionevents", label: "Instagram" },
+                { icon: <Instagram size={16} />, href: "https://www.instagram.com/soundvision.events", label: "Instagram" },
                 { icon: <Youtube size={16} />, href: "https://www.youtube.com/@SoundVisionEvents", label: "YouTube" },
                 { icon: <Mail size={16} />, href: "mailto:info@soundvisionevents.nl", label: "Email" },
               ].map((social) => (

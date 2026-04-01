@@ -244,7 +244,7 @@ export default function ContactSection() {
                   {
                     icon: <Instagram size={18} />,
                     label: "Instagram",
-                    href: "https://www.instagram.com/soundvisionevents",
+                    href: "https://www.instagram.com/soundvision.events",
                   },
                   {
                     icon: <Youtube size={18} />,
