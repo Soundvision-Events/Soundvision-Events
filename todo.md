@@ -135,3 +135,4 @@
 - [x] SEO: Per-pagina dynamische titels en meta-beschrijvingen (react-helmet-async)
 - [x] SEO: Semantische HTML verbeteren (alt-teksten, aria-labels)
 - [x] Instagram account wijzigen naar soundvision.events
+- [x] Hero home: stockfoto verwijderen die zichtbaar is tijdens laden (voor video start)
