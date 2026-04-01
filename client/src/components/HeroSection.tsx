@@ -1,12 +1,52 @@
 /**
  * SoundVision Events — Hero Section
  * Full-screen hero with animated ring, looping background VIDEO, and CTA
+ * Includes fading review slider below stats row
  */
+import { useState, useEffect } from "react";
+
+const REVIEWS = [
+  { name: "Marieke V.", city: "Groningen", stars: 5, text: "Geweldige sfeer, iedereen bleef de hele avond dansen. Absolute aanrader!" },
+  { name: "Thomas B.", city: "Assen", stars: 5, text: "Professioneel, punctueel en een geweldige show. We zijn super blij!" },
+  { name: "Lisa & Daan", city: "Leeuwarden", stars: 5, text: "Onze bruiloft was perfect. De muziekkeuze was precies wat we wilden." },
+  { name: "Sander K.", city: "Groningen", stars: 5, text: "Top DJ! Bedrijfsfeest was een groot succes dankzij SoundVision." },
+  { name: "Emma de V.", city: "Drachten", stars: 5, text: "Fantastische avond, iedereen was enthousiast. Tot de volgende keer!" },
+];
+
+function StarRating({ count }: { count: number }) {
+  return (
+    <span style={{ display: "inline-flex", gap: "2px" }}>
+      {Array.from({ length: count }).map((_, i) => (
+        <svg key={i} width="11" height="11" viewBox="0 0 24 24" fill="#ffc84a" style={{ flexShrink: 0 }}>
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
 export default function HeroSection() {
+  const [activeReview, setActiveReview] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Fade out
+      setVisible(false);
+      setTimeout(() => {
+        setActiveReview((prev) => (prev + 1) % REVIEWS.length);
+        setVisible(true);
+      }, 500);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
+
+  const review = REVIEWS[activeReview];
 
   return (
     <section
@@ -53,7 +93,7 @@ export default function HeroSection() {
       {/* Content */}
       <div
         className="relative z-10 text-center px-4 max-w-5xl mx-auto"
-        style={{ paddingTop: '157px', paddingRight: '22px', paddingBottom: '335px', paddingLeft: '21px', height: '1073px' }}
+        style={{ paddingTop: '157px', paddingRight: '22px', paddingBottom: '280px', paddingLeft: '21px', height: '1073px' }}
       >
         {/* Main heading: animated logo ring LEFT of h1 */}
         <div
@@ -233,6 +273,75 @@ export default function HeroSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Review Slider */}
+        <div
+          style={{
+            marginTop: "1.75rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.35rem",
+            minHeight: "52px",
+          }}
+        >
+          <div
+            style={{
+              opacity: visible ? 1 : 0,
+              transition: "opacity 0.5s ease",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.3rem",
+            }}
+          >
+            {/* Stars + name row */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <StarRating count={review.stars} />
+              <span style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "0.7rem",
+                color: "rgba(240,244,248,0.45)",
+                letterSpacing: "0.04em",
+              }}>
+                {review.name} · {review.city}
+              </span>
+            </div>
+            {/* Review text */}
+            <p style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "0.78rem",
+              color: "rgba(240,244,248,0.65)",
+              fontStyle: "italic",
+              margin: 0,
+              letterSpacing: "0.01em",
+              maxWidth: "480px",
+            }}>
+              "{review.text}"
+            </p>
+          </div>
+
+          {/* Dot indicators */}
+          <div style={{ display: "flex", gap: "5px", marginTop: "0.4rem" }}>
+            {REVIEWS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setVisible(false); setTimeout(() => { setActiveReview(i); setVisible(true); }, 300); }}
+                style={{
+                  width: i === activeReview ? "16px" : "5px",
+                  height: "5px",
+                  borderRadius: "3px",
+                  background: i === activeReview ? "#00c8ff" : "rgba(255,255,255,0.2)",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "all 0.3s ease",
+                }}
+                aria-label={`Review ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

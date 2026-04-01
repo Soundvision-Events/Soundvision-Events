@@ -95,7 +95,7 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons + Trustoo Top Pro Badge */}
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={scrollToContact}
@@ -134,6 +134,59 @@ export default function Navbar() {
             >
               Boek Nu
             </button>
+
+            {/* Trustoo Top Pro Badge */}
+            <a
+              href="https://www.trustoo.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Trustoo Top Pro — Gecertificeerd door klantbeoordelingen"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '4px 10px 4px 6px',
+                borderRadius: '20px',
+                background: 'rgba(255, 160, 30, 0.12)',
+                border: '1px solid rgba(255, 160, 30, 0.35)',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+                flexShrink: 0,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 160, 30, 0.22)';
+                e.currentTarget.style.borderColor = 'rgba(255, 160, 30, 0.65)';
+                e.currentTarget.style.boxShadow = '0 0 12px rgba(255, 160, 30, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 160, 30, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(255, 160, 30, 0.35)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/trustoo-top-pro-badge-U73ZYHrqAeRae2Yz3qYvqA.webp"
+                alt="Trustoo Top Pro"
+                style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+              />
+              <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+                <span style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: '0.6rem',
+                  letterSpacing: '0.06em',
+                  color: 'rgba(255, 200, 100, 0.7)',
+                  textTransform: 'uppercase',
+                }}>Trustoo</span>
+                <span style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.04em',
+                  color: '#ffc84a',
+                  textTransform: 'uppercase',
+                }}>Top Pro</span>
+              </div>
+            </a>
           </div>
 
           {/* Mobile menu toggle */}
