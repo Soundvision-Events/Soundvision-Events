@@ -149,3 +149,5 @@
 - [ ] Hero: Trustoo badge widget in statistiekenbalk plaatsen
 - [x] Navbar: Trustoo Top Pro badge rechts in de sticky navigatiebalk (zichtbaar tijdens scrollen)
 - [x] Hero: fade-to-next review slider met kleine recensies en sterren (Trustoo reviews)
+- [x] Hero review slider: subtiele één-voor-één ster animatie (oplichten bij elke nieuwe review)
+- [x] Hero video: 100% opacity + scroll-fade tot volledig onzichtbaar als hero uit scherm gescrolld

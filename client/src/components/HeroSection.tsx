@@ -3,7 +3,22 @@
  * Full-screen hero with animated ring, looping background VIDEO, and CTA
  * Includes fading review slider below stats row
  */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+// CSS keyframe injected once for star pop animation
+const STAR_STYLE_ID = "sv-star-anim";
+if (typeof document !== "undefined" && !document.getElementById(STAR_STYLE_ID)) {
+  const style = document.createElement("style");
+  style.id = STAR_STYLE_ID;
+  style.textContent = `
+    @keyframes sv-star-pop {
+      0%   { opacity: 0.15; transform: scale(0.6); filter: brightness(0.4); }
+      50%  { opacity: 1;    transform: scale(1.35); filter: brightness(1.8) drop-shadow(0 0 4px #ffc84a); }
+      100% { opacity: 1;    transform: scale(1);    filter: brightness(1.2) drop-shadow(0 0 2px #ffc84a88); }
+    }
+  `;
+  document.head.appendChild(style);
+}
 
 const REVIEWS = [
   { name: "Marieke V.", city: "Groningen", stars: 5, text: "Geweldige sfeer, iedereen bleef de hele avond dansen. Absolute aanrader!" },
@@ -13,11 +28,22 @@ const REVIEWS = [
   { name: "Emma de V.", city: "Drachten", stars: 5, text: "Fantastische avond, iedereen was enthousiast. Tot de volgende keer!" },
 ];
 
-function StarRating({ count }: { count: number }) {
+function StarRating({ count, animKey }: { count: number; animKey: number }) {
   return (
-    <span style={{ display: "inline-flex", gap: "2px" }}>
+    <span style={{ display: "inline-flex", gap: "3px" }}>
       {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} width="11" height="11" viewBox="0 0 24 24" fill="#ffc84a" style={{ flexShrink: 0 }}>
+        <svg
+          key={`${animKey}-${i}`}
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="#ffc84a"
+          style={{
+            flexShrink: 0,
+            animation: `sv-star-pop 0.45s ease-out both`,
+            animationDelay: `${i * 90}ms`,
+          }}
+        >
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
       ))}
@@ -28,6 +54,29 @@ function StarRating({ count }: { count: number }) {
 export default function HeroSection() {
   const [activeReview, setActiveReview] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [videoOpacity, setVideoOpacity] = useState(1);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Scroll-fade: video fades from 1 → 0 as hero scrolls out of view
+  useEffect(() => {
+    const onScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = sectionRef.current.offsetHeight;
+      // Start fading when top of section starts leaving viewport (rect.top < 0)
+      // Fully transparent when section is fully scrolled past (rect.top < -sectionHeight)
+      if (rect.top >= 0) {
+        setVideoOpacity(1);
+      } else {
+        const scrolled = Math.abs(rect.top);
+        const fadeRange = sectionHeight * 0.6; // fade over 60% of section height
+        const opacity = Math.max(0, 1 - scrolled / fadeRange);
+        setVideoOpacity(opacity);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -51,11 +100,12 @@ export default function HeroSection() {
   return (
     <section
       id="home"
+      ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "transparent" }}
     >
-      {/* Hero video — 40% opacity so YouTube backdrop bleeds through underneath */}
-      <div className="absolute inset-0" style={{ opacity: 0.75 }}>
+      {/* Hero video — full opacity, fades out on scroll */}
+      <div className="absolute inset-0" style={{ opacity: videoOpacity, transition: "opacity 0.05s linear", willChange: "opacity" }}>
         <video
           autoPlay
           loop
@@ -298,7 +348,7 @@ export default function HeroSection() {
           >
             {/* Stars + name row */}
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <StarRating count={review.stars} />
+              <StarRating count={review.stars} animKey={activeReview} />
               <span style={{
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: "0.7rem",
