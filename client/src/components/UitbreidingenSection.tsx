@@ -29,6 +29,7 @@ const packages = [
     highlight: false,
     photoLabel: "Intiem DJ Setup",
     photoIcon: "🎵",
+    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-intimate_1e8d3f11.jpg",
     features: [
       "Professionele DJ setup (Pioneer)",
       "Muziek op maat voor uw feest",
@@ -50,6 +51,7 @@ const packages = [
     highlight: true,
     photoLabel: "Luxe DJ Setup",
     photoIcon: "🎛️",
+    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-luxe_ab77481b.jpg",
     features: [
       "Professionele DJ setup (Pioneer CDJ)",
       "Muziek volledig op maat",
@@ -73,6 +75,7 @@ const packages = [
     highlight: false,
     photoLabel: "Elite DJ Setup",
     photoIcon: "🚀",
+    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-elite_c781eb31.png",
     features: [
       "Professionele DJ setup (Pioneer CDJ-3000)",
       "Volledig gepersonaliseerde muziekervaring",
@@ -209,76 +212,59 @@ function PackageFlipCard({ pkg, index, onContact }: {
             flexDirection: "column",
           }}
         >
-          {/* Photo placeholder — square */}
+          {/* Photo — real show image */}
           <div
             style={{
               width: "100%",
               aspectRatio: "1 / 1",
               maxHeight: "55%",
-              background: `linear-gradient(135deg, ${GLOW_PURPLE}22 0%, #000020 50%, ${GLOW_BLUE}11 100%)`,
               borderBottom: `1px solid ${GLOW_BLUE}33`,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.75rem",
               position: "relative",
               overflow: "hidden",
               flexShrink: 0,
             }}
           >
-            {/* Grid lines for placeholder feel */}
+            <img
+              src={(pkg as any).photoUrl}
+              alt={pkg.photoLabel}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
+                transition: "transform 0.5s ease",
+                transform: hovered ? "scale(1.05)" : "scale(1)",
+              }}
+            />
+            {/* Subtle glow overlay */}
             <div style={{
               position: "absolute",
               inset: 0,
-              backgroundImage: `
-                linear-gradient(${GLOW_BLUE}08 1px, transparent 1px),
-                linear-gradient(90deg, ${GLOW_BLUE}08 1px, transparent 1px)
-              `,
-              backgroundSize: "32px 32px",
+              background: `linear-gradient(to bottom, transparent 60%, ${GLOW_PURPLE}44 100%)`,
+              pointerEvents: "none",
             }} />
-            {/* Corner brackets */}
-            {[["0","0","right","bottom"],["0","auto","right","auto"],["auto","0","auto","bottom"],["auto","auto","auto","auto"]].map(([t,r,b,l], ci) => (
-              <div key={ci} style={{
-                position: "absolute",
-                top: t === "0" ? "12px" : "auto",
-                bottom: b === "bottom" ? "12px" : "auto",
-                left: l === "auto" ? "auto" : "12px",
-                right: r === "right" ? "12px" : "auto",
-                width: "20px",
-                height: "20px",
-                borderTop: (t === "0") ? `2px solid ${GLOW_BLUE}88` : "none",
-                borderBottom: (b === "bottom") ? `2px solid ${GLOW_BLUE}88` : "none",
-                borderLeft: (l !== "auto") ? `2px solid ${GLOW_BLUE}88` : "none",
-                borderRight: (r === "right") ? `2px solid ${GLOW_BLUE}88` : "none",
-              }} />
-            ))}
-            {/* Icon */}
-            <div style={{ fontSize: "3.5rem", position: "relative", zIndex: 1, filter: `drop-shadow(0 0 12px ${GLOW_BLUE}88)` }}>
-              {pkg.photoIcon}
+            {/* Package name badge */}
+            <div style={{
+              position: "absolute",
+              bottom: "10px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              background: `rgba(0,0,0,0.65)`,
+              border: `1px solid ${GLOW_BLUE}66`,
+              borderRadius: "999px",
+              padding: "4px 14px",
+              backdropFilter: "blur(6px)",
+            }}>
+              <p style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "0.65rem",
+                letterSpacing: "0.2em",
+                color: GLOW_BLUE,
+                textTransform: "uppercase",
+                margin: 0,
+              }}>{pkg.photoLabel}</p>
             </div>
-            <p style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: "0.7rem",
-              letterSpacing: "0.2em",
-              color: `${GLOW_BLUE}99`,
-              textTransform: "uppercase",
-              position: "relative",
-              zIndex: 1,
-            }}>
-              {pkg.photoLabel}
-            </p>
-            <p style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: "0.6rem",
-              letterSpacing: "0.15em",
-              color: "rgba(255,255,255,0.25)",
-              textTransform: "uppercase",
-              position: "relative",
-              zIndex: 1,
-            }}>
-              Foto volgt binnenkort
-            </p>
           </div>
 
           {/* Card bottom info */}

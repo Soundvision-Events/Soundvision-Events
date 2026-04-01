@@ -142,3 +142,4 @@
 - [ ] Site-breed kleurthema: paars (#7300ff) naar helder blauw (#00c8ff) verloop doorvoeren op alle componenten
 - [x] Prijstabellen symmetrisch maken: Elite Show kaart uitlijning, "MEEST GEKOZEN" badge en titel volledig zichtbaar
 - [x] Prijstabellen redesign: scroll fade-in transparantie, gelijke paarse kolommen, gloeiende lichtblauwe borders, featured kaart groter, flip-card met foto placeholder voorkant
+- [x] Prijskaarten: echte show foto's plaatsen (Intimate=collage, Luxe=kleurrijke vloer, Elite=truss setup)
