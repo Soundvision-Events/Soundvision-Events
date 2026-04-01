@@ -249,7 +249,7 @@ export default function ContactSection() {
                   {
                     icon: <Youtube size={18} />,
                     label: "YouTube",
-                    href: "https://www.youtube.com/@SoundVisionEvents",
+                    href: "https://youtube.com/@soundvision.events",
                   },
                 ].map((social) => (
                   <a

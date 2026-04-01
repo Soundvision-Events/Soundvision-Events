@@ -146,7 +146,7 @@ export default function GallerySection() {
             Bekijk ook onze video's op YouTube
           </p>
           <a
-            href="https://www.youtube.com/@SoundVisionEvents"
+            href="https://youtube.com/@soundvision.events"
             target="_blank"
             rel="noopener noreferrer"
             className="sv-btn-secondary inline-block"

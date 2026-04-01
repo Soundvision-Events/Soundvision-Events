@@ -136,3 +136,5 @@
 - [x] SEO: Semantische HTML verbeteren (alt-teksten, aria-labels)
 - [x] Instagram account wijzigen naar soundvision.events
 - [x] Hero home: stockfoto verwijderen die zichtbaar is tijdens laden (voor video start)
+- [x] YouTube account wijzigen naar https://youtube.com/@soundvision.events
+- [ ] Site publiceren naar SoundVisionEvents.nl
