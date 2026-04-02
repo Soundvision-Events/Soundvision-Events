@@ -383,7 +383,7 @@ export default function HeroSection() {
           </button>
           <button
             className="sv-btn-secondary"
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderWidth: "8px" }}
+            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderWidth: "8px", backgroundColor: "#00ff88", borderStyle: "outset", borderColor: "#2f3131" }}
             onClick={() => handleScroll("#contact")}
           >
             Neem Contact Op
