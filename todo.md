@@ -158,3 +158,4 @@
 - [x] Hero stats: Trustoo gouden ster/logo naast "TRUSTOO SCORE" label
 - [x] Hero review slider: koppelen aan echte Trustoo beoordelingen uit widget DOM (fallback naar statische reviews als widget niet laadt)
 - [x] Home gallery: 7 nieuwe event-foto's toevoegen (bruiloft, feest, DJ setup)
+- [x] Backdrop: vloeiende cross-fade overgang van hero video naar backdrop animatie tijdens scrollen

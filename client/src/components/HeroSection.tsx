@@ -149,23 +149,29 @@ export default function HeroSection() {
     }, 1500);
   }, []);
 
-  // Scroll-fade: video fades from 1 → 0 as hero scrolls out of view
+  // Scroll-fade: hero video fades from 1 → 0 as hero scrolls out of view.
+  // Also emits a custom event so VideoBackground can cross-fade in as the inverse.
   useEffect(() => {
     const onScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const sectionHeight = sectionRef.current.offsetHeight;
-      // Start fading when top of section starts leaving viewport (rect.top < 0)
-      // Fully transparent when section is fully scrolled past (rect.top < -sectionHeight)
+      let opacity: number;
       if (rect.top >= 0) {
-        setVideoOpacity(1);
+        opacity = 1;
       } else {
         const scrolled = Math.abs(rect.top);
         const fadeRange = sectionHeight * 0.6; // fade over 60% of section height
-        const opacity = Math.max(0, 1 - scrolled / fadeRange);
-        setVideoOpacity(opacity);
+        opacity = Math.max(0, 1 - scrolled / fadeRange);
       }
+      setVideoOpacity(opacity);
+      // Broadcast hero opacity so VideoBackground can cross-fade as inverse
+      window.dispatchEvent(
+        new CustomEvent("sv-hero-opacity", { detail: { opacity } })
+      );
     };
+    // Emit initial value on mount
+    window.dispatchEvent(new CustomEvent("sv-hero-opacity", { detail: { opacity: 1 } }));
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
