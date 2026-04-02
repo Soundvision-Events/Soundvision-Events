@@ -373,7 +373,8 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ paddingTop: "21px" }}>
           <button
             className="sv-btn-primary"
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}
+            /* glowing neon borders */
+            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderRadius: "0px", borderWidth: "12px", borderStyle: "outset", borderColor: "#dca2fb" }}
             onClick={() => handleScroll("#packages")}
           >
             Bekijk Pakketten

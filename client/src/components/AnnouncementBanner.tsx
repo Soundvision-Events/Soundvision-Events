@@ -49,6 +49,7 @@ export default function AnnouncementBanner() {
         justifyContent: "center",
         gap: "12px",
         boxShadow: "0 2px 16px rgba(115,0,255,0.25)",
+        opacity: 0.7,
       }}
     >
       <Sparkles size={14} color="#00c8ff" style={{ flexShrink: 0 }} />
