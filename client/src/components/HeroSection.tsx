@@ -374,14 +374,14 @@ export default function HeroSection() {
           <button
             className="sv-btn-primary"
             /* glowing neon borders */
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderRadius: "0px", borderWidth: "12px", borderStyle: "outset", borderColor: "#dca2fb" }}
+            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderRadius: "0px", borderWidth: "10px", borderStyle: "outset", borderColor: "#ffffff" }}
             onClick={() => handleScroll("#packages")}
           >
             Bekijk Pakketten
           </button>
           <button
             className="sv-btn-secondary"
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}
+            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderWidth: "8px" }}
             onClick={() => handleScroll("#contact")}
           >
             Neem Contact Op
