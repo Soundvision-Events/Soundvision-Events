@@ -1,6 +1,6 @@
 /**
  * SocialProofPopup — Rotating "recent booking" notifications
- * Shows a small bottom-left toast every 20–40 seconds to build trust.
+ * Shows a small bottom-left toast once every ~3 minutes to build trust (realistic frequency).
  * All content is in Dutch, referencing Groningen region cities.
  */
 import { useEffect, useState, useRef } from "react";
@@ -45,18 +45,18 @@ export default function SocialProofPopup() {
     setCurrent(BOOKINGS[idx]);
     setVisible(true);
 
-    // Hide after 5 seconds
+    // Hide after 6 seconds
     timerRef.current = setTimeout(() => {
       setVisible(false);
-      // Schedule next popup in 25–45 seconds
-      const delay = 25_000 + Math.random() * 20_000;
+      // Schedule next popup: once every ~3 minutes (170–190 seconds)
+      const delay = 170_000 + Math.random() * 20_000;
       timerRef.current = setTimeout(showNext, delay);
-    }, 5_000);
+    }, 6_000);
   };
 
   useEffect(() => {
-    // First popup after 8 seconds
-    timerRef.current = setTimeout(showNext, 8_000);
+    // First popup after 30 seconds
+    timerRef.current = setTimeout(showNext, 30_000);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
