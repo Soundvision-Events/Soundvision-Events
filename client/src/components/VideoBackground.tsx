@@ -6,9 +6,12 @@
  * Current backdrop: openart custom animation (user-uploaded)
  * CDN-hosted loop, ~5MB
  *
- * Scroll behaviour: backdrop is always fully visible (no fade-in).
- * Parallax and smooth scroll effects are handled by useParallax hook.
+ * Scroll behaviour:
+ *   - Video PLAYS while the #home hero section is visible in the viewport.
+ *   - Video PAUSES once the hero has fully scrolled out of view.
+ *   - Video RESUMES when the user scrolls back up to the hero.
  */
+import { useEffect, useRef } from "react";
 
 interface VideoBackgroundProps {
   /** CDN URL of the background video */
@@ -26,6 +29,40 @@ export default function VideoBackground({
   src = DEFAULT_SRC,
   overlayOpacity = 0.30,
 }: VideoBackgroundProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const checkHeroVisibility = () => {
+      const hero = document.getElementById("home");
+      if (!hero || !video) return;
+
+      const rect = hero.getBoundingClientRect();
+      // Hero is "in view" as long as any part of it is still visible
+      const heroVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+
+      if (heroVisible) {
+        if (video.paused) {
+          video.play().catch(() => {
+            // Autoplay blocked by browser — ignore silently
+          });
+        }
+      } else {
+        if (!video.paused) {
+          video.pause();
+        }
+      }
+    };
+
+    // Run once on mount (hero is visible at page load)
+    checkHeroVisibility();
+
+    window.addEventListener("scroll", checkHeroVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", checkHeroVisibility);
+  }, []);
+
   return (
     <div style={{ opacity: 1 }}>
       {/* Video element — fixed behind all content */}
@@ -39,6 +76,7 @@ export default function VideoBackground({
         }}
       >
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted

@@ -151,3 +151,6 @@
 - [x] Hero: fade-to-next review slider met kleine recensies en sterren (Trustoo reviews)
 - [x] Hero review slider: subtiele één-voor-één ster animatie (oplichten bij elke nieuwe review)
 - [x] Hero video: 100% opacity + scroll-fade tot volledig onzichtbaar als hero uit scherm gescrolld
+- [x] YouTube backdrop: alleen afspelen als hero in beeld is, pauzeren als hero gescrolld is
+- [x] Hero stats: paars-naar-blauw kleurverloop op de 4 statistieken
+- [x] Hero stats: 100% tevredenheid vervangen door live Trustoo gemiddelde score

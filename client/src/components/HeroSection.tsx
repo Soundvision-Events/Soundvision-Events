@@ -51,11 +51,47 @@ function StarRating({ count, animKey }: { count: number; animKey: number }) {
   );
 }
 
+// Gradient colours for each stat (purple → blue progression)
+const STAT_GRADIENTS = [
+  "linear-gradient(135deg, #a855f7, #7c3aed)",  // purple
+  "linear-gradient(135deg, #7c3aed, #4f46e5)",  // purple-indigo
+  "linear-gradient(135deg, #4f46e5, #2563eb)",  // indigo-blue
+  "linear-gradient(135deg, #2563eb, #00c8ff)",  // blue-cyan
+];
+
 export default function HeroSection() {
   const [activeReview, setActiveReview] = useState(0);
   const [visible, setVisible] = useState(true);
   const [videoOpacity, setVideoOpacity] = useState(1);
+  const [trustooScore, setTrustooScore] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Read Trustoo score from the footer widget DOM once it loads
+  useEffect(() => {
+    const tryReadScore = (attempts = 0) => {
+      // Look for the score rendered inside the trustoo-widget element
+      const widget = document.querySelector(".trustoo-widget");
+      if (widget) {
+        // The widget renders a score like "9.8" or "9,8" somewhere in its text
+        const text = widget.textContent || "";
+        const match = text.match(/(\d+[.,]\d+)\s*\/\s*10|(\d+[.,]\d+)/);
+        if (match) {
+          const raw = (match[1] || match[2]).replace(",", ".");
+          const num = parseFloat(raw);
+          if (!isNaN(num) && num > 0 && num <= 10) {
+            setTrustooScore(num.toFixed(1));
+            return;
+          }
+        }
+      }
+      // Retry up to 20 times (10 seconds total)
+      if (attempts < 20) {
+        setTimeout(() => tryReadScore(attempts + 1), 500);
+      }
+    };
+    // Start trying after widget script has had time to load
+    setTimeout(() => tryReadScore(), 1500);
+  }, []);
 
   // Scroll-fade: video fades from 1 → 0 as hero scrolls out of view
   useEffect(() => {
@@ -295,16 +331,20 @@ export default function HeroSection() {
             { value: "500+", label: "Shows Gespeeld" },
             { value: "15+", label: "Jaar Ervaring" },
             { value: "3", label: "Show Pakketten" },
-            { value: "100%", label: "Tevredenheid" },
-          ].map((stat) => (
+            { value: trustooScore ? `${trustooScore}/10` : "9.8/10", label: "Trustoo Score" },
+          ].map((stat, idx) => (
             <div key={stat.label} className="text-center">
               <div
                 style={{
                   fontFamily: "'Bebas Neue', sans-serif",
                   fontSize: "2.5rem",
-                  color: "#00c8ff",
+                  background: STAT_GRADIENTS[idx],
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
                   lineHeight: 1,
                   letterSpacing: "0.05em",
+                  display: "inline-block",
                 }}
               >
                 {stat.value}
