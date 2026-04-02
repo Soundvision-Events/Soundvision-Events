@@ -154,3 +154,4 @@
 - [x] YouTube backdrop: alleen afspelen als hero in beeld is, pauzeren als hero gescrolld is
 - [x] Hero stats: paars-naar-blauw kleurverloop op de 4 statistieken
 - [x] Hero stats: 100% tevredenheid vervangen door live Trustoo gemiddelde score
+- [x] Fix: Trustoo score correcte waarde 9.8/10 (widget leest verkeerd intern getal)

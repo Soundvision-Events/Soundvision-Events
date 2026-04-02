@@ -69,18 +69,33 @@ export default function HeroSection() {
   // Read Trustoo score from the footer widget DOM once it loads
   useEffect(() => {
     const tryReadScore = (attempts = 0) => {
-      // Look for the score rendered inside the trustoo-widget element
+      // The Trustoo widget renders the average score in a specific element.
+      // We look for elements that contain a score in the range 8.0–10.0
+      // (valid customer satisfaction scores), ignoring internal counters.
       const widget = document.querySelector(".trustoo-widget");
       if (widget) {
-        // The widget renders a score like "9.8" or "9,8" somewhere in its text
-        const text = widget.textContent || "";
-        const match = text.match(/(\d+[.,]\d+)\s*\/\s*10|(\d+[.,]\d+)/);
-        if (match) {
-          const raw = (match[1] || match[2]).replace(",", ".");
-          const num = parseFloat(raw);
-          if (!isNaN(num) && num > 0 && num <= 10) {
-            setTrustooScore(num.toFixed(1));
-            return;
+        // Try to find a dedicated score/rating element first
+        const scoreEl =
+          widget.querySelector("[class*='score']") ||
+          widget.querySelector("[class*='rating']") ||
+          widget.querySelector("[class*='average']") ||
+          widget.querySelector("[class*='cijfer']");
+
+        const candidates: string[] = [];
+        if (scoreEl) candidates.push(scoreEl.textContent || "");
+        // Also scan all text nodes for a score-like pattern
+        candidates.push(widget.textContent || "");
+
+        for (const text of candidates) {
+          // Match patterns like "9.8", "9,8", "9.8/10" — must be 8.0–10.0
+          const re = /(\d+[.,]\d+)/g;
+          let m: RegExpExecArray | null;
+          while ((m = re.exec(text)) !== null) {
+            const num = parseFloat(m[1].replace(",", "."));
+            if (!isNaN(num) && num >= 8.0 && num <= 10.0) {
+              setTrustooScore(num.toFixed(1));
+              return;
+            }
           }
         }
       }
@@ -331,7 +346,7 @@ export default function HeroSection() {
             { value: "500+", label: "Shows Gespeeld" },
             { value: "15+", label: "Jaar Ervaring" },
             { value: "3", label: "Show Pakketten" },
-            { value: trustooScore ? `${trustooScore}/10` : "9.8/10", label: "Trustoo Score" },
+            { value: trustooScore ? `${trustooScore}/10` : "9.8/10", label: "Trustoo Score", isTrustoo: true },
           ].map((stat, idx) => (
             <div key={stat.label} className="text-center">
               <div
