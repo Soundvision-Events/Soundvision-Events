@@ -362,10 +362,16 @@ export default function HeroSection() {
             fontFamily: "'Bebas Neue', sans-serif",
             fontSize: "clamp(1.2rem, 3vw, 1.75rem)",
             letterSpacing: "0.4em",
-            color: "#f0f0f0",
-            marginBottom: "1.5rem",
+            color: "#ffffff",
+            marginTop: "-95px",
+            marginBottom: "-4px",
+            marginLeft: "293px",
+            marginRight: "-29px",
+            paddingTop: "45px",
             fontWeight: 100,
             textAlign: "right",
+            width: "554px",
+            height: "85px",
           }}
         >
           EVENTS: Allround DJ Shows
