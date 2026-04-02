@@ -173,3 +173,4 @@
 - [x] Lasershow add-on: prijs €75, inbegrepen bij Elite (badge + grijs-out), verwijder lasershow als perk bij Luxe pakket
 - [x] Uplights add-on: prijs €75, inbegrepen bij Luxe en Elite (badge + grijs-out), add-on bij Intiem
 - [x] Add-on flipcards: glanzend goud effect, volledig ondoorzichtig (non-transparent)
+- [x] Lasershow & Uplights add-on kaarten: zichtbare 'Inbegrepen bij Elite/Luxe' badge op voorkant

@@ -487,7 +487,37 @@ function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: numbe
             </p>
           </div>
 
-          <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "0.75rem" }}>
+          {/* Inbegrepen badges */}
+          {addon.includedIn.length > 0 && (
+            <div style={{ position: "relative", zIndex: 1, display: "flex", flexWrap: "wrap", gap: "0.35rem", marginTop: "0.6rem" }}>
+              {addon.includedIn.map((pkg) => (
+                <span
+                  key={pkg}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.3rem",
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: "0.65rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "#1a3a00",
+                    background: "linear-gradient(135deg, #7fff4f 0%, #a8ff6a 50%, #5fdd2a 100%)",
+                    border: "1px solid #5fdd2a",
+                    borderRadius: "100px",
+                    padding: "0.2rem 0.65rem",
+                    boxShadow: "0 0 10px rgba(95,221,42,0.50), 0 2px 6px rgba(0,0,0,0.4)",
+                  }}
+                >
+                  <span style={{ fontSize: "0.6rem" }}>✓</span>
+                  {`Inbegrepen bij ${pkg.charAt(0).toUpperCase() + pkg.slice(1)}`}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "0.5rem" }}>
             <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.08em", color: "#ffe066", textShadow: "0 0 12px rgba(255,200,50,0.7)" }}>
               {addon.price}
             </span>
