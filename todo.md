@@ -174,3 +174,4 @@
 - [x] Uplights add-on: prijs €75, inbegrepen bij Luxe en Elite (badge + grijs-out), add-on bij Intiem
 - [x] Add-on flipcards: glanzend goud effect, volledig ondoorzichtig (non-transparent)
 - [x] Lasershow & Uplights add-on kaarten: zichtbare 'Inbegrepen bij Elite/Luxe' badge op voorkant
+- [x] Add-on flipcards redesign: compact voorkant (icon + titel + prijs), uitleg naar achterkant, neon cyaan stijl (lichtblauw transparant + brede neon border glow)

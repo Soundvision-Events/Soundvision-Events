@@ -406,20 +406,19 @@ function PackageFlipCard({ pkg, index, onContact }: {
   );
 }
 
-// ── Gold sheen constants
-const GOLD_FRONT_BG = "linear-gradient(145deg, #2a1a00 0%, #3d2500 20%, #5c3800 40%, #7a4d00 55%, #5c3800 70%, #3d2500 85%, #2a1a00 100%)";
-const GOLD_SHEEN = "linear-gradient(105deg, transparent 30%, rgba(255,220,100,0.18) 45%, rgba(255,240,160,0.32) 50%, rgba(255,220,100,0.18) 55%, transparent 70%)";
-const GOLD_BACK_BG = "linear-gradient(145deg, #1e1200 0%, #2e1c00 25%, #4a2e00 50%, #2e1c00 75%, #1e1200 100%)";
-const GOLD_BORDER = "1.5px solid #c8860a";
-const GOLD_BORDER_GLOW = "1.5px solid #f0b030";
-const GOLD_SHADOW = "0 4px 24px rgba(180,110,0,0.45), 0 0 40px rgba(200,134,10,0.25), inset 0 1px 0 rgba(255,230,100,0.15)";
-const GOLD_SHADOW_HOVER = "0 8px 40px rgba(200,140,0,0.70), 0 0 60px rgba(240,176,48,0.40), 0 0 100px rgba(200,134,10,0.20), inset 0 1px 0 rgba(255,240,120,0.25)";
-const GOLD_TEXT = "#f5d97a";
-const GOLD_TEXT_DIM = "#c8a040";
-const GOLD_CHECK_BG = "rgba(200,134,10,0.20)";
-const GOLD_CHECK_BORDER = "rgba(200,134,10,0.60)";
+// ── Neon cyan card constants
+const NEON_FRONT_BG = "rgba(0, 12, 40, 0.82)";
+const NEON_BACK_BG = "rgba(0, 8, 30, 0.90)";
+const NEON_BORDER = "2px solid rgba(0,200,255,0.55)";
+const NEON_BORDER_HOVER = "2px solid #00c8ff";
+const NEON_SHADOW = "0 0 18px rgba(0,200,255,0.30), 0 0 50px rgba(0,200,255,0.12), inset 0 1px 0 rgba(0,200,255,0.08)";
+const NEON_SHADOW_HOVER = "0 0 28px rgba(0,200,255,0.70), 0 0 70px rgba(0,200,255,0.35), 0 0 120px rgba(0,200,255,0.15), inset 0 1px 0 rgba(0,200,255,0.15)";
+const NEON_CYAN = "#00c8ff";
+const NEON_CYAN_DIM = "rgba(0,200,255,0.55)";
+const NEON_CHECK_BG = "rgba(0,200,255,0.12)";
+const NEON_CHECK_BORDER = "rgba(0,200,255,0.45)";
 
-// ── Add-on flip card
+// ── Add-on flip card  (compact front: icon + title + price | full detail on back)
 function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: number }) {
   const [flipped, setFlipped] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -430,7 +429,7 @@ function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: numbe
       ref={ref}
       style={{
         perspective: "1000px",
-        height: "300px",
+        height: "220px",
         opacity,
         transform: `translateY(${translateY}px)`,
         transition: `opacity 0.7s ease ${index * 0.1}s, transform 0.7s ease ${index * 0.1}s`,
@@ -448,86 +447,65 @@ function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: numbe
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
-        {/* ── FRONT ── */}
+        {/* ── FRONT: compact — icon + title + price + badges ── */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            background: GOLD_FRONT_BG,
-            border: hovered ? GOLD_BORDER_GLOW : GOLD_BORDER,
+            background: NEON_FRONT_BG,
+            border: hovered ? NEON_BORDER_HOVER : NEON_BORDER,
             borderRadius: "1.25rem",
-            boxShadow: hovered ? GOLD_SHADOW_HOVER : GOLD_SHADOW,
-            padding: "1.5rem",
+            boxShadow: hovered ? NEON_SHADOW_HOVER : NEON_SHADOW,
+            padding: "1.25rem 1.25rem 1rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
             overflow: "hidden",
             transition: "box-shadow 0.4s ease, border 0.4s ease",
+            backdropFilter: "blur(8px)",
           }}
         >
-          {/* Sheen overlay */}
-          <div style={{ position: "absolute", inset: 0, background: GOLD_SHEEN, borderRadius: "1.25rem", pointerEvents: "none", transition: "opacity 0.4s ease", opacity: hovered ? 1 : 0.6 }} />
-          {/* Top highlight line */}
-          <div style={{ position: "absolute", top: 0, left: "10%", right: "10%", height: "1px", background: "linear-gradient(90deg, transparent, rgba(255,240,140,0.6), transparent)", borderRadius: "999px" }} />
+          {/* Neon top edge glow */}
+          <div style={{ position: "absolute", top: 0, left: "15%", right: "15%", height: "1px", background: `linear-gradient(90deg, transparent, ${NEON_CYAN}, transparent)`, borderRadius: "999px", boxShadow: `0 0 8px ${NEON_CYAN}` }} />
 
-          <div style={{ position: "relative", zIndex: 1 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
-              <span style={{ fontSize: "2.25rem", filter: "drop-shadow(0 0 12px rgba(255,200,50,0.8))" }}>{addon.icon}</span>
-              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.7rem", letterSpacing: "0.12em", color: GOLD_TEXT, padding: "0.25rem 0.75rem", border: "1px solid rgba(200,134,10,0.50)", borderRadius: "100px", textTransform: "uppercase", background: "rgba(200,134,10,0.15)" }}>
-                {addon.subtitle}
-              </span>
-            </div>
-            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.4rem", letterSpacing: "0.06em", color: "#fff8e0", marginBottom: "0.5rem", textShadow: "0 0 20px rgba(255,200,50,0.6), 0 2px 4px rgba(0,0,0,0.8)" }}>
-              {addon.title}
-            </h3>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(245,217,122,0.80)", lineHeight: 1.6, fontWeight: 300 }}>
-              {addon.front}
-            </p>
+          {/* Icon + subtitle row */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <span style={{ fontSize: "2rem", filter: `drop-shadow(0 0 10px ${NEON_CYAN}88)`, lineHeight: 1 }}>{addon.icon}</span>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: NEON_CYAN, padding: "0.2rem 0.6rem", border: `1px solid ${NEON_CYAN_DIM}`, borderRadius: "100px", textTransform: "uppercase", background: "rgba(0,200,255,0.08)" }}>
+              {addon.subtitle}
+            </span>
           </div>
+
+          {/* Title */}
+          <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.35rem", letterSpacing: "0.06em", color: "#e8f8ff", margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1 }}>
+            {addon.title}
+          </h3>
 
           {/* Inbegrepen badges */}
           {addon.includedIn.length > 0 && (
-            <div style={{ position: "relative", zIndex: 1, display: "flex", flexWrap: "wrap", gap: "0.35rem", marginTop: "0.6rem" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", marginTop: "0.45rem" }}>
               {addon.includedIn.map((pkg) => (
-                <span
-                  key={pkg}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.3rem",
-                    fontFamily: "'Outfit', sans-serif",
-                    fontSize: "0.65rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: "#1a3a00",
-                    background: "linear-gradient(135deg, #7fff4f 0%, #a8ff6a 50%, #5fdd2a 100%)",
-                    border: "1px solid #5fdd2a",
-                    borderRadius: "100px",
-                    padding: "0.2rem 0.65rem",
-                    boxShadow: "0 0 10px rgba(95,221,42,0.50), 0 2px 6px rgba(0,0,0,0.4)",
-                  }}
-                >
-                  <span style={{ fontSize: "0.6rem" }}>✓</span>
-                  {`Inbegrepen bij ${pkg.charAt(0).toUpperCase() + pkg.slice(1)}`}
+                <span key={pkg} style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", fontFamily: "'Outfit', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.07em", textTransform: "uppercase", color: "#0a2e00", background: "linear-gradient(135deg, #7fff4f, #5fdd2a)", border: "1px solid #5fdd2a", borderRadius: "100px", padding: "0.15rem 0.55rem", boxShadow: "0 0 8px rgba(95,221,42,0.50)" }}>
+                  <span>✓</span>{`Inbegrepen bij ${pkg.charAt(0).toUpperCase() + pkg.slice(1)}`}
                 </span>
               ))}
             </div>
           )}
 
-          <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "0.5rem" }}>
-            <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.08em", color: "#ffe066", textShadow: "0 0 12px rgba(255,200,50,0.7)" }}>
+          {/* Price + hint */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "0.5rem" }}>
+            <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.05rem", letterSpacing: "0.08em", color: NEON_CYAN, textShadow: `0 0 10px ${NEON_CYAN}99` }}>
               {addon.price}
             </span>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.6rem", letterSpacing: "0.15em", color: GOLD_TEXT_DIM, textTransform: "uppercase", margin: 0 }}>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.55rem", letterSpacing: "0.15em", color: NEON_CYAN_DIM, textTransform: "uppercase" }}>
               Zweef →
-            </p>
+            </span>
           </div>
         </div>
 
-        {/* ── BACK ── */}
+        {/* ── BACK: full detail ── */}
         <div
           style={{
             position: "absolute",
@@ -535,44 +513,45 @@ function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: numbe
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: GOLD_BACK_BG,
-            border: GOLD_BORDER_GLOW,
+            background: NEON_BACK_BG,
+            border: NEON_BORDER_HOVER,
             borderRadius: "1.25rem",
-            boxShadow: GOLD_SHADOW_HOVER,
-            padding: "1.5rem",
+            boxShadow: NEON_SHADOW_HOVER,
+            padding: "1.1rem 1.25rem",
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
+            backdropFilter: "blur(10px)",
           }}
         >
-          {/* Sheen overlay on back */}
-          <div style={{ position: "absolute", inset: 0, background: GOLD_SHEEN, borderRadius: "1.25rem", pointerEvents: "none", opacity: 0.5 }} />
-          {/* Top highlight */}
-          <div style={{ position: "absolute", top: 0, left: "10%", right: "10%", height: "1px", background: "linear-gradient(90deg, transparent, rgba(255,240,140,0.7), transparent)", borderRadius: "999px" }} />
+          {/* Neon top edge */}
+          <div style={{ position: "absolute", top: 0, left: "15%", right: "15%", height: "1px", background: `linear-gradient(90deg, transparent, ${NEON_CYAN}, transparent)`, borderRadius: "999px", boxShadow: `0 0 8px ${NEON_CYAN}` }} />
 
-          <div style={{ marginBottom: "0.75rem", position: "relative", zIndex: 1 }}>
-            <span style={{ fontSize: "1.5rem" }}>{addon.icon}</span>
-            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.25rem", letterSpacing: "0.06em", color: "#fff8e0", marginTop: "0.25rem", textShadow: "0 0 16px rgba(255,200,50,0.7)" }}>
-              {addon.backTitle}
-            </h3>
-            <div style={{ height: "1px", background: "linear-gradient(90deg, #c8860a, #f0b030, transparent)", marginTop: "0.5rem", boxShadow: "0 0 6px rgba(200,134,10,0.5)" }} />
+          <div style={{ marginBottom: "0.5rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <span style={{ fontSize: "1.1rem" }}>{addon.icon}</span>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.06em", color: "#e8f8ff", margin: 0, textShadow: `0 0 12px ${NEON_CYAN}66` }}>
+                {addon.backTitle}
+              </h3>
+            </div>
+            <div style={{ height: "1px", background: `linear-gradient(90deg, ${NEON_CYAN}, transparent)`, marginTop: "0.4rem", boxShadow: `0 0 5px ${NEON_CYAN}55` }} />
           </div>
 
-          <ul style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.45rem", position: "relative", zIndex: 1 }}>
+          <ul style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.35rem" }}>
             {addon.backPoints.map((point) => (
-              <li key={point} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                <div style={{ width: "14px", height: "14px", borderRadius: "50%", flexShrink: 0, marginTop: "2px", background: GOLD_CHECK_BG, border: `1px solid ${GOLD_CHECK_BORDER}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Check size={8} color="#f0b030" />
+              <li key={point} style={{ display: "flex", alignItems: "flex-start", gap: "0.45rem" }}>
+                <div style={{ width: "13px", height: "13px", borderRadius: "50%", flexShrink: 0, marginTop: "2px", background: NEON_CHECK_BG, border: `1px solid ${NEON_CHECK_BORDER}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Check size={7} color={NEON_CYAN} />
                 </div>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", color: "rgba(245,217,122,0.90)", lineHeight: 1.4 }}>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.74rem", color: "rgba(220,240,255,0.88)", lineHeight: 1.35 }}>
                   {point}
                 </span>
               </li>
             ))}
           </ul>
 
-          <div style={{ marginTop: "0.75rem", padding: "0.5rem 0.75rem", borderRadius: "8px", background: "rgba(200,134,10,0.15)", border: "1px solid rgba(200,134,10,0.35)", position: "relative", zIndex: 1 }}>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", color: GOLD_TEXT, lineHeight: 1.4, margin: 0 }}>
+          <div style={{ marginTop: "0.5rem", padding: "0.4rem 0.65rem", borderRadius: "8px", background: "rgba(0,200,255,0.07)", border: `1px solid ${NEON_CYAN_DIM}` }}>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", color: NEON_CYAN, lineHeight: 1.4, margin: 0 }}>
               {addon.backNote}
             </p>
           </div>
