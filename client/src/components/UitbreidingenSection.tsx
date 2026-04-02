@@ -620,10 +620,24 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false }: { 
           ))}
         </div>
 
-        {/* ── DIVIDER ── */}
-        <div style={{ margin: "5rem 0 3rem", borderTop: `1px solid ${GLOW_BLUE}22`, position: "relative", textAlign: "center" }}>
-          <span style={{ position: "relative", top: "-0.75rem", display: "inline-block", background: "#080c10", padding: "0 1.5rem", fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", letterSpacing: "0.3em", color: GLOW_BLUE, textTransform: "uppercase" }}>
-            Extra Opties
+        {/* ── ADD-ONS TITLE ── */}
+        <div style={{ margin: "5rem 0 2.5rem", position: "relative", textAlign: "center" }}>
+          {/* Neon divider line */}
+          <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: "1px", background: `linear-gradient(90deg, transparent, #00c8ff44, #00c8ff88, #00c8ff44, transparent)`, boxShadow: "0 0 8px rgba(0,200,255,0.35)" }} />
+          {/* Title badge */}
+          <span style={{
+            position: "relative",
+            display: "inline-block",
+            background: "#080c10",
+            padding: "0 2rem",
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+            letterSpacing: "0.12em",
+            color: "#00c8ff",
+            textTransform: "uppercase",
+            textShadow: "0 0 24px rgba(0,200,255,0.80), 0 0 60px rgba(0,200,255,0.35), 0 2px 4px rgba(0,0,0,0.9)",
+          }}>
+            Add-ons &amp; Extras
           </span>
         </div>
 
