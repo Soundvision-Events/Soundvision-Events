@@ -54,6 +54,7 @@ const packages = [
       "2x draadloze microfoons",
       "4x actieve speakers (3000W totaal)",
       "Uitgebreide lichtshow (moving heads + PAR)",
+      "Uplights inbegrepen",
       "Professionele DJ booth",
       "Opbouw & afbouw inbegrepen",
       "Uitgebreid voorbesprekingsgesprek",
@@ -76,7 +77,9 @@ const packages = [
       "Volledig gepersonaliseerde muziekervaring",
       "4x draadloze microfoons",
       "6x actieve speakers + subwoofers (6000W)",
-      "Volledige lichtshow (moving heads, lasers, strobes)",
+      "Volledige lichtshow (moving heads + PAR)",
+      "Lasershow inbegrepen",
+      "Uplights inbegrepen",
       "Opbouw & afbouw inbegrepen",
       "Meerdere voorbesprekingen",
       "Muziekwensen + persoonlijke intro + surprises",
@@ -86,12 +89,15 @@ const packages = [
 ];
 
 // ── 5 real add-ons with front/back flip card content
+// includedIn: packages where this add-on is already included (shown as 'inbegrepen' badge, greyed out)
 const addons = [
   {
     icon: "⏱️",
     title: "Extra Uurtarief",
     subtitle: "€100 per uur",
+    price: "€100 / uur",
     accentColor: GLOW_BLUE,
+    includedIn: [] as string[],
     front: "Verleng uw show naar wens. Geldt voor alle pakketten — de feestsfeer hoeft niet te stoppen.",
     backTitle: "Hoe werkt het?",
     backPoints: [
@@ -107,7 +113,9 @@ const addons = [
     icon: "🌫️",
     title: "Laaghangende Rookmachine",
     subtitle: "IJseffect",
+    price: "€75",
     accentColor: "#88ccff",
+    includedIn: [] as string[],
     front: "Een spectaculair laaghangende mist die over de dansvloer zweeft — het ultieme ijseffect voor onvergetelijke momenten.",
     backTitle: "Perfect voor",
     backPoints: [
@@ -123,7 +131,9 @@ const addons = [
     icon: "🎵",
     title: "Openingsdans Mix",
     subtitle: "Mashup op maat",
+    price: "Op aanvraag",
     accentColor: "#ff4488",
+    includedIn: [] as string[],
     front: "Een professioneel gemixt mashup van 2 tot 4 nummers — speciaal samengesteld voor uw openingsdans.",
     backTitle: "Wat krijgt u?",
     backPoints: [
@@ -139,7 +149,9 @@ const addons = [
     icon: "🔴",
     title: "Lasershow",
     subtitle: "RGB Full-Color",
+    price: "€75",
     accentColor: "#ff2244",
+    includedIn: ["elite"] as string[],
     front: "Een professionele RGB lasershow die de ruimte vult met kleurrijke lichtstralen en prachtige 3D-animaties.",
     backTitle: "Technische details",
     backPoints: [
@@ -149,13 +161,15 @@ const addons = [
       "Gesynchroniseerd op de muziek",
       "Veilig gecertificeerd voor publiek",
     ],
-    backNote: "Spectaculair voor elk type feest",
+    backNote: "Inbegrepen bij Elite · €75 bij andere shows",
   },
   {
     icon: "💡",
     title: "Uplights",
     subtitle: "360° Sfeerverlichting",
+    price: "€75",
     accentColor: "#ffaa00",
+    includedIn: ["luxe", "elite"] as string[],
     front: "Sfeervolle uplights die de wanden en zaal in kleur zetten — transformeer elke locatie naar uw gewenste sfeer.",
     backTitle: "Toepassingen",
     backPoints: [
@@ -165,7 +179,7 @@ const addons = [
       "Professionele positionering inbegrepen",
       "Draadloos en dimbaar",
     ],
-    backNote: "Beschikbaar voor alle locaties",
+    backNote: "Inbegrepen bij Luxe & Elite · €75 bij Intiem",
   },
 ];
 
@@ -392,24 +406,37 @@ function PackageFlipCard({ pkg, index, onContact }: {
   );
 }
 
+// ── Gold sheen constants
+const GOLD_FRONT_BG = "linear-gradient(145deg, #2a1a00 0%, #3d2500 20%, #5c3800 40%, #7a4d00 55%, #5c3800 70%, #3d2500 85%, #2a1a00 100%)";
+const GOLD_SHEEN = "linear-gradient(105deg, transparent 30%, rgba(255,220,100,0.18) 45%, rgba(255,240,160,0.32) 50%, rgba(255,220,100,0.18) 55%, transparent 70%)";
+const GOLD_BACK_BG = "linear-gradient(145deg, #1e1200 0%, #2e1c00 25%, #4a2e00 50%, #2e1c00 75%, #1e1200 100%)";
+const GOLD_BORDER = "1.5px solid #c8860a";
+const GOLD_BORDER_GLOW = "1.5px solid #f0b030";
+const GOLD_SHADOW = "0 4px 24px rgba(180,110,0,0.45), 0 0 40px rgba(200,134,10,0.25), inset 0 1px 0 rgba(255,230,100,0.15)";
+const GOLD_SHADOW_HOVER = "0 8px 40px rgba(200,140,0,0.70), 0 0 60px rgba(240,176,48,0.40), 0 0 100px rgba(200,134,10,0.20), inset 0 1px 0 rgba(255,240,120,0.25)";
+const GOLD_TEXT = "#f5d97a";
+const GOLD_TEXT_DIM = "#c8a040";
+const GOLD_CHECK_BG = "rgba(200,134,10,0.20)";
+const GOLD_CHECK_BORDER = "rgba(200,134,10,0.60)";
+
 // ── Add-on flip card
 function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: number }) {
   const [flipped, setFlipped] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const { ref, opacity, translateY } = useScrollFade(0.05);
-  const color = addon.accentColor;
 
   return (
     <div
       ref={ref}
       style={{
         perspective: "1000px",
-        height: "280px",
+        height: "300px",
         opacity,
         transform: `translateY(${translateY}px)`,
         transition: `opacity 0.7s ease ${index * 0.1}s, transform 0.7s ease ${index * 0.1}s`,
       }}
-      onMouseEnter={() => setFlipped(true)}
-      onMouseLeave={() => setFlipped(false)}
+      onMouseEnter={() => { setFlipped(true); setHovered(true); }}
+      onMouseLeave={() => { setFlipped(false); setHovered(false); }}
     >
       <div
         style={{
@@ -421,43 +448,56 @@ function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: numbe
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
-        {/* FRONT */}
+        {/* ── FRONT ── */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            background: CARD_BG,
-            border: `1px solid ${color}44`,
+            background: GOLD_FRONT_BG,
+            border: hovered ? GOLD_BORDER_GLOW : GOLD_BORDER,
             borderRadius: "1.25rem",
-            boxShadow: `0 0 18px ${color}22, 0 0 40px ${GLOW_PURPLE}11`,
+            boxShadow: hovered ? GOLD_SHADOW_HOVER : GOLD_SHADOW,
             padding: "1.5rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
+            overflow: "hidden",
+            transition: "box-shadow 0.4s ease, border 0.4s ease",
           }}
         >
-          <div>
+          {/* Sheen overlay */}
+          <div style={{ position: "absolute", inset: 0, background: GOLD_SHEEN, borderRadius: "1.25rem", pointerEvents: "none", transition: "opacity 0.4s ease", opacity: hovered ? 1 : 0.6 }} />
+          {/* Top highlight line */}
+          <div style={{ position: "absolute", top: 0, left: "10%", right: "10%", height: "1px", background: "linear-gradient(90deg, transparent, rgba(255,240,140,0.6), transparent)", borderRadius: "999px" }} />
+
+          <div style={{ position: "relative", zIndex: 1 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
-              <span style={{ fontSize: "2.25rem", filter: `drop-shadow(0 0 10px ${color}88)` }}>{addon.icon}</span>
-              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.7rem", letterSpacing: "0.12em", color, padding: "0.25rem 0.75rem", border: `1px solid ${color}44`, borderRadius: "100px", textTransform: "uppercase" }}>
+              <span style={{ fontSize: "2.25rem", filter: "drop-shadow(0 0 12px rgba(255,200,50,0.8))" }}>{addon.icon}</span>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.7rem", letterSpacing: "0.12em", color: GOLD_TEXT, padding: "0.25rem 0.75rem", border: "1px solid rgba(200,134,10,0.50)", borderRadius: "100px", textTransform: "uppercase", background: "rgba(200,134,10,0.15)" }}>
                 {addon.subtitle}
               </span>
             </div>
-            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.4rem", letterSpacing: "0.06em", color: "#f0f4f8", marginBottom: "0.5rem", textShadow: `0 0 16px ${color}44` }}>
+            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.4rem", letterSpacing: "0.06em", color: "#fff8e0", marginBottom: "0.5rem", textShadow: "0 0 20px rgba(255,200,50,0.6), 0 2px 4px rgba(0,0,0,0.8)" }}>
               {addon.title}
             </h3>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(240,244,248,0.6)", lineHeight: 1.6, fontWeight: 300 }}>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(245,217,122,0.80)", lineHeight: 1.6, fontWeight: 300 }}>
               {addon.front}
             </p>
           </div>
-          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.6rem", letterSpacing: "0.15em", color: `${color}88`, textTransform: "uppercase", marginTop: "0.75rem" }}>
-            Zweef voor details →
-          </p>
+
+          <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "0.75rem" }}>
+            <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.08em", color: "#ffe066", textShadow: "0 0 12px rgba(255,200,50,0.7)" }}>
+              {addon.price}
+            </span>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.6rem", letterSpacing: "0.15em", color: GOLD_TEXT_DIM, textTransform: "uppercase", margin: 0 }}>
+              Zweef →
+            </p>
+          </div>
         </div>
 
-        {/* BACK */}
+        {/* ── BACK ── */}
         <div
           style={{
             position: "absolute",
@@ -465,38 +505,44 @@ function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: numbe
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: `linear-gradient(160deg, #1a0050 0%, #0d0035 60%, #200060 100%)`,
-            border: `1.5px solid ${color}99`,
+            background: GOLD_BACK_BG,
+            border: GOLD_BORDER_GLOW,
             borderRadius: "1.25rem",
-            boxShadow: `0 0 30px ${color}44, 0 0 70px ${GLOW_PURPLE}22`,
+            boxShadow: GOLD_SHADOW_HOVER,
             padding: "1.5rem",
             display: "flex",
             flexDirection: "column",
+            overflow: "hidden",
           }}
         >
-          <div style={{ marginBottom: "0.75rem" }}>
+          {/* Sheen overlay on back */}
+          <div style={{ position: "absolute", inset: 0, background: GOLD_SHEEN, borderRadius: "1.25rem", pointerEvents: "none", opacity: 0.5 }} />
+          {/* Top highlight */}
+          <div style={{ position: "absolute", top: 0, left: "10%", right: "10%", height: "1px", background: "linear-gradient(90deg, transparent, rgba(255,240,140,0.7), transparent)", borderRadius: "999px" }} />
+
+          <div style={{ marginBottom: "0.75rem", position: "relative", zIndex: 1 }}>
             <span style={{ fontSize: "1.5rem" }}>{addon.icon}</span>
-            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.25rem", letterSpacing: "0.06em", color: "#f0f4f8", marginTop: "0.25rem", textShadow: `0 0 12px ${color}66` }}>
+            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.25rem", letterSpacing: "0.06em", color: "#fff8e0", marginTop: "0.25rem", textShadow: "0 0 16px rgba(255,200,50,0.7)" }}>
               {addon.backTitle}
             </h3>
-            <div style={{ height: "1px", background: `linear-gradient(90deg, ${color}, transparent)`, marginTop: "0.5rem", boxShadow: `0 0 6px ${color}44` }} />
+            <div style={{ height: "1px", background: "linear-gradient(90deg, #c8860a, #f0b030, transparent)", marginTop: "0.5rem", boxShadow: "0 0 6px rgba(200,134,10,0.5)" }} />
           </div>
 
-          <ul style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+          <ul style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.45rem", position: "relative", zIndex: 1 }}>
             {addon.backPoints.map((point) => (
               <li key={point} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                <div style={{ width: "14px", height: "14px", borderRadius: "50%", flexShrink: 0, marginTop: "2px", background: `${color}18`, border: `1px solid ${color}55`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Check size={8} color={color} />
+                <div style={{ width: "14px", height: "14px", borderRadius: "50%", flexShrink: 0, marginTop: "2px", background: GOLD_CHECK_BG, border: `1px solid ${GOLD_CHECK_BORDER}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Check size={8} color="#f0b030" />
                 </div>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", color: "rgba(240,244,248,0.8)", lineHeight: 1.4 }}>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", color: "rgba(245,217,122,0.90)", lineHeight: 1.4 }}>
                   {point}
                 </span>
               </li>
             ))}
           </ul>
 
-          <div style={{ marginTop: "0.75rem", padding: "0.5rem 0.75rem", borderRadius: "8px", background: `${color}0d`, border: `1px solid ${color}22` }}>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", color, lineHeight: 1.4, margin: 0 }}>
+          <div style={{ marginTop: "0.75rem", padding: "0.5rem 0.75rem", borderRadius: "8px", background: "rgba(200,134,10,0.15)", border: "1px solid rgba(200,134,10,0.35)", position: "relative", zIndex: 1 }}>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", color: GOLD_TEXT, lineHeight: 1.4, margin: 0 }}>
               {addon.backNote}
             </p>
           </div>
