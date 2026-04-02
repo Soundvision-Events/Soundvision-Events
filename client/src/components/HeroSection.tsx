@@ -59,16 +59,54 @@ const STAT_GRADIENTS = [
   "linear-gradient(135deg, #2563eb, #00c8ff)",  // blue-cyan
 ];
 
+interface Review {
+  name: string;
+  city: string;
+  stars: number;
+  text: string;
+}
+
 export default function HeroSection() {
   const [activeReview, setActiveReview] = useState(0);
   const [visible, setVisible] = useState(true);
   const [videoOpacity, setVideoOpacity] = useState(1);
   const [trustooScore, setTrustooScore] = useState<string | null>(null);
+  const [liveReviews, setLiveReviews] = useState<Review[] | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Read Trustoo score from the footer widget DOM once it loads
+  // Read Trustoo reviews AND score from the footer widget DOM once it loads
   useEffect(() => {
     const tryReadScore = (attempts = 0) => {
+      // Also try to extract real reviews from the widget
+      const widget = document.querySelector(".trustoo-widget");
+      if (widget) {
+        // Trustoo widget renders review cards — try common selectors
+        const reviewEls = widget.querySelectorAll(
+          "[class*='review'], [class*='Review'], [class*='beoordeling'], [class*='card']"
+        );
+        if (reviewEls.length > 0) {
+          const extracted: Review[] = [];
+          reviewEls.forEach((el) => {
+            const nameEl = el.querySelector("[class*='name'], [class*='naam'], [class*='author']");
+            const textEl = el.querySelector("[class*='text'], [class*='tekst'], [class*='content'], [class*='comment'], p");
+            const starsEl = el.querySelector("[class*='star'], [class*='ster'], [class*='rating']");
+            const name = nameEl?.textContent?.trim() || "";
+            const text = textEl?.textContent?.trim() || "";
+            // Count filled stars
+            const starCount = starsEl
+              ? (starsEl.querySelectorAll("svg, [class*='filled'], [class*='active']").length || 5)
+              : 5;
+            if (name && text && text.length > 10) {
+              extracted.push({ name, city: "", stars: Math.min(starCount, 5), text });
+            }
+          });
+          if (extracted.length >= 2) {
+            setLiveReviews(extracted.slice(0, 6));
+          }
+        }
+      }
+    };
+    const tryReadScoreOnly = (attempts = 0) => {
       // The Trustoo widget renders the average score in a specific element.
       // We look for elements that contain a score in the range 8.0–10.0
       // (valid customer satisfaction scores), ignoring internal counters.
@@ -101,11 +139,14 @@ export default function HeroSection() {
       }
       // Retry up to 20 times (10 seconds total)
       if (attempts < 20) {
-        setTimeout(() => tryReadScore(attempts + 1), 500);
+        setTimeout(() => tryReadScoreOnly(attempts + 1), 500);
       }
     };
     // Start trying after widget script has had time to load
-    setTimeout(() => tryReadScore(), 1500);
+    setTimeout(() => {
+      tryReadScore(0);       // try to extract real reviews
+      tryReadScoreOnly(0);   // try to read the average score
+    }, 1500);
   }, []);
 
   // Scroll-fade: video fades from 1 → 0 as hero scrolls out of view
@@ -129,24 +170,27 @@ export default function HeroSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Use live reviews from widget if available, otherwise fall back to static
+  const displayReviews = liveReviews && liveReviews.length > 0 ? liveReviews : REVIEWS;
+
   useEffect(() => {
     const interval = setInterval(() => {
       // Fade out
       setVisible(false);
       setTimeout(() => {
-        setActiveReview((prev) => (prev + 1) % REVIEWS.length);
+        setActiveReview((prev) => (prev + 1) % displayReviews.length);
         setVisible(true);
       }, 500);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [displayReviews.length]);
 
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const review = REVIEWS[activeReview];
+  const review = displayReviews[activeReview] ?? REVIEWS[0];
 
   return (
     <section
@@ -372,8 +416,17 @@ export default function HeroSection() {
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   marginTop: "0.25rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "4px",
                 }}
               >
+                {(stat as { isTrustoo?: boolean }).isTrustoo && (
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffc84a" style={{ flexShrink: 0, filter: "drop-shadow(0 0 3px #ffc84a88)" }}>
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                )}
                 {stat.label}
               </div>
             </div>
@@ -429,7 +482,7 @@ export default function HeroSection() {
 
           {/* Dot indicators */}
           <div style={{ display: "flex", gap: "5px", marginTop: "0.4rem" }}>
-            {REVIEWS.map((_, i) => (
+            {displayReviews.map((_, i) => (
               <button
                 key={i}
                 onClick={() => { setVisible(false); setTimeout(() => { setActiveReview(i); setVisible(true); }, 300); }}

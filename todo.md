@@ -155,3 +155,5 @@
 - [x] Hero stats: paars-naar-blauw kleurverloop op de 4 statistieken
 - [x] Hero stats: 100% tevredenheid vervangen door live Trustoo gemiddelde score
 - [x] Fix: Trustoo score correcte waarde 9.8/10 (widget leest verkeerd intern getal)
+- [x] Hero stats: Trustoo gouden ster/logo naast "TRUSTOO SCORE" label
+- [x] Hero review slider: koppelen aan echte Trustoo beoordelingen uit widget DOM (fallback naar statische reviews als widget niet laadt)
