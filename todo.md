@@ -167,3 +167,10 @@
 - [x] Floating knoppen: beschikbaar op elke pagina van de website (via PageLayout)
 - [x] FloatingButtons: WhatsApp nummer instellen op 0622764233 (NL: 31622764233)
 - [x] HeroSection: Neem Contact Op knop neon border (#00c8ff cyaan, passend bij Bekijk Pakketten #dca2fb paars)
+- [x] SEO: meta title + description per pagina (Home, Bruiloft, Bedrijfsfeesten, Studentenfeesten, Privé)
+- [x] SEO: Open Graph tags (og:title, og:description, og:image, og:url) voor social sharing
+- [x] SEO: JSON-LD structured data (LocalBusiness + FAQ + BreadcrumbList schema)
+- [x] SEO: sitemap.xml bijgewerkt naar www.soundvisionevents.nl
+- [x] SEO: robots.txt bijgewerkt naar www.soundvisionevents.nl
+- [x] SEO: canonical URLs per pagina via react-helmet-async
+- [x] SEO: AggregateRating schema (9.8/10 Trustoo) toegevoegd
