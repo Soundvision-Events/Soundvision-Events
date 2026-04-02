@@ -177,3 +177,4 @@
 - [x] Add-on flipcards redesign: compact voorkant (icon + titel + prijs), uitleg naar achterkant, neon cyaan stijl (lichtblauw transparant + brede neon border glow)
 - [x] Sectietitel 'Uitbreidingen' hernoemen naar 'Add-ons & Extras' met neon cyaan stijl
 - [x] Sociale bewijs-notificaties: interval aanpassen naar 1x per 3 minuten (was te frequent)
+- [x] SocialProofPopup: dynamische tijdstempels gebaseerd op huidige tijd (realistisch)

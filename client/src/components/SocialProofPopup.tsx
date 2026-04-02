@@ -1,6 +1,7 @@
 /**
  * SocialProofPopup — Rotating "recent booking" notifications
  * Shows a small bottom-left toast once every ~3 minutes to build trust (realistic frequency).
+ * Timestamps are generated dynamically at display time based on current clock.
  * All content is in Dutch, referencing Groningen region cities.
  */
 import { useEffect, useState, useRef } from "react";
@@ -9,20 +10,20 @@ import { motion, AnimatePresence } from "framer-motion";
 interface Booking {
   city: string;
   eventType: string;
-  timeAgo: string;
 }
 
+// Only city + eventType — timeAgo is generated dynamically at display time
 const BOOKINGS: Booking[] = [
-  { city: "Groningen", eventType: "bruiloft", timeAgo: "2 uur geleden" },
-  { city: "Assen", eventType: "bedrijfsfeest", timeAgo: "gisteren" },
-  { city: "Leeuwarden", eventType: "studentenfeest", timeAgo: "3 uur geleden" },
-  { city: "Groningen", eventType: "privéfeest", timeAgo: "vandaag" },
-  { city: "Drachten", eventType: "bruiloft", timeAgo: "gisteren" },
-  { city: "Emmen", eventType: "bedrijfsfeest", timeAgo: "2 dagen geleden" },
-  { city: "Groningen", eventType: "studentenfeest", timeAgo: "1 uur geleden" },
-  { city: "Hoogeveen", eventType: "privéfeest", timeAgo: "vandaag" },
-  { city: "Meppel", eventType: "bruiloft", timeAgo: "3 uur geleden" },
-  { city: "Groningen", eventType: "bedrijfsfeest", timeAgo: "gisteren" },
+  { city: "Groningen", eventType: "bruiloft" },
+  { city: "Assen", eventType: "bedrijfsfeest" },
+  { city: "Leeuwarden", eventType: "studentenfeest" },
+  { city: "Groningen", eventType: "privéfeest" },
+  { city: "Drachten", eventType: "bruiloft" },
+  { city: "Emmen", eventType: "bedrijfsfeest" },
+  { city: "Zwolle", eventType: "bruiloft" },
+  { city: "Hoogeveen", eventType: "privéfeest" },
+  { city: "Meppel", eventType: "bruiloft" },
+  { city: "Groningen", eventType: "bedrijfsfeest" },
 ];
 
 const EVENT_ICONS: Record<string, string> = {
@@ -32,17 +33,57 @@ const EVENT_ICONS: Record<string, string> = {
   privéfeest: "🎉",
 };
 
+/**
+ * Generate a realistic Dutch "time ago" string based on the current time of day.
+ * Uses the actual hour so the label always makes sense to the visitor.
+ */
+function generateTimeAgo(): string {
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+
+  // Between midnight and 07:00 → show "gisteren"
+  if (hour < 7) {
+    return "gisteren";
+  }
+
+  // Pick a random offset between 15 and 180 minutes ago, but never before 07:00
+  const minutesSince7 = (hour - 7) * 60 + minute;
+  const maxMinutesBack = Math.min(minutesSince7, 180);
+  const minMinutesBack = 15;
+
+  if (maxMinutesBack <= minMinutesBack) {
+    return "zojuist";
+  }
+
+  const minutesAgo = Math.floor(
+    minMinutesBack + Math.random() * (maxMinutesBack - minMinutesBack)
+  );
+
+  if (minutesAgo < 60) {
+    return `${minutesAgo} minuten geleden`;
+  }
+
+  const hoursAgo = Math.floor(minutesAgo / 60);
+  if (hoursAgo === 1) return "1 uur geleden";
+  return `${hoursAgo} uur geleden`;
+}
+
+interface DisplayBooking extends Booking {
+  timeAgo: string;
+}
+
 export default function SocialProofPopup() {
   const [visible, setVisible] = useState(false);
-  const [current, setCurrent] = useState<Booking | null>(null);
+  const [current, setCurrent] = useState<DisplayBooking | null>(null);
   const indexRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const showNext = () => {
-    // Pick next booking in rotation (shuffle-like)
     const idx = indexRef.current % BOOKINGS.length;
     indexRef.current += 1;
-    setCurrent(BOOKINGS[idx]);
+    // Generate a fresh timestamp at the exact moment the popup appears
+    setCurrent({ ...BOOKINGS[idx], timeAgo: generateTimeAgo() });
     setVisible(true);
 
     // Hide after 6 seconds
