@@ -157,3 +157,4 @@
 - [x] Fix: Trustoo score correcte waarde 9.8/10 (widget leest verkeerd intern getal)
 - [x] Hero stats: Trustoo gouden ster/logo naast "TRUSTOO SCORE" label
 - [x] Hero review slider: koppelen aan echte Trustoo beoordelingen uit widget DOM (fallback naar statische reviews als widget niet laadt)
+- [x] Home gallery: 7 nieuwe event-foto's toevoegen (bruiloft, feest, DJ setup)

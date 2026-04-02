@@ -4,34 +4,46 @@
  */
 const galleryItems = [
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-bg-k7KfhYH7TSMYQdtgs3D6zf.webp",
-    alt: "Grote DJ Show",
-    label: "Large Show",
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/IMG_1491_53158840.JPG",
+    alt: "SoundVision Events DJ Setup",
+    label: "Pro Setup",
     span: "col-span-2",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/wedding-dj-DqtALdSvgWVVw3zhZFPk6b.webp",
-    alt: "Bruiloft DJ",
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/SVE_2397_ef203da9.JPG",
+    alt: "Bruiloft First Dance",
     label: "Bruiloft",
     span: "col-span-1",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/corporate-event-Efxd4ZRCNusPmXbgkrD8mM.webp",
-    alt: "Bedrijfsfeest",
-    label: "Bedrijfsfeest",
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_6823_e9156075.JPG",
+    alt: "Feest Dansende Gasten",
+    label: "Feest",
     span: "col-span-1",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/party-dj-2QDn4hBrwJPQD44Ji8JRhm.webp",
-    alt: "Verjaardagsfeest",
-    label: "Verjaardag",
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/IMG_0594_406b4f4b.jpeg",
+    alt: "SoundVision Events DJ Booth",
+    label: "DJ Show",
     span: "col-span-1",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-equipment-kHkQsh8fv4YHpAoghakmXA.webp",
-    alt: "DJ Apparatuur",
-    label: "Pro Setup",
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/SVE_0332_79cfa0ac.jpeg",
+    alt: "Dansende Gasten Feest",
+    label: "Dancefloor",
     span: "col-span-2",
+  },
+  {
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/IMG_5942_8ab37864.JPG",
+    alt: "Kerstfeest Groot Evenement",
+    label: "Kerstfeest",
+    span: "col-span-1",
+  },
+  {
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/fad4a453-baae-46ec-82da-34b744b41097_79c96b83.jpg",
+    alt: "DJ in Blue Light",
+    label: "Studio Setup",
+    span: "col-span-1",
   },
 ];
 
