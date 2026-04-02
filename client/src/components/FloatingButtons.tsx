@@ -8,7 +8,7 @@
  */
 import { useState, useEffect, useRef } from "react";
 
-const WHATSAPP_NUMBER = "31622764233";
+const WHATSAPP_NUMBER = "31612345678"; // ← Replace with Bert's real WhatsApp number
 
 export default function FloatingButtons() {
   const [scrolled, setScrolled] = useState(false);

@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /404
 
-Sitemap: https://www.soundvisionevents.nl/sitemap.xml
+Sitemap: https://soundvision-6rh3pkve.manus.space/sitemap.xml

@@ -1,11 +1,7 @@
 /**
  * SoundVision Events — Pakketten & Add-ons Section
- * Redesigned with:
- * - Scroll-triggered transparency fade-in
- * - Equal purple gradient columns, all same colour
- * - Glowing light-blue borders with hover brightness + aura
- * - MEEST GEKOZEN card slightly larger, brought to front (scale + z-index)
- * - Flip-card on hover: front = DJ setup photo placeholder, back = specs
+ * Packages: Intiem (4h), Luxe (4h), Elite (5h min)
+ * Add-ons as flip cards: Extra Uurtarief, Rookmachine, Openingsdans Mix, Lasershow, Uplights
  */
 import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
@@ -25,10 +21,10 @@ const packages = [
     name: "INTIEM",
     tagline: "Compact & Krachtig",
     price: "Op aanvraag",
-    duration: "Tot 4 uur",
+    duration: "4 uur",
+    extraHour: "€100 / extra uur",
     highlight: false,
     photoLabel: "Intiem DJ Setup",
-    photoIcon: "🎵",
     photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-intimate_1e8d3f11.jpg",
     features: [
       "Professionele DJ setup (Pioneer)",
@@ -47,10 +43,10 @@ const packages = [
     name: "LUXE",
     tagline: "Meest Gekozen",
     price: "Op aanvraag",
-    duration: "Tot 6 uur",
+    duration: "4 uur",
+    extraHour: "€100 / extra uur",
     highlight: true,
     photoLabel: "Luxe DJ Setup",
-    photoIcon: "🎛️",
     photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-luxe_ab77481b.jpg",
     features: [
       "Professionele DJ setup (Pioneer CDJ)",
@@ -58,7 +54,6 @@ const packages = [
       "2x draadloze microfoons",
       "4x actieve speakers (3000W totaal)",
       "Uitgebreide lichtshow (moving heads + PAR)",
-      "Rookmachine",
       "Professionele DJ booth",
       "Opbouw & afbouw inbegrepen",
       "Uitgebreid voorbesprekingsgesprek",
@@ -71,10 +66,10 @@ const packages = [
     name: "ELITE",
     tagline: "Spectaculair & Groots",
     price: "Op aanvraag",
-    duration: "Tot 8 uur",
+    duration: "5 uur (minimaal)",
+    extraHour: "€100 / extra uur",
     highlight: false,
     photoLabel: "Elite DJ Setup",
-    photoIcon: "🚀",
     photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-elite_c781eb31.png",
     features: [
       "Professionele DJ setup (Pioneer CDJ-3000)",
@@ -82,7 +77,6 @@ const packages = [
       "4x draadloze microfoons",
       "6x actieve speakers + subwoofers (6000W)",
       "Volledige lichtshow (moving heads, lasers, strobes)",
-      "Rookmachines",
       "Opbouw & afbouw inbegrepen",
       "Meerdere voorbesprekingen",
       "Muziekwensen + persoonlijke intro + surprises",
@@ -91,21 +85,89 @@ const packages = [
   },
 ];
 
+// ── 5 real add-ons with front/back flip card content
 const addons = [
-  { icon: "🎤", title: "Extra Microfoon", description: "Draadloze microfoon voor speeches of zang door gasten.", category: "Audio" },
-  { icon: "🔴", title: "Laser Show", description: "Professionele lasershow die de ruimte vult met kleurrijke lichtstralen.", category: "Licht" },
-  { icon: "🚗", title: "Reiskosten", description: "Reiskosten buiten de regio — vraag naar de tarieven voor uw locatie.", category: "Logistiek" },
-  { icon: "⏰", title: "Extra Uren", description: "Verleng uw show met extra uren. Beschikbaar voor alle pakketten.", category: "Tijd" },
-  { icon: "🎵", title: "Persoonlijk Intro", description: "Een speciaal gemixte intro voor het bruidspaar, verjaardagskind of bedrijf.", category: "Muziek" },
+  {
+    icon: "⏱️",
+    title: "Extra Uurtarief",
+    subtitle: "€100 per uur",
+    accentColor: GLOW_BLUE,
+    front: "Verleng uw show naar wens. Geldt voor alle pakketten — de feestsfeer hoeft niet te stoppen.",
+    backTitle: "Hoe werkt het?",
+    backPoints: [
+      "Standaard Intiem & Luxe: 4 uur",
+      "Standaard Elite: 5 uur minimaal",
+      "Elk extra uur: €100 (excl. BTW)",
+      "Vooraf afstemmen in overleg",
+      "Flexibel bij te boeken op de avond zelf",
+    ],
+    backNote: "Van toepassing op alle shows",
+  },
+  {
+    icon: "🌫️",
+    title: "Laaghangende Rookmachine",
+    subtitle: "IJseffect",
+    accentColor: "#88ccff",
+    front: "Een spectaculair laaghangende mist die over de dansvloer zweeft — het ultieme ijseffect voor onvergetelijke momenten.",
+    backTitle: "Perfect voor",
+    backPoints: [
+      "Openingsdans op bruiloften",
+      "Prachtige fotografie- en video-effecten",
+      "Halloween en themafeesten",
+      "Dramatische entree van het bruidspaar",
+      "Elke gelegenheid die magie verdient",
+    ],
+    backNote: "Populair effect voor bruiloftsfeesten",
+  },
+  {
+    icon: "🎵",
+    title: "Openingsdans Mix",
+    subtitle: "Mashup op maat",
+    accentColor: "#ff4488",
+    front: "Een professioneel gemixt mashup van 2 tot 4 nummers — speciaal samengesteld voor uw openingsdans.",
+    backTitle: "Wat krijgt u?",
+    backPoints: [
+      "Mix van 2 tot 4 nummers naar keuze",
+      "Professioneel gemixt en gemastered",
+      "Vooraf toegestuurd om te oefenen",
+      "Afgestemd op uw dansstijl en routine",
+      "Exclusief voor uw feest gemaakt",
+    ],
+    backNote: "Voornamelijk voor bruiloftsfeesten",
+  },
+  {
+    icon: "🔴",
+    title: "Lasershow",
+    subtitle: "RGB Full-Color",
+    accentColor: "#ff2244",
+    front: "Een professionele RGB lasershow die de ruimte vult met kleurrijke lichtstralen en prachtige 3D-animaties.",
+    backTitle: "Technische details",
+    backPoints: [
+      "RGB full-color lasers (rood, groen, blauw)",
+      "Gecombineerd met prachtige animaties",
+      "3D-effecten gecreëerd in de ruimte",
+      "Gesynchroniseerd op de muziek",
+      "Veilig gecertificeerd voor publiek",
+    ],
+    backNote: "Spectaculair voor elk type feest",
+  },
+  {
+    icon: "💡",
+    title: "Uplights",
+    subtitle: "360° Sfeerverlichting",
+    accentColor: "#ffaa00",
+    front: "Sfeervolle uplights die de wanden en zaal in kleur zetten — transformeer elke locatie naar uw gewenste sfeer.",
+    backTitle: "Toepassingen",
+    backPoints: [
+      "360° verlichting van de zaal/locatie",
+      "Kleur aanpasbaar aan uw thema",
+      "Ideaal voor bruiloften en gala's",
+      "Professionele positionering inbegrepen",
+      "Draadloos en dimbaar",
+    ],
+    backNote: "Beschikbaar voor alle locaties",
+  },
 ];
-
-const categoryColors: Record<string, string> = {
-  Audio: GLOW_BLUE,
-  Licht: "#ffaa00",
-  Muziek: "#ff4488",
-  Logistiek: "#aaaaaa",
-  Tijd: "#44aaff",
-};
 
 // ── Scroll-fade hook
 function useScrollFade(threshold = 0.15) {
@@ -195,7 +257,7 @@ function PackageFlipCard({ pkg, index, onContact }: {
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
-        {/* ── FRONT: Photo placeholder ── */}
+        {/* ── FRONT: Photo ── */}
         <div
           style={{
             position: "absolute",
@@ -212,62 +274,18 @@ function PackageFlipCard({ pkg, index, onContact }: {
             flexDirection: "column",
           }}
         >
-          {/* Photo — real show image */}
-          <div
-            style={{
-              width: "100%",
-              aspectRatio: "1 / 1",
-              maxHeight: "55%",
-              borderBottom: `1px solid ${GLOW_BLUE}33`,
-              position: "relative",
-              overflow: "hidden",
-              flexShrink: 0,
-            }}
-          >
+          <div style={{ width: "100%", aspectRatio: "1 / 1", maxHeight: "55%", borderBottom: `1px solid ${GLOW_BLUE}33`, position: "relative", overflow: "hidden", flexShrink: 0 }}>
             <img
-              src={(pkg as any).photoUrl}
+              src={pkg.photoUrl}
               alt={pkg.photoLabel}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center",
-                display: "block",
-                transition: "transform 0.5s ease",
-                transform: hovered ? "scale(1.05)" : "scale(1)",
-              }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block", transition: "transform 0.5s ease", transform: hovered ? "scale(1.05)" : "scale(1)" }}
             />
-            {/* Subtle glow overlay */}
-            <div style={{
-              position: "absolute",
-              inset: 0,
-              background: `linear-gradient(to bottom, transparent 60%, ${GLOW_PURPLE}44 100%)`,
-              pointerEvents: "none",
-            }} />
-            {/* Package name badge */}
-            <div style={{
-              position: "absolute",
-              bottom: "10px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              background: `rgba(0,0,0,0.65)`,
-              border: `1px solid ${GLOW_BLUE}66`,
-              borderRadius: "999px",
-              padding: "4px 14px",
-              backdropFilter: "blur(6px)",
-            }}>
-              <p style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: "0.65rem",
-                letterSpacing: "0.2em",
-                color: GLOW_BLUE,
-                textTransform: "uppercase",
-                margin: 0,
-              }}>{pkg.photoLabel}</p>
+            <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 60%, ${GLOW_PURPLE}44 100%)`, pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: "10px", left: "50%", transform: "translateX(-50%)", background: `rgba(0,0,0,0.65)`, border: `1px solid ${GLOW_BLUE}66`, borderRadius: "999px", padding: "4px 14px", backdropFilter: "blur(6px)" }}>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: GLOW_BLUE, textTransform: "uppercase", margin: 0 }}>{pkg.photoLabel}</p>
             </div>
           </div>
 
-          {/* Card bottom info */}
           <div style={{ padding: "1.25rem 1.5rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <div>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: GLOW_BLUE, textTransform: "uppercase", marginBottom: "0.35rem" }}>
@@ -276,25 +294,22 @@ function PackageFlipCard({ pkg, index, onContact }: {
               <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "2rem", letterSpacing: "0.08em", color: "#f0f4f8", lineHeight: 1, textShadow: `0 0 20px ${GLOW_BLUE}55` }}>
                 {pkg.name}
               </h3>
-              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(240,244,248,0.45)", marginTop: "0.25rem" }}>
-                {pkg.duration}
-              </p>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginTop: "0.4rem", flexWrap: "wrap" }}>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(240,244,248,0.55)" }}>
+                  ⏱ {pkg.duration}
+                </span>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: GLOW_BLUE, background: `${GLOW_BLUE}15`, border: `1px solid ${GLOW_BLUE}33`, borderRadius: "100px", padding: "2px 8px" }}>
+                  {pkg.extraHour}
+                </span>
+              </div>
             </div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase", marginTop: "0.75rem" }}>
-              Zweef voor details ▸
+              Zweef voor details →
             </p>
           </div>
 
-          {/* Glow aura on hover */}
           {hovered && (
-            <div style={{
-              position: "absolute",
-              inset: "-2px",
-              borderRadius: "1.6rem",
-              background: `radial-gradient(ellipse at 50% 0%, ${GLOW_BLUE}18 0%, transparent 70%)`,
-              pointerEvents: "none",
-              zIndex: -1,
-            }} />
+            <div style={{ position: "absolute", inset: "-2px", borderRadius: "1.6rem", background: `radial-gradient(ellipse at 50% 0%, ${GLOW_BLUE}18 0%, transparent 70%)`, pointerEvents: "none", zIndex: -1 }} />
           )}
         </div>
 
@@ -316,7 +331,6 @@ function PackageFlipCard({ pkg, index, onContact }: {
             padding: "1.75rem",
           }}
         >
-          {/* Header */}
           <div style={{ marginBottom: "1rem" }}>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: GLOW_BLUE, textTransform: "uppercase", marginBottom: "0.25rem" }}>
               {pkg.tagline}
@@ -324,18 +338,17 @@ function PackageFlipCard({ pkg, index, onContact }: {
             <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.75rem", letterSpacing: "0.08em", color: "#f0f4f8", lineHeight: 1, textShadow: `0 0 16px ${GLOW_BLUE}66` }}>
               {pkg.name}
             </h3>
+            <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.4rem", flexWrap: "wrap" }}>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: "rgba(240,244,248,0.55)" }}>⏱ {pkg.duration}</span>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: GLOW_BLUE }}>· {pkg.extraHour}</span>
+            </div>
             <div style={{ height: "1px", background: `linear-gradient(90deg, ${GLOW_PURPLE}, ${GLOW_BLUE}, transparent)`, marginTop: "0.75rem", boxShadow: `0 0 8px ${GLOW_BLUE}44` }} />
           </div>
 
-          {/* Features */}
           <ul style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.5rem", overflow: "hidden" }}>
             {pkg.features.map((feature) => (
               <li key={feature} style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
-                <div style={{
-                  width: "16px", height: "16px", borderRadius: "50%", flexShrink: 0, marginTop: "1px",
-                  background: `${GLOW_BLUE}18`, border: `1px solid ${GLOW_BLUE}55`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
+                <div style={{ width: "16px", height: "16px", borderRadius: "50%", flexShrink: 0, marginTop: "1px", background: `${GLOW_BLUE}18`, border: `1px solid ${GLOW_BLUE}55`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Check size={9} color={GLOW_BLUE} />
                 </div>
                 <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(240,244,248,0.8)", lineHeight: 1.4 }}>
@@ -345,14 +358,12 @@ function PackageFlipCard({ pkg, index, onContact }: {
             ))}
           </ul>
 
-          {/* Ideal for */}
           <div style={{ marginTop: "0.75rem", padding: "0.6rem 0.9rem", borderRadius: "8px", background: `${GLOW_BLUE}0d`, border: `1px solid ${GLOW_BLUE}22` }}>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: GLOW_BLUE, lineHeight: 1.4 }}>
               {pkg.ideal}
             </p>
           </div>
 
-          {/* CTA */}
           <button
             onClick={onContact}
             style={{
@@ -374,8 +385,121 @@ function PackageFlipCard({ pkg, index, onContact }: {
             OFFERTE AANVRAGEN
           </button>
 
-          {/* Bottom neon line */}
           <div style={{ height: "2px", background: `linear-gradient(90deg, transparent, ${GLOW_PURPLE}, ${GLOW_BLUE}, transparent)`, borderRadius: "999px", marginTop: "0.75rem", boxShadow: `0 0 8px ${GLOW_BLUE}44` }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Add-on flip card
+function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: number }) {
+  const [flipped, setFlipped] = useState(false);
+  const { ref, opacity, translateY } = useScrollFade(0.05);
+  const color = addon.accentColor;
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        perspective: "1000px",
+        height: "280px",
+        opacity,
+        transform: `translateY(${translateY}px)`,
+        transition: `opacity 0.7s ease ${index * 0.1}s, transform 0.7s ease ${index * 0.1}s`,
+      }}
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+    >
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          transformStyle: "preserve-3d",
+          transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+        }}
+      >
+        {/* FRONT */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            background: CARD_BG,
+            border: `1px solid ${color}44`,
+            borderRadius: "1.25rem",
+            boxShadow: `0 0 18px ${color}22, 0 0 40px ${GLOW_PURPLE}11`,
+            padding: "1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
+              <span style={{ fontSize: "2.25rem", filter: `drop-shadow(0 0 10px ${color}88)` }}>{addon.icon}</span>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.7rem", letterSpacing: "0.12em", color, padding: "0.25rem 0.75rem", border: `1px solid ${color}44`, borderRadius: "100px", textTransform: "uppercase" }}>
+                {addon.subtitle}
+              </span>
+            </div>
+            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.4rem", letterSpacing: "0.06em", color: "#f0f4f8", marginBottom: "0.5rem", textShadow: `0 0 16px ${color}44` }}>
+              {addon.title}
+            </h3>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(240,244,248,0.6)", lineHeight: 1.6, fontWeight: 300 }}>
+              {addon.front}
+            </p>
+          </div>
+          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.6rem", letterSpacing: "0.15em", color: `${color}88`, textTransform: "uppercase", marginTop: "0.75rem" }}>
+            Zweef voor details →
+          </p>
+        </div>
+
+        {/* BACK */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+            background: `linear-gradient(160deg, #1a0050 0%, #0d0035 60%, #200060 100%)`,
+            border: `1.5px solid ${color}99`,
+            borderRadius: "1.25rem",
+            boxShadow: `0 0 30px ${color}44, 0 0 70px ${GLOW_PURPLE}22`,
+            padding: "1.5rem",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div style={{ marginBottom: "0.75rem" }}>
+            <span style={{ fontSize: "1.5rem" }}>{addon.icon}</span>
+            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.25rem", letterSpacing: "0.06em", color: "#f0f4f8", marginTop: "0.25rem", textShadow: `0 0 12px ${color}66` }}>
+              {addon.backTitle}
+            </h3>
+            <div style={{ height: "1px", background: `linear-gradient(90deg, ${color}, transparent)`, marginTop: "0.5rem", boxShadow: `0 0 6px ${color}44` }} />
+          </div>
+
+          <ul style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+            {addon.backPoints.map((point) => (
+              <li key={point} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
+                <div style={{ width: "14px", height: "14px", borderRadius: "50%", flexShrink: 0, marginTop: "2px", background: `${color}18`, border: `1px solid ${color}55`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Check size={8} color={color} />
+                </div>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", color: "rgba(240,244,248,0.8)", lineHeight: 1.4 }}>
+                  {point}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div style={{ marginTop: "0.75rem", padding: "0.5rem 0.75rem", borderRadius: "8px", background: `${color}0d`, border: `1px solid ${color}22` }}>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", color, lineHeight: 1.4, margin: 0 }}>
+              {addon.backNote}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -448,24 +572,21 @@ export default function UitbreidingenSection() {
           </span>
         </div>
 
-        {/* ── ADD-ONS ── */}
+        {/* ── ADD-ONS FLIP CARDS ── */}
         <div
           ref={addonsFade.ref}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: "1rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "1.25rem",
             opacity: addonsFade.opacity,
             transform: `translateY(${addonsFade.translateY}px)`,
             transition: "opacity 0.8s ease, transform 0.8s ease",
           }}
         >
-          {addons.map((addon, i) => {
-            const color = categoryColors[addon.category] || GLOW_BLUE;
-            return (
-              <AddonCard key={addon.title} addon={addon} color={color} index={i} />
-            );
-          })}
+          {addons.map((addon, i) => (
+            <AddonFlipCard key={addon.title} addon={addon} index={i} />
+          ))}
         </div>
 
         {/* ── CTA ── */}
@@ -495,7 +616,6 @@ export default function UitbreidingenSection() {
 
       </div>
 
-      {/* Keyframes */}
       <style>{`
         @keyframes glowPulse {
           0%, 100% { box-shadow: 0 0 18px ${GLOW_BLUE}22, 0 0 40px ${GLOW_PURPLE}11; }
@@ -503,43 +623,5 @@ export default function UitbreidingenSection() {
         }
       `}</style>
     </section>
-  );
-}
-
-function AddonCard({ addon, color, index }: { addon: typeof addons[0]; color: string; index: number }) {
-  const [hovered, setHovered] = useState(false);
-  const { ref, opacity, translateY } = useScrollFade(0.05);
-
-  return (
-    <div
-      ref={ref}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        borderRadius: "1rem",
-        padding: "1.25rem",
-        background: hovered ? `linear-gradient(135deg, ${GLOW_PURPLE}18, ${GLOW_BLUE}0d)` : CARD_BG,
-        border: hovered ? CARD_BORDER_HOVER : CARD_BORDER,
-        boxShadow: hovered ? CARD_SHADOW_HOVER : CARD_SHADOW,
-        transition: "all 0.35s ease",
-        transform: hovered ? `translateY(-5px) translateY(${translateY}px)` : `translateY(${translateY}px)`,
-        opacity,
-        cursor: "default",
-        transitionDelay: `${index * 0.08}s`,
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.75rem" }}>
-        <span style={{ fontSize: "1.75rem", filter: hovered ? `drop-shadow(0 0 8px ${color}88)` : "none", transition: "filter 0.3s ease" }}>{addon.icon}</span>
-        <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.6rem", letterSpacing: "0.15em", color, padding: "0.2rem 0.5rem", border: `1px solid ${color}44`, borderRadius: "100px", textTransform: "uppercase" }}>
-          {addon.category}
-        </span>
-      </div>
-      <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.9rem", fontWeight: 600, color: "#f0f4f8", marginBottom: "0.4rem" }}>
-        {addon.title}
-      </h3>
-      <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(240,244,248,0.55)", lineHeight: 1.6, fontWeight: 300 }}>
-        {addon.description}
-      </p>
-    </div>
   );
 }

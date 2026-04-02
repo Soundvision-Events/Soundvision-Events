@@ -381,8 +381,7 @@ export default function HeroSection() {
           </button>
           <button
             className="sv-btn-secondary"
-            /* glowing neon borders */
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderRadius: "0px", borderWidth: "12px", borderStyle: "outset", borderColor: "#00c8ff" }}
+            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}
             onClick={() => handleScroll("#contact")}
           >
             Neem Contact Op
