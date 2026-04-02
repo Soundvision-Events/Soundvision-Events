@@ -506,7 +506,7 @@ function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: numbe
   );
 }
 
-export default function UitbreidingenSection() {
+export default function UitbreidingenSection({ showOpeningsdansMix = false }: { showOpeningsdansMix?: boolean }) {
   const handleContact = () => {
     const el = document.querySelector("#contact");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -584,9 +584,11 @@ export default function UitbreidingenSection() {
             transition: "opacity 0.8s ease, transform 0.8s ease",
           }}
         >
-          {addons.map((addon, i) => (
-            <AddonFlipCard key={addon.title} addon={addon} index={i} />
-          ))}
+          {addons
+            .filter((addon) => addon.title !== "Openingsdans Mix" || showOpeningsdansMix)
+            .map((addon, i) => (
+              <AddonFlipCard key={addon.title} addon={addon} index={i} />
+            ))}
         </div>
 
         {/* ── CTA ── */}

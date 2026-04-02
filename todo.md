@@ -168,3 +168,4 @@
 - [ ] Add-ons: vervangen door 5 echte add-ons als flipcards (rookmachine, openingsdans mix, lasershow, uplights, extra uurtarief)
 - [ ] Prijstabellen: Intiem + Luxe = 4 uur standaard, Elite = 5 uur minimaal
 - [ ] Prijstabellen: extra uurtarief €100/uur toevoegen aan alle shows
+- [x] Openingsdans Mix add-on: alleen zichtbaar op bruiloftspagina, verborgen op alle andere pagina's

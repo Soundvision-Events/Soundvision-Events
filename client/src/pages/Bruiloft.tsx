@@ -262,7 +262,7 @@ export default function Bruiloft() {
       {/* ── USP, Packages, Add-ons, Contact ── */}
       <div style={{ position: "relative", zIndex: 1 }}>
         <USPSection />
-        <UitbreidingenSection />
+        <UitbreidingenSection showOpeningsdansMix={true} />
         <ContactSection />
       </div>
 
