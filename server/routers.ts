@@ -3,6 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { z } from "zod";
+import { invokeLLM } from "./_core/llm";
 import { createContactSubmission, getContactSubmissions, updateContactStatus, createFileRecord, getFiles, deleteFileRecord } from "./db";
 import { storagePut } from "./storage";
 import { notifyOwner } from "./_core/notification";
@@ -18,6 +19,45 @@ export const appRouter = router({
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
       return { success: true } as const;
     }),
+  }),
+
+  // ─── AI Chatbot ───
+  chat: router({
+    sendMessage: publicProcedure
+      .input(z.object({
+        messages: z.array(z.object({
+          role: z.enum(["user", "assistant"]),
+          content: z.string(),
+        })).min(1).max(20),
+      }))
+      .mutation(async ({ input }) => {
+        const systemPrompt = `Je bent de vriendelijke AI assistent van SoundVision Events, een professioneel DJ bedrijf in Noord-Nederland (Groningen, Drenthe, Friesland). Je helpt bezoekers met vragen over:
+
+- DJ shows voor bruiloften, bedrijfsfeesten, verjaardagen, studentenfeesten en andere evenementen
+- Pakketten: Basis (€495), Standaard (€695), Premium (€895), Luxe (€1195)
+- Add-ons: extra lichtshow, rookmachine, LED dansvloer, confetti kanon, fotobox
+- Beschikbaarheid en boekingen (verwijs naar het contactformulier of WhatsApp)
+- DJ Bert heeft 15+ jaar ervaring en 500+ shows gespeeld
+- Trustoo score: 9.8/10
+- Website: soundvisionevents.nl
+
+Antwoord altijd in het Nederlands, vriendelijk en professioneel. Houd antwoorden beknopt (max 3 zinnen). Als iemand wil boeken, verwijs ze naar het contactformulier of WhatsApp.`;
+
+        const response = await invokeLLM({
+          messages: [
+            { role: "system" as const, content: systemPrompt },
+            ...input.messages.map((m) => ({ role: m.role as "user" | "assistant", content: m.content })),
+          ],
+        });
+
+        const rawContent = response.choices?.[0]?.message?.content;
+        const reply = typeof rawContent === "string"
+          ? rawContent
+          : Array.isArray(rawContent)
+            ? rawContent.map((p) => (p.type === "text" ? p.text : "")).join("")
+            : "Sorry, ik kon je vraag niet verwerken. Neem contact op via WhatsApp.";
+        return { reply };
+      }),
   }),
 
   // ─── Contact Form ───

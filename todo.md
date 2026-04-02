@@ -159,3 +159,7 @@
 - [x] Hero review slider: koppelen aan echte Trustoo beoordelingen uit widget DOM (fallback naar statische reviews als widget niet laadt)
 - [x] Home gallery: 7 nieuwe event-foto's toevoegen (bruiloft, feest, DJ setup)
 - [x] Backdrop: vloeiende cross-fade overgang van hero video naar backdrop animatie tijdens scrollen
+- [x] Backdrop: full-page framing herstellen, opacity 0 tijdens hero, fade-in bij sectie-overgang (geen simultane zichtbaarheid)
+- [x] UI: Back-to-top sticky knop rechtsonder
+- [x] UI: WhatsApp sticky floating knop
+- [x] UI: AI chatbot voor bezoekersvragen (SoundVision context)

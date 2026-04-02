@@ -1,23 +1,18 @@
 /**
  * SoundVision Events — Video Background (Backdrop)
- * Fixed backdrop that cross-fades IN as the hero video fades OUT.
  *
- * Cross-fade logic:
- *   - Listens for the "sv-hero-opacity" custom event emitted by HeroSection.
- *   - When hero opacity = 1 (hero fully visible) → backdrop opacity = 0 (hidden).
- *   - When hero opacity = 0 (hero scrolled away) → backdrop opacity = 1 (fully visible).
- *   - Smooth transition creates a seamless cross-fade between the two videos.
+ * Full-page fixed backdrop that transitions cleanly at the hero boundary:
+ *   - While hero is visible (heroOpacity > 0.5): backdrop is fully hidden (opacity 0)
+ *   - As hero crosses the 50% fade threshold: backdrop snaps/fades in
+ *   - The two animations are NEVER simultaneously visible — clean cut at the midpoint
  *
- * Positioning:
- *   - The video is offset so its visual start aligns with the bottom of the hero section.
- *   - This makes the backdrop feel like a continuation of the hero animation.
+ * The video fills the full viewport (standard cover framing) — no position offset.
+ * Listens to "sv-hero-opacity" custom event emitted by HeroSection on every scroll tick.
  */
 import { useEffect, useRef, useState } from "react";
 
 interface VideoBackgroundProps {
-  /** CDN URL of the background video */
   src?: string;
-  /** Overlay darkness 0–1 — default 0.30 */
   overlayOpacity?: number;
 }
 
@@ -29,32 +24,35 @@ export default function VideoBackground({
   overlayOpacity = 0.30,
 }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  // Start invisible — will fade in as hero fades out
+  // Start hidden — becomes visible only after hero has faded out
   const [backdropOpacity, setBackdropOpacity] = useState(0);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Ensure video is always playing (loop in background)
     const ensurePlaying = () => {
-      if (video.paused) {
-        video.play().catch(() => {});
-      }
+      if (video.paused) video.play().catch(() => {});
     };
     ensurePlaying();
 
-    // Listen for hero opacity broadcasts from HeroSection
     const onHeroOpacity = (e: Event) => {
       const heroOpacity = (e as CustomEvent<{ opacity: number }>).detail.opacity;
-      // Backdrop is the inverse of the hero: when hero = 1, backdrop = 0; when hero = 0, backdrop = 1
-      const newBackdropOpacity = 1 - heroOpacity;
-      setBackdropOpacity(newBackdropOpacity);
 
-      // Keep video playing whenever backdrop is becoming visible
-      if (newBackdropOpacity > 0) {
-        ensurePlaying();
+      // Hard threshold at 0.15:
+      //   - heroOpacity > 0.15  → backdrop fully hidden (0)
+      //   - heroOpacity <= 0.15 → backdrop fades in proportionally
+      // This ensures the two videos are never simultaneously visible.
+      let newBackdropOpacity: number;
+      if (heroOpacity > 0.15) {
+        newBackdropOpacity = 0;
+      } else {
+        // Map heroOpacity 0.15 → 0  to backdropOpacity 0 → 1
+        newBackdropOpacity = 1 - heroOpacity / 0.15;
       }
+
+      setBackdropOpacity(newBackdropOpacity);
+      if (newBackdropOpacity > 0) ensurePlaying();
     };
 
     window.addEventListener("sv-hero-opacity", onHeroOpacity);
@@ -65,11 +63,11 @@ export default function VideoBackground({
     <div
       style={{
         opacity: backdropOpacity,
-        transition: "opacity 0.08s linear",
+        transition: "opacity 0.12s linear",
         willChange: "opacity",
       }}
     >
-      {/* Video element — fixed, positioned so its top aligns with the bottom of the hero */}
+      {/* Full-page fixed video — standard cover framing, no position offset */}
       <div
         style={{
           position: "fixed",
@@ -87,9 +85,7 @@ export default function VideoBackground({
           playsInline
           style={{
             position: "absolute",
-            // Shift the video down by 100vh so the visual start of the backdrop
-            // aligns with where the hero section ends — creates a seamless handoff.
-            top: "calc(50% + 50vh)",
+            top: "50%",
             left: "50%",
             minWidth: "100%",
             minHeight: "100%",
@@ -103,7 +99,7 @@ export default function VideoBackground({
         </video>
       </div>
 
-      {/* Dark overlay to keep text readable */}
+      {/* Dark overlay */}
       <div
         style={{
           position: "fixed",

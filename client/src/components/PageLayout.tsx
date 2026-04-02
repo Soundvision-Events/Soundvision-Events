@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VideoBackground from "@/components/VideoBackground";
 import BeatCursor from "@/components/BeatCursor";
+import FloatingButtons from "@/components/FloatingButtons";
+import ChatBot from "@/components/ChatBot";
 import { useParallax } from "@/hooks/useParallax";
 
 interface PageLayoutProps {
@@ -45,6 +47,8 @@ export default function PageLayout({ children, backgroundOverride }: PageLayoutP
       <Navbar />
       {children}
       <Footer />
+      <FloatingButtons />
+      <ChatBot />
     </div>
   );
 }
