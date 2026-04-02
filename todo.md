@@ -165,3 +165,5 @@
 - [x] UI: AI chatbot voor bezoekersvragen (SoundVision context)
 - [x] WhatsApp: verplaatsen naar linksonder, uitklapbaar chat-venster met directe berichtinvoer
 - [x] Floating knoppen: beschikbaar op elke pagina van de website (via PageLayout)
+- [x] FloatingButtons: WhatsApp nummer instellen op 0622764233 (NL: 31622764233)
+- [x] HeroSection: Neem Contact Op knop neon border (#00c8ff cyaan, passend bij Bekijk Pakketten #dca2fb paars)
