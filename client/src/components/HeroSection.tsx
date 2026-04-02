@@ -360,13 +360,15 @@ export default function HeroSection() {
         <h2
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "clamp(1.5rem, 4vw, 3rem)",
+            fontSize: "clamp(1.2rem, 3vw, 1.75rem)",
             letterSpacing: "0.4em",
             color: "#f0f0f0",
             marginBottom: "1.5rem",
+            fontWeight: 100,
+            textAlign: "right",
           }}
         >
-          EVENTS
+          EVENTS: Allround DJ Shows
         </h2>
 
         {/* CTA Buttons */}
