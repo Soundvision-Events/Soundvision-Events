@@ -57,7 +57,7 @@ export default function AboutSection() {
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center" style={{ marginTop: "-94px", marginRight: "27px", marginBottom: "8px", marginLeft: "-1px", height: "1168px" }}>
 
           {/* ── Video side ── */}
           <div className="relative sv-fade-up order-2 lg:order-1">
@@ -67,6 +67,12 @@ export default function AboutSection() {
                 border: "1px solid rgba(0, 200, 255, 0.25)",
                 boxShadow: "0 0 60px rgba(0, 200, 255, 0.12), 0 20px 60px rgba(0,0,0,0.5)",
                 aspectRatio: "16/9",
+                paddingBottom: "7px",
+                marginTop: "-306px",
+                marginRight: "-6px",
+                marginBottom: "-8px",
+                width: "658px",
+                height: "434px",
               }}
             >
               <iframe
