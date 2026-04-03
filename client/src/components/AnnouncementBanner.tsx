@@ -1,12 +1,13 @@
 /**
  * SoundVision Events — Announcement Banner
- * A dismissible banner shown at the top of every page.
- * Content can be changed here or fetched from a tRPC endpoint.
+ * Slide-in floating notification from bottom-right corner.
+ * Appears after 2s, does not block the navbar.
+ * Dismissed state stored in sessionStorage.
  */
 import { useState, useEffect } from "react";
 import { X, Sparkles } from "lucide-react";
 
-const BANNER_KEY = "sv-banner-dismissed-v1";
+const BANNER_KEY = "sv-banner-dismissed-v2";
 
 const ANNOUNCEMENT = {
   text: "🎉 Nog beschikbaar voor zomer 2026 — Vraag nu uw datum aan en ontvang 10% vroegboekkorting!",
@@ -19,90 +20,115 @@ const ANNOUNCEMENT = {
 
 export default function AnnouncementBanner() {
   const [visible, setVisible] = useState(false);
+  const [animIn, setAnimIn] = useState(false);
 
   useEffect(() => {
-    // Only show if not previously dismissed
     const dismissed = sessionStorage.getItem(BANNER_KEY);
-    if (!dismissed) setVisible(true);
+    if (!dismissed) {
+      // Show after 2 seconds
+      const timer = setTimeout(() => {
+        setVisible(true);
+        // Trigger slide-in animation on next frame
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => setAnimIn(true));
+        });
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const dismiss = () => {
+    setAnimIn(false);
     sessionStorage.setItem(BANNER_KEY, "1");
-    setVisible(false);
+    // Wait for slide-out animation before unmounting
+    setTimeout(() => setVisible(false), 400);
   };
 
   if (!visible) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 10000,
-        background: "linear-gradient(90deg, #060033 0%, #35007a 50%, #060033 100%)",
-        borderBottom: "1px solid rgba(115, 0, 255, 0.5)",
-        padding: "8px 16px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "12px",
-        boxShadow: "0 2px 16px rgba(115,0,255,0.25)",
-        opacity: 0.7,
-      }}
-    >
-      <Sparkles size={14} color="#00c8ff" style={{ flexShrink: 0 }} />
-
-      <p
+    <>
+      <style>{`
+        @keyframes sv-banner-shimmer {
+          0% { background-position: -200% center; }
+          100% { background-position: 200% center; }
+        }
+      `}</style>
+      <div
         style={{
-          margin: 0,
-          fontSize: "13px",
-          color: "#e8eaf6",
-          fontFamily: "'Outfit', sans-serif",
-          fontWeight: 500,
-          textAlign: "center",
-          flex: 1,
+          position: "fixed",
+          bottom: "90px",
+          right: "20px",
+          zIndex: 9999,
+          width: "min(340px, calc(100vw - 40px))",
+          background: "linear-gradient(135deg, #0a0030 0%, #1a0060 40%, #0d1a6e 100%)",
+          border: "1.5px solid rgba(0, 212, 255, 0.6)",
+          borderRadius: "14px",
+          padding: "16px 14px 14px 16px",
+          boxShadow: "0 0 20px rgba(0,212,255,0.25), 0 0 60px rgba(96,64,224,0.2), 0 8px 32px rgba(0,0,0,0.5)",
+          transform: animIn ? "translateX(0)" : "translateX(calc(100% + 30px))",
+          opacity: animIn ? 1 : 0,
+          transition: "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease",
         }}
       >
-        {ANNOUNCEMENT.text}
-      </p>
+        {/* Top row: icon + close */}
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "10px" }}>
+          <Sparkles size={16} color="#00d4ff" style={{ flexShrink: 0, marginTop: "2px" }} />
+          <p
+            style={{
+              margin: 0,
+              fontSize: "13px",
+              color: "rgba(232, 240, 255, 0.92)",
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 400,
+              lineHeight: 1.5,
+              flex: 1,
+            }}
+          >
+            {ANNOUNCEMENT.text}
+          </p>
+          <button
+            onClick={dismiss}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "rgba(255,255,255,0.45)",
+              padding: "0",
+              flexShrink: 0,
+              lineHeight: 1,
+              marginTop: "1px",
+            }}
+            aria-label="Sluiten"
+          >
+            <X size={14} />
+          </button>
+        </div>
 
-      <button
-        onClick={ANNOUNCEMENT.ctaAction}
-        style={{
-          background: "linear-gradient(135deg, #7300ff, #00c8ff)",
-          border: "none",
-          borderRadius: "6px",
-          padding: "5px 12px",
-          fontSize: "12px",
-          fontWeight: 700,
-          color: "white",
-          cursor: "pointer",
-          whiteSpace: "nowrap",
-          fontFamily: "'Outfit', sans-serif",
-          letterSpacing: "0.05em",
-          flexShrink: 0,
-        }}
-      >
-        {ANNOUNCEMENT.cta}
-      </button>
-
-      <button
-        onClick={dismiss}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          color: "rgba(255,255,255,0.5)",
-          padding: "2px",
-          flexShrink: 0,
-          lineHeight: 1,
-        }}
-        aria-label="Sluiten"
-      >
-        <X size={14} />
-      </button>
-    </div>
+        {/* CTA button */}
+        <button
+          onClick={() => { ANNOUNCEMENT.ctaAction(); dismiss(); }}
+          style={{
+            width: "100%",
+            background: "linear-gradient(135deg, #00d4ff 0%, #5b6ef5 50%, #6040e0 100%)",
+            backgroundSize: "200% auto",
+            animation: "sv-banner-shimmer 3s linear infinite",
+            border: "none",
+            borderRadius: "8px",
+            padding: "9px 16px",
+            fontSize: "13px",
+            fontWeight: 700,
+            color: "white",
+            cursor: "pointer",
+            fontFamily: "'Outfit', sans-serif",
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            boxShadow: "0 0 12px rgba(0,212,255,0.35)",
+          }}
+        >
+          {ANNOUNCEMENT.cta}
+        </button>
+      </div>
+    </>
   );
 }
