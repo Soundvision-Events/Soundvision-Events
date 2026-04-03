@@ -335,11 +335,14 @@ export default function HeroSection() {
           <h1
             style={{
               fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(3.5rem, 10vw, 8rem)",
+              fontSize: "clamp(3.5rem, 10vw, 6.75rem)",
               letterSpacing: "0.05em",
               lineHeight: 1,
-              color: "#f0f4f8",
+              color: "#2ec0ff",
               margin: 0,
+              marginTop: "9px",
+              marginRight: "54px",
+              marginLeft: "-23px",
             }}
           >
             SOUND
@@ -352,7 +355,7 @@ export default function HeroSection() {
               }}
             >
               VISION
-            </span>
+            </span>{" events"}
           </h1>
         </div>
 
@@ -360,21 +363,27 @@ export default function HeroSection() {
         <h2
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "clamp(1.2rem, 3vw, 1.75rem)",
+            fontSize: "43px",
             letterSpacing: "0.4em",
-            color: "#ffffff",
-            marginTop: "-95px",
-            marginBottom: "-4px",
-            marginLeft: "293px",
-            marginRight: "-29px",
-            paddingTop: "45px",
+            color: "#fcfcfc",
+            backgroundColor: "#001029",
+            borderRadius: "4px",
+            marginTop: "-82px",
+            marginBottom: "62px",
+            marginLeft: "210px",
+            marginRight: "182px",
+            paddingTop: "55px",
+            paddingRight: "56px",
+            paddingBottom: "56px",
+            paddingLeft: "45px",
             fontWeight: 100,
-            textAlign: "right",
-            width: "554px",
-            height: "85px",
+            textAlign: "left",
+            textDecoration: "overline",
+            width: "708px",
+            height: "102px",
           }}
         >
-          EVENTS: Allround DJ Shows
+          Allround DJ Shows
         </h2>
 
         {/* CTA Buttons */}
@@ -389,7 +398,7 @@ export default function HeroSection() {
           </button>
           <button
             className="sv-btn-secondary"
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderWidth: "8px", backgroundColor: "#00ff88", borderStyle: "outset", borderColor: "#2f3131" }}
+            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderWidth: "11px", backgroundColor: "#003238", borderStyle: "groove", borderColor: "#00fae9", color: "#e3e3e3" }}
             onClick={() => handleScroll("#contact")}
           >
             Neem Contact Op
