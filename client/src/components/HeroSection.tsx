@@ -363,24 +363,26 @@ export default function HeroSection() {
         <h2
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "43px",
-            letterSpacing: "0.4em",
+            fontSize: "clamp(1.4rem, 4vw, 2.7rem)",
+            letterSpacing: "0.35em",
             color: "#fcfcfc",
-            backgroundColor: "#001029",
-            borderRadius: "4px",
-            marginTop: "-82px",
-            marginBottom: "62px",
-            marginLeft: "210px",
-            marginRight: "182px",
-            paddingTop: "55px",
-            paddingRight: "56px",
-            paddingBottom: "56px",
-            paddingLeft: "45px",
+            backgroundColor: "rgba(0,16,41,0.85)",
+            borderRadius: "6px",
+            border: "1.5px solid rgba(0,212,255,0.55)",
+            boxShadow: "0 0 18px rgba(0,212,255,0.35), 0 0 50px rgba(0,212,255,0.12)",
+            marginTop: "clamp(-2rem, -4vw, -5rem)",
+            marginBottom: "clamp(1rem, 3vw, 3.5rem)",
+            marginLeft: "auto",
+            marginRight: "0",
+            paddingTop: "clamp(2rem, 4vw, 3.5rem)",
+            paddingRight: "clamp(1.5rem, 3vw, 3.5rem)",
+            paddingBottom: "clamp(1rem, 2vw, 2rem)",
+            paddingLeft: "clamp(1.5rem, 3vw, 3rem)",
             fontWeight: 100,
             textAlign: "left",
             textDecoration: "overline",
-            width: "708px",
-            height: "102px",
+            maxWidth: "min(708px, 90vw)",
+            backdropFilter: "blur(8px)",
           }}
         >
           Allround DJ Shows
@@ -391,14 +393,14 @@ export default function HeroSection() {
           <button
             className="sv-btn-primary"
             /* glowing neon borders */
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderRadius: "0px", borderWidth: "10px", borderStyle: "outset", borderColor: "#ffffff" }}
+            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderRadius: "6px", boxShadow: "0 0 22px rgba(0,212,255,0.55), 0 0 50px rgba(91,74,240,0.30)" }}
             onClick={() => handleScroll("#packages")}
           >
             Bekijk Pakketten
           </button>
           <button
             className="sv-btn-secondary"
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderWidth: "11px", backgroundColor: "#003238", borderStyle: "groove", borderColor: "#00fae9", color: "#e3e3e3" }}
+            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", boxShadow: "0 0 22px rgba(0,212,255,0.45), 0 0 50px rgba(60,0,200,0.25)" }}
             onClick={() => handleScroll("#contact")}
           >
             Neem Contact Op

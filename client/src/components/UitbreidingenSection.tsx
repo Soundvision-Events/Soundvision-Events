@@ -6,14 +6,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 
-// ── Brand colours
+// ── Brand colours — vibrant purple-blue-cyan (reference: IMG_0652)
 const GLOW_BLUE = "#7eb3ff";
 const GLOW_PURPLE = "#6040e0";
-const CARD_BG = "linear-gradient(160deg, #0d0035 0%, #1a0050 50%, #0a0028 100%)";
-const CARD_BORDER = `1px solid ${GLOW_BLUE}44`;
-const CARD_SHADOW = `0 0 18px ${GLOW_BLUE}22, 0 0 40px ${GLOW_PURPLE}11`;
-const CARD_SHADOW_HOVER = `0 0 30px ${GLOW_BLUE}55, 0 0 70px ${GLOW_PURPLE}33, 0 0 120px ${GLOW_BLUE}15`;
-const CARD_BORDER_HOVER = `1.5px solid ${GLOW_BLUE}cc`;
+const NEON_CYAN_GLOW = "#00d4ff";
+const CARD_BG = "linear-gradient(160deg, #1e0055 0%, #2d1a8a 45%, #1a2a9a 100%)";
+const CARD_BORDER = `1.5px solid rgba(0,200,255,0.45)`;
+const CARD_SHADOW = `0 0 18px rgba(0,200,255,0.22), 0 0 40px rgba(96,64,224,0.18), inset 0 1px 0 rgba(126,179,255,0.08)`;
+const CARD_SHADOW_HOVER = `0 0 32px rgba(0,200,255,0.65), 0 0 70px rgba(96,64,224,0.40), 0 0 120px rgba(0,200,255,0.18), inset 0 1px 0 rgba(0,200,255,0.15)`;
+const CARD_BORDER_HOVER = `2px solid ${NEON_CYAN_GLOW}`;
 
 const packages = [
   {
@@ -335,7 +336,7 @@ function PackageFlipCard({ pkg, index, onContact }: {
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: `linear-gradient(160deg, #1a0050 0%, #0d0035 50%, #200060 100%)`,
+            background: `linear-gradient(160deg, #160040 0%, #261570 50%, #1530a0 100%)`,
             border: CARD_BORDER_HOVER,
             borderRadius: "1.5rem",
             overflow: "hidden",

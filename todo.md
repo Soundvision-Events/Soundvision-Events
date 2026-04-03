@@ -179,3 +179,6 @@
 - [x] Sociale bewijs-notificaties: interval aanpassen naar 1x per 3 minuten (was te frequent)
 - [x] SocialProofPopup: dynamische tijdstempels gebaseerd op huidige tijd (realistisch)
 - [x] Flipcards & CTA knoppen: kleurpalette bijwerken naar referentie (paars #3a0070 → blauw #5b6ef5 → cyaan #00d4ff gradient)
+- [x] Pakketkaarten: paars-blauw gradient + neon cyaan border glow (consistent met flipcards)
+- [x] Hero ondertitel: vaste pixel-marges vervangen door responsieve eenheden voor mobiel
+- [x] CTA knoppen: neon cyaan border glow effect toevoegen
