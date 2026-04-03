@@ -314,6 +314,22 @@
     animation: float 4s ease-in-out infinite;
   }
 
+  /* Burning neon glow — logo icon square border */
+  @keyframes sv-burn-glow {
+    0%   { box-shadow: 0 0 8px #00d4ff, 0 0 20px #00d4ff, 0 0 40px rgba(0,212,255,0.5), 0 0 80px rgba(96,64,224,0.3); border-color: #00d4ff; }
+    15%  { box-shadow: 0 0 12px #00aaff, 0 0 30px #7060ff, 0 0 60px rgba(112,96,255,0.7), 0 0 100px rgba(0,212,255,0.4); border-color: #7060ff; }
+    30%  { box-shadow: 0 0 20px #00d4ff, 0 0 45px #00d4ff, 0 0 80px rgba(0,212,255,0.8), 0 0 130px rgba(0,212,255,0.3); border-color: #00d4ff; }
+    45%  { box-shadow: 0 0 10px #a060ff, 0 0 25px #6040e0, 0 0 50px rgba(160,96,255,0.6), 0 0 90px rgba(96,64,224,0.5); border-color: #a060ff; }
+    60%  { box-shadow: 0 0 18px #00d4ff, 0 0 40px #3a8fff, 0 0 70px rgba(58,143,255,0.7), 0 0 120px rgba(0,212,255,0.35); border-color: #3a8fff; }
+    75%  { box-shadow: 0 0 14px #00d4ff, 0 0 35px #00d4ff, 0 0 65px rgba(0,212,255,0.65), 0 0 110px rgba(96,64,224,0.4); border-color: #00d4ff; }
+    90%  { box-shadow: 0 0 22px #7060ff, 0 0 50px #a060ff, 0 0 90px rgba(160,96,255,0.75), 0 0 140px rgba(112,96,255,0.3); border-color: #7060ff; }
+    100% { box-shadow: 0 0 8px #00d4ff, 0 0 20px #00d4ff, 0 0 40px rgba(0,212,255,0.5), 0 0 80px rgba(96,64,224,0.3); border-color: #00d4ff; }
+  }
+
+  .sv-burn-glow {
+    animation: sv-burn-glow 2.2s ease-in-out infinite;
+  }
+
   /* Gradient text */
   .sv-gradient-text {
     background: linear-gradient(135deg, #00c8ff, #0070ff);

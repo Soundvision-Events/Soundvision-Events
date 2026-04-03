@@ -283,12 +283,13 @@ export default function HeroSection() {
                 }}
               />
               <div
+                className="sv-burn-glow"
                 style={{
-                  width: "60px",
-                  height: "60px",
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(255,85,0,0.1))",
-                  border: "1px solid rgba(0,200,255,0.4)",
+                  width: "64px",
+                  height: "64px",
+                  borderRadius: "12px",
+                  background: "linear-gradient(to bottom, rgba(0,212,255,0.18) 0%, rgba(96,64,224,0.22) 100%)",
+                  border: "2px solid #00d4ff",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",

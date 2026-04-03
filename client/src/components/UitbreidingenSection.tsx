@@ -10,7 +10,7 @@ import { Check } from "lucide-react";
 const GLOW_BLUE = "#7eb3ff";
 const GLOW_PURPLE = "#6040e0";
 const NEON_CYAN_GLOW = "#00d4ff";
-const CARD_BG = "linear-gradient(160deg, #1e0055 0%, #2d1a8a 45%, #1a2a9a 100%)";
+const CARD_BG = "linear-gradient(to bottom, #00d4ff 0%, #3a8fff 25%, #5b4af0 50%, #6040e0 75%, #4a00c0 100%)";
 const CARD_BORDER = `1.5px solid rgba(0,200,255,0.45)`;
 const CARD_SHADOW = `0 0 18px rgba(0,200,255,0.22), 0 0 40px rgba(96,64,224,0.18), inset 0 1px 0 rgba(126,179,255,0.08)`;
 const CARD_SHADOW_HOVER = `0 0 32px rgba(0,200,255,0.65), 0 0 70px rgba(96,64,224,0.40), 0 0 120px rgba(0,200,255,0.18), inset 0 1px 0 rgba(0,200,255,0.15)`;
@@ -336,7 +336,7 @@ function PackageFlipCard({ pkg, index, onContact }: {
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: `linear-gradient(160deg, #160040 0%, #261570 50%, #1530a0 100%)`,
+            background: "linear-gradient(to bottom, #00d4ff 0%, #3a8fff 25%, #5b4af0 50%, #6040e0 75%, #4a00c0 100%)",
             border: CARD_BORDER_HOVER,
             borderRadius: "1.5rem",
             overflow: "hidden",

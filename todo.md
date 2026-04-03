@@ -183,3 +183,5 @@
 - [x] Hero ondertitel: vaste pixel-marges vervangen door responsieve eenheden voor mobiel
 - [x] CTA knoppen: neon cyaan border glow effect toevoegen
 - [x] USP-kaarten: paars-blauw gradient + neon cyaan border glow toepassen (consistent met pakket- en add-on kaarten)
+- [x] Kaart gradients: 50/50 balans cyaan bovenaan (#00d4ff) naar paars onderaan (#6040e0), gelijkmatig verdeeld
+- [x] Hero logo icon: animerende brandende neon glow rondom de vierkante border (pulserende vuur-achtige animatie)
