@@ -16,10 +16,10 @@ interface USPCard {
   glowColor: string;   // rgba for box-shadow
 }
 
-// ── Matching the AnnouncementBanner purple-blue gradient: #060033 → #35007a → #7300ff → #00c8ff
-const CARD_COLOR = "#7300ff";
-const CARD_GLOW = "rgba(115,0,255,0.40)";
-const CARD_COLOR_ACCENT = "#00c8ff";
+// ── Vibrant purple-blue-cyan palette (reference: IMG_0652)
+const CARD_COLOR = "#7eb3ff";
+const CARD_GLOW = "rgba(0,200,255,0.45)";
+const CARD_COLOR_ACCENT = "#00d4ff";
 
 const USPS: USPCard[] = [
   {
@@ -116,8 +116,8 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             inset: 0,
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            background: "linear-gradient(135deg, #060033 0%, #35007a 100%)",
-            border: `1px solid ${card.color}44`,
+            background: "linear-gradient(160deg, #1e0055 0%, #2d1a8a 45%, #1a2a9a 100%)",
+            border: `1.5px solid rgba(0,200,255,0.45)`,
             borderRadius: "1.5rem",
             display: "flex",
             flexDirection: "column",
@@ -125,7 +125,7 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             justifyContent: "center",
             gap: "1.25rem",
             padding: "2rem",
-            boxShadow: `0 0 0 1px ${card.color}33, inset 0 1px 0 ${card.color}22`,
+            boxShadow: `0 0 18px rgba(0,200,255,0.22), 0 0 40px rgba(96,64,224,0.18), inset 0 1px 0 rgba(126,179,255,0.08)`,
             transition: "box-shadow 0.3s ease",
           }}
         >
@@ -181,8 +181,8 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: `linear-gradient(135deg, #35007a 0%, #060033 100%)`,
-            border: `1.5px solid ${card.color}99`,
+            background: `linear-gradient(160deg, #160040 0%, #261570 50%, #1530a0 100%)`,
+            border: `2px solid #00d4ff`,
             borderRadius: "1.5rem",
             display: "flex",
             flexDirection: "column",
@@ -190,7 +190,7 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
             justifyContent: "center",
             gap: "1rem",
             padding: "2rem",
-            boxShadow: `0 0 30px ${card.glowColor}, 0 0 60px ${card.glowColor}`,
+            boxShadow: `0 0 32px rgba(0,200,255,0.65), 0 0 70px rgba(96,64,224,0.40), 0 0 120px rgba(0,200,255,0.18)`,
           }}
         >
           {/* Neon number badge */}

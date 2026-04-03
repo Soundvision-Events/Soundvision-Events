@@ -182,3 +182,4 @@
 - [x] Pakketkaarten: paars-blauw gradient + neon cyaan border glow (consistent met flipcards)
 - [x] Hero ondertitel: vaste pixel-marges vervangen door responsieve eenheden voor mobiel
 - [x] CTA knoppen: neon cyaan border glow effect toevoegen
+- [x] USP-kaarten: paars-blauw gradient + neon cyaan border glow toepassen (consistent met pakket- en add-on kaarten)
