@@ -98,41 +98,10 @@ export default function Navbar() {
           {/* CTA Buttons + Trustoo Top Pro Badge */}
           <div className="hidden lg:flex items-center gap-3">
             <button
-              onClick={scrollToContact}
-              style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: "0.8rem",
-                letterSpacing: "0.08em",
-                fontWeight: 500,
-                padding: "0.5rem 1.1rem",
-                borderRadius: "6px",
-                border: "1px solid rgba(115, 0, 255, 0.55)",
-                background: "rgba(115, 0, 255, 0.12)",
-                color: "rgba(200, 160, 255, 0.9)",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                textTransform: "uppercase",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(115, 0, 255, 0.28)";
-                e.currentTarget.style.borderColor = "rgba(115, 0, 255, 0.85)";
-                e.currentTarget.style.color = "#d4a0ff";
-                e.currentTarget.style.boxShadow = "0 0 14px rgba(115, 0, 255, 0.35)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(115, 0, 255, 0.12)";
-                e.currentTarget.style.borderColor = "rgba(115, 0, 255, 0.55)";
-                e.currentTarget.style.color = "rgba(200, 160, 255, 0.9)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              Offerte Aanvragen
-            </button>
-            <button
               className="sv-btn-primary"
               onClick={scrollToContact}
             >
-              Boek Nu
+              Offerte Aanvragen
             </button>
 
             {/* Trustoo Top Pro Badge */}

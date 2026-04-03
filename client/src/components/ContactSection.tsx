@@ -311,9 +311,9 @@ export default function ContactSection() {
               onSubmit={handleSubmit}
               className="rounded-2xl p-8"
               style={{
-                background: "rgba(20, 8, 50, 0.30)",
-                border: "1px solid rgba(100, 60, 200, 0.30)",
-                backgroundColor: 'rgba(20, 8, 50, 0.30)'
+                background: "rgba(20, 8, 50, 0.90)",
+                border: "1px solid rgba(100, 60, 200, 0.50)",
+                opacity: 0.9,
               }}
             >
               <div className="grid sm:grid-cols-2 gap-5">
