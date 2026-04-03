@@ -7,8 +7,8 @@ import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 
 // ── Brand colours
-const GLOW_BLUE = "#00c8ff";
-const GLOW_PURPLE = "#7300ff";
+const GLOW_BLUE = "#7eb3ff";
+const GLOW_PURPLE = "#6040e0";
 const CARD_BG = "linear-gradient(160deg, #0d0035 0%, #1a0050 50%, #0a0028 100%)";
 const CARD_BORDER = `1px solid ${GLOW_BLUE}44`;
 const CARD_SHADOW = `0 0 18px ${GLOW_BLUE}22, 0 0 40px ${GLOW_PURPLE}11`;
@@ -406,17 +406,18 @@ function PackageFlipCard({ pkg, index, onContact }: {
   );
 }
 
-// ── Neon cyan card constants
-const NEON_FRONT_BG = "rgba(0, 12, 40, 0.82)";
-const NEON_BACK_BG = "rgba(0, 8, 30, 0.90)";
-const NEON_BORDER = "2px solid rgba(0,200,255,0.55)";
-const NEON_BORDER_HOVER = "2px solid #00c8ff";
-const NEON_SHADOW = "0 0 18px rgba(0,200,255,0.30), 0 0 50px rgba(0,200,255,0.12), inset 0 1px 0 rgba(0,200,255,0.08)";
-const NEON_SHADOW_HOVER = "0 0 28px rgba(0,200,255,0.70), 0 0 70px rgba(0,200,255,0.35), 0 0 120px rgba(0,200,255,0.15), inset 0 1px 0 rgba(0,200,255,0.15)";
-const NEON_CYAN = "#00c8ff";
-const NEON_CYAN_DIM = "rgba(0,200,255,0.55)";
-const NEON_CHECK_BG = "rgba(0,200,255,0.12)";
-const NEON_CHECK_BORDER = "rgba(0,200,255,0.45)";
+// ── Vibrant purple-blue-cyan palette (reference: IMG_0652)
+// Background: deep purple #2a0060 → card gradient: mid-blue #4a5af0 → cyan #00d4ff
+const NEON_FRONT_BG = "linear-gradient(145deg, #1e0055 0%, #2d1a8a 45%, #1a2a9a 100%)";
+const NEON_BACK_BG = "linear-gradient(145deg, #160040 0%, #261570 50%, #1530a0 100%)";
+const NEON_BORDER = "2px solid rgba(100,120,255,0.60)";
+const NEON_BORDER_HOVER = "2px solid #7b8fff";
+const NEON_SHADOW = "0 0 18px rgba(90,100,255,0.35), 0 0 50px rgba(60,0,180,0.20), inset 0 1px 0 rgba(120,140,255,0.12)";
+const NEON_SHADOW_HOVER = "0 0 30px rgba(100,130,255,0.75), 0 0 70px rgba(80,0,220,0.40), 0 0 120px rgba(0,200,255,0.20), inset 0 1px 0 rgba(150,170,255,0.18)";
+const NEON_CYAN = "#7eb3ff";
+const NEON_CYAN_DIM = "rgba(126,179,255,0.55)";
+const NEON_CHECK_BG = "rgba(100,130,255,0.15)";
+const NEON_CHECK_BORDER = "rgba(120,150,255,0.50)";
 
 // ── Add-on flip card  (compact front: icon + title + price | full detail on back)
 function AddonFlipCard({ addon, index }: { addon: typeof addons[0]; index: number }) {

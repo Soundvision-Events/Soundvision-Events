@@ -178,3 +178,4 @@
 - [x] Sectietitel 'Uitbreidingen' hernoemen naar 'Add-ons & Extras' met neon cyaan stijl
 - [x] Sociale bewijs-notificaties: interval aanpassen naar 1x per 3 minuten (was te frequent)
 - [x] SocialProofPopup: dynamische tijdstempels gebaseerd op huidige tijd (realistisch)
+- [x] Flipcards & CTA knoppen: kleurpalette bijwerken naar referentie (paars #3a0070 → blauw #5b6ef5 → cyaan #00d4ff gradient)
