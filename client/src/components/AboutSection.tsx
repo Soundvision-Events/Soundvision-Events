@@ -186,7 +186,11 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Hoi, ik ben <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>DJ Tonicity</strong> — uw allround DJ bij SoundVision Events. Al ruim <strong style={{ color: "#00c8ff", fontWeight: 600 }}>15 jaar</strong> voorzien wij feesten van sfeervolle DJ-shows volledig op maat.
+                Hoi, ik ben <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Bert / DJ Tonicity</strong> — Vaste DJ én allround 'partner' voor uw feest concept met SoundVision Events.
+                <br /><br />
+                Soundvision voorziet al ruim <strong style={{ color: "#00c8ff", fontWeight: 600 }}>15 jaar</strong> diverse feesten &amp; evenementen van sfeervolle allround muziek inclusief DJ-shows volledig op maat.
+                <br /><br />
+                In de praktijk: écht 1 op 1 persoonlijke aandacht voor elk uniek feest, met 1 contactpersoon: <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>De DJ.</strong> Logisch, toch?
               </p>
               <p
                 style={{
