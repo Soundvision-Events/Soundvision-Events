@@ -191,3 +191,4 @@
 - [x] Testimonial-kaarten: 50/50 cyaan-naar-paars gradient + neon cyaan border glow (consistent met rest van de site)
 - [x] Hero video backdrop: geleidelijkere fade-in animatie (langzamer, vloeiender)
 - [x] Smooth scroll: globaal controleren en toepassen op alle pagina's
+- [x] Beat cursor: wave trail grootte verkleinen

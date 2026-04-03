@@ -19,10 +19,10 @@ export default function BeatCursor() {
   const isTouchRef = useRef(false);
   const timeRef = useRef(0);
 
-  const NUM_BARS = 16;
-  const BAR_WIDTH = 2.2;
-  const BAR_GAP = 1.8;
-  const MAX_BAR_HEIGHT = 18;
+  const NUM_BARS = 10;
+  const BAR_WIDTH = 1.6;
+  const BAR_GAP = 1.4;
+  const MAX_BAR_HEIGHT = 10;
   const TOTAL_WIDTH = NUM_BARS * (BAR_WIDTH + BAR_GAP) - BAR_GAP;
 
   // Lag factor: 0 = instant, 1 = never moves. ~0.12 gives a nice trail.
