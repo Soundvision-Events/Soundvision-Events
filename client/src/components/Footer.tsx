@@ -60,10 +60,12 @@ export default function Footer() {
           <div style={{ textAlign: "center", marginBottom: "1.25rem" }}>
             <p style={{
               fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "0.8rem",
+              fontSize: "37px",
               letterSpacing: "0.25em",
-              color: `${GLOW_BLUE}99`,
+              color: "#ff8800",
               textTransform: "uppercase",
+              paddingTop: "6px",
+              marginTop: "-37px",
             }}>
               Beoordeeld door onze klanten
             </p>
