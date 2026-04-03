@@ -10,9 +10,9 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Bruiloft", href: "/bruiloft" },
-  { label: "Bedrijfsfeesten", href: "/bedrijfsfeesten" },
+  { label: "Bedrijfsfeest", href: "/bedrijfsfeesten" },
   { label: "Studentenfeesten", href: "/studentenfeesten" },
-  { label: "Privé", href: "/prive" },
+  { label: "Privé feest", href: "/prive" },
 ];
 
 export default function Navbar() {
@@ -74,7 +74,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   style={{
                     fontFamily: "'Outfit', sans-serif",
-                    fontSize: "0.85rem",
+                    fontSize: "1.5rem",
                     letterSpacing: "0.05em",
                     color: isActive ? "#00c8ff" : "rgba(240, 244, 248, 0.75)",
                     transition: "color 0.2s ease",
@@ -100,66 +100,21 @@ export default function Navbar() {
             <button
               className="sv-btn-primary"
               onClick={scrollToContact}
-              style={{ fontSize: '13px', paddingTop: '6px', paddingRight: '6px', paddingBottom: '0px', paddingLeft: '7px', marginTop: '8px' }}
+              style={{
+                fontSize: '13px',
+                paddingTop: '9px',
+                paddingRight: '16px',
+                paddingBottom: '6px',
+                paddingLeft: '13px',
+                marginTop: '8px',
+                borderRadius: '0px',
+                borderWidth: '3px',
+                borderStyle: 'ridge',
+                borderColor: '#f5f5f5',
+              }}
             >
               Offerte Aanvragen
             </button>
-
-            {/* Trustoo Top Pro Badge */}
-            <a
-              href="https://www.trustoo.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Trustoo Top Pro — Gecertificeerd door klantbeoordelingen"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '4px 10px 4px 6px',
-                borderRadius: '20px',
-                background: 'rgba(255, 160, 30, 0.12)',
-                border: '1px solid rgba(255, 160, 30, 0.35)',
-                textDecoration: 'none',
-                transition: 'all 0.2s ease',
-                flexShrink: 0,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 160, 30, 0.22)';
-                e.currentTarget.style.borderColor = 'rgba(255, 160, 30, 0.65)';
-                e.currentTarget.style.boxShadow = '0 0 12px rgba(255, 160, 30, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 160, 30, 0.12)';
-                e.currentTarget.style.borderColor = 'rgba(255, 160, 30, 0.35)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/trustoo-top-pro-badge-U73ZYHrqAeRae2Yz3qYvqA.webp"
-                alt="Trustoo Top Pro"
-                style={{ width: '32px', height: '32px', objectFit: 'contain' }}
-              />
-              <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-                <span style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: '0.6rem',
-                  letterSpacing: '0.06em',
-                  color: '#fafafa',
-                  textTransform: 'uppercase',
-                }}>Trustoo</span>
-                <span style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: '0.72rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.04em',
-                  color: '#fafafa',
-                  textTransform: 'uppercase',
-                  backgroundColor: '#ff006f',
-                  padding: '1px 4px',
-                  borderRadius: '3px',
-                }}>Top Pro</span>
-              </div>
-            </a>
           </div>
 
           {/* Mobile menu toggle */}
