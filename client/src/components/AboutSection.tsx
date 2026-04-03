@@ -151,28 +151,15 @@ export default function AboutSection() {
                   fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
                   letterSpacing: "0.05em",
                   lineHeight: 1.15,
-                  color: "#ffffff",
-                  fontWeight: 100,
-                  textAlign: "center",
+                  color: "#00ddfa",
+                  fontWeight: 500,
+                  textAlign: "left",
                   paddingTop: "10px",
                   paddingBottom: "15px",
                   paddingLeft: "14px",
                 }}
               >
-                Uw vaste DJ en Partner: Vanaf het eerste gesprek tot het draaien op uw feest, en meer!
-                <br />
-                <span
-                  style={{
-                    background: "linear-gradient(135deg, #00c8ff, #0090ff)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
-                    marginLeft: "-117px",
-                  }}
-                >
-                  DJ: TONICITY (Bert)
-                </span>
+                'Uw vaste DJ en Partner'
               </h2>
             </div>
 
@@ -180,7 +167,7 @@ export default function AboutSection() {
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1.05rem",
+                  fontSize: "1.625rem",
                   color: "rgba(240, 244, 248, 0.82)",
                   lineHeight: 1.85,
                   fontWeight: 300,
