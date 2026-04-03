@@ -375,15 +375,16 @@ export default function HeroSection() {
             marginBottom: "clamp(1rem, 3vw, 3.5rem)",
             marginLeft: "auto",
             marginRight: "0",
-            paddingTop: "clamp(2rem, 4vw, 3.5rem)",
-            paddingRight: "clamp(1.5rem, 3vw, 3.5rem)",
-            paddingBottom: "clamp(1rem, 2vw, 2rem)",
-            paddingLeft: "clamp(1.5rem, 3vw, 3rem)",
+            paddingTop: "0px",
+            paddingRight: "0px",
+            paddingBottom: "0px",
+            paddingLeft: "clamp(2rem, 8vw, 127px)",
             fontWeight: 100,
             textAlign: "left",
             textDecoration: "overline",
             maxWidth: "min(708px, 90vw)",
             backdropFilter: "blur(8px)",
+            opacity: 0.6,
           }}
         >
           Allround DJ Shows
