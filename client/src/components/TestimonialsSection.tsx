@@ -116,17 +116,18 @@ export default function TestimonialsSection() {
               className="sv-fade-up sv-tilt rounded-2xl p-6"
               style={{
                 animationDelay: `${(i % 3) * 0.1}s`,
-                background: "rgba(20, 8, 50, 0.30)",
-                border: "1px solid rgba(100, 60, 200, 0.25)",
-                transition: "transform 0.3s ease, border-color 0.3s ease",
+                background: "linear-gradient(to bottom, #00d4ff 0%, #3a8fff 25%, #5b4af0 50%, #6040e0 75%, #4a00c0 100%)",
+                border: "1.5px solid #00d4ff",
+                boxShadow: "0 0 10px rgba(0,212,255,0.35), 0 0 28px rgba(0,212,255,0.12), 0 0 55px rgba(96,64,224,0.10)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.borderColor = "rgba(0, 200, 255, 0.2)";
+                e.currentTarget.style.transform = "translateY(-6px)";
+                e.currentTarget.style.boxShadow = "0 0 20px rgba(0,212,255,0.65), 0 0 50px rgba(0,212,255,0.28), 0 0 80px rgba(96,64,224,0.18)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.07)";
+                e.currentTarget.style.boxShadow = "0 0 10px rgba(0,212,255,0.35), 0 0 28px rgba(0,212,255,0.12), 0 0 55px rgba(96,64,224,0.10)";
               }}
             >
               {/* Stars */}
@@ -141,7 +142,7 @@ export default function TestimonialsSection() {
                 style={{
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "0.9rem",
-                  color: "rgba(240, 244, 248, 0.75)",
+                  color: "rgba(10, 5, 30, 0.90)",
                   lineHeight: 1.7,
                   fontWeight: 300,
                   marginBottom: "1.25rem",
@@ -158,14 +159,14 @@ export default function TestimonialsSection() {
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
-                    background: "linear-gradient(135deg, rgba(0,200,255,0.2), rgba(0,144,255,0.2))",
-                    border: "1px solid rgba(0, 200, 255, 0.3)",
+                    background: "linear-gradient(135deg, rgba(10,5,60,0.5), rgba(10,5,80,0.7))",
+                    border: "1.5px solid rgba(10,5,60,0.6)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     fontFamily: "'Bebas Neue', sans-serif",
                     fontSize: "0.8rem",
-                    color: "#00c8ff",
+                    color: "#ffffff",
                     letterSpacing: "0.05em",
                     flexShrink: 0,
                   }}
@@ -178,16 +179,16 @@ export default function TestimonialsSection() {
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: "0.875rem",
                       fontWeight: 600,
-                      color: "#f0f4f8",
-                    }}
-                  >
-                    {t.name}
+                    color: "rgba(10, 5, 30, 0.95)",
+                  }}
+                >
+                  {t.name}
                   </div>
                   <div
                     style={{
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: "0.75rem",
-                      color: "#00c8ff",
+                      color: "rgba(10, 5, 60, 0.75)",
                     }}
                   >
                     {t.event}
