@@ -189,3 +189,5 @@
 - [x] ContactSection: formulier 90% opacity
 - [x] Navbar: aparte 'Offerte Aanvragen' CTA verwijderen, 'Boek Nu' hernoemen naar 'Offerte Aanvragen'
 - [x] Testimonial-kaarten: 50/50 cyaan-naar-paars gradient + neon cyaan border glow (consistent met rest van de site)
+- [x] Hero video backdrop: geleidelijkere fade-in animatie (langzamer, vloeiender)
+- [x] Smooth scroll: globaal controleren en toepassen op alle pagina's

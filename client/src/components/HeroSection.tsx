@@ -205,8 +205,8 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "transparent" }}
     >
-      {/* Hero video — full opacity, fades out on scroll */}
-      <div className="absolute inset-0" style={{ opacity: videoOpacity, transition: "opacity 0.05s linear", willChange: "opacity" }}>
+      {/* Hero video — full opacity, fades out on scroll, fades in gradually on load */}
+      <div className="absolute inset-0" style={{ opacity: videoOpacity, transition: "opacity 0.05s linear", willChange: "opacity", animation: "sv-hero-fadein 2.8s ease-out forwards" }}>
         <video
           autoPlay
           loop

@@ -314,6 +314,15 @@
     animation: float 4s ease-in-out infinite;
   }
 
+  /* Hero video backdrop — gradual fade-in on page load */
+  @keyframes sv-hero-fadein {
+    0%   { opacity: 0; }
+    20%  { opacity: 0.1; }
+    50%  { opacity: 0.45; }
+    75%  { opacity: 0.78; }
+    100% { opacity: 1; }
+  }
+
   /* Burning neon glow — logo icon square border */
   @keyframes sv-burn-glow {
     0%   { box-shadow: 0 0 8px #00d4ff, 0 0 20px #00d4ff, 0 0 40px rgba(0,212,255,0.5), 0 0 80px rgba(96,64,224,0.3); border-color: #00d4ff; }
