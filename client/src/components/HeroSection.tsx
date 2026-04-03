@@ -339,24 +339,14 @@ export default function HeroSection() {
               fontSize: "clamp(3.5rem, 10vw, 6.75rem)",
               letterSpacing: "0.05em",
               lineHeight: 1,
-              color: "#2ec0ff",
+              color: "#ffffff",
               margin: 0,
               marginTop: "9px",
               marginRight: "54px",
               marginLeft: "-23px",
             }}
           >
-            SOUND
-            <span
-              style={{
-                background: "linear-gradient(135deg, #00c8ff, #0090ff)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              VISION
-            </span>{" events"}
+            SOUND<span style={{ color: "#ffffff" }}>VISION</span>{" events"}
           </h1>
         </div>
 
