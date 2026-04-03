@@ -37,11 +37,11 @@ export default function AboutSection() {
       ref={containerRef}
       className="relative py-24 overflow-hidden"
     >
-      {/* Semi-dark overlay — lets YouTube background show through */}
+      {/* Semi-dark overlay — lets YouTube background show through, 60% opacity on bg only */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundColor: "rgba(8, 12, 16, 0.20)",
+          backgroundColor: "rgba(0, 24, 71, 0.60)",
           pointerEvents: "none",
           zIndex: 0,
         }}
