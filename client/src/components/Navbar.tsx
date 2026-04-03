@@ -100,6 +100,7 @@ export default function Navbar() {
             <button
               className="sv-btn-primary"
               onClick={scrollToContact}
+              style={{ fontSize: '13px', paddingTop: '6px', paddingRight: '6px', paddingBottom: '0px', paddingLeft: '7px', marginTop: '8px' }}
             >
               Offerte Aanvragen
             </button>
@@ -143,7 +144,7 @@ export default function Navbar() {
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: '0.6rem',
                   letterSpacing: '0.06em',
-                  color: 'rgba(255, 200, 100, 0.7)',
+                  color: '#fafafa',
                   textTransform: 'uppercase',
                 }}>Trustoo</span>
                 <span style={{
@@ -151,8 +152,11 @@ export default function Navbar() {
                   fontSize: '0.72rem',
                   fontWeight: 700,
                   letterSpacing: '0.04em',
-                  color: '#ffc84a',
+                  color: '#fafafa',
                   textTransform: 'uppercase',
+                  backgroundColor: '#ff006f',
+                  padding: '1px 4px',
+                  borderRadius: '3px',
                 }}>Top Pro</span>
               </div>
             </a>
