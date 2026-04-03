@@ -346,7 +346,7 @@ export default function HeroSection() {
               marginLeft: "-23px",
             }}
           >
-            SOUND<span style={{ color: "#ffffff" }}>VISION</span>{" events"}
+            SOUND<span style={{ color: "#ffffff" }}>VISION</span><span style={{ color: "#2ec0ff" }}>{" events"}</span>
           </h1>
         </div>
 
