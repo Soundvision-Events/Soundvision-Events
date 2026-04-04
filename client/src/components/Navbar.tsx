@@ -36,9 +36,6 @@ export default function Navbar() {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled
-          ? "rgba(6, 0, 51, 0.55)"
-          : "rgba(6, 0, 51, 0.20)",
         backdropFilter: "blur(24px) saturate(160%)",
         WebkitBackdropFilter: "blur(24px) saturate(160%)",
         borderBottom: scrolled
@@ -49,7 +46,16 @@ export default function Navbar() {
           : "none",
       }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Colour overlay — only this layer gets opacity */}
+      <div
+        className="absolute inset-0 transition-all duration-300"
+        style={{
+          backgroundColor: "#878787",
+          opacity: scrolled ? 0.6 : 0.3,
+          pointerEvents: "none",
+        }}
+      />
+      <div className="relative" style={{ paddingRight: "11px", paddingLeft: "0px", marginTop: "8px", marginRight: "73px", marginLeft: "41px", opacity: 0.7 }}>
         <div className="flex items-center justify-between" style={{height: '74px'}}>
           {/* Logo */}
           <Link href="/" className="flex items-center">
