@@ -100,14 +100,22 @@ export default function AboutSection() {
           zIndex: 10,
         }}
       >
-        {/* ── LEFT COLUMN: Tekst (2/3) — dark navy colour layer ── */}
+        {/* ── LEFT COLUMN: Tekst (2/3) — dark purple colour layer ── */}
         <div
           className="relative"
           style={{
-            background: "linear-gradient(135deg, rgba(0,10,40,0.92) 0%, rgba(0,24,71,0.88) 60%, rgba(0,40,100,0.80) 100%)",
             borderRight: "1px solid rgba(0,200,255,0.15)",
           }}
         >
+          {/* Background colour overlay — only this layer gets opacity */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundColor: "#1c0033",
+              opacity: 0.6,
+              pointerEvents: "none",
+            }}
+          />
           {/* Subtle left-side glow accent */}
           <div
             className="absolute inset-0"
