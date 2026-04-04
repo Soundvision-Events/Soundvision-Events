@@ -74,12 +74,12 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   style={{
                     fontFamily: "'Outfit', sans-serif",
-                    fontSize: "1.5rem",
+                    fontSize: "1.125rem",
                     letterSpacing: "0.05em",
                     color: isActive ? "#00c8ff" : "rgba(240, 244, 248, 0.75)",
-                    transition: "color 0.2s ease",
+                    transition: "color 0.2s ease, text-shadow 0.2s ease",
                     textDecoration: "none",
-                    borderBottom: isActive ? "2px solid #00c8ff" : "2px solid transparent",
+                    textShadow: isActive ? "0 0 12px rgba(0,200,255,0.85), 0 0 28px rgba(0,200,255,0.45)" : "none",
                     paddingBottom: "4px",
                   }}
                   onMouseEnter={(e) => {

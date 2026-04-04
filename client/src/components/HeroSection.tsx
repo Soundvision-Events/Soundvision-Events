@@ -399,15 +399,45 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ paddingTop: "21px" }}>
           <button
             className="sv-btn-primary"
-            /* glowing neon borders */
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", borderRadius: "6px", boxShadow: "0 0 22px rgba(0,212,255,0.55), 0 0 50px rgba(91,74,240,0.30)" }}
+            style={{
+              fontSize: "1.1rem",
+              padding: "1rem 2.5rem",
+              borderRadius: "6px",
+              boxShadow: "0 0 18px rgba(0,212,255,0.60), 0 0 40px rgba(0,212,255,0.30), 0 0 80px rgba(91,74,240,0.25)",
+              transition: "box-shadow 0.3s ease, transform 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget;
+              el.style.boxShadow = "0 0 30px rgba(0,212,255,0.90), 0 0 70px rgba(0,212,255,0.55), 0 0 120px rgba(91,74,240,0.40)";
+              el.style.transform = "translateY(-2px) scale(1.03)";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget;
+              el.style.boxShadow = "0 0 18px rgba(0,212,255,0.60), 0 0 40px rgba(0,212,255,0.30), 0 0 80px rgba(91,74,240,0.25)";
+              el.style.transform = "translateY(0) scale(1)";
+            }}
             onClick={() => handleScroll("#packages")}
           >
             Bekijk Pakketten
           </button>
           <button
             className="sv-btn-secondary"
-            style={{ fontSize: "1.1rem", padding: "1rem 2.5rem", boxShadow: "0 0 22px rgba(0,212,255,0.45), 0 0 50px rgba(60,0,200,0.25)" }}
+            style={{
+              fontSize: "1.1rem",
+              padding: "1rem 2.5rem",
+              boxShadow: "0 0 18px rgba(0,212,255,0.50), 0 0 40px rgba(60,0,200,0.30)",
+              transition: "box-shadow 0.3s ease, transform 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget;
+              el.style.boxShadow = "0 0 30px rgba(0,212,255,0.85), 0 0 70px rgba(0,212,255,0.45), 0 0 120px rgba(60,0,200,0.40)";
+              el.style.transform = "translateY(-2px) scale(1.03)";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget;
+              el.style.boxShadow = "0 0 18px rgba(0,212,255,0.50), 0 0 40px rgba(60,0,200,0.30)";
+              el.style.transform = "translateY(0) scale(1)";
+            }}
             onClick={() => handleScroll("#contact")}
           >
             Neem Contact Op
