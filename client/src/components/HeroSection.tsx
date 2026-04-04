@@ -59,6 +59,62 @@ const STAT_GRADIENTS = [
   "linear-gradient(135deg, #2563eb, #00c8ff)",  // blue-cyan
 ];
 
+/**
+ * AnimatedCounter — digital stopwatch count-up effect
+ * Counts from 0 to target number with easing, staggered delay per stat.
+ */
+function AnimatedCounter({
+  target,
+  suffix = "",
+  prefix = "",
+  decimals = 0,
+  duration = 1800,
+  delay = 0,
+}: {
+  target: number;
+  suffix?: string;
+  prefix?: string;
+  decimals?: number;
+  duration?: number;
+  delay?: number;
+}) {
+  const [display, setDisplay] = useState("0");
+  const frameRef = useRef<number>(0);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const startTime = performance.now();
+
+      const animate = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic for natural deceleration
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = eased * target;
+
+        if (decimals > 0) {
+          setDisplay(current.toFixed(decimals));
+        } else {
+          setDisplay(Math.round(current).toString());
+        }
+
+        if (progress < 1) {
+          frameRef.current = requestAnimationFrame(animate);
+        }
+      };
+
+      frameRef.current = requestAnimationFrame(animate);
+    }, delay);
+
+    return () => {
+      clearTimeout(timeout);
+      cancelAnimationFrame(frameRef.current);
+    };
+  }, [target, duration, delay, decimals]);
+
+  return <>{prefix}{display}{suffix}</>;
+}
+
 interface Review {
   name: string;
   city: string;
@@ -461,10 +517,10 @@ export default function HeroSection() {
           style={{ position: "absolute", top: "500px", left: 0, right: 0, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.5rem", paddingLeft: "1rem", paddingRight: "1rem" }}
         >
           {[
-            { value: "500+", label: "Shows Gespeeld" },
-            { value: "15+", label: "Jaar Ervaring" },
-            { value: "3", label: "Show Pakketten" },
-            { value: trustooScore ? `${trustooScore}/10` : "9.8/10", label: "Trustoo Score", isTrustoo: true },
+            { target: 500, suffix: "+", decimals: 0, label: "Shows Gespeeld" },
+            { target: 15, suffix: "+", decimals: 0, label: "Jaar Ervaring" },
+            { target: 3, suffix: "", decimals: 0, label: "Show Pakketten" },
+            { target: trustooScore ? parseFloat(trustooScore) : 9.8, suffix: "/10", decimals: 1, label: "Trustoo Score", isTrustoo: true },
           ].map((stat, idx) => (
             <div key={stat.label} className="text-center">
               <div
@@ -480,7 +536,13 @@ export default function HeroSection() {
                   display: "inline-block",
                 }}
               >
-                {stat.value}
+                <AnimatedCounter
+                  target={stat.target}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals}
+                  duration={1800}
+                  delay={idx * 300}
+                />
               </div>
               <div
                 style={{
