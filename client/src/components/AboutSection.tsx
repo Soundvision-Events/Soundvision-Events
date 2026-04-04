@@ -38,13 +38,14 @@ export default function AboutSection() {
       ref={containerRef}
       className="relative py-24 overflow-hidden"
     >
-      {/* Semi-dark overlay */}
+      {/* Colour overlay — #00bfff at opacity 0.2, sits above backdrop, below all content */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundColor: "rgba(0, 24, 71, 0.60)",
+          backgroundColor: "#00bfff",
+          opacity: 0.2,
           pointerEvents: "none",
-          zIndex: 0,
+          zIndex: 1,
         }}
       />
       {/* Subtle cyan glow right side */}
