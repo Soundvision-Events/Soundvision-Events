@@ -58,6 +58,48 @@ export default function AboutSection() {
         }}
       />
 
+      {/* ── Full-width section header ── */}
+      <div
+        className="relative z-10 w-full"
+        style={{
+          borderBottom: "1px solid rgba(0,200,255,0.18)",
+          marginBottom: "0",
+          paddingTop: "2.5rem",
+          paddingBottom: "2rem",
+          textAlign: "center",
+          background: "linear-gradient(90deg, transparent 0%, rgba(0,200,255,0.06) 50%, transparent 100%)",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "'Outfit', sans-serif",
+            fontSize: "0.7rem",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            color: "rgba(0,200,255,0.6)",
+            marginBottom: "0.6rem",
+          }}
+        >
+          Over de DJ
+        </p>
+        <h2
+          style={{
+            fontFamily: "'Cinzel', serif",
+            fontSize: "clamp(1.8rem, 5vw, 3.5rem)",
+            letterSpacing: "0.12em",
+            lineHeight: 1.1,
+            color: "#ffffff",
+            margin: 0,
+            textShadow: "0 0 40px rgba(0,200,255,0.25), 0 2px 20px rgba(0,0,0,0.8)",
+          }}
+        >
+          UW{" "}
+          <span style={{ color: "#2ec0ff" }}>PARTNER</span>
+          {" "}EN{" "}
+          <span style={{ color: "#2ec0ff" }}>DJ</span>
+        </h2>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style={{ maxWidth: "1200px" }}>
 
         {/* ── ROW 1: Tekst links | YouTube rechts ── */}
