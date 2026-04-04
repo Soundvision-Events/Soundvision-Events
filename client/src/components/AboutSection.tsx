@@ -322,11 +322,18 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "0 1.5rem",
+            paddingTop: "38px",
+            paddingRight: "0px",
+            paddingLeft: "0px",
+            marginTop: "6px",
+            marginRight: "11px",
+            marginBottom: "16px",
+            marginLeft: "20px",
             gap: "1.25rem",
-            width: "533px",
+            width: "671px",
             maxWidth: "100%",
-            height: "675px",
+            height: "658px",
+            opacity: 0.82,
           }}
         >
           {/* Cyan glow accent */}
