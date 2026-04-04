@@ -395,8 +395,8 @@ export default function HeroSection() {
           Allround DJ Shows
         </h2>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ paddingTop: "21px" }}>
+        {/* CTA Buttons — positioned at 600px from hero top */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ position: "absolute", top: "600px", left: 0, right: 0, paddingLeft: "1rem", paddingRight: "1rem" }}>
           <button
             className="sv-btn-primary"
             style={{
@@ -444,10 +444,10 @@ export default function HeroSection() {
           </button>
         </div>
 
-        {/* Stats row */}
+        {/* Stats row — positioned at 580px from hero top, behind CTA buttons */}
         <div
-          className="flex flex-wrap justify-center gap-8 mt-16"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.5rem" }}
+          className="flex flex-wrap justify-center gap-8"
+          style={{ position: "absolute", top: "580px", left: 0, right: 0, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.5rem", paddingLeft: "1rem", paddingRight: "1rem" }}
         >
           {[
             { value: "500+", label: "Shows Gespeeld" },
