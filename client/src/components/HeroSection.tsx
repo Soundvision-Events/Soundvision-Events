@@ -213,7 +213,7 @@ export default function HeroSection() {
           muted
           playsInline
           className="w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: '1038px', objectFit: "cover", marginTop: '35px', marginRight: '92px', marginBottom: '-49px', marginLeft: '4px', backgroundColor: '#07006b' }}
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: '1038px', objectFit: "cover", marginTop: '35px', marginRight: '92px', marginBottom: '-49px', marginLeft: '4px', backgroundColor: '#000000' }}
         >
           <source
             src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-loop-new_5528fae7.mp4"
@@ -221,12 +221,23 @@ export default function HeroSection() {
           />
         </video>
       </div>
+      {/* Dark color overlay — sits above video, below all text/buttons/reviews (z-index 1) */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundColor: "#000000",
+          opacity: 0.7,
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
       {/* Light gradient overlay — keeps text readable while both videos show through */}
       <div
         className="absolute inset-0"
         style={{
           background:
             "linear-gradient(to bottom, rgba(8,12,16,0.04) 0%, rgba(8,12,16,0.01) 40%, rgba(8,12,16,0.08) 80%, rgba(8,12,16,0.20) 100%)",
+          zIndex: 2,
           pointerEvents: "none",
         }}
       />
