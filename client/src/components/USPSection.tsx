@@ -15,51 +15,28 @@ interface USPCard {
 
 const USPS: USPCard[] = [
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"
-        strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
+    icon: <span style={{ fontSize: "2.5rem", lineHeight: 1 }}>🤝</span>,
     title: "Persoonlijk Contact",
     subtitle: "Direct met de DJ",
     description:
       "U spreekt altijd rechtstreeks met DJ Tonicity — geen callcenters, geen tussenpersonen. Duidelijke communicatie en volledige afstemming op uw wensen.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"
-        strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10">
-        <path d="M12 20h9" />
-        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-      </svg>
-    ),
+    icon: <span style={{ fontSize: "2.5rem", lineHeight: 1 }}>✨</span>,
     title: "DJ Shows op Maat",
     subtitle: "Uw feest, uw regels",
     description:
       "Geluid, licht en muziek volledig afgestemd op uw locatie, gasten en gewenste sfeer. Elk feest is uniek — de show ook.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"
-        strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10">
-        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
-      </svg>
-    ),
+    icon: <span style={{ fontSize: "2.5rem", lineHeight: 1 }}>🎵</span>,
     title: "Ervaren Allround DJ",
     subtitle: "Crowd-reading pro",
     description:
       "Jarenlange ervaring op bruiloften, bedrijfsfeesten en studentenfeesten. DJ Tonicity leest de zaal en zorgt voor maximale energie op het juiste moment.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"
-        strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10">
-        <line x1="18" y1="6" x2="6" y2="18" />
-        <line x1="6" y1="6" x2="18" y2="18" />
-      </svg>
-    ),
+    icon: <span style={{ fontSize: "2.5rem", lineHeight: 1 }}>🎛️</span>,
     title: "Geen Boekingsbureaus",
     subtitle: "Direct & transparant",
     description:
