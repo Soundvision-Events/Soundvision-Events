@@ -1,8 +1,9 @@
 /**
- * SoundVision Events — Over de DJ Section
- * Layout:
- *   Row 1: [tekst kolom] | [YouTube frame kolom]  — naast elkaar, eigen grid
- *   Row 2: 4 eigenschappen-kaarten — eigen grid eronder
+ * SoundVision Events — "De visie in de praktijk" Section
+ * Layout Optie A: Asymmetrisch 3-koloms grid
+ *   Row 1: [Tekst breed 2/3 — donkerblauw kleurblok] | [YouTube smal 1/3 — cyaan kleurblok]
+ *   Row 2: 4 kernwaarden kaarten — volle breedte met gradient kleurblokken
+ * All text sits above color layers (z-index: relative > absolute bg)
  */
 import { useEffect, useRef, useState } from "react";
 
@@ -36,9 +37,10 @@ export default function AboutSection() {
     <section
       id="about"
       ref={containerRef}
-      className="relative py-24 overflow-hidden"
+      className="relative overflow-hidden"
+      style={{ paddingBottom: "0" }}
     >
-      {/* Colour overlay — #00bfff at opacity 0.2, sits above backdrop, below all content */}
+      {/* Global section colour overlay — #00bfff at opacity 0.2 */}
       <div
         className="absolute inset-0"
         style={{
@@ -48,26 +50,17 @@ export default function AboutSection() {
           zIndex: 1,
         }}
       />
-      {/* Subtle cyan glow right side */}
-      <div
-        className="absolute right-0 top-0 w-1/2 h-full"
-        style={{
-          background: "radial-gradient(ellipse at right center, rgba(0,200,255,0.07) 0%, transparent 60%)",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
 
       {/* ── Full-width section header ── */}
       <div
-        className="relative z-10 w-full"
+        className="relative w-full"
         style={{
+          zIndex: 10,
           borderBottom: "1px solid rgba(0,200,255,0.18)",
-          marginBottom: "0",
           paddingTop: "2.5rem",
           paddingBottom: "2rem",
           textAlign: "center",
-          background: "linear-gradient(90deg, transparent 0%, rgba(0,200,255,0.06) 50%, transparent 100%)",
+          background: "linear-gradient(90deg, transparent 0%, rgba(0,200,255,0.08) 50%, transparent 100%)",
         }}
       >
         <p
@@ -97,224 +90,384 @@ export default function AboutSection() {
         </h2>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style={{ maxWidth: "1200px" }}>
-
-        {/* ── ROW 1: Tekst links | YouTube rechts ── */}
+      {/* ── ROW 1: Asymmetric 2/3 + 1/3 grid ── */}
+      <div
+        className="relative"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "2fr 1fr",
+          minHeight: "520px",
+          zIndex: 10,
+        }}
+      >
+        {/* ── LEFT COLUMN: Tekst (2/3) — dark navy colour layer ── */}
         <div
+          className="relative"
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "3rem",
-            alignItems: "start",
-            marginBottom: "3.5rem",
+            background: "linear-gradient(135deg, rgba(0,10,40,0.92) 0%, rgba(0,24,71,0.88) 60%, rgba(0,40,100,0.80) 100%)",
+            borderRight: "1px solid rgba(0,200,255,0.15)",
           }}
         >
-          {/* ── Tekst kolom ── */}
-          <div className="sv-fade-up">
-            <span
-              style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: "0.75rem",
-                letterSpacing: "0.3em",
-                color: "#00c8ff",
-                textTransform: "uppercase",
-              }}
-            >
-              Over de DJ
-            </span>
-            <h2
-              style={{
-                fontFamily: "'Cinzel', serif",
-                fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
-                letterSpacing: "0.05em",
-                lineHeight: 1.15,
-                color: "#00ddfa",
-                fontWeight: 500,
-                textAlign: "left",
-                marginTop: "0.75rem",
-                marginBottom: "1.25rem",
-              }}
-            >
-              <span style={{ color: "#003a66", backgroundColor: "#00c4eb", fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 3vw, 2.2rem)", padding: "0 0.4rem", borderRadius: "1px", border: "7px groove #000000", marginTop: "-9px", marginRight: "13px", marginBottom: "12px", marginLeft: "42px", display: "inline-block" }}>DJ Tonicity legt uit </span>
-              <span style={{ color: "#fafafa", fontFamily: "'Cinzel', serif", fontSize: "1rem", display: "block", marginLeft: "42px", marginTop: "4px", opacity: 0.7 }}>DJ en oprichter @ soundvision sinds 2016</span>
-            </h2>
+          {/* Subtle left-side glow accent */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse at 20% 50%, rgba(0,200,255,0.06) 0%, transparent 60%)",
+              pointerEvents: "none",
+            }}
+          />
 
-            <div className="space-y-5">
+          {/* Text content — always above colour layer */}
+          <div
+            className="sv-fade-up relative"
+            style={{ padding: "2.5rem 3rem 2.5rem 3rem", zIndex: 2 }}
+          >
+            {/* Badge label */}
+            <div style={{ marginBottom: "1.5rem" }}>
+              <span
+                style={{
+                  color: "#003a66",
+                  backgroundColor: "#00c4eb",
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)",
+                  padding: "0.2rem 0.7rem",
+                  borderRadius: "2px",
+                  border: "3px groove #000000",
+                  display: "inline-block",
+                  fontWeight: 700,
+                  letterSpacing: "0.06em",
+                }}
+              >
+                DJ Tonicity legt uit
+              </span>
+              <span
+                style={{
+                  color: "rgba(255,255,255,0.6)",
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.78rem",
+                  display: "block",
+                  marginTop: "0.5rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                }}
+              >
+                DJ en oprichter @ SoundVision Events sinds 2016
+              </span>
+            </div>
+
+            {/* Main body text */}
+            <div className="space-y-4">
               <p
                 style={{
-                  fontFamily: "'Cinzel', serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.82)",
-                  lineHeight: 1.85,
-                  fontWeight: 400,
-                  marginTop: "1px",
-                  marginBottom: "1px",
-                  opacity: 0.7,
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.95rem",
+                  color: "rgba(240, 244, 248, 0.85)",
+                  lineHeight: 1.8,
+                  fontWeight: 300,
                 }}
               >
                 Hallo, ik ben <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Bert / DJ Tonicity</strong> — Vaste DJ én allround 'partner' voor uw feest concept met SoundVision Events.
-                <br /><br />
                 Soundvision voorziet al ruim <strong style={{ color: "#00c8ff", fontWeight: 600 }}>15 jaar</strong> diverse feesten &amp; evenementen van sfeervolle allround muziek inclusief DJ-shows volledig op maat.
-                <br /><br />
-                Het persoonlijke aandacht argument, geen uniek verhaal. Maar van wie of wat komt deze aandacht eigenlijk? De DJ? In welke mate? Dat maak ik met mijn Sound <em style={{ color: "#00c8ff", fontStyle: "normal", fontWeight: 600 }}>'vision'</em> graag concreet!
-                <br /><br />
+              </p>
+
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.95rem",
+                  color: "rgba(240, 244, 248, 0.85)",
+                  lineHeight: 1.8,
+                  fontWeight: 300,
+                }}
+              >
+                Het persoonlijke aandacht argument, geen uniek verhaal. Maar van wie of wat komt deze aandacht eigenlijk? De DJ? In welke mate? Dat maak ik met mijn Sound{" "}
+                <em style={{ color: "#00c8ff", fontStyle: "normal", fontWeight: 600 }}>'vision'</em> graag concreet!
+              </p>
+
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.95rem",
+                  color: "rgba(240, 244, 248, 0.85)",
+                  lineHeight: 1.8,
+                  fontWeight: 300,
+                }}
+              >
                 In de praktijk: écht 1 op 1 rechtstreeks aandacht én direct feedback van dezelfde persoon m.b.t. alles dat betrekking heeft op het organiseren van een feest concept / evenement en de uitvoering zoals u het wilt.
-                <br /><br />
-                <span style={{ display: "block", paddingLeft: "0.5rem", borderLeft: "2px solid #00c8ff44" }}>
-                  — Het concreet maken van uw unieke ideeën, tot een duidelijk feest concept als basis voor uw specifieke keuzemogelijkheden.<br />
-                  — De bijbehorende muzikale en technische voorbereidingen voor uw concept (licht en geluidstechniek).<br />
-                  — De uitvoering van uw unieke feest zoals de bedoeling altijd is geweest.
-                </span>
-                <br />
-                Bij Soundvision heeft u in elke fase 1 vaste 'partner': <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>De DJ zélf.</strong> Logisch, toch?
-                <br /><br />
-                <em style={{ color: "rgba(240,244,248,0.55)", fontSize: "0.88rem" }}>Toch blijkt in de praktijk dat 'persoonlijk' een behoorlijk misbruikte term is om vertrouwen te scheppen zonder persoonlijke uitvoering.</em>
               </p>
+
+              {/* Bullet list with cyan left border */}
+              <div
+                style={{
+                  paddingLeft: "1rem",
+                  borderLeft: "2px solid rgba(0,200,255,0.35)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                {[
+                  "Het concreet maken van uw unieke ideeën, tot een duidelijk feest concept als basis voor uw specifieke keuzemogelijkheden.",
+                  "De bijbehorende muzikale en technische voorbereidingen voor uw concept (licht en geluidstechniek).",
+                  "De uitvoering van uw unieke feest zoals de bedoeling altijd is geweest.",
+                ].map((item, i) => (
+                  <p
+                    key={i}
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: "0.88rem",
+                      color: "rgba(240,244,248,0.75)",
+                      lineHeight: 1.65,
+                      margin: 0,
+                    }}
+                  >
+                    <span style={{ color: "#00c8ff", marginRight: "0.5rem" }}>—</span>
+                    {item}
+                  </p>
+                ))}
+              </div>
+
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.82)",
-                  lineHeight: 1.85,
+                  fontSize: "0.95rem",
+                  color: "rgba(240, 244, 248, 0.85)",
+                  lineHeight: 1.8,
                   fontWeight: 300,
                 }}
               >
-                Wat mij onderscheidt van de rest? <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Altijd direct en persoonlijk contact.</strong> DJ en klant vinden inspiratie bij elkaar — betrokkenheid zonder tussenpersonen. Zo wordt uw feest precies wat u voor ogen heeft.
+                Bij Soundvision heeft u in elke fase 1 vaste 'partner':{" "}
+                <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>De DJ zélf.</strong> Logisch, toch?
               </p>
+
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.82)",
-                  lineHeight: 1.85,
+                  fontSize: "0.95rem",
+                  color: "rgba(240, 244, 248, 0.85)",
+                  lineHeight: 1.8,
                   fontWeight: 300,
                 }}
               >
-                Van intieme bruiloften tot grote bedrijfsfeesten in Groningen, Friesland, Drenthe en Overijssel — ik pas muziek en show volledig aan op de sfeer van uw evenement.
+                Wat mij onderscheidt van de rest?{" "}
+                <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Altijd direct en persoonlijk contact.</strong>{" "}
+                DJ en klant vinden inspiratie bij elkaar — betrokkenheid zonder tussenpersonen. Zo wordt uw feest precies wat u voor ogen heeft.
+              </p>
+
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.88rem",
+                  color: "rgba(240,244,248,0.50)",
+                  lineHeight: 1.7,
+                  fontStyle: "italic",
+                }}
+              >
+                Toch blijkt in de praktijk dat 'persoonlijk' een behoorlijk misbruikte term is om vertrouwen te scheppen zonder persoonlijke uitvoering.
               </p>
             </div>
 
-            <div className="sv-fade-up mt-8">
-              <button
-                className="sv-btn-primary"
-                onClick={() => {
+            {/* CTA button */}
+            <div style={{ marginTop: "2rem" }}>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
                   const el = document.querySelector("#contact");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-              >
-                Maak Kennis
-              </button>
-            </div>
-          </div>
-
-          {/* ── YouTube kolom ── */}
-          <div className="sv-fade-up">
-            <div
-              className="relative rounded-2xl overflow-hidden"
-              style={{
-                border: "1px solid rgba(0, 200, 255, 0.25)",
-                boxShadow: "0 0 60px rgba(0, 200, 255, 0.12), 0 20px 60px rgba(0,0,0,0.5)",
-                aspectRatio: "16/9",
-                width: "100%",
-              }}
-            >
-              <iframe
-                src={autoplayUrl}
-                title="DJ Tonicity — SoundVision Events Intro"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                }}
-              />
-            </div>
-
-            {/* Name badge below video */}
-            <div
-              className="mt-4 px-4 py-3 rounded-xl"
-              style={{
-                background: "rgba(8, 12, 16, 0.75)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(0, 200, 255, 0.2)",
-                display: "inline-flex",
-                flexDirection: "column",
-              }}
-            >
-              <div
-                style={{
+                  display: "inline-block",
+                  padding: "0.8rem 2.2rem",
+                  background: "linear-gradient(135deg, #8100eb 0%, #00e1ff 100%)",
+                  color: "#ffffff",
                   fontFamily: "'Cinzel', serif",
-                  fontSize: "1.3rem",
-                  letterSpacing: "0.08em",
-                  color: "#f0f4f8",
-                  lineHeight: 1,
+                  fontSize: "1rem",
+                  letterSpacing: "0.12em",
+                  borderRadius: "0.75rem",
+                  textDecoration: "none",
+                  boxShadow: "0 0 24px rgba(129,0,235,0.45), 0 0 48px rgba(0,225,255,0.20)",
+                  transition: "box-shadow 0.3s ease, transform 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.boxShadow = "0 0 40px rgba(129,0,235,0.70), 0 0 80px rgba(0,225,255,0.35)";
+                  el.style.transform = "translateY(-2px) scale(1.03)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.boxShadow = "0 0 24px rgba(129,0,235,0.45), 0 0 48px rgba(0,225,255,0.20)";
+                  el.style.transform = "translateY(0) scale(1)";
                 }}
               >
-                DJ TONICITY
-              </div>
-              <div
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.2em",
-                  color: "#00c8ff",
-                  marginTop: "2px",
-                }}
-              >
-                ALLROUND DJ @ SOUNDVISION EVENTS
-              </div>
+                Neem Contact Op →
+              </a>
             </div>
           </div>
         </div>
 
-        {/* ── ROW 2: Vier eigenschappen-kaarten ── */}
+        {/* ── RIGHT COLUMN: YouTube (1/3) — deep cyan colour layer ── */}
         <div
-          className="sv-fade-up"
+          className="relative sv-fade-up"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            background: "linear-gradient(180deg, rgba(0,30,60,0.95) 0%, rgba(0,60,100,0.90) 50%, rgba(0,20,50,0.95) 100%)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "2rem 1.5rem",
             gap: "1.25rem",
           }}
         >
-          {[
-            { icon: "🎵", title: "15+ Jaar Ervaring", desc: "Bewezen allround DJ-shows op bruiloften, bedrijfsfeesten en studentenfeesten." },
-            { icon: "🎛️", title: "Pioneer DJ Setup", desc: "Professionele Pioneer-apparatuur voor een kristalhelder, krachtig geluid." },
-            { icon: "✨", title: "Show op Maat", desc: "Geluid, licht en muziek volledig afgestemd op uw locatie en gewenste sfeer." },
-            { icon: "🤝", title: "Persoonlijk Contact", desc: "Altijd direct contact met de DJ — geen callcenters, geen tussenpersonen." },
-          ].map((feat) => (
-            <div
-              key={feat.title}
+          {/* Cyan glow accent */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse at 80% 40%, rgba(0,200,255,0.10) 0%, transparent 65%)",
+              pointerEvents: "none",
+            }}
+          />
+
+          {/* YouTube frame */}
+          <div
+            className="relative rounded-xl overflow-hidden w-full"
+            style={{
+              border: "1px solid rgba(0,200,255,0.30)",
+              boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 12px 40px rgba(0,0,0,0.6)",
+              aspectRatio: "9/16",
+              zIndex: 2,
+            }}
+          >
+            <iframe
+              src={autoplayUrl}
+              title="DJ Tonicity — SoundVision Events Intro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
               style={{
-                background: "linear-gradient(to bottom, rgba(0,212,255,0.12) 0%, rgba(58,143,255,0.10) 40%, rgba(74,0,192,0.18) 100%)",
-                border: "1.5px solid rgba(0, 200, 255, 0.30)",
-                borderRadius: "1rem",
-                padding: "1.5rem 1.25rem",
-                transition: "border-color 0.3s ease, box-shadow 0.3s ease",
-                boxShadow: "0 0 18px rgba(0,200,255,0.08)",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
               }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "rgba(0,200,255,0.65)";
-                el.style.boxShadow = "0 0 28px rgba(0,200,255,0.30)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "rgba(0,200,255,0.30)";
-                el.style.boxShadow = "0 0 18px rgba(0,200,255,0.08)";
+            />
+          </div>
+
+          {/* Name badge */}
+          <div
+            className="relative rounded-xl px-4 py-3 w-full"
+            style={{
+              background: "rgba(0,10,30,0.80)",
+              backdropFilter: "blur(8px)",
+              border: "1px solid rgba(0,200,255,0.22)",
+              zIndex: 2,
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "'Cinzel', serif",
+                fontSize: "1.1rem",
+                letterSpacing: "0.1em",
+                color: "#f0f4f8",
+                lineHeight: 1,
               }}
             >
+              DJ TONICITY
+            </div>
+            <div
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "0.7rem",
+                letterSpacing: "0.2em",
+                color: "#00c8ff",
+                marginTop: "4px",
+                textTransform: "uppercase",
+              }}
+            >
+              Allround DJ @ SoundVision Events
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── ROW 2: 4 kernwaarden kaarten — volle breedte ── */}
+      <div
+        className="relative"
+        style={{
+          zIndex: 10,
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          borderTop: "1px solid rgba(0,200,255,0.12)",
+        }}
+      >
+        {[
+          {
+            icon: "🎵",
+            title: "15+ Jaar Ervaring",
+            desc: "Bewezen allround DJ-shows op bruiloften, bedrijfsfeesten en studentenfeesten.",
+            bg: "linear-gradient(180deg, rgba(0,20,60,0.95) 0%, rgba(0,10,40,0.98) 100%)",
+            accent: "rgba(0,200,255,0.30)",
+          },
+          {
+            icon: "🎛️",
+            title: "Pioneer DJ Setup",
+            desc: "Professionele Pioneer-apparatuur voor een kristalhelder, krachtig geluid.",
+            bg: "linear-gradient(180deg, rgba(0,30,80,0.95) 0%, rgba(0,15,50,0.98) 100%)",
+            accent: "rgba(0,150,255,0.30)",
+          },
+          {
+            icon: "✨",
+            title: "Show op Maat",
+            desc: "Geluid, licht en muziek volledig afgestemd op uw locatie en gewenste sfeer.",
+            bg: "linear-gradient(180deg, rgba(20,0,80,0.95) 0%, rgba(10,0,50,0.98) 100%)",
+            accent: "rgba(129,0,235,0.30)",
+          },
+          {
+            icon: "🤝",
+            title: "Persoonlijk Contact",
+            desc: "Altijd direct contact met de DJ — geen callcenters, geen tussenpersonen.",
+            bg: "linear-gradient(180deg, rgba(0,40,60,0.95) 0%, rgba(0,20,40,0.98) 100%)",
+            accent: "rgba(0,225,255,0.30)",
+          },
+        ].map((feat, i) => (
+          <div
+            key={feat.title}
+            className="relative"
+            style={{
+              background: feat.bg,
+              borderRight: i < 3 ? "1px solid rgba(0,200,255,0.10)" : "none",
+              padding: "2rem 1.5rem",
+              transition: "background 0.3s ease",
+              cursor: "default",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLDivElement).style.background =
+                feat.bg.replace("0.95", "1").replace("0.98", "1");
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLDivElement).style.background = feat.bg;
+            }}
+          >
+            {/* Colour accent glow — top border */}
+            <div
+              className="absolute top-0 left-0 right-0"
+              style={{
+                height: "3px",
+                background: `linear-gradient(90deg, transparent, ${feat.accent}, transparent)`,
+              }}
+            />
+            {/* Content — always above colour layer */}
+            <div style={{ position: "relative", zIndex: 2 }}>
               <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{feat.icon}</div>
               <div
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  fontSize: "1.1rem",
-                  letterSpacing: "0.08em",
+                  fontSize: "0.95rem",
+                  letterSpacing: "0.06em",
                   color: "#f0f4f8",
-                  marginBottom: "0.5rem",
+                  marginBottom: "0.6rem",
+                  lineHeight: 1.3,
                 }}
               >
                 {feat.title}
@@ -323,56 +476,15 @@ export default function AboutSection() {
                 style={{
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "0.82rem",
-                  color: "rgba(240, 244, 248, 0.60)",
+                  color: "rgba(240, 244, 248, 0.58)",
                   lineHeight: 1.6,
                 }}
               >
                 {feat.desc}
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* ── CTA Button ── */}
-        <div
-          className="sv-fade-up"
-          style={{ textAlign: "center", marginTop: "3rem" }}
-        >
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              const el = document.querySelector("#contact");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
-            style={{
-              display: "inline-block",
-              padding: "0.9rem 2.5rem",
-              background: "linear-gradient(135deg, #8100eb 0%, #00e1ff 100%)",
-              color: "#ffffff",
-              fontFamily: "'Cinzel', serif",
-              fontSize: "1.2rem",
-              letterSpacing: "0.15em",
-              borderRadius: "0.75rem",
-              textDecoration: "none",
-              boxShadow: "0 0 24px rgba(129,0,235,0.45), 0 0 48px rgba(0,225,255,0.20)",
-              transition: "box-shadow 0.3s ease, transform 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.boxShadow = "0 0 40px rgba(129,0,235,0.70), 0 0 80px rgba(0,225,255,0.35)";
-              el.style.transform = "translateY(-2px) scale(1.03)";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.boxShadow = "0 0 24px rgba(129,0,235,0.45), 0 0 48px rgba(0,225,255,0.20)";
-              el.style.transform = "translateY(0) scale(1)";
-            }}
-          >
-            Neem Contact Op →
-          </a>
-        </div>
-
+          </div>
+        ))}
       </div>
     </section>
   );
