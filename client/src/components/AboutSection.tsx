@@ -313,11 +313,11 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* ── RIGHT COLUMN: YouTube (1/3) — deep cyan colour layer ── */}
+        {/* ── RIGHT COLUMN: YouTube (1/3) — dark teal colour layer ── */}
         <div
           className="relative sv-fade-up"
           style={{
-            background: "linear-gradient(180deg, rgba(0,30,60,0.95) 0%, rgba(0,60,100,0.90) 50%, rgba(0,20,50,0.95) 100%)",
+            backgroundColor: "#00090a",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
