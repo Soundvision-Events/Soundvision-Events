@@ -430,13 +430,13 @@ export default function AboutSection() {
             position: "absolute",
             inset: 0,
             backgroundColor: "#131010",
-            opacity: 0.7,
+            opacity: 0.3,
             pointerEvents: "none",
             zIndex: 1,
           }}
         />
         <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision-infographic_53a582d9.webp"
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/infographic_new_c7f6a9cb.png"
           alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
           style={{
             maxWidth: "96%",
