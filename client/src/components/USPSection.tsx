@@ -175,7 +175,18 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
         paddingTop: "65px", paddingBottom: "53px", marginTop: "0px", marginBottom: "0px",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem", opacity: 1 }}>
+      {/* Colour overlay layer — only this layer gets opacity */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "#02212c",
+          opacity: 0.8,
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem", opacity: 1, position: "relative", zIndex: 2 }}>
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p
             style={{
