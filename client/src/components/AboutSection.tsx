@@ -95,17 +95,17 @@ export default function AboutSection() {
                 marginBottom: "1.25rem",
               }}
             >
-              <span style={{ color: "#d400ff" }}>'Uw vaste </span><span style={{ color: "#00c8ff" }}>DJ</span><span style={{ color: "#d400ff" }}> en Partner'</span>
+              <span style={{ color: "#00e1ff", backgroundColor: "#8100eb", fontFamily: "'Cinzel', serif", fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>'Uw vaste </span><span style={{ color: "#fafafa", fontFamily: "'Cinzel', serif", fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>DJ</span><span style={{ color: "#00e1ff", backgroundColor: "#8100eb", fontFamily: "'Cinzel', serif", fontSize: "clamp(2rem, 4vw, 3.5rem)" }}> én 'Partner' </span>
             </h2>
 
             <div className="space-y-5">
               <p
                 style={{
-                  fontFamily: "'Outfit', sans-serif",
+                  fontFamily: "'Cinzel', serif",
                   fontSize: "1rem",
                   color: "rgba(240, 244, 248, 0.82)",
                   lineHeight: 1.85,
-                  fontWeight: 100,
+                  fontWeight: 400,
                   marginTop: "1px",
                   marginBottom: "1px",
                   opacity: 0.7,
@@ -290,6 +290,46 @@ export default function AboutSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* ── CTA Button ── */}
+        <div
+          className="sv-fade-up"
+          style={{ textAlign: "center", marginTop: "3rem" }}
+        >
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.querySelector("#contact");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            style={{
+              display: "inline-block",
+              padding: "0.9rem 2.5rem",
+              background: "linear-gradient(135deg, #8100eb 0%, #00e1ff 100%)",
+              color: "#ffffff",
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: "1.2rem",
+              letterSpacing: "0.15em",
+              borderRadius: "0.75rem",
+              textDecoration: "none",
+              boxShadow: "0 0 24px rgba(129,0,235,0.45), 0 0 48px rgba(0,225,255,0.20)",
+              transition: "box-shadow 0.3s ease, transform 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.boxShadow = "0 0 40px rgba(129,0,235,0.70), 0 0 80px rgba(0,225,255,0.35)";
+              el.style.transform = "translateY(-2px) scale(1.03)";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.boxShadow = "0 0 24px rgba(129,0,235,0.45), 0 0 48px rgba(0,225,255,0.20)";
+              el.style.transform = "translateY(0) scale(1)";
+            }}
+          >
+            Neem Contact Op →
+          </a>
         </div>
 
       </div>
