@@ -93,10 +93,7 @@ export default function AboutSection() {
             textShadow: "0 0 40px rgba(0,200,255,0.25), 0 2px 20px rgba(0,0,0,0.8)",
           }}
         >
-          UW{" "}
-          <span style={{ color: "#2ec0ff" }}>PARTNER</span>
-          {" "}EN{" "}
-          <span style={{ color: "#2ec0ff" }}>DJ</span>
+          De visie in de praktijk
         </h2>
       </div>
 
@@ -138,7 +135,8 @@ export default function AboutSection() {
                 marginBottom: "1.25rem",
               }}
             >
-              <span style={{ color: "#00e1ff", backgroundColor: "#8100eb", fontFamily: "'Cinzel', serif", fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>'Uw vaste </span><span style={{ color: "#fafafa", fontFamily: "'Cinzel', serif", fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>DJ</span><span style={{ color: "#00e1ff", backgroundColor: "#8100eb", fontFamily: "'Cinzel', serif", fontSize: "clamp(2rem, 4vw, 3.5rem)" }}> én 'Partner' </span>
+              <span style={{ color: "#003a66", backgroundColor: "#00c4eb", fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 3vw, 2.2rem)", padding: "0 0.4rem", borderRadius: "1px", border: "7px groove #000000", marginTop: "-9px", marginRight: "13px", marginBottom: "12px", marginLeft: "42px", display: "inline-block" }}>DJ Tonicity legt uit </span>
+              <span style={{ color: "#fafafa", fontFamily: "'Cinzel', serif", fontSize: "1rem", display: "block", marginLeft: "42px", marginTop: "4px", opacity: 0.7 }}>DJ en oprichter @ soundvision sinds 2016</span>
             </h2>
 
             <div className="space-y-5">

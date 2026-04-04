@@ -206,7 +206,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
               color: theme.accent, marginBottom: "0.75rem", fontFamily: "'Outfit', sans-serif",
             }}
           >
-            Waarom SoundVision Events
+            Uw Profesionele Partner van aangenaam tot ziens, de dj is betrokken ver voordat de muziek gedraaid wordt!
           </p>
           <h2
             style={{
@@ -215,7 +215,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
               textShadow: `0 0 40px ${theme.glowSubtle}`,
             }}
           >
-            Ónze Visie, Úw Beleving
+            4 kernwaarden, 1 visie
           </h2>
         </div>
 
