@@ -164,8 +164,9 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
           <h3
             style={{
               fontFamily: "'Cinzel', serif", fontSize: "1.2rem",
-              letterSpacing: "0.06em", color: theme.accentSoft,
-              textShadow: `0 0 15px ${theme.accent}`, textAlign: "center",
+              letterSpacing: "0.06em", color: "#f50a87",
+              fontWeight: 700,
+              textShadow: "0 0 15px rgba(245,10,135,0.7)", textAlign: "center",
             }}
           >
             {card.title}

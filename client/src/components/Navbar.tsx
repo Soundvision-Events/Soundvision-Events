@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Bruiloft", href: "/bruiloft" },
   { label: "Bedrijfsfeest", href: "/bedrijfsfeesten" },
-  { label: "Studentenfeesten", href: "/studentenfeesten" },
+  { href: "/studentenfeesten", label: "Studentenfeest" },
   { label: "Privé feest", href: "/prive" },
 ];
 
@@ -102,10 +102,10 @@ export default function Navbar() {
               onClick={scrollToContact}
               style={{
                 fontSize: '13px',
-                paddingTop: '9px',
-                paddingRight: '16px',
-                paddingBottom: '6px',
-                paddingLeft: '13px',
+                paddingTop: '5px',
+                paddingRight: '3px',
+                paddingBottom: '5px',
+                paddingLeft: '3px',
                 marginTop: '8px',
                 borderRadius: '0px',
                 borderWidth: '3px',
