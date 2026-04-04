@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
  * Fixed over the entire page (nav to footer). Remove from App.tsx when done.
  */
 export default function PositioningGrid() {
+  // Only render in development / local preview — never on the published live site
+  if (!import.meta.env.DEV) return null;
+
   const [pageHeight, setPageHeight] = useState(0);
   const [scrollY, setScrollY] = useState(0);
 
