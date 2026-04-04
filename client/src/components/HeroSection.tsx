@@ -466,73 +466,81 @@ export default function HeroSection() {
           ))}
         </div>
 
-        {/* Review Slider */}
+      </div>
+
+      {/* ── Floating Review Slider — positioned in dark space above title ── */}
+      <div
+        className="absolute z-20"
+        style={{
+          top: "clamp(60px, 10vh, 120px)",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "min(560px, 90vw)",
+          background: "rgba(4, 8, 20, 0.55)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          border: "1px solid rgba(0, 200, 255, 0.22)",
+          borderRadius: "14px",
+          padding: "1rem 1.5rem 0.75rem",
+          boxShadow: "0 4px 32px rgba(0,0,0,0.45), 0 0 20px rgba(0,200,255,0.08)",
+        }}
+      >
         <div
           style={{
-            marginTop: "1.75rem",
+            opacity: visible ? 1 : 0,
+            transition: "opacity 0.5s ease",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "0.35rem",
-            minHeight: "52px",
+            gap: "0.4rem",
           }}
         >
-          <div
-            style={{
-              opacity: visible ? 1 : 0,
-              transition: "opacity 0.5s ease",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "0.3rem",
-            }}
-          >
-            {/* Stars + name row */}
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <StarRating count={review.stars} animKey={activeReview} />
-              <span style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: "0.7rem",
-                color: "rgba(240,244,248,0.45)",
-                letterSpacing: "0.04em",
-              }}>
-                {review.name} · {review.city}
-              </span>
-            </div>
-            {/* Review text */}
-            <p style={{
+          {/* Stars + name row */}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <StarRating count={review.stars} animKey={activeReview} />
+            <span style={{
               fontFamily: "'Outfit', sans-serif",
-              fontSize: "0.78rem",
-              color: "rgba(240,244,248,0.65)",
-              fontStyle: "italic",
-              margin: 0,
-              letterSpacing: "0.01em",
-              maxWidth: "480px",
+              fontSize: "0.75rem",
+              color: "rgba(240,244,248,0.55)",
+              letterSpacing: "0.04em",
             }}>
-              "{review.text}"
-            </p>
+              {review.name} · {review.city}
+            </span>
           </div>
+          {/* Review text */}
+          <p style={{
+            fontFamily: "'Outfit', sans-serif",
+            fontSize: "0.88rem",
+            color: "rgba(240,244,248,0.80)",
+            fontStyle: "italic",
+            margin: 0,
+            letterSpacing: "0.01em",
+            textAlign: "center",
+            lineHeight: 1.6,
+          }}>
+            "{review.text}"
+          </p>
+        </div>
 
-          {/* Dot indicators */}
-          <div style={{ display: "flex", gap: "5px", marginTop: "0.4rem" }}>
-            {displayReviews.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setVisible(false); setTimeout(() => { setActiveReview(i); setVisible(true); }, 300); }}
-                style={{
-                  width: i === activeReview ? "16px" : "5px",
-                  height: "5px",
-                  borderRadius: "3px",
-                  background: i === activeReview ? "#00c8ff" : "rgba(255,255,255,0.2)",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                  transition: "all 0.3s ease",
-                }}
-                aria-label={`Review ${i + 1}`}
-              />
-            ))}
-          </div>
+        {/* Dot indicators */}
+        <div style={{ display: "flex", gap: "5px", marginTop: "0.6rem", justifyContent: "center" }}>
+          {displayReviews.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setVisible(false); setTimeout(() => { setActiveReview(i); setVisible(true); }, 300); }}
+              style={{
+                width: i === activeReview ? "16px" : "5px",
+                height: "5px",
+                borderRadius: "3px",
+                background: i === activeReview ? "#00c8ff" : "rgba(255,255,255,0.2)",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                transition: "all 0.3s ease",
+              }}
+              aria-label={`Review ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
 
