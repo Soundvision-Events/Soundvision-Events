@@ -574,57 +574,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ── DEV POSITIONING GRID — remove after positioning is confirmed ── */}
-      <div className="absolute inset-0 z-30 pointer-events-none" style={{ overflow: "hidden" }}>
-        {[10, 20, 30, 40, 50, 60, 70, 80, 90].map((pct) => (
-          <div
-            key={pct}
-            style={{
-              position: "absolute",
-              top: `${pct}%`,
-              left: 0,
-              right: 0,
-              height: "1px",
-              background: pct === 50 ? "rgba(255,80,80,0.7)" : "rgba(255,255,255,0.25)",
-              borderTop: pct === 50 ? "1px dashed rgba(255,80,80,0.9)" : "1px dashed rgba(255,255,255,0.35)",
-            }}
-          >
-            <span
-              style={{
-                position: "absolute",
-                left: "8px",
-                top: "-10px",
-                fontFamily: "monospace",
-                fontSize: "11px",
-                color: pct === 50 ? "rgba(255,120,120,1)" : "rgba(255,255,255,0.7)",
-                background: "rgba(0,0,0,0.55)",
-                padding: "1px 5px",
-                borderRadius: "3px",
-                letterSpacing: "0.05em",
-              }}
-            >
-              {pct}%
-            </span>
-            <span
-              style={{
-                position: "absolute",
-                right: "8px",
-                top: "-10px",
-                fontFamily: "monospace",
-                fontSize: "11px",
-                color: pct === 50 ? "rgba(255,120,120,1)" : "rgba(255,255,255,0.7)",
-                background: "rgba(0,0,0,0.55)",
-                padding: "1px 5px",
-                borderRadius: "3px",
-                letterSpacing: "0.05em",
-              }}
-            >
-              {pct}%
-            </span>
-          </div>
-        ))}
-      </div>
-
       {/* Scroll indicator */}
       <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"

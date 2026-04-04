@@ -12,6 +12,7 @@ import Prive from "./pages/Prive";
 import SocialProofPopup from "./components/SocialProofPopup";
 import AnnouncementBanner from "./components/AnnouncementBanner";
 import PushNotificationPrompt from "./components/PushNotificationPrompt";
+import PositioningGrid from "./components/PositioningGrid";
 
 function Router() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <Router />
           <SocialProofPopup />
           <PushNotificationPrompt />
+          {/* DEV TOOL — remove when positioning is confirmed */}
+          <PositioningGrid />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
