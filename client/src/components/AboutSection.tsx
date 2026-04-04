@@ -322,8 +322,11 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "2rem 1.5rem",
+            padding: "0 1.5rem",
             gap: "1.25rem",
+            width: "708px",
+            maxWidth: "100%",
+            height: "735px",
           }}
         >
           {/* Cyan glow accent */}
