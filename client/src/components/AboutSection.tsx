@@ -102,17 +102,31 @@ export default function AboutSection() {
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1.1rem",
+                  fontSize: "0.95rem",
                   color: "rgba(240, 244, 248, 0.82)",
                   lineHeight: 1.85,
-                  fontWeight: 300,
+                  fontWeight: 100,
+                  marginTop: "-14px",
+                  marginBottom: "13px",
                 }}
               >
-                Hoi, ik ben <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Bert / DJ Tonicity</strong> — Vaste DJ én allround 'partner' voor uw feest concept met SoundVision Events.
+                Hallo, ik ben <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Bert / DJ Tonicity</strong> — Vaste DJ én allround 'partner' voor uw feest concept met SoundVision Events.
                 <br /><br />
                 Soundvision voorziet al ruim <strong style={{ color: "#00c8ff", fontWeight: 600 }}>15 jaar</strong> diverse feesten &amp; evenementen van sfeervolle allround muziek inclusief DJ-shows volledig op maat.
                 <br /><br />
-                In de praktijk: écht 1 op 1 persoonlijke aandacht voor elk uniek feest, met 1 contactpersoon: <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>De DJ.</strong> Logisch, toch?
+                Het persoonlijke aandacht argument, geen uniek verhaal. Maar van wie of wat komt deze aandacht eigenlijk? De DJ? In welke mate? Dat maak ik voor Soundvision graag concreet!
+                <br /><br />
+                In de praktijk: écht 1 op 1 rechtstreeks aandacht én direct feedback van dezelfde persoon m.b.t. alles dat betrekking heeft op het organiseren van een feest concept / evenement en de uitvoering zoals u het wilt.
+                <br /><br />
+                <span style={{ display: "block", paddingLeft: "0.5rem", borderLeft: "2px solid #00c8ff44" }}>
+                  — Het concreet maken van uw unieke ideeën, tot een duidelijk feest concept als basis voor uw specifieke keuzemogelijkheden.<br />
+                  — De bijbehorende muzikale en technische voorbereidingen voor uw concept (licht en geluidstechniek).<br />
+                  — De uitvoering van uw unieke feest zoals de bedoeling altijd is geweest.
+                </span>
+                <br />
+                Bij Soundvision heeft u in elke fase 1 vaste 'partner': <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>De DJ zélf.</strong> Logisch, toch?
+                <br /><br />
+                <em style={{ color: "rgba(240,244,248,0.55)", fontSize: "0.88rem" }}>Toch blijkt in de praktijk dat 'persoonlijk' een behoorlijk misbruikte term is om vertrouwen te scheppen zonder persoonlijke uitvoering.</em>
               </p>
               <p
                 style={{
@@ -123,7 +137,7 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Wat mij onderscheidt? <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Altijd direct en persoonlijk contact.</strong> DJ en klant vinden inspiratie bij elkaar — betrokkenheid zonder tussenpersonen. Zo wordt uw feest precies wat u voor ogen heeft.
+                Wat mij onderscheidt van de rest? <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Altijd direct en persoonlijk contact.</strong> DJ en klant vinden inspiratie bij elkaar — betrokkenheid zonder tussenpersonen. Zo wordt uw feest precies wat u voor ogen heeft.
               </p>
               <p
                 style={{
