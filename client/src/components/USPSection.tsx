@@ -1,25 +1,17 @@
 /**
  * SoundVision Events — USP Section
  * 4 core selling points displayed as neon-glowing flip cards.
- * Front: large icon + title with neon glow.
- * Back (on hover): description with a pulsing neon border.
- * Layout: horizontal row on desktop, 2×2 grid on mobile.
+ * Accepts optional `theme` prop to apply per-page color palette.
  */
 import { useState } from "react";
+import { type PageTheme, DEFAULT_THEME } from "@/lib/pageThemes";
 
 interface USPCard {
   icon: React.ReactNode;
   title: string;
   subtitle: string;
   description: string;
-  color: string;       // neon accent color
-  glowColor: string;   // rgba for box-shadow
 }
-
-// ── Vibrant purple-blue-cyan palette (reference: IMG_0652)
-const CARD_COLOR = "#7eb3ff";
-const CARD_GLOW = "rgba(0,200,255,0.45)";
-const CARD_COLOR_ACCENT = "#00d4ff";
 
 const USPS: USPCard[] = [
   {
@@ -33,8 +25,6 @@ const USPS: USPCard[] = [
     subtitle: "Direct met de DJ",
     description:
       "U spreekt altijd rechtstreeks met DJ Tonicity — geen callcenters, geen tussenpersonen. Duidelijke communicatie en volledige afstemming op uw wensen.",
-    color: CARD_COLOR,
-    glowColor: CARD_GLOW,
   },
   {
     icon: (
@@ -48,8 +38,6 @@ const USPS: USPCard[] = [
     subtitle: "Uw feest, uw regels",
     description:
       "Geluid, licht en muziek volledig afgestemd op uw locatie, gasten en gewenste sfeer. Elk feest is uniek — de show ook.",
-    color: CARD_COLOR,
-    glowColor: CARD_GLOW,
   },
   {
     icon: (
@@ -63,8 +51,6 @@ const USPS: USPCard[] = [
     subtitle: "Crowd-reading pro",
     description:
       "Jarenlange ervaring op bruiloften, bedrijfsfeesten en studentenfeesten. DJ Tonicity leest de zaal en zorgt voor maximale energie op het juiste moment.",
-    color: CARD_COLOR,
-    glowColor: CARD_GLOW,
   },
   {
     icon: (
@@ -78,12 +64,10 @@ const USPS: USPCard[] = [
     subtitle: "Direct & transparant",
     description:
       "Geen extra kosten, geen omwegen. U boekt rechtstreeks bij SoundVision Events — sneller schakelen, eerlijkere prijs, persoonlijker resultaat.",
-    color: CARD_COLOR,
-    glowColor: CARD_GLOW,
   },
 ];
 
-function FlipCard({ card, index }: { card: USPCard; index: number }) {
+function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme: PageTheme }) {
   const [flipped, setFlipped] = useState(false);
 
   return (
@@ -98,12 +82,9 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
       role="button"
       aria-label={card.title}
     >
-      {/* Card wrapper — rotates on hover */}
       <div
         style={{
-          position: "absolute",
-          inset: 0,
-          transformStyle: "preserve-3d",
+          position: "absolute", inset: 0, transformStyle: "preserve-3d",
           transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
           animationDelay: `${index * 0.1}s`,
@@ -112,62 +93,46 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
         {/* ── FRONT ── */}
         <div
           style={{
-            position: "absolute",
-            inset: 0,
-            backfaceVisibility: "hidden",
+            position: "absolute", inset: 0, backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            background: "linear-gradient(to bottom, #00d4ff 0%, #3a8fff 25%, #5b4af0 50%, #6040e0 75%, #4a00c0 100%)",
-            border: `1.5px solid rgba(0,200,255,0.45)`,
+            background: theme.cardGradient,
+            border: `1.5px solid ${theme.accent}66`,
             borderRadius: "1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1.25rem",
-            padding: "2rem",
-            boxShadow: `0 0 18px rgba(0,200,255,0.22), 0 0 40px rgba(96,64,224,0.18), inset 0 1px 0 rgba(126,179,255,0.08)`,
+            display: "flex", flexDirection: "column", alignItems: "center",
+            justifyContent: "center", gap: "1.25rem", padding: "2rem",
+            boxShadow: `0 0 18px ${theme.glowSubtle}, 0 0 40px ${theme.glowSubtle}, inset 0 1px 0 ${theme.accentSoft}18`,
             transition: "box-shadow 0.3s ease",
           }}
         >
-          {/* Neon icon circle */}
           <div
             style={{
-              width: "80px",
-              height: "80px",
-              borderRadius: "50%",
-              background: `radial-gradient(circle, ${card.color}18 0%, transparent 70%)`,
-              border: `1.5px solid ${card.color}66`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: card.color,
-              boxShadow: `0 0 20px ${card.glowColor}, 0 0 40px ${card.glowColor}`,
+              width: "80px", height: "80px", borderRadius: "50%",
+              background: `radial-gradient(circle, ${theme.accent}18 0%, transparent 70%)`,
+              border: `1.5px solid ${theme.accent}66`,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: theme.accentSoft,
+              boxShadow: `0 0 20px ${theme.glow}, 0 0 40px ${theme.glow}`,
               animation: "neonPulse 2.5s ease-in-out infinite",
             }}
           >
             {card.icon}
           </div>
 
-          {/* Title */}
           <div style={{ textAlign: "center" }}>
             <h3
               style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: "1.4rem",
-                letterSpacing: "0.08em",
-                color: "#f0f4f8",
-                marginBottom: "0.25rem",
-                textShadow: `0 0 12px ${card.color}88`,
+                fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.4rem",
+                letterSpacing: "0.08em", color: "#f0f4f8", marginBottom: "0.25rem",
+                textShadow: `0 0 12px ${theme.accent}88`,
               }}
             >
               {card.title}
             </h3>
-            <p style={{ fontSize: "0.75rem", color: CARD_COLOR_ACCENT, letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.85 }}>
+            <p style={{ fontSize: "0.75rem", color: theme.accent, letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.85 }}>
               {card.subtitle}
             </p>
           </div>
 
-          {/* Hover hint */}
           <p style={{ fontSize: "0.65rem", color: "#ffffff33", letterSpacing: "0.1em", textTransform: "uppercase" }}>
             Zweef voor meer ▸
           </p>
@@ -176,35 +141,21 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
         {/* ── BACK ── */}
         <div
           style={{
-            position: "absolute",
-            inset: 0,
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
-            background: "linear-gradient(to bottom, #00d4ff 0%, #3a8fff 25%, #5b4af0 50%, #6040e0 75%, #4a00c0 100%)",
-            border: `2px solid #00d4ff`,
+            position: "absolute", inset: 0, backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)",
+            background: theme.cardGradient,
+            border: `2px solid ${theme.accent}`,
             borderRadius: "1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1rem",
-            padding: "2rem",
-            boxShadow: `0 0 32px rgba(0,200,255,0.65), 0 0 70px rgba(96,64,224,0.40), 0 0 120px rgba(0,200,255,0.18)`,
+            display: "flex", flexDirection: "column", alignItems: "center",
+            justifyContent: "center", gap: "1rem", padding: "2rem",
+            boxShadow: `0 0 32px ${theme.glow}, 0 0 70px ${theme.glowSubtle}, 0 0 120px ${theme.glowSubtle}`,
           }}
         >
-          {/* Neon number badge */}
           <div
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "3rem",
-              lineHeight: 1,
-              color: card.color,
-              textShadow: `0 0 20px ${card.color}, 0 0 40px ${card.color}88`,
-              opacity: 0.25,
-              position: "absolute",
-              top: "1rem",
-              right: "1.5rem",
+              fontFamily: "'Bebas Neue', sans-serif", fontSize: "3rem", lineHeight: 1,
+              color: theme.accentSoft, textShadow: `0 0 20px ${theme.accent}, 0 0 40px ${theme.accent}88`,
+              opacity: 0.25, position: "absolute", top: "1rem", right: "1.5rem",
             }}
           >
             0{index + 1}
@@ -212,38 +163,24 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
 
           <h3
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "1.5rem",
-              letterSpacing: "0.08em",
-              color: card.color,
-              textShadow: `0 0 15px ${card.color}`,
-              textAlign: "center",
+              fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.5rem",
+              letterSpacing: "0.08em", color: theme.accentSoft,
+              textShadow: `0 0 15px ${theme.accent}`, textAlign: "center",
             }}
           >
             {card.title}
           </h3>
 
-          <p
-            style={{
-              fontSize: "0.9rem",
-              color: "#d0d8e4",
-              lineHeight: 1.7,
-              textAlign: "center",
-              fontFamily: "'Outfit', sans-serif",
-            }}
-          >
+          <p style={{ fontSize: "0.9rem", color: "#d0d8e4", lineHeight: 1.7, textAlign: "center", fontFamily: "'Outfit', sans-serif" }}>
             {card.description}
           </p>
 
-          {/* Bottom neon line */}
           <div
             style={{
-              height: "2px",
-              width: "60%",
-            background: `linear-gradient(90deg, transparent, #7300ff, #00c8ff, transparent)`,
-            boxShadow: `0 0 8px #7300ff, 0 0 16px #00c8ff44`,
-              borderRadius: "999px",
-              marginTop: "0.5rem",
+              height: "2px", width: "60%",
+              background: `linear-gradient(90deg, transparent, ${theme.secondary}, ${theme.accent}, transparent)`,
+              boxShadow: `0 0 8px ${theme.secondary}, 0 0 16px ${theme.accent}44`,
+              borderRadius: "999px", marginTop: "0.5rem",
             }}
           />
         </div>
@@ -252,65 +189,42 @@ function FlipCard({ card, index }: { card: USPCard; index: number }) {
   );
 }
 
-export default function USPSection() {
+export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageTheme }) {
   return (
     <section
       style={{
-        padding: "6rem 0",
-        position: "relative",
-        overflow: "hidden",
-        paddingTop: '65px',
-        paddingBottom: '53px',
-        marginTop: '0px',
-        marginBottom: '0px',
+        padding: "6rem 0", position: "relative", overflow: "hidden",
+        paddingTop: "65px", paddingBottom: "53px", marginTop: "0px", marginBottom: "0px",
       }}
     >
-      {/* Subtle background grid — hidden */}
-
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem", opacity: 1 }}>
-        {/* Section header */}
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p
             style={{
-              fontSize: "0.7rem",
-              letterSpacing: "0.25em",
-              textTransform: "uppercase",
-              color: "#00c8ff",
-              marginBottom: "0.75rem",
-              fontFamily: "'Outfit', sans-serif",
+              fontSize: "0.7rem", letterSpacing: "0.25em", textTransform: "uppercase",
+              color: theme.accent, marginBottom: "0.75rem", fontFamily: "'Outfit', sans-serif",
             }}
           >
             Waarom SoundVision Events
           </p>
           <h2
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
-              letterSpacing: "0.06em",
-              color: "#f0f4f8",
-              lineHeight: 1.1,
-              textShadow: "0 0 40px rgba(0,200,255,0.2)",
+              fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
+              letterSpacing: "0.06em", color: "#f0f4f8", lineHeight: 1.1,
+              textShadow: `0 0 40px ${theme.glowSubtle}`,
             }}
           >
             Ónze Visie, Úw Beleving
           </h2>
         </div>
 
-        {/* 4 Flip Cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: "1.5rem",
-          }}
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
           {USPS.map((card, i) => (
-            <FlipCard key={card.title} card={card} index={i} />
+            <FlipCard key={card.title} card={card} index={i} theme={theme} />
           ))}
         </div>
       </div>
 
-      {/* Neon pulse keyframe */}
       <style>{`
         @keyframes neonPulse {
           0%, 100% { box-shadow: 0 0 15px var(--glow), 0 0 30px var(--glow); opacity: 1; }

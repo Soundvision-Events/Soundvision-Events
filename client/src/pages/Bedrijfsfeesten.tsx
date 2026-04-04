@@ -11,6 +11,7 @@ import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
+import { PAGE_THEMES } from "@/lib/pageThemes";
 
 export default function Bedrijfsfeesten() {
   return (
@@ -156,8 +157,8 @@ export default function Bedrijfsfeesten() {
         title="BEDRIJFSFEEST IMPRESSIES"
         subtitle="Onze Zakelijke Shows"
       />
-      <USPSection />
-      <UitbreidingenSection />
+      <USPSection theme={PAGE_THEMES.bedrijfsfeesten} />
+      <UitbreidingenSection theme={PAGE_THEMES.bedrijfsfeesten} />
       <ContactSection />
     </PageLayout>
   );

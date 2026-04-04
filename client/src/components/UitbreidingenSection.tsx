@@ -6,6 +6,7 @@
  */
 import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
+import { type PageTheme, DEFAULT_THEME } from "@/lib/pageThemes";
 
 // ── Brand colours
 const GLOW_BLUE = "#7eb3ff";
@@ -224,12 +225,13 @@ function useScrollFade(threshold = 0.15) {
 }
 
 // ── Package flip card (click to select)
-function PackageFlipCard({ pkg, index, selected, onSelect, onContact }: {
+function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DEFAULT_THEME }: {
   pkg: typeof packages[0];
   index: number;
   selected: boolean;
   onSelect: () => void;
   onContact: () => void;
+  theme?: PageTheme;
 }) {
   const [flipped, setFlipped] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -404,12 +406,13 @@ const NEON_CYAN_DIM = "rgba(126,179,255,0.55)";
 const NEON_CHECK_BG = "rgba(100,130,255,0.15)";
 const NEON_CHECK_BORDER = "rgba(120,150,255,0.50)";
 
-function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId }: {
+function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, theme = DEFAULT_THEME }: {
   addon: typeof addons[0];
   index: number;
   selected: boolean;
   onToggle: () => void;
   selectedPackageId: string | null;
+  theme?: PageTheme;
 }) {
   const [flipped, setFlipped] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -528,10 +531,11 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId }: 
 }
 
 // ── Live Price Calculator
-function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact }: {
+function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme = DEFAULT_THEME }: {
   selectedPackageId: string | null;
   selectedAddonIds: string[];
   onContact: () => void;
+  theme?: PageTheme;
 }) {
   const calcFade = useScrollFade(0.05);
 
@@ -706,7 +710,7 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact }: {
 }
 
 // ── Main export
-export default function UitbreidingenSection({ showOpeningsdansMix = false }: { showOpeningsdansMix?: boolean }) {
+export default function UitbreidingenSection({ showOpeningsdansMix = false, theme = DEFAULT_THEME }: { showOpeningsdansMix?: boolean; theme?: PageTheme }) {
   const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
   const [selectedAddonIds, setSelectedAddonIds] = useState<string[]>([]);
 
@@ -759,6 +763,7 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false }: { 
               selected={selectedPackageId === pkg.id}
               onSelect={() => setSelectedPackageId(selectedPackageId === pkg.id ? null : pkg.id)}
               onContact={handleContact}
+              theme={theme}
             />
           ))}
         </div>
@@ -781,6 +786,7 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false }: { 
               selected={selectedAddonIds.includes(addon.id)}
               onToggle={() => toggleAddon(addon.id)}
               selectedPackageId={selectedPackageId}
+              theme={theme}
             />
           ))}
         </div>
@@ -790,6 +796,7 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false }: { 
           selectedPackageId={selectedPackageId}
           selectedAddonIds={selectedAddonIds}
           onContact={handleContact}
+          theme={theme}
         />
 
       </div>

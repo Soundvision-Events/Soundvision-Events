@@ -13,6 +13,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import VideoBackground from "@/components/VideoBackground";
 import SEOHead from "@/components/SEOHead";
+import { PAGE_THEMES } from "@/lib/pageThemes";
 
 export default function Home() {
   return (
@@ -31,14 +32,14 @@ export default function Home() {
         keywords="DJ boeken Groningen, allround DJ show, bruiloft DJ, bedrijfsfeest DJ, DJ Tonicity, SoundVision Events, DJ inhuren Noord-Nederland"
       />
       <HeroSection />
-      <USPSection />
+      <USPSection theme={PAGE_THEMES.home} />
       <AboutSection />
       <BentoGallery
         accentColor="#00c8ff"
         title="DE SHOW IN BEELD"
         subtitle="Galerij"
       />
-      <UitbreidingenSection />
+      <UitbreidingenSection theme={PAGE_THEMES.home} />
       <TestimonialsSection />
       <ContactSection />
     </PageLayout>

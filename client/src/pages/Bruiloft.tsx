@@ -12,6 +12,7 @@ import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
+import { PAGE_THEMES } from "@/lib/pageThemes";
 
 /* ─── Wedding colour tokens ─────────────────────────── */
 const ROSE        = "#ff3d8a";
@@ -261,8 +262,8 @@ export default function Bruiloft() {
 
       {/* ── USP, Packages, Add-ons, Contact ── */}
       <div style={{ position: "relative", zIndex: 1 }}>
-        <USPSection />
-        <UitbreidingenSection showOpeningsdansMix={true} />
+        <USPSection theme={PAGE_THEMES.bruiloft} />
+        <UitbreidingenSection showOpeningsdansMix={true} theme={PAGE_THEMES.bruiloft} />
         <ContactSection />
       </div>
 

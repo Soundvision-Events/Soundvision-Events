@@ -11,6 +11,7 @@ import USPSection from "@/components/USPSection";
 import BentoGallery from "@/components/BentoGallery";
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
+import { PAGE_THEMES } from "@/lib/pageThemes";
 
 export default function Studentenfeesten() {
   return (
@@ -155,8 +156,8 @@ export default function Studentenfeesten() {
         title="STUDENTENFEEST IMPRESSIES"
         subtitle="Onze Studenten Shows"
       />
-      <USPSection />
-      <UitbreidingenSection />
+      <USPSection theme={PAGE_THEMES.studentenfeesten} />
+      <UitbreidingenSection theme={PAGE_THEMES.studentenfeesten} />
       <ContactSection />
     </PageLayout>
   );
