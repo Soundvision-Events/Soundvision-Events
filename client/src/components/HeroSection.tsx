@@ -282,27 +282,42 @@ export default function HeroSection() {
                   position: "absolute",
                 }}
               />
-              <div
-                className="sv-burn-glow"
-                style={{
-                  width: "64px",
-                  height: "64px",
-                  borderRadius: "12px",
-                  background: "linear-gradient(to bottom, rgba(0,212,255,0.18) 0%, rgba(96,64,224,0.22) 100%)",
-                  border: "2px solid #00d4ff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  position: "relative",
-                  zIndex: 2,
-                }}
+              <a
+                href="https://www.instagram.com/soundvision.events"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Volg SoundVision Events op Instagram"
+                style={{ display: "contents", cursor: "pointer" }}
               >
-                <svg width="30" height="30" viewBox="0 0 40 40" fill="none">
-                  <path d="M15 30V10l20-4v20" stroke="#00c8ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  <circle cx="10" cy="30" r="5" stroke="#00c8ff" strokeWidth="2.5"/>
-                  <circle cx="30" cy="26" r="5" stroke="#ff5500" strokeWidth="2.5"/>
-                </svg>
-              </div>
+                <div
+                  className="sv-burn-glow"
+                  style={{
+                    width: "64px",
+                    height: "64px",
+                    borderRadius: "12px",
+                    background: "linear-gradient(to bottom, rgba(0,212,255,0.18) 0%, rgba(96,64,224,0.22) 100%)",
+                    border: "2px solid #00d4ff",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative",
+                    zIndex: 2,
+                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.transform = "scale(1.12)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.transform = "scale(1)";
+                  }}
+                >
+                  <svg width="30" height="30" viewBox="0 0 40 40" fill="none">
+                    <path d="M15 30V10l20-4v20" stroke="#00c8ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="10" cy="30" r="5" stroke="#00c8ff" strokeWidth="2.5"/>
+                    <circle cx="30" cy="26" r="5" stroke="#ff5500" strokeWidth="2.5"/>
+                  </svg>
+                </div>
+              </a>
             </div>
             {/* Badge overlay — positioned below the ring, centered */}
             <div
