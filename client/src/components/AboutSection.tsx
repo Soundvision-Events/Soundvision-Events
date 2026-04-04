@@ -399,6 +399,31 @@ export default function AboutSection() {
         </div>
       </div>
 
+      {/* ── INFOGRAPHIC: Full-width visual below the grid content ── */}
+      <div
+        className="sv-fade-up"
+        style={{
+          width: "100%",
+          marginTop: "3rem",
+          position: "relative",
+          zIndex: 10,
+          borderRadius: "1rem",
+          overflow: "hidden",
+          boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 8px 32px rgba(0,0,0,0.4)",
+          border: "1px solid rgba(0,200,255,0.12)",
+        }}
+      >
+        <img
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision-infographic_53a582d9.webp"
+          alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
+          style={{
+            width: "100%",
+            height: "auto",
+            display: "block",
+          }}
+        />
+      </div>
+
     </section>
   );
 }
