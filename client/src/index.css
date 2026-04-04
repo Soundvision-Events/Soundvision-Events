@@ -148,9 +148,11 @@
 
   /* SoundVision Custom Components */
   .sv-heading {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.05em;
-    line-height: 1;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .sv-glow-cyan {
@@ -178,8 +180,8 @@
   .sv-btn-primary {
     background: linear-gradient(135deg, #5b4af0, #3a8fff);
     color: #ffffff;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.1em;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.08em;
     font-size: 1rem;
     padding: 0.75rem 2rem;
     border-radius: 6px;
@@ -200,8 +202,8 @@
   .sv-btn-secondary {
     background: linear-gradient(135deg, rgba(58,0,120,0.70), rgba(30,60,160,0.70));
     color: #c0d8ff;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.1em;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.08em;
     font-size: 1rem;
     padding: 0.75rem 2rem;
     border-radius: 6px;
@@ -220,8 +222,8 @@
   .sv-btn-amber {
     background: linear-gradient(135deg, #ff5500, #cc4400);
     color: #fff;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.1em;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.08em;
     font-size: 1rem;
     padding: 0.75rem 2rem;
     border-radius: 4px;

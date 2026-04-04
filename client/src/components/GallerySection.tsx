@@ -75,7 +75,7 @@ export default function GallerySection() {
           <h2
             className="mt-3"
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
               letterSpacing: "0.05em",
               lineHeight: 1.05,
@@ -132,7 +132,7 @@ export default function GallerySection() {
               <div className="absolute bottom-4 left-4">
                 <span
                   style={{
-                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontFamily: "'Cinzel', serif",
                     fontSize: "1.1rem",
                     letterSpacing: "0.1em",
                     color: "#f0f4f8",

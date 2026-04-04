@@ -87,7 +87,7 @@ export default function TestimonialsSection() {
           <h2
             className="mt-3"
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
               letterSpacing: "0.05em",
               lineHeight: 1.05,
@@ -164,7 +164,7 @@ export default function TestimonialsSection() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontFamily: "'Cinzel', serif",
                     fontSize: "0.8rem",
                     color: "#ffffff",
                     letterSpacing: "0.05em",

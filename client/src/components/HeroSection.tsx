@@ -350,10 +350,10 @@ export default function HeroSection() {
 
           <h1
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(3.5rem, 10vw, 6.75rem)",
-              letterSpacing: "0.05em",
-              lineHeight: 1,
+              fontFamily: "'Cinzel', serif",
+              fontSize: "clamp(2rem, 5.5vw, 4rem)",
+              letterSpacing: "0.03em",
+              lineHeight: 1.1,
               color: "#ffffff",
               margin: 0,
               marginTop: "9px",
@@ -368,9 +368,9 @@ export default function HeroSection() {
         {/* EVENTS subtitle */}
         <h2
           style={{
-            fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "clamp(1.4rem, 4vw, 2.7rem)",
-            letterSpacing: "0.35em",
+            fontFamily: "'Cinzel', serif",
+            fontSize: "clamp(0.9rem, 2.5vw, 1.7rem)",
+            letterSpacing: "0.25em",
             color: "#fcfcfc",
             backgroundColor: "rgba(0,16,41,0.85)",
             borderRadius: "6px",
@@ -458,8 +458,8 @@ export default function HeroSection() {
             <div key={stat.label} className="text-center">
               <div
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "2.5rem",
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: "1.9rem",
                   background: STAT_GRADIENTS[idx],
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",

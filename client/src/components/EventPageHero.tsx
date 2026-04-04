@@ -161,10 +161,10 @@ export default function EventPageHero({
               )}
               <h1
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
-                  letterSpacing: "0.05em",
-                  lineHeight: 1,
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: "clamp(2.2rem, 5vw, 4.4rem)",
+                  letterSpacing: "0.04em",
+                  lineHeight: 1.1,
                   color: "#f0f4f8",
                   textShadow: `0 0 40px ${accentColor}66, 0 4px 20px rgba(0,0,0,0.8)`,
                 }}
@@ -198,7 +198,7 @@ export default function EventPageHero({
               <button
                 onClick={scrollToPackages}
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontFamily: "'Cinzel', serif",
                   fontSize: "0.95rem",
                   letterSpacing: "0.1em",
                   padding: "0.75rem 2rem",
@@ -313,10 +313,10 @@ export default function EventPageHero({
               )}
               <h1
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "clamp(3rem, 7vw, 5.5rem)",
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: "clamp(2.3rem, 5.5vw, 4.4rem)",
                   letterSpacing: "0.04em",
-                  lineHeight: 1.05,
+                  lineHeight: 1.1,
                   color: "#f0f4f8",
                 }}
               >
@@ -344,7 +344,7 @@ export default function EventPageHero({
               <button
                 onClick={scrollToPackages}
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontFamily: "'Cinzel', serif",
                   fontSize: "0.95rem",
                   letterSpacing: "0.1em",
                   padding: "0.75rem 2rem",

@@ -84,7 +84,7 @@ export default function AboutSection() {
             </span>
             <h2
               style={{
-                fontFamily: "'Bebas Neue', sans-serif",
+                fontFamily: "'Cinzel', serif",
                 fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
                 letterSpacing: "0.05em",
                 lineHeight: 1.15,
@@ -206,7 +206,7 @@ export default function AboutSection() {
             >
               <div
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontFamily: "'Cinzel', serif",
                   fontSize: "1.3rem",
                   letterSpacing: "0.08em",
                   color: "#f0f4f8",
@@ -269,7 +269,7 @@ export default function AboutSection() {
               <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{feat.icon}</div>
               <div
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontFamily: "'Cinzel', serif",
                   fontSize: "1.1rem",
                   letterSpacing: "0.08em",
                   color: "#f0f4f8",
@@ -309,7 +309,7 @@ export default function AboutSection() {
               padding: "0.9rem 2.5rem",
               background: "linear-gradient(135deg, #8100eb 0%, #00e1ff 100%)",
               color: "#ffffff",
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "1.2rem",
               letterSpacing: "0.15em",
               borderRadius: "0.75rem",

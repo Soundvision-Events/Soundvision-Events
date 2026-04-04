@@ -114,7 +114,7 @@ export default function PackagesSection() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
         style={{
-          fontFamily: "'Bebas Neue', sans-serif",
+          fontFamily: "'Cinzel', serif",
           fontSize: "20vw",
           color: "rgba(255, 255, 255, 0.015)",
           letterSpacing: "0.1em",
@@ -141,7 +141,7 @@ export default function PackagesSection() {
           <h2
             className="mt-3"
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
               letterSpacing: "0.05em",
               lineHeight: 1.05,
@@ -237,7 +237,7 @@ export default function PackagesSection() {
                     style={{
                       background: "linear-gradient(135deg, #ff5500, #ff8800)",
                       color: "#fff",
-                      fontFamily: "'Bebas Neue', sans-serif",
+                      fontFamily: "'Cinzel', serif",
                       fontSize: "0.8rem",
                       letterSpacing: "0.15em",
                       padding: "0.25rem 0.75rem",
@@ -256,7 +256,7 @@ export default function PackagesSection() {
                   style={{
                     background: "linear-gradient(135deg, #00c8ff, #0090ff)",
                     color: "#080c10",
-                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontFamily: "'Cinzel', serif",
                     fontSize: "0.85rem",
                     letterSpacing: "0.15em",
                     padding: "0.35rem 1.25rem",
@@ -286,7 +286,7 @@ export default function PackagesSection() {
                   </div>
                   <h3
                     style={{
-                      fontFamily: "'Bebas Neue', sans-serif",
+                      fontFamily: "'Cinzel', serif",
                       fontSize: "2rem",
                       letterSpacing: "0.08em",
                       color: "#f0f4f8",
@@ -388,7 +388,7 @@ export default function PackagesSection() {
                     width: "100%",
                     padding: "0.875rem 1.5rem",
                     borderRadius: "8px",
-                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontFamily: "'Cinzel', serif",
                     fontSize: "1rem",
                     letterSpacing: "0.15em",
                     cursor: "pointer",

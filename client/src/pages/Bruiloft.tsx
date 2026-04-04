@@ -88,7 +88,7 @@ export default function Bruiloft() {
           border: none;
           padding: 0.85rem 2.2rem;
           border-radius: 0.5rem;
-          font-family: 'Bebas Neue', sans-serif;
+          font-family: 'Cinzel', serif;
           font-size: 1rem;
           letter-spacing: 0.12em;
           cursor: pointer;
@@ -107,7 +107,7 @@ export default function Bruiloft() {
           border: 1.5px solid ${ROSE};
           padding: 0.85rem 2.2rem;
           border-radius: 0.5rem;
-          font-family: 'Bebas Neue', sans-serif;
+          font-family: 'Cinzel', serif;
           font-size: 1rem;
           letter-spacing: 0.12em;
           cursor: pointer;
@@ -167,7 +167,7 @@ export default function Bruiloft() {
               <h2
                 className="mt-3 mb-6"
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontFamily: "'Cinzel', serif",
                   fontSize: "clamp(2rem, 4vw, 3.5rem)",
                   letterSpacing: "0.05em",
                   lineHeight: 1.05,

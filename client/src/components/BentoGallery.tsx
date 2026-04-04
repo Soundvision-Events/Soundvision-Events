@@ -100,7 +100,7 @@ export default function BentoGallery({
           <h2
             className="mt-3"
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "clamp(2.2rem, 4vw, 3.5rem)",
               letterSpacing: "0.05em",
               lineHeight: 1.05,

@@ -81,7 +81,7 @@ export default function AddOnsSection() {
           <h2
             className="mt-3"
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
               letterSpacing: "0.05em",
               lineHeight: 1.05,

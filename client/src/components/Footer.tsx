@@ -59,7 +59,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div style={{ textAlign: "center", marginBottom: "1.25rem" }}>
             <p style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "37px",
               letterSpacing: "0.25em",
               color: "#ff8800",
@@ -196,7 +196,7 @@ export default function Footer() {
           {/* DJ Shows Sitemap */}
           <div>
             <h4 style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "0.95rem",
               letterSpacing: "0.2em",
               color: "#f0f4f8",
@@ -241,7 +241,7 @@ export default function Footer() {
           {/* Pakketten */}
           <div>
             <h4 style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "0.95rem",
               letterSpacing: "0.2em",
               color: "#f0f4f8",
@@ -291,7 +291,7 @@ export default function Footer() {
           {/* Service Areas */}
           <div>
             <h4 style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: "0.95rem",
               letterSpacing: "0.2em",
               color: "#f0f4f8",

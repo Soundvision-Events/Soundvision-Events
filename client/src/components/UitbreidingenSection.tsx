@@ -265,7 +265,7 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
         <div style={{
           position: "absolute", top: "-20px", left: "50%", transform: "translateX(-50%)",
           zIndex: 40, background: `linear-gradient(135deg, ${GLOW_PURPLE}, ${GLOW_BLUE})`,
-          color: "#fff", fontFamily: "'Bebas Neue', sans-serif", fontSize: "0.85rem",
+          color: "#fff", fontFamily: "'Cinzel', serif", fontSize: "0.85rem",
           letterSpacing: "0.15em", padding: "0.4rem 1.75rem", borderRadius: "100px",
           whiteSpace: "nowrap", boxShadow: `0 4px 24px ${GLOW_PURPLE}66, 0 0 12px ${GLOW_BLUE}44`,
           pointerEvents: "none",
@@ -279,7 +279,7 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
         <div style={{
           position: "absolute", top: pkg.highlight ? "8px" : "-12px", right: "12px",
           zIndex: 40, background: "linear-gradient(135deg, #00ff88, #00cc66)",
-          color: "#003322", fontFamily: "'Bebas Neue', sans-serif", fontSize: "0.75rem",
+          color: "#003322", fontFamily: "'Cinzel', serif", fontSize: "0.75rem",
           letterSpacing: "0.12em", padding: "0.3rem 0.9rem", borderRadius: "100px",
           boxShadow: "0 0 16px rgba(0,255,136,0.6)", pointerEvents: "none",
         }}>
@@ -314,12 +314,12 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: GLOW_BLUE, textTransform: "uppercase", marginBottom: "0.35rem" }}>
                 {pkg.tagline}
               </p>
-              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "2rem", letterSpacing: "0.08em", color: "#f0f4f8", lineHeight: 1, textShadow: `0 0 20px ${GLOW_BLUE}55` }}>
+              <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.55rem", letterSpacing: "0.08em", color: "#f0f4f8", lineHeight: 1, textShadow: `0 0 20px ${GLOW_BLUE}55` }}>
                 {pkg.name}
               </h3>
               {/* Price */}
               <div style={{ marginTop: "0.5rem" }}>
-                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.4rem", color: "#00ff88", textShadow: "0 0 12px rgba(0,255,136,0.6)", letterSpacing: "0.05em" }}>
+                <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1.1rem", color: "#00ff88", textShadow: "0 0 12px rgba(0,255,136,0.6)", letterSpacing: "0.05em" }}>
                   {pkg.priceLabel}
                 </span>
                 <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.7rem", color: "rgba(240,244,248,0.45)", marginLeft: "0.4rem" }}>incl. btw</span>
@@ -352,7 +352,7 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
         }}>
           <div style={{ marginBottom: "1rem" }}>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: GLOW_BLUE, textTransform: "uppercase", marginBottom: "0.25rem" }}>{pkg.tagline}</p>
-            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.75rem", letterSpacing: "0.08em", color: "#f0f4f8", lineHeight: 1, textShadow: `0 0 16px ${GLOW_BLUE}66` }}>{pkg.name}</h3>
+            <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.35rem", letterSpacing: "0.08em", color: "#f0f4f8", lineHeight: 1, textShadow: `0 0 16px ${GLOW_BLUE}66` }}>{pkg.name}</h3>
             <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.4rem", flexWrap: "wrap" }}>
               <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: "rgba(240,244,248,0.55)" }}>⏱ {pkg.duration}</span>
               <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: GLOW_BLUE }}>· {pkg.extraHour}</span>
@@ -379,7 +379,7 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
             onClick={(e) => { e.stopPropagation(); onContact(); }}
             style={{
               marginTop: "0.75rem", width: "100%", padding: "0.75rem", borderRadius: "8px",
-              fontFamily: "'Bebas Neue', sans-serif", fontSize: "0.95rem", letterSpacing: "0.15em",
+              fontFamily: "'Cinzel', serif", fontSize: "0.95rem", letterSpacing: "0.15em",
               cursor: "pointer", background: `linear-gradient(135deg, ${GLOW_PURPLE}, ${GLOW_BLUE})`,
               color: "#fff", border: "none", boxShadow: `0 4px 20px ${GLOW_PURPLE}44`, transition: "all 0.3s ease",
             }}
@@ -460,7 +460,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
             </span>
           </div>
 
-          <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.35rem", letterSpacing: "0.06em", color: "#e8f8ff", margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1 }}>
+          <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.06em", color: "#e8f8ff", margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1 }}>
             {addon.title}
           </h3>
 
@@ -486,7 +486,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
           )}
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "0.5rem" }}>
-            <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.05rem", letterSpacing: "0.08em", color: NEON_CYAN, textShadow: `0 0 10px ${NEON_CYAN}99` }}>
+            <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.08em", color: NEON_CYAN, textShadow: `0 0 10px ${NEON_CYAN}99` }}>
               {addon.priceLabel}
             </span>
             <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.55rem", letterSpacing: "0.15em", color: NEON_CYAN_DIM, textTransform: "uppercase" }}>
@@ -507,7 +507,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
           <div style={{ marginBottom: "0.5rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <span style={{ fontSize: "1.1rem" }}>{addon.icon}</span>
-              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.06em", color: "#e8f8ff", margin: 0, textShadow: `0 0 12px ${NEON_CYAN}66` }}>{addon.backTitle}</h3>
+              <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.1rem", letterSpacing: "0.06em", color: "#e8f8ff", margin: 0, textShadow: `0 0 12px ${NEON_CYAN}66` }}>{addon.backTitle}</h3>
             </div>
             <div style={{ height: "1px", background: `linear-gradient(90deg, ${NEON_CYAN}, transparent)`, marginTop: "0.4rem", boxShadow: `0 0 5px ${NEON_CYAN}55` }} />
           </div>
@@ -582,7 +582,7 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
         <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.7rem", letterSpacing: "0.3em", color: "#00c8ff", textTransform: "uppercase", marginBottom: "0.5rem" }}>
           Live Prijsoverzicht
         </p>
-        <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(1.6rem, 3vw, 2.2rem)", letterSpacing: "0.08em", color: "#f0f4f8", margin: 0, textShadow: "0 0 20px rgba(0,200,255,0.3)" }}>
+        <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)", letterSpacing: "0.08em", color: "#f0f4f8", margin: 0, textShadow: "0 0 20px rgba(0,200,255,0.3)" }}>
           Uw Samenstelling
         </h3>
       </div>
@@ -602,14 +602,14 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
               {/* Package line */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0.75rem 1rem", background: "rgba(0,200,255,0.06)", border: "1px solid rgba(0,200,255,0.20)", borderRadius: "0.75rem" }}>
                 <div>
-                  <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.08em", color: "#f0f4f8" }}>
+                  <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1rem", letterSpacing: "0.08em", color: "#f0f4f8" }}>
                     {selectedPkg!.name} Show
                   </span>
                   <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", color: "rgba(240,244,248,0.45)", marginLeft: "0.5rem" }}>
                     ({selectedPkg!.duration})
                   </span>
                 </div>
-                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", color: "#00ff88", letterSpacing: "0.05em" }}>
+                <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1.1rem", color: "#00ff88", letterSpacing: "0.05em" }}>
                   €{basePrice},-
                 </span>
               </div>
@@ -625,9 +625,9 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
                       + {addon.title}
                     </span>
                     {isFree ? (
-                      <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "0.9rem", color: "#7fff4f", letterSpacing: "0.05em" }}>GRATIS</span>
+                      <span style={{ fontFamily: "'Cinzel', serif", fontSize: "0.9rem", color: "#7fff4f", letterSpacing: "0.05em" }}>GRATIS</span>
                     ) : (
-                      <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "0.9rem", color: "#7eb3ff", letterSpacing: "0.05em" }}>€{addon.price},-</span>
+                      <span style={{ fontFamily: "'Cinzel', serif", fontSize: "0.9rem", color: "#7eb3ff", letterSpacing: "0.05em" }}>€{addon.price},-</span>
                     )}
                   </div>
                 );
@@ -652,7 +652,7 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
                       Vraag uw datum aan en ontvang 10% korting
                     </p>
                   </div>
-                  <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", color: "#ffaa00", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>
+                  <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1.1rem", color: "#ffaa00", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>
                     − €{discountAmount},-
                   </span>
                 </div>
@@ -668,11 +668,11 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
               </p>
               <div style={{ display: "flex", alignItems: "baseline", justifyContent: "center", gap: "0.4rem" }}>
                 {hasDiscount && (
-                  <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.4rem", color: "rgba(240,244,248,0.3)", textDecoration: "line-through", letterSpacing: "0.05em" }}>
+                  <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1.1rem", color: "rgba(240,244,248,0.3)", textDecoration: "line-through", letterSpacing: "0.05em" }}>
                     €{subtotal},-
                   </span>
                 )}
-                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "3rem", color: "#00ff88", textShadow: "0 0 20px rgba(0,255,136,0.6)", letterSpacing: "0.05em", lineHeight: 1 }}>
+                <span style={{ fontFamily: "'Cinzel', serif", fontSize: "2.3rem", color: "#00ff88", textShadow: "0 0 20px rgba(0,255,136,0.6)", letterSpacing: "0.05em", lineHeight: 1 }}>
                   €{total},-
                 </span>
               </div>
@@ -690,7 +690,7 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
               onClick={onContact}
               style={{
                 width: "100%", padding: "1rem 1.5rem", borderRadius: "0.75rem",
-                fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.15em",
+                fontFamily: "'Cinzel', serif", fontSize: "1.1rem", letterSpacing: "0.15em",
                 cursor: "pointer", background: "linear-gradient(135deg, #00d4ff 0%, #5b6ef5 50%, #6040e0 100%)",
                 color: "#fff", border: "2px solid #00d4ff",
                 boxShadow: "0 0 20px rgba(0,212,255,0.4), 0 0 50px rgba(0,212,255,0.15)",
@@ -734,7 +734,7 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false, them
     <section id="packages" style={{ position: "relative", padding: "6rem 0", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 20%, ${GLOW_PURPLE}0d 0%, transparent 60%)`, pointerEvents: "none", zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 80%, ${GLOW_BLUE}08 0%, transparent 60%)`, pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", fontFamily: "'Bebas Neue', sans-serif", fontSize: "22vw", color: "rgba(115,0,255,0.025)", letterSpacing: "0.1em", whiteSpace: "nowrap", pointerEvents: "none", userSelect: "none", zIndex: 0 }}>
+      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", fontFamily: "'Cinzel', serif", fontSize: "22vw", color: "rgba(115,0,255,0.025)", letterSpacing: "0.1em", whiteSpace: "nowrap", pointerEvents: "none", userSelect: "none", zIndex: 0 }}>
         SHOWS
       </div>
 
@@ -745,7 +745,7 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false, them
           <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", letterSpacing: "0.3em", color: GLOW_BLUE, textTransform: "uppercase" }}>
             Pakketten & Add-ons
           </span>
-          <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", letterSpacing: "0.05em", lineHeight: 1.05, color: "#f0f4f8", marginTop: "0.75rem", textShadow: `0 0 40px ${GLOW_BLUE}33` }}>
+          <h2 style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.9rem, 4vw, 3rem)", letterSpacing: "0.05em", lineHeight: 1.05, color: "#f0f4f8", marginTop: "0.75rem", textShadow: `0 0 40px ${GLOW_BLUE}33` }}>
             ALLROUND DJ SHOWS OP MAAT
           </h2>
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1rem", color: "rgba(240,244,248,0.6)", lineHeight: 1.7, fontWeight: 300, maxWidth: "600px", margin: "1rem auto 0" }}>
@@ -771,7 +771,7 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false, them
         {/* ── ADD-ONS TITLE ── */}
         <div style={{ margin: "5rem 0 2.5rem", position: "relative", textAlign: "center" }}>
           <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, #00c8ff44, #00c8ff88, #00c8ff44, transparent)", boxShadow: "0 0 8px rgba(0,200,255,0.35)" }} />
-          <span style={{ position: "relative", display: "inline-block", background: "#080c10", padding: "0 2rem", fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(1.6rem, 3vw, 2.4rem)", letterSpacing: "0.12em", color: "#00c8ff", textTransform: "uppercase", textShadow: "0 0 24px rgba(0,200,255,0.80), 0 0 60px rgba(0,200,255,0.35), 0 2px 4px rgba(0,0,0,0.9)" }}>
+          <span style={{ position: "relative", display: "inline-block", background: "#080c10", padding: "0 2rem", fontFamily: "'Cinzel', serif", fontSize: "clamp(1.3rem, 2.5vw, 1.9rem)", letterSpacing: "0.12em", color: "#00c8ff", textTransform: "uppercase", textShadow: "0 0 24px rgba(0,200,255,0.80), 0 0 60px rgba(0,200,255,0.35), 0 2px 4px rgba(0,0,0,0.9)" }}>
             Add-ons &amp; Extras
           </span>
         </div>

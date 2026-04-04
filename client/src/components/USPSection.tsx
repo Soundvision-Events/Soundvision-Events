@@ -121,8 +121,8 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
           <div style={{ textAlign: "center" }}>
             <h3
               style={{
-                fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.4rem",
-                letterSpacing: "0.08em", color: "#f0f4f8", marginBottom: "0.25rem",
+                fontFamily: "'Cinzel', serif", fontSize: "1.1rem",
+                letterSpacing: "0.06em", color: "#f0f4f8", marginBottom: "0.25rem",
                 textShadow: `0 0 12px ${theme.accent}88`,
               }}
             >
@@ -153,7 +153,7 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
         >
           <div
             style={{
-              fontFamily: "'Bebas Neue', sans-serif", fontSize: "3rem", lineHeight: 1,
+              fontFamily: "'Cinzel', serif", fontSize: "2.2rem", lineHeight: 1,
               color: theme.accentSoft, textShadow: `0 0 20px ${theme.accent}, 0 0 40px ${theme.accent}88`,
               opacity: 0.25, position: "absolute", top: "1rem", right: "1.5rem",
             }}
@@ -163,8 +163,8 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
 
           <h3
             style={{
-              fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.5rem",
-              letterSpacing: "0.08em", color: theme.accentSoft,
+              fontFamily: "'Cinzel', serif", fontSize: "1.2rem",
+              letterSpacing: "0.06em", color: theme.accentSoft,
               textShadow: `0 0 15px ${theme.accent}`, textAlign: "center",
             }}
           >
@@ -209,8 +209,8 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
           </p>
           <h2
             style={{
-              fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
-              letterSpacing: "0.06em", color: "#f0f4f8", lineHeight: 1.1,
+              fontFamily: "'Cinzel', serif", fontSize: "clamp(1.7rem, 4vw, 2.7rem)",
+              letterSpacing: "0.05em", color: "#f0f4f8", lineHeight: 1.15,
               textShadow: `0 0 40px ${theme.glowSubtle}`,
             }}
           >
