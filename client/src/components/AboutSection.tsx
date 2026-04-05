@@ -340,16 +340,7 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "132px",
-            paddingRight: "0px",
-            paddingBottom: "123px",
-            paddingLeft: "0px",
-            marginTop: "33px",
-            marginRight: "-68px",
-            marginBottom: "4px",
-            marginLeft: "176px",
-            width: "485px",
-            height: "420px",
+            padding: "3rem 2.5rem",
           }}
         >
           {/* Cyan glow accent */}
@@ -365,7 +356,7 @@ export default function AboutSection() {
             className="relative"
             style={{
               width: "100%",
-              maxWidth: "552px",
+              maxWidth: "480px",
               zIndex: 2,
               display: "flex",
               flexDirection: "column",
