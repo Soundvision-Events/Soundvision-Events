@@ -60,15 +60,17 @@ export default function AnnouncementBanner() {
           bottom: "90px",
           right: "20px",
           zIndex: 9999,
-          width: "min(340px, calc(100vw - 40px))",
-          background: "linear-gradient(135deg, #0a0030 0%, #1a0060 40%, #0d1a6e 100%)",
-          border: "1.5px solid rgba(0, 212, 255, 0.6)",
-          borderRadius: "14px",
+          width: "min(247px, calc(100vw - 40px))",
+          height: "168px",
+          background: "rgba(18, 243, 239, 0.5)",
+          border: "8px inset rgba(0, 212, 255, 0.6)",
+          borderRadius: "26px",
           padding: "16px 14px 14px 16px",
           boxShadow: "0 0 20px rgba(0,212,255,0.25), 0 0 60px rgba(96,64,224,0.2), 0 8px 32px rgba(0,0,0,0.5)",
           transform: animIn ? "translateX(0)" : "translateX(calc(100% + 30px))",
           opacity: animIn ? 1 : 0,
           transition: "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease",
+          overflow: "hidden",
         }}
       >
         {/* Top row: icon + close */}

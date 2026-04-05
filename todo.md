@@ -202,3 +202,4 @@
 - [x] Make infographic full-width/beeldvullend for immersive visual experience
 - [x] Visual editor: About grid dark blue bg (#021d40, 0.7 opacity), height 741px, padding, text width 1178px
 - [x] Visual editor: YouTube column repositioned (510x603px, mt:134px, ml:210px), text div repositioned (685px wide, new margins)
+- [x] AnnouncementBanner: cyaan bg (#12f3ef, 0.5 opacity), 247x168px, 26px radius, 8px inset border, text/CTA at 100% opacity
