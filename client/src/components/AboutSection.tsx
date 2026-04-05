@@ -199,8 +199,8 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Hallo, ik ben <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Bert / DJ Tonicity</strong> — Vaste DJ én allround 'partner' voor uw feest concept met SoundVision Events.
-                Soundvision voorziet al ruim <strong style={{ color: "#00c8ff", fontWeight: 600 }}>15 jaar</strong> diverse feesten &amp; evenementen van sfeervolle allround muziek inclusief DJ-shows volledig op maat.
+                Ik ben <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Bert — DJ Tonicity</strong>, uw vaste DJ én allround partner voor een feestconcept op maat.
+                Al meer dan <strong style={{ color: "#00c8ff", fontWeight: 600 }}>15 jaar</strong> zet SoundVision Events sfeervolle muziek en DJ-shows neer die precies passen bij uw evenement.
               </p>
 
               <p
@@ -212,8 +212,8 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Het persoonlijke aandacht argument, geen uniek verhaal, want 'persoonlijk' en 'vertrouwen' is in de praktijk hét sleutelwoord om interesse te wekken, door vertrouwen te scheppen. Maar van wie of wat komt deze aandacht eigenlijk? De DJ? In welke mate? Dat maak ik met mijn Sound{" "}
-                <em style={{ color: "#00c8ff", fontStyle: "normal", fontWeight: 600 }}>'vision'</em> graag concreet!
+                Persoonlijk contact is geen marketingterm — het is de basis van vertrouwen. Maar wie staat er écht voor u? De DJ zelf. In welke mate? Dat maak ik met mijn Sound{" "}
+                <em style={{ color: "#00c8ff", fontStyle: "normal", fontWeight: 600 }}>'vision'</em> graag concreet.
               </p>
 
               <p
@@ -225,7 +225,7 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                In de praktijk: écht 1 op 1 rechtstreeks aandacht én direct feedback van dezelfde persoon m.b.t. alles dat betrekking heeft op het organiseren van een feest concept / evenement en de uitvoering zoals u het wilt.
+                Eén aanspreekpunt, van eerste idee tot laatste nummer — directe feedback, geen tussenpersonen, en uitvoering precies zoals u het voor ogen heeft.
               </p>
 
               {/* Bullet list */}
@@ -239,9 +239,9 @@ export default function AboutSection() {
                 }}
               >
                 {[
-                  "Het concreet maken van uw unieke ideeën, tot een duidelijk feest concept als basis voor uw specifieke keuzemogelijkheden.",
-                  "De bijbehorende muzikale en technische voorbereidingen voor uw concept (licht en geluidstechniek).",
-                  "De uitvoering van uw unieke feest zoals de bedoeling altijd is geweest.",
+                  "Uw unieke ideeën omzetten naar een helder feestconcept met concrete keuzemogelijkheden.",
+                  "Muzikale en technische voorbereiding op maat — licht, geluid en sfeer in perfecte balans.",
+                  "Uitvoering zoals u het altijd voor ogen had, zonder compromissen.",
                 ].map((item, i) => (
                   <p
                     key={i}
@@ -268,7 +268,7 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Bij Soundvision heeft u in elke fase 1 vaste 'partner':{" "}
+                Bij SoundVision heeft u in elke fase één vaste partner:{" "}
                 <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>De DJ zélf.</strong> Logisch, toch?
               </p>
 
@@ -281,9 +281,9 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Wat mij onderscheidt van de rest?{" "}
+                Wat mij onderscheidt?{" "}
                 <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>Altijd direct en persoonlijk contact.</strong>{" "}
-                DJ en klant vinden inspiratie bij elkaar — betrokkenheid zonder tussenpersonen. Zo wordt uw feest precies wat u voor ogen heeft.
+                DJ en klant inspireren elkaar — zo wordt uw feest precies wat het moet zijn.
               </p>
 
             </div>
