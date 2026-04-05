@@ -129,6 +129,7 @@ export default function AboutSection() {
           gridTemplateColumns: "1fr 1fr",
           zIndex: 10,
           alignItems: "stretch",
+          backgroundColor: "#000504",
         }}
       >
         {/* Dark blue background overlay */}
@@ -170,7 +171,12 @@ export default function AboutSection() {
           <div
             className="relative"
             style={{
-              padding: "3rem 3.5rem 3rem 3.5rem",
+              paddingTop: "0px",
+              paddingRight: "0px",
+              paddingBottom: "3rem",
+              paddingLeft: "0px",
+              marginRight: "2px",
+              width: "610px",
               zIndex: 2,
               display: "flex",
               flexDirection: "column",
@@ -338,9 +344,12 @@ export default function AboutSection() {
             justifyContent: "center",
             paddingTop: "0px",
             paddingRight: "0px",
-            paddingBottom: "0px",
-            paddingLeft: "103px",
-            width: "655px",
+            paddingBottom: "561px",
+            paddingLeft: "0px",
+            marginRight: "16px",
+            marginBottom: "79px",
+            marginLeft: "149px",
+            width: "416px",
           }}
         >
           {/* Cyan glow accent */}
