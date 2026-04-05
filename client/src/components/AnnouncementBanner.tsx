@@ -1,7 +1,7 @@
 /**
  * SoundVision Events — Announcement Banner
  * Slide-in floating notification from bottom-right corner.
- * Appears after 2s, does not block the navbar.
+ * Appears after 5s, does not block the navbar.
  * Dismissed state stored in sessionStorage.
  */
 import { useState, useEffect } from "react";
@@ -10,7 +10,7 @@ import { X, Sparkles } from "lucide-react";
 const BANNER_KEY = "sv-banner-dismissed-v2";
 
 const ANNOUNCEMENT = {
-  text: "🎉 Nog beschikbaar voor zomer 2026 — Vraag nu uw datum aan en ontvang 10% vroegboekkorting!",
+  text: "🎉 Nog enkele beschikbare datums voor zomer 2026 — ontvang 10% vroegboek korting! Deze actie zal binnenkort verlopen!",
   cta: "Offerte Aanvragen",
   ctaAction: () => {
     const el = document.getElementById("contact");
@@ -25,14 +25,14 @@ export default function AnnouncementBanner() {
   useEffect(() => {
     const dismissed = sessionStorage.getItem(BANNER_KEY);
     if (!dismissed) {
-      // Show after 2 seconds
+      // Show after 5 seconds
       const timer = setTimeout(() => {
         setVisible(true);
         // Trigger slide-in animation on next frame
         requestAnimationFrame(() => {
           requestAnimationFrame(() => setAnimIn(true));
         });
-      }, 2000);
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -60,10 +60,10 @@ export default function AnnouncementBanner() {
           bottom: "90px",
           right: "20px",
           zIndex: 9999,
-          width: "min(247px, calc(100vw - 40px))",
-          height: "168px",
-          background: "rgba(18, 243, 239, 0.5)",
-          border: "8px inset rgba(0, 212, 255, 0.6)",
+          width: "min(251px, calc(100vw - 40px))",
+          height: "186px",
+          background: "rgba(0, 84, 112, 0.6)",
+          border: "8px groove rgba(0, 212, 255, 0.6)",
           borderRadius: "26px",
           padding: "16px 14px 14px 16px",
           boxShadow: "0 0 20px rgba(0,212,255,0.25), 0 0 60px rgba(96,64,224,0.2), 0 8px 32px rgba(0,0,0,0.5)",
@@ -81,10 +81,11 @@ export default function AnnouncementBanner() {
               margin: 0,
               fontSize: "13px",
               color: "rgba(232, 240, 255, 0.92)",
-              fontFamily: "'Outfit', sans-serif",
+              fontFamily: "Corbel, 'Outfit', sans-serif",
               fontWeight: 400,
               lineHeight: 1.5,
               flex: 1,
+              textAlign: "right",
             }}
           >
             {ANNOUNCEMENT.text}
@@ -107,14 +108,14 @@ export default function AnnouncementBanner() {
           </button>
         </div>
 
-        {/* CTA button */}
+        {/* CTA button — 0.5x slower shimmer animation (6s instead of 3s) */}
         <button
           onClick={() => { ANNOUNCEMENT.ctaAction(); dismiss(); }}
           style={{
             width: "100%",
             background: "linear-gradient(135deg, #00d4ff 0%, #5b6ef5 50%, #6040e0 100%)",
             backgroundSize: "200% auto",
-            animation: "sv-banner-shimmer 3s linear infinite",
+            animation: "sv-banner-shimmer 6s linear infinite",
             border: "none",
             borderRadius: "8px",
             padding: "9px 16px",

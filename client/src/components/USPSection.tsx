@@ -190,21 +190,51 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p
             style={{
-              fontSize: "0.7rem", letterSpacing: "0.25em", textTransform: "uppercase",
+              fontSize: "16px", letterSpacing: "0.1em", textTransform: "none",
               color: theme.accent, marginBottom: "0.75rem", fontFamily: "'Outfit', sans-serif",
+              maxWidth: "700px", margin: "0 auto 0.75rem", lineHeight: 1.6,
             }}
           >
-            Uw Profesionele Partner van aangenaam tot ziens, de dj is betrokken ver voordat de muziek gedraaid wordt!
+            DJ Tonicity is betrokken bij het totaal plaatje vanaf het eerste intake gesprek. Door professionelle feedback / inzicht m.b.t. uw unieke feest ideeën eerst concreet te maken. Pas dan is de voorbereiding doeltreffend!
           </p>
           <h2
             style={{
               fontFamily: "'Cinzel', serif", fontSize: "clamp(1.7rem, 4vw, 2.7rem)",
               letterSpacing: "0.05em", color: "#f0f4f8", lineHeight: 1.15,
               textShadow: `0 0 40px ${theme.glowSubtle}`,
+              marginBottom: "1.5rem",
             }}
           >
             4 kernwaarden, 1 visie
           </h2>
+          {/* 4 kernwaarden pills */}
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginBottom: "1rem" }}>
+            {[
+              { icon: "🤝", label: "Persoonlijk Contact" },
+              { icon: "✨", label: "Shows op Maat" },
+              { icon: "🎵", label: "Ervaren Allround DJ" },
+              { icon: "🎛️", label: "Geen Boekingsbureaus" },
+            ].map((kw) => (
+              <div
+                key={kw.label}
+                style={{
+                  display: "flex", alignItems: "center", gap: "0.4rem",
+                  background: "rgba(0,200,255,0.08)",
+                  border: `1px solid ${theme.accent}44`,
+                  borderRadius: "999px",
+                  padding: "0.35rem 1rem",
+                  fontSize: "0.85rem",
+                  color: theme.accent,
+                  fontFamily: "'Outfit', sans-serif",
+                  fontWeight: 600,
+                  letterSpacing: "0.04em",
+                }}
+              >
+                <span>{kw.icon}</span>
+                <span>{kw.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
