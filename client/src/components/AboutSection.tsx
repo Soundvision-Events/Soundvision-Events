@@ -409,6 +409,31 @@ export default function AboutSection() {
         </div>
       </div>
 
+      {/* ── INFOGRAPHIC: positioned at ~2600px ── */}
+      <div
+        className="sv-fade-up"
+        style={{
+          width: "100%",
+          marginTop: "0.5rem",
+          position: "relative",
+          zIndex: 10,
+          borderRadius: "1rem",
+          overflow: "hidden",
+          boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 8px 32px rgba(0,0,0,0.4)",
+          border: "1px solid rgba(0,200,255,0.12)",
+          textAlign: "center",
+        }}
+      >
+        <img
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/infographic_new_c7f6a9cb.png"
+          alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
+          style={{
+            width: "100%",
+            height: "auto",
+            display: "block",
+          }}
+        />
+      </div>
 
     </section>
   );
