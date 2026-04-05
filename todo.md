@@ -211,3 +211,5 @@
 - [x] Redesign "De visie in de praktijk" section: 50/50 grid (tekst|YouTube, gelijke hoogte) + ingekaderd infographic frame
 - [x] Implement CSS perspective + translateZ 3D parallax on hero and section backgrounds
 - [x] Update soundvision-webdev skill with universal animation/hover/scroll standards
+- [x] Upload 4 event videos (IMG_0047, IMG_0107, IMG_0139, IMG_0616) to CDN
+- [x] Integrate 4 videos into GallerySection alongside existing photos (hover-to-play, 3-col grid with divider)
