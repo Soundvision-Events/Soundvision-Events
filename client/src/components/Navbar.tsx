@@ -78,21 +78,13 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
+                  className={`sv-nav-link${isActive ? ' active' : ''}`}
                   style={{
                     fontFamily: "'Outfit', sans-serif",
                     fontSize: "1.125rem",
                     letterSpacing: "0.05em",
-                    color: isActive ? "#00c8ff" : "rgba(240, 244, 248, 0.75)",
-                    transition: "color 0.2s ease, text-shadow 0.2s ease",
-                    textDecoration: "none",
-                    textShadow: isActive ? "0 0 12px rgba(0,200,255,0.85), 0 0 28px rgba(0,200,255,0.45)" : "none",
+                    color: isActive ? "#00c8ff" : "rgba(240, 244, 248, 0.85)",
                     paddingBottom: "4px",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) e.currentTarget.style.color = "#00c8ff";
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) e.currentTarget.style.color = "rgba(240, 244, 248, 0.75)";
                   }}
                 >
                   {link.label}
@@ -151,12 +143,12 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
+                  className={`sv-nav-link-mobile${isActive ? ' active' : ''}`}
                   style={{
                     fontFamily: "'Outfit', sans-serif",
                     fontSize: "1rem",
                     letterSpacing: "0.05em",
                     color: isActive ? "#00c8ff" : "rgba(240, 244, 248, 0.85)",
-                    padding: "0.5rem 0",
                     borderBottom: "1px solid rgba(255,255,255,0.05)",
                     textDecoration: "none",
                   }}
