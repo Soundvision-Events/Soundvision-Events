@@ -139,7 +139,7 @@ export default function AboutSection() {
           {/* Text content — always above colour layer */}
           <div
             className="sv-fade-up relative"
-            style={{ padding: "2.5rem 3rem 2.5rem 3rem", zIndex: 2, maxWidth: "1178px" }}
+            style={{ paddingTop: "2.5rem", paddingBottom: "2.5rem", paddingRight: "0px", paddingLeft: "67px", marginRight: "-152px", marginLeft: "-89px", width: "685px", zIndex: 2 }}
           >
             {/* Badge label */}
             <div style={{ marginBottom: "1.5rem" }}>
@@ -333,17 +333,17 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "38px",
+            paddingTop: "0px",
             paddingRight: "0px",
             paddingLeft: "0px",
-            marginTop: "6px",
-            marginRight: "11px",
-            marginBottom: "16px",
-            marginLeft: "20px",
+            marginTop: "134px",
+            marginRight: "-123px",
+            marginBottom: "17px",
+            marginLeft: "210px",
             gap: "1.25rem",
-            width: "671px",
+            width: "510px",
             maxWidth: "100%",
-            height: "532px",
+            height: "603px",
             opacity: 0.82,
           }}
         >

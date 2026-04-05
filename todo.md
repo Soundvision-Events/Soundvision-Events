@@ -201,3 +201,4 @@
 - [x] Visual editor: infographic wider (940px), YouTube column height reduced to 532px
 - [x] Make infographic full-width/beeldvullend for immersive visual experience
 - [x] Visual editor: About grid dark blue bg (#021d40, 0.7 opacity), height 741px, padding, text width 1178px
+- [x] Visual editor: YouTube column repositioned (510x603px, mt:134px, ml:210px), text div repositioned (685px wide, new margins)
