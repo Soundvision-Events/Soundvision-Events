@@ -262,19 +262,17 @@ export default function HeroSection() {
       style={{ backgroundColor: "transparent" }}
     >
       {/* Hero video — full opacity, fades out on scroll, fades in gradually on load */}
-      <div className="absolute inset-0" style={{ opacity: videoOpacity, transition: "opacity 0.05s linear", willChange: "opacity", animation: "sv-hero-fadein 2.8s ease-out forwards" }}>
+      <div className="absolute inset-0" style={{ opacity: videoOpacity, transition: "opacity 0.1s linear", willChange: "opacity", zIndex: 0 }}>
         <video
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
           style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
         >
-          <source
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-loop-new_5528fae7.mp4"
-            type="video/mp4"
-          />
+          <source src="/api/video-proxy?file=hero-loop-new_3c2c71bc.mp4" type="video/mp4" />
         </video>
       </div>
       {/* Dark color overlay — sits above video, below all text/buttons/reviews (z-index 1) */}
@@ -282,7 +280,7 @@ export default function HeroSection() {
         className="absolute inset-0"
         style={{
           backgroundColor: "#000000",
-          opacity: 0.7,
+          opacity: 0.4,
           zIndex: 1,
           pointerEvents: "none",
         }}

@@ -17,7 +17,7 @@ interface VideoBackgroundProps {
 }
 
 const DEFAULT_SRC =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/backdrop-v3-hd_d354f7b7.mp4";
+  "/api/video-proxy?file=backdrop-v3-hd_d354f7b7.mp4";
 
 export default function VideoBackground({
   src = DEFAULT_SRC,
