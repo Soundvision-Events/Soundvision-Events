@@ -138,7 +138,13 @@ export default function AboutSection() {
           className="relative sv-fade-up"
           style={{
             borderRight: "1px solid rgba(0,200,255,0.18)",
-            padding: "3rem 2.5rem",
+            paddingTop: "3rem",
+            paddingBottom: "19px",
+            paddingLeft: "54px",
+            paddingRight: "24px",
+            opacity: 0.7,
+            borderRadius: "12px",
+            border: "13px inset #eff0f5",
           }}
         >
           {/* Purple tint overlay */}
@@ -315,7 +321,12 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "3rem 2.5rem",
+            paddingTop: "0px",
+            paddingBottom: "0px",
+            paddingLeft: "0px",
+            paddingRight: "0px",
+            width: "730px",
+            height: "434px",
           }}
         >
           {/* Cyan glow accent */}
@@ -331,8 +342,11 @@ export default function AboutSection() {
           <div
             className="relative"
             style={{
-              width: "100%",
-              maxWidth: "480px",
+              width: "627px",
+              maxWidth: "627px",
+              height: "517px",
+              marginLeft: "34px",
+              marginRight: "47px",
               zIndex: 2,
               display: "flex",
               flexDirection: "column",
