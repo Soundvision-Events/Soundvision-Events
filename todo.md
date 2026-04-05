@@ -198,3 +198,4 @@
 - [x] Infographic: not full-screen, reduce width to contained size (maxWidth 720px, centered)
 - [x] Replace infographic with new uploaded version (dj_toncity_neon_max.webp) and clean up visual editor artifacts
 - [x] Edit infographic: fix "perfecte flow" text, remove STOP sign, clean up DJ Show area
+- [x] Visual editor: infographic wider (940px), YouTube column height reduced to 532px

@@ -332,7 +332,7 @@ export default function AboutSection() {
             gap: "1.25rem",
             width: "671px",
             maxWidth: "100%",
-            height: "658px",
+            height: "532px",
             opacity: 0.82,
           }}
         >
@@ -413,7 +413,7 @@ export default function AboutSection() {
       <div
         className="sv-fade-up"
         style={{
-          maxWidth: "720px",
+          maxWidth: "940px",
           margin: "0.5rem auto 0 auto",
           position: "relative",
           zIndex: 10,
