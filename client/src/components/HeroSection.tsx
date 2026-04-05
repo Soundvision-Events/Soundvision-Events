@@ -280,7 +280,7 @@ export default function HeroSection() {
         className="absolute inset-0"
         style={{
           backgroundColor: "#000000",
-          opacity: 0.4,
+          opacity: 0.25,
           zIndex: 1,
           pointerEvents: "none",
         }}
