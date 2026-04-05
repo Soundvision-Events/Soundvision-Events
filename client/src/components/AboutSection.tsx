@@ -336,7 +336,11 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "3rem 2.5rem",
+            paddingTop: "0px",
+            paddingRight: "0px",
+            paddingBottom: "0px",
+            paddingLeft: "103px",
+            width: "655px",
           }}
         >
           {/* Cyan glow accent */}
@@ -352,20 +356,20 @@ export default function AboutSection() {
             className="relative"
             style={{
               width: "100%",
-              maxWidth: "380px",
+              maxWidth: "552px",
               zIndex: 2,
               display: "flex",
               flexDirection: "column",
               gap: "1rem",
             }}
           >
-            {/* YouTube frame — 9:16 portrait */}
+            {/* YouTube frame — 16:9 landscape */}
             <div
               className="relative rounded-xl overflow-hidden w-full"
               style={{
                 border: "1px solid rgba(0,200,255,0.30)",
                 boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 12px 40px rgba(0,0,0,0.6)",
-                aspectRatio: "9/16",
+                aspectRatio: "16/9",
               }}
             >
               <iframe
