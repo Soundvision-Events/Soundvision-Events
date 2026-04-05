@@ -50,8 +50,8 @@ export default function Navbar() {
       <div
         className="absolute inset-0 transition-all duration-300"
         style={{
-          backgroundColor: "#878787",
-          opacity: scrolled ? 0.6 : 0.6,
+          backgroundColor: "#3000b3",
+          opacity: 0.8,
           pointerEvents: "none",
         }}
       />
