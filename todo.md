@@ -197,3 +197,4 @@
 - [x] Place infographic image at ~2600px position on homepage
 - [x] Infographic: not full-screen, reduce width to contained size (maxWidth 720px, centered)
 - [x] Replace infographic with new uploaded version (dj_toncity_neon_max.webp) and clean up visual editor artifacts
+- [x] Edit infographic: fix "perfecte flow" text, remove STOP sign, clean up DJ Show area

@@ -424,7 +424,7 @@ export default function AboutSection() {
         }}
       >
         <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj_toncity_neon_max_7b8a849c.webp"
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj_toncity_infographic_edited_a9ef8bc4.png"
           alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
           style={{
             width: "100%",
