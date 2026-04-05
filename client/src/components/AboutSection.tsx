@@ -130,23 +130,17 @@ export default function AboutSection() {
           zIndex: 10,
           alignItems: "stretch",
           backgroundColor: "#000504",
+          paddingTop: "30px",
+          paddingLeft: "26px",
         }}
       >
-        {/* Dark blue background overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundColor: "#021d40",
-            opacity: 0.7,
-            pointerEvents: "none",
-          }}
-        />
 
         {/* ── LEFT: Tekst ── */}
         <div
           className="relative sv-fade-up"
           style={{
             borderRight: "1px solid rgba(0,200,255,0.18)",
+            height: "712px",
           }}
         >
           {/* Purple tint overlay */}
@@ -173,14 +167,14 @@ export default function AboutSection() {
             style={{
               paddingTop: "0px",
               paddingRight: "0px",
-              paddingBottom: "3rem",
+              paddingBottom: "194px",
               paddingLeft: "0px",
               marginRight: "2px",
               width: "610px",
               zIndex: 2,
               display: "flex",
               flexDirection: "column",
-              height: "100%",
+              height: "730px",
               boxSizing: "border-box",
             }}
           >
@@ -342,13 +336,13 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "0px",
+            paddingTop: "186px",
             paddingRight: "0px",
-            paddingBottom: "561px",
+            paddingBottom: "362px",
             paddingLeft: "0px",
-            marginRight: "16px",
-            marginBottom: "79px",
-            marginLeft: "149px",
+            marginRight: "-15px",
+            marginBottom: "54px",
+            marginLeft: "8px",
             width: "416px",
           }}
         >
