@@ -423,6 +423,7 @@ export default function AboutSection() {
       </div>
 
       {/* ── INFOGRAPHIC: ingekaderd full-width frame ── */}
+      {/* 3D parallax: sv-bg-zoom scales in from 1.12→1.0 as it enters viewport */}
       <div
         className="sv-fade-up relative"
         style={{
@@ -444,7 +445,8 @@ export default function AboutSection() {
             background: "linear-gradient(90deg, transparent 0%, rgba(0,200,255,0.6) 30%, rgba(129,0,235,0.6) 70%, transparent 100%)",
           }}
         />
-        <img
+          <img
+          className="sv-bg-zoom"
           src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj_toncity_infographic_edited_a9ef8bc4.png"
           alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
           style={{

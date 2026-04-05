@@ -6,8 +6,8 @@
  *    creating a layered depth effect as the user scrolls.
  *    Spring-lerp smoothing for buttery motion.
  *
- * 2. ZOOM-IN REVEAL (.sv-zoom-reveal)
- *    Elements scale in from slightly enlarged when entering viewport.
+ * 2. ZOOM-IN REVEAL (.sv-zoom-reveal, .sv-fade-up, .sv-reveal-left, .sv-reveal-right, .sv-bg-zoom)
+ *    Elements animate in from their initial state when entering viewport.
  *    Stagger delays via CSS nth-child rules.
  *
  * 3. MOUSE-TRACKING TILT (.sv-tilt)
@@ -18,6 +18,38 @@
  * 4. SCROLL-DRIVEN FLOAT (.sv-float-scroll)
  *    Decorative elements drift up/down based on scroll position.
  *
+ * 5. CSS PERSPECTIVE PARALLAX (.sv-parallax-3d + .sv-layer-bg / .sv-layer-mid)
+ *    Pure CSS — browser 3D perspective engine handles depth automatically.
+ *    No JS needed; this comment documents the CSS-only system in index.css.
+ *
+ * ── Universal animation class reference ──────────────────────────────────────
+ *
+ * SCROLL REVEAL (activated by IntersectionObserver below):
+ *   .sv-fade-up       — fade + slide up on enter
+ *   .sv-zoom-reveal   — scale + fade on enter
+ *   .sv-reveal-left   — slide in from left
+ *   .sv-reveal-right  — slide in from right
+ *   .sv-bg-zoom       — background scale-in on enter (adds .active class)
+ *
+ * HOVER (pure CSS, no JS):
+ *   .sv-card-3d       — lift + perspective tilt + neon glow on hover
+ *   .sv-pill-hover    — translateY + scale + glow on hover
+ *   .sv-hover-lift    — simple lift on hover
+ *   .sv-tilt          — mouse-tracking 3D tilt (JS below)
+ *
+ * 3D PARALLAX DEPTH LAYERS (pure CSS, no JS):
+ *   .sv-parallax-3d   — section wrapper (preserve-3d)
+ *   .sv-layer-bg      — translateZ(-2px) scale(3) → ~3× slower scroll
+ *   .sv-layer-mid     — translateZ(-1px) scale(2) → ~2× slower scroll
+ *   .sv-layer-fg      — translateZ(0) → normal scroll speed
+ *
+ * STAGGER GRID:
+ *   Add .sv-stagger to parent, .sv-fade-up (or reveal variant) to children.
+ *   CSS nth-child rules apply 0.05–0.40s delays automatically.
+ *
+ * EXCEPTIONS:
+ *   Any section may override these defaults with explicit inline styles or
+ *   additional Tailwind classes. Document the exception in a JSX comment.
  */
 import { useEffect } from "react";
 
@@ -40,6 +72,11 @@ export function useParallax() {
         const speed = parseFloat(el.dataset.parallaxSpeed ?? "0.25");
         targets.set(el, { currentY: 0, targetY: 0, speed });
       });
+      // Also collect .sv-float-scroll decorative elements
+      document.querySelectorAll<HTMLElement>(".sv-float-scroll").forEach((el) => {
+        const speed = parseFloat(el.dataset.parallaxSpeed ?? "0.12");
+        targets.set(el, { currentY: 0, targetY: 0, speed });
+      });
     };
 
     let rafId: number;
@@ -48,8 +85,12 @@ export function useParallax() {
     const updateTargets = () => {
       const scrollY = window.scrollY;
       targets.forEach((state, el) => {
-        const section = el.closest(".sv-parallax") as HTMLElement | null;
-        if (!section) return;
+        const section = (el.closest(".sv-parallax") ?? el.closest(".sv-parallax-3d")) as HTMLElement | null;
+        if (!section) {
+          // Standalone float-scroll — use global scroll
+          state.targetY = scrollY * state.speed * -1;
+          return;
+        }
         const rect = section.getBoundingClientRect();
         const sectionTop = rect.top + scrollY;
         const progress = (scrollY - sectionTop + window.innerHeight) / (window.innerHeight + section.offsetHeight);
@@ -82,22 +123,47 @@ export function useParallax() {
     };
   }, []);
 
-  // ── 2: Zoom-in reveal ───────────────────────────────────────────────────
+  // ── 2: Scroll-reveal for all animation classes ──────────────────────────
   useEffect(() => {
+    const REVEAL_SELECTORS = [
+      ".sv-zoom-reveal",
+      ".sv-fade-up",
+      ".sv-reveal-left",
+      ".sv-reveal-right",
+      ".sv-bg-zoom",
+    ].join(", ");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+            // .visible activates fade-up, zoom-reveal, reveal-left/right
+            // .active activates sv-bg-zoom scale transition
+            entry.target.classList.add("visible", "active");
             observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
     );
-    const els = document.querySelectorAll(".sv-zoom-reveal, .sv-fade-up");
+
+    const els = document.querySelectorAll(REVEAL_SELECTORS);
     els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    // Re-observe after DOM mutations (lazy sections, route changes)
+    const mutObs = new MutationObserver(() => {
+      document.querySelectorAll(REVEAL_SELECTORS).forEach((el) => {
+        if (!el.classList.contains("visible") && !el.classList.contains("active")) {
+          observer.observe(el);
+        }
+      });
+    });
+    mutObs.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutObs.disconnect();
+    };
   }, []);
 
   // ── 3: Mouse-tracking tilt on .sv-tilt elements ─────────────────────────

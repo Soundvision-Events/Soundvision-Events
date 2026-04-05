@@ -49,7 +49,7 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
 
   return (
     <div
-      className="relative"
+      className="relative sv-fade-up"
       style={{ perspective: "1000px", height: "280px" }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
@@ -217,7 +217,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
             ].map((kw) => (
               <div
                 key={kw.label}
-                className="sv-pill"
+                className="sv-pill sv-pill-hover"
                 style={{
                   display: "flex", alignItems: "center", gap: "0.4rem",
                   background: "rgba(0,200,255,0.08)",
@@ -238,7 +238,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
+        <div className="sv-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
           {USPS.map((card, i) => (
             <FlipCard key={card.title} card={card} index={i} theme={theme} />
           ))}

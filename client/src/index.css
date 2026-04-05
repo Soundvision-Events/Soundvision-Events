@@ -475,3 +475,175 @@
   will-change: transform;
   transition: transform 0.1s linear;
 }
+
+/* ============================================================
+   3D PERSPECTIVE PARALLAX — CSS translateZ depth system
+   Usage:
+     Wrap your page in .sv-perspective-root
+     Add .sv-layer-bg / .sv-layer-mid / .sv-layer-fg to elements
+   The browser's 3D perspective engine automatically makes
+   deeper layers (negative Z) move slower than the viewport.
+   ============================================================ */
+
+.sv-perspective-root {
+  /* Establish the 3D perspective context */
+  perspective: 1px;
+  perspective-origin: 50% 50%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  /* Smooth scroll is inherited from html */
+}
+
+/* Background layer — moves ~3× slower than scroll */
+.sv-layer-bg {
+  transform: translateZ(-2px) scale(3);
+  transform-origin: 50% 0;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Mid layer — moves ~2× slower than scroll */
+.sv-layer-mid {
+  transform: translateZ(-1px) scale(2);
+  transform-origin: 50% 0;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Foreground layer — normal scroll speed */
+.sv-layer-fg {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* ── Section parallax wrapper ──
+   Use .sv-parallax-3d on any section.
+   Place background elements as .sv-layer-bg children.
+   Place content as .sv-layer-fg children.
+*/
+.sv-parallax-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.sv-parallax-3d > .sv-layer-bg {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sv-parallax-3d > .sv-layer-mid {
+  position: absolute;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sv-parallax-3d > .sv-layer-fg {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Scroll-driven zoom-in for section backgrounds ──
+   Add .sv-bg-zoom to background images/divs.
+   JS adds .active when section enters viewport.
+*/
+.sv-bg-zoom {
+  transform: scale(1.12);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.sv-bg-zoom.active {
+  transform: scale(1.0);
+}
+
+/* ── Universal hover depth card ──
+   Combines lift + neon glow + subtle scale.
+   Apply to any interactive card or block.
+*/
+.sv-card-3d {
+  transition:
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.sv-card-3d:hover {
+  transform: translateY(-8px) scale(1.025) perspective(600px) rotateX(2deg);
+  box-shadow:
+    0 28px 56px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 200, 255, 0.20),
+    0 0 50px rgba(0, 200, 255, 0.12);
+}
+
+/* ── Neon pill hover (kernwaarden, tags) ── */
+.sv-pill-hover {
+  transition:
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.sv-pill-hover:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 0 18px rgba(0, 200, 255, 0.55), 0 0 36px rgba(0, 200, 255, 0.20);
+}
+
+/* ── Scroll reveal — fade + slide variants ── */
+.sv-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sv-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sv-reveal-left.visible,
+.sv-reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delays for grid children */
+.sv-stagger > *:nth-child(1) { transition-delay: 0.05s; }
+.sv-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+.sv-stagger > *:nth-child(3) { transition-delay: 0.19s; }
+.sv-stagger > *:nth-child(4) { transition-delay: 0.26s; }
+.sv-stagger > *:nth-child(5) { transition-delay: 0.33s; }
+.sv-stagger > *:nth-child(6) { transition-delay: 0.40s; }
+
+/* ── Reduce motion — respect user preference ── */
+@media (prefers-reduced-motion: reduce) {
+  .sv-layer-bg,
+  .sv-layer-mid,
+  .sv-layer-fg,
+  .sv-bg-zoom,
+  .sv-card-3d,
+  .sv-pill-hover,
+  .sv-reveal-left,
+  .sv-reveal-right,
+  .sv-fade-up,
+  .sv-zoom-reveal,
+  .sv-hover-lift {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

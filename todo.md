@@ -209,3 +209,5 @@
 - [x] Shorten AnnouncementBanner text: "Zomer 2026 — nog enkele datums vrij! Ontvang 10% vroegboekkorting."
 - [x] AboutSection: badge centered under section title
 - [x] Redesign "De visie in de praktijk" section: 50/50 grid (tekst|YouTube, gelijke hoogte) + ingekaderd infographic frame
+- [x] Implement CSS perspective + translateZ 3D parallax on hero and section backgrounds
+- [x] Update soundvision-webdev skill with universal animation/hover/scroll standards
