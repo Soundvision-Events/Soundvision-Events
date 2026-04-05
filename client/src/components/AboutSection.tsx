@@ -96,10 +96,21 @@ export default function AboutSection() {
         style={{
           display: "grid",
           gridTemplateColumns: "2fr 1fr",
-          minHeight: "520px",
+          minHeight: "741px",
           zIndex: 10,
+          paddingRight: "229px",
+          paddingLeft: "126px",
         }}
       >
+        {/* Dark blue background overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundColor: "#021d40",
+            opacity: 0.7,
+            pointerEvents: "none",
+          }}
+        />
         {/* ── LEFT COLUMN: Tekst (2/3) — dark purple colour layer ── */}
         <div
           className="relative"
@@ -128,7 +139,7 @@ export default function AboutSection() {
           {/* Text content — always above colour layer */}
           <div
             className="sv-fade-up relative"
-            style={{ padding: "2.5rem 3rem 2.5rem 3rem", zIndex: 2 }}
+            style={{ padding: "2.5rem 3rem 2.5rem 3rem", zIndex: 2, maxWidth: "1178px" }}
           >
             {/* Badge label */}
             <div style={{ marginBottom: "1.5rem" }}>

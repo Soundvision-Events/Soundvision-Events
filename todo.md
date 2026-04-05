@@ -200,3 +200,4 @@
 - [x] Edit infographic: fix "perfecte flow" text, remove STOP sign, clean up DJ Show area
 - [x] Visual editor: infographic wider (940px), YouTube column height reduced to 532px
 - [x] Make infographic full-width/beeldvullend for immersive visual experience
+- [x] Visual editor: About grid dark blue bg (#021d40, 0.7 opacity), height 741px, padding, text width 1178px
