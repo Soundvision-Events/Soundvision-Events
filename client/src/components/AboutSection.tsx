@@ -409,19 +409,18 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* ── INFOGRAPHIC: positioned at ~2600px ── */}
+      {/* ── INFOGRAPHIC: positioned at ~2600px, contained width ── */}
       <div
         className="sv-fade-up"
         style={{
-          width: "100%",
-          marginTop: "0.5rem",
+          maxWidth: "720px",
+          margin: "0.5rem auto 0 auto",
           position: "relative",
           zIndex: 10,
           borderRadius: "1rem",
           overflow: "hidden",
           boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 8px 32px rgba(0,0,0,0.4)",
           border: "1px solid rgba(0,200,255,0.12)",
-          textAlign: "center",
         }}
       >
         <img

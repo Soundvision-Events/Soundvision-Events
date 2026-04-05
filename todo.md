@@ -195,3 +195,4 @@
 - [x] Replace infographic image in AboutSection with new uploaded version
 - [x] Remove infographic image block from AboutSection (user deleted via visual editor)
 - [x] Place infographic image at ~2600px position on homepage
+- [x] Infographic: not full-screen, reduce width to contained size (maxWidth 720px, centered)
