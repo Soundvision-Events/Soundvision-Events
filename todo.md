@@ -207,3 +207,4 @@
 - [x] USPSection: updated subtitle text (16px), added 4 kernwaarden pills below h2 title
 - [x] Add subtle hover animation to kernwaarden-pills in USPSection (translateY + scale + neon glow)
 - [x] Shorten AnnouncementBanner text: "Zomer 2026 — nog enkele datums vrij! Ontvang 10% vroegboekkorting."
+- [x] AboutSection: badge centered under section title

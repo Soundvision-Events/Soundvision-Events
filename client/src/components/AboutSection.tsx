@@ -141,8 +141,8 @@ export default function AboutSection() {
             className="sv-fade-up relative"
             style={{ paddingTop: "2.5rem", paddingBottom: "2.5rem", paddingRight: "0px", paddingLeft: "67px", marginRight: "-152px", marginLeft: "-89px", width: "685px", zIndex: 2 }}
           >
-            {/* Badge label */}
-            <div style={{ marginBottom: "1.5rem" }}>
+            {/* Badge label — gecentreerd onder sectietitel */}
+            <div style={{ marginBottom: "1.5rem", textAlign: "center" }}>
               <span
                 style={{
                   color: "#003a66",
