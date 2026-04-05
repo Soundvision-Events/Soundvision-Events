@@ -10,7 +10,7 @@ import { X, Sparkles } from "lucide-react";
 const BANNER_KEY = "sv-banner-dismissed-v2";
 
 const ANNOUNCEMENT = {
-  text: "🎉 Nog enkele beschikbare datums voor zomer 2026 — ontvang 10% vroegboek korting! Deze actie zal binnenkort verlopen!",
+  text: "🎉 Zomer 2026 — nog enkele datums vrij! Ontvang 10% vroegboekkorting.",
   cta: "Offerte Aanvragen",
   ctaAction: () => {
     const el = document.getElementById("contact");

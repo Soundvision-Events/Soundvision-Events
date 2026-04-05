@@ -217,6 +217,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
             ].map((kw) => (
               <div
                 key={kw.label}
+                className="sv-pill"
                 style={{
                   display: "flex", alignItems: "center", gap: "0.4rem",
                   background: "rgba(0,200,255,0.08)",
@@ -248,6 +249,16 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
         @keyframes neonPulse {
           0%, 100% { box-shadow: 0 0 15px var(--glow), 0 0 30px var(--glow); opacity: 1; }
           50% { box-shadow: 0 0 25px var(--glow), 0 0 50px var(--glow); opacity: 0.85; }
+        }
+        .sv-pill {
+          transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+          cursor: default;
+        }
+        .sv-pill:hover {
+          transform: translateY(-3px) scale(1.06);
+          background: rgba(0,200,255,0.18) !important;
+          box-shadow: 0 0 12px rgba(0,200,255,0.35), 0 4px 16px rgba(0,0,0,0.3);
+          border-color: rgba(0,200,255,0.8) !important;
         }
       `}</style>
     </section>

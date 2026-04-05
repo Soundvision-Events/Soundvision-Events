@@ -148,20 +148,20 @@ export default function AboutSection() {
                   color: "#003a66",
                   backgroundColor: "#00c4eb",
                   fontFamily: "'Cinzel', serif",
-                  fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)",
+                  fontSize: "15px",
                   padding: "0.2rem 0.7rem",
                   borderRadius: "2px",
                   border: "3px groove #000000",
                   display: "inline-block",
-                  fontWeight: 700,
+                  fontWeight: 500,
                   letterSpacing: "0.06em",
                 }}
               >
-                DJ Tonicity legt uit
+                DJ Tonicity: Visie op de gewenste Sound, met de perfecte Shows
               </span>
               <span
                 style={{
-                  color: "rgba(255,255,255,0.6)",
+                  color: "#00d5ff",
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "0.78rem",
                   display: "block",
@@ -170,7 +170,7 @@ export default function AboutSection() {
                   textTransform: "uppercase",
                 }}
               >
-                DJ en oprichter @ SoundVision Events sinds 2016
+                Oprichter en de vaste allround DJ @ SoundVision Events sinds 2016
               </span>
             </div>
 

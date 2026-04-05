@@ -205,3 +205,5 @@
 - [x] AnnouncementBanner: cyaan bg (#12f3ef, 0.5 opacity), 247x168px, 26px radius, 8px inset border, text/CTA at 100% opacity
 - [x] AnnouncementBanner: updated text, 5s delay, 6s CTA shimmer, #005470 bg, 251x186px, groove border
 - [x] USPSection: updated subtitle text (16px), added 4 kernwaarden pills below h2 title
+- [x] Add subtle hover animation to kernwaarden-pills in USPSection (translateY + scale + neon glow)
+- [x] Shorten AnnouncementBanner text: "Zomer 2026 — nog enkele datums vrij! Ontvang 10% vroegboekkorting."
