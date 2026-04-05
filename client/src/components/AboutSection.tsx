@@ -1,9 +1,7 @@
 /**
  * SoundVision Events — "De visie in de praktijk" Section
- * Layout Optie A: Asymmetrisch 3-koloms grid
- *   Row 1: [Tekst breed 2/3 — donkerblauw kleurblok] | [YouTube smal 1/3 — cyaan kleurblok]
- *   Row 2: 4 kernwaarden kaarten — volle breedte met gradient kleurblokken
- * All text sits above color layers (z-index: relative > absolute bg)
+ * Layout: Balanced 50/50 grid (tekst links | YouTube rechts, gelijke hoogte)
+ *         + Infographic in eigen ingekaderd full-width frame eronder
  */
 import { useEffect, useRef, useState } from "react";
 
@@ -40,7 +38,7 @@ export default function AboutSection() {
       className="relative overflow-hidden"
       style={{ paddingBottom: "0" }}
     >
-      {/* Global section colour overlay — #00bfff at opacity 0.2 */}
+      {/* Global section colour overlay */}
       <div
         className="absolute inset-0"
         style={{
@@ -51,7 +49,7 @@ export default function AboutSection() {
         }}
       />
 
-      {/* ── Full-width section header ── */}
+      {/* ── Section header ── */}
       <div
         className="relative w-full"
         style={{
@@ -88,18 +86,49 @@ export default function AboutSection() {
         >
           De visie in de praktijk
         </h2>
+
+        {/* Badge — gecentreerd onder sectietitel */}
+        <div style={{ marginTop: "1.2rem" }}>
+          <span
+            style={{
+              color: "#003a66",
+              backgroundColor: "#00c4eb",
+              fontFamily: "'Cinzel', serif",
+              fontSize: "0.9rem",
+              padding: "0.25rem 0.9rem",
+              borderRadius: "2px",
+              border: "3px groove #000000",
+              display: "inline-block",
+              fontWeight: 500,
+              letterSpacing: "0.06em",
+            }}
+          >
+            DJ Tonicity: Visie op de gewenste Sound, met de perfecte Shows
+          </span>
+          <span
+            style={{
+              color: "#00d5ff",
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "0.75rem",
+              display: "block",
+              marginTop: "0.5rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+            }}
+          >
+            Oprichter en de vaste allround DJ @ SoundVision Events sinds 2016
+          </span>
+        </div>
       </div>
 
-      {/* ── ROW 1: Asymmetric 2/3 + 1/3 grid ── */}
+      {/* ── 50/50 GRID: Tekst | YouTube ── */}
       <div
         className="relative"
         style={{
           display: "grid",
-          gridTemplateColumns: "2fr 1fr",
-          minHeight: "741px",
+          gridTemplateColumns: "1fr 1fr",
           zIndex: 10,
-          paddingRight: "229px",
-          paddingLeft: "126px",
+          alignItems: "stretch",
         }}
       >
         {/* Dark blue background overlay */}
@@ -111,23 +140,24 @@ export default function AboutSection() {
             pointerEvents: "none",
           }}
         />
-        {/* ── LEFT COLUMN: Tekst (2/3) — dark purple colour layer ── */}
+
+        {/* ── LEFT: Tekst ── */}
         <div
-          className="relative"
+          className="relative sv-fade-up"
           style={{
-            borderRight: "1px solid rgba(0,200,255,0.15)",
+            borderRight: "1px solid rgba(0,200,255,0.18)",
           }}
         >
-          {/* Background colour overlay — only this layer gets opacity */}
+          {/* Purple tint overlay */}
           <div
             className="absolute inset-0"
             style={{
               backgroundColor: "#1c0033",
-              opacity: 0.6,
+              opacity: 0.5,
               pointerEvents: "none",
             }}
           />
-          {/* Subtle left-side glow accent */}
+          {/* Subtle glow */}
           <div
             className="absolute inset-0"
             style={{
@@ -136,46 +166,19 @@ export default function AboutSection() {
             }}
           />
 
-          {/* Text content — always above colour layer */}
+          {/* Text content */}
           <div
-            className="sv-fade-up relative"
-            style={{ paddingTop: "2.5rem", paddingBottom: "2.5rem", paddingRight: "0px", paddingLeft: "67px", marginRight: "-152px", marginLeft: "-89px", width: "685px", zIndex: 2 }}
+            className="relative"
+            style={{
+              padding: "3rem 3.5rem 3rem 3.5rem",
+              zIndex: 2,
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+              boxSizing: "border-box",
+            }}
           >
-            {/* Badge label — gecentreerd onder sectietitel */}
-            <div style={{ marginBottom: "1.5rem", textAlign: "center" }}>
-              <span
-                style={{
-                  color: "#003a66",
-                  backgroundColor: "#00c4eb",
-                  fontFamily: "'Cinzel', serif",
-                  fontSize: "15px",
-                  padding: "0.2rem 0.7rem",
-                  borderRadius: "2px",
-                  border: "3px groove #000000",
-                  display: "inline-block",
-                  fontWeight: 500,
-                  letterSpacing: "0.06em",
-                }}
-              >
-                DJ Tonicity: Visie op de gewenste Sound, met de perfecte Shows
-              </span>
-              <span
-                style={{
-                  color: "#00d5ff",
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.78rem",
-                  display: "block",
-                  marginTop: "0.5rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Oprichter en de vaste allround DJ @ SoundVision Events sinds 2016
-              </span>
-            </div>
-
-            {/* Main body text */}
-            <div className="space-y-4">
+            <div className="space-y-4" style={{ flex: 1 }}>
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
@@ -214,7 +217,7 @@ export default function AboutSection() {
                 In de praktijk: écht 1 op 1 rechtstreeks aandacht én direct feedback van dezelfde persoon m.b.t. alles dat betrekking heeft op het organiseren van een feest concept / evenement en de uitvoering zoals u het wilt.
               </p>
 
-              {/* Bullet list with cyan left border */}
+              {/* Bullet list */}
               <div
                 style={{
                   paddingLeft: "1rem",
@@ -285,7 +288,7 @@ export default function AboutSection() {
               </p>
             </div>
 
-            {/* CTA button */}
+            {/* CTA */}
             <div style={{ marginTop: "2rem" }}>
               <a
                 href="#contact"
@@ -324,7 +327,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* ── RIGHT COLUMN: YouTube (1/3) — dark teal colour layer ── */}
+        {/* ── RIGHT: YouTube ── */}
         <div
           className="relative sv-fade-up"
           style={{
@@ -333,18 +336,7 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "0px",
-            paddingRight: "0px",
-            paddingLeft: "0px",
-            marginTop: "134px",
-            marginRight: "-123px",
-            marginBottom: "17px",
-            marginLeft: "210px",
-            gap: "1.25rem",
-            width: "510px",
-            maxWidth: "100%",
-            height: "603px",
-            opacity: 0.82,
+            padding: "3rem 2.5rem",
           }}
         >
           {/* Cyan glow accent */}
@@ -356,82 +348,102 @@ export default function AboutSection() {
             }}
           />
 
-          {/* YouTube frame */}
           <div
-            className="relative rounded-xl overflow-hidden w-full"
+            className="relative"
             style={{
-              border: "1px solid rgba(0,200,255,0.30)",
-              boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 12px 40px rgba(0,0,0,0.6)",
-              aspectRatio: "9/16",
+              width: "100%",
+              maxWidth: "380px",
               zIndex: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
             }}
           >
-            <iframe
-              src={autoplayUrl}
-              title="DJ Tonicity — SoundVision Events Intro"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "none",
-              }}
-            />
-          </div>
-
-          {/* Name badge */}
-          <div
-            className="relative rounded-xl px-4 py-3 w-full"
-            style={{
-              background: "rgba(0,10,30,0.80)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid rgba(0,200,255,0.22)",
-              zIndex: 2,
-              textAlign: "center",
-            }}
-          >
+            {/* YouTube frame — 9:16 portrait */}
             <div
+              className="relative rounded-xl overflow-hidden w-full"
               style={{
-                fontFamily: "'Cinzel', serif",
-                fontSize: "1.1rem",
-                letterSpacing: "0.1em",
-                color: "#f0f4f8",
-                lineHeight: 1,
+                border: "1px solid rgba(0,200,255,0.30)",
+                boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 12px 40px rgba(0,0,0,0.6)",
+                aspectRatio: "9/16",
               }}
             >
-              DJ TONICITY
+              <iframe
+                src={autoplayUrl}
+                title="DJ Tonicity — SoundVision Events Intro"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                }}
+              />
             </div>
+
+            {/* Name badge */}
             <div
+              className="relative rounded-xl px-4 py-3 w-full"
               style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: "0.7rem",
-                letterSpacing: "0.2em",
-                color: "#00c8ff",
-                marginTop: "4px",
-                textTransform: "uppercase",
+                background: "rgba(0,10,30,0.80)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(0,200,255,0.22)",
+                textAlign: "center",
               }}
             >
-              Allround DJ @ SoundVision Events
+              <div
+                style={{
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: "1.1rem",
+                  letterSpacing: "0.1em",
+                  color: "#f0f4f8",
+                  lineHeight: 1,
+                }}
+              >
+                DJ TONICITY
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.2em",
+                  color: "#00c8ff",
+                  marginTop: "4px",
+                  textTransform: "uppercase",
+                }}
+              >
+                Allround DJ @ SoundVision Events
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── INFOGRAPHIC: beeldvullend / full-width immersive ── */}
+      {/* ── INFOGRAPHIC: ingekaderd full-width frame ── */}
       <div
-        className="sv-fade-up"
+        className="sv-fade-up relative"
         style={{
-          width: "100vw",
-          marginLeft: "calc(-50vw + 50%)",
-          marginTop: "2rem",
-          position: "relative",
           zIndex: 10,
+          margin: "3rem 2rem",
+          borderRadius: "1.25rem",
+          border: "1.5px solid rgba(0,200,255,0.35)",
+          boxShadow:
+            "0 0 0 1px rgba(0,200,255,0.10), 0 0 40px rgba(0,200,255,0.12), 0 8px 48px rgba(0,0,0,0.55)",
           overflow: "hidden",
+          background: "rgba(0,5,20,0.60)",
+          backdropFilter: "blur(4px)",
         }}
       >
+        {/* Top accent line */}
+        <div
+          style={{
+            height: "3px",
+            background: "linear-gradient(90deg, transparent 0%, rgba(0,200,255,0.6) 30%, rgba(129,0,235,0.6) 70%, transparent 100%)",
+          }}
+        />
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj_toncity_infographic_edited_a9ef8bc4.png"
           alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
@@ -439,6 +451,13 @@ export default function AboutSection() {
             width: "100%",
             height: "auto",
             display: "block",
+          }}
+        />
+        {/* Bottom accent line */}
+        <div
+          style={{
+            height: "3px",
+            background: "linear-gradient(90deg, transparent 0%, rgba(129,0,235,0.6) 30%, rgba(0,200,255,0.6) 70%, transparent 100%)",
           }}
         />
       </div>

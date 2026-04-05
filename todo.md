@@ -208,3 +208,4 @@
 - [x] Add subtle hover animation to kernwaarden-pills in USPSection (translateY + scale + neon glow)
 - [x] Shorten AnnouncementBanner text: "Zomer 2026 — nog enkele datums vrij! Ontvang 10% vroegboekkorting."
 - [x] AboutSection: badge centered under section title
+- [x] Redesign "De visie in de praktijk" section: 50/50 grid (tekst|YouTube, gelijke hoogte) + ingekaderd infographic frame
