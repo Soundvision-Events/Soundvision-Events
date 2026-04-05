@@ -142,9 +142,9 @@ export default function AboutSection() {
             borderRight: "1px solid rgba(0,200,255,0.18)",
             height: "712px",
             paddingTop: "32px",
-            paddingLeft: "113px",
-            marginLeft: "-114px",
-            width: "1077px",
+            paddingLeft: "143px",
+            marginLeft: "0px",
+            width: "892px",
           }}
         >
           {/* Purple tint overlay */}
@@ -279,17 +279,6 @@ export default function AboutSection() {
                 DJ en klant vinden inspiratie bij elkaar — betrokkenheid zonder tussenpersonen. Zo wordt uw feest precies wat u voor ogen heeft.
               </p>
 
-              <p
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.88rem",
-                  color: "rgba(240,244,248,0.50)",
-                  lineHeight: 1.7,
-                  fontStyle: "italic",
-                }}
-              >
-                Toch blijkt in de praktijk dat 'persoonlijk' een behoorlijk misbruikte term is om vertrouwen te scheppen zonder persoonlijke uitvoering.
-              </p>
             </div>
 
             {/* CTA */}
