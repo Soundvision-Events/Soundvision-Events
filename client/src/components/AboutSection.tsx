@@ -129,9 +129,7 @@ export default function AboutSection() {
           gridTemplateColumns: "1fr 1fr",
           zIndex: 10,
           alignItems: "stretch",
-          backgroundColor: "rgba(0,5,4,0.4)",
-          paddingTop: "30px",
-          paddingLeft: "26px",
+          margin: "0 2rem",
         }}
       >
 
@@ -140,17 +138,7 @@ export default function AboutSection() {
           className="relative sv-fade-up"
           style={{
             borderRight: "1px solid rgba(0,200,255,0.18)",
-            height: "727px",
-            paddingTop: "33px",
-            paddingLeft: "46px",
-            marginLeft: "5px",
-            marginRight: "-98px",
-            marginBottom: "6px",
-            width: "918px",
-            backgroundColor: "#00b4e0",
-            opacity: 0.8,
-            borderRadius: "15px",
-            border: "13px groove #7300ff",
+            padding: "3rem 2.5rem",
           }}
         >
           {/* Purple tint overlay */}
@@ -175,18 +163,10 @@ export default function AboutSection() {
           <div
             className="relative"
             style={{
-              paddingTop: "0px",
-              paddingRight: "0px",
-              paddingBottom: "105px",
-              backgroundColor: "#030303",
-              paddingLeft: "0px",
-              marginRight: "2px",
-              width: "610px",
               zIndex: 2,
               display: "flex",
               flexDirection: "column",
-              height: "730px",
-              boxSizing: "border-box",
+              height: "100%",
             }}
           >
             <div className="space-y-4" style={{ flex: 1 }}>
@@ -331,15 +311,11 @@ export default function AboutSection() {
         <div
           className="relative sv-fade-up"
           style={{
-            backgroundColor: "#00090a",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "74px",
-            paddingRight: "80px",
-            paddingBottom: "3rem",
-            paddingLeft: "2.5rem",
+            padding: "3rem 2.5rem",
           }}
         >
           {/* Cyan glow accent */}
