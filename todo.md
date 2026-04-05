@@ -193,3 +193,4 @@
 - [x] Smooth scroll: globaal controleren en toepassen op alle pagina's
 - [x] Beat cursor: wave trail grootte verkleinen
 - [x] Replace infographic image in AboutSection with new uploaded version
+- [x] Remove infographic image block from AboutSection (user deleted via visual editor)

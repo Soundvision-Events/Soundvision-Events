@@ -409,46 +409,6 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* ── INFOGRAPHIC: Full-width visual below the grid content ── */}
-      <div
-        className="sv-fade-up"
-        style={{
-          width: "100%",
-          marginTop: "3rem",
-          position: "relative",
-          zIndex: 10,
-          borderRadius: "1rem",
-          overflow: "hidden",
-          boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 8px 32px rgba(0,0,0,0.4)",
-          border: "1px solid rgba(0,200,255,0.12)",
-          backgroundColor: "#131010",
-        }}
-      >
-        {/* Dark overlay layer — only this gets opacity */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundColor: "#131010",
-            opacity: 0.3,
-            pointerEvents: "none",
-            zIndex: 1,
-          }}
-        />
-        <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/infographic_new_c7f6a9cb.png"
-          alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
-          style={{
-            maxWidth: "96%",
-            height: "auto",
-            display: "inline-block",
-            opacity: 0.8,
-            margin: "-5px 6px 45px 6px",
-            position: "relative",
-            zIndex: 2,
-          }}
-        />
-      </div>
 
     </section>
   );
