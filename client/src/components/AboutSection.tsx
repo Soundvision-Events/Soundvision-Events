@@ -141,12 +141,16 @@ export default function AboutSection() {
           style={{
             borderRight: "1px solid rgba(0,200,255,0.18)",
             height: "727px",
-            paddingTop: "32px",
-            paddingLeft: "61px",
-            marginLeft: "0px",
+            paddingTop: "33px",
+            paddingLeft: "46px",
+            marginLeft: "5px",
+            marginRight: "-98px",
+            marginBottom: "6px",
             width: "918px",
             backgroundColor: "#00b4e0",
             opacity: 0.8,
+            borderRadius: "15px",
+            border: "13px groove #7300ff",
           }}
         >
           {/* Purple tint overlay */}
@@ -173,7 +177,8 @@ export default function AboutSection() {
             style={{
               paddingTop: "0px",
               paddingRight: "0px",
-              paddingBottom: "194px",
+              paddingBottom: "105px",
+              backgroundColor: "#030303",
               paddingLeft: "0px",
               marginRight: "2px",
               width: "610px",
@@ -331,7 +336,10 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "3rem 2.5rem",
+            paddingTop: "74px",
+            paddingRight: "80px",
+            paddingBottom: "3rem",
+            paddingLeft: "2.5rem",
           }}
         >
           {/* Cyan glow accent */}
