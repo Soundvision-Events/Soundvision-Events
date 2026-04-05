@@ -141,6 +141,10 @@ export default function AboutSection() {
           style={{
             borderRight: "1px solid rgba(0,200,255,0.18)",
             height: "712px",
+            paddingTop: "32px",
+            paddingLeft: "113px",
+            marginLeft: "-114px",
+            width: "1077px",
           }}
         >
           {/* Purple tint overlay */}
@@ -336,14 +340,16 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "186px",
+            paddingTop: "132px",
             paddingRight: "0px",
-            paddingBottom: "362px",
+            paddingBottom: "123px",
             paddingLeft: "0px",
-            marginRight: "-15px",
-            marginBottom: "54px",
-            marginLeft: "8px",
-            width: "416px",
+            marginTop: "33px",
+            marginRight: "-68px",
+            marginBottom: "4px",
+            marginLeft: "176px",
+            width: "485px",
+            height: "420px",
           }}
         >
           {/* Cyan glow accent */}
