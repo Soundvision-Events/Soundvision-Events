@@ -129,7 +129,7 @@ export default function AboutSection() {
           gridTemplateColumns: "1fr 1fr",
           zIndex: 10,
           alignItems: "stretch",
-          backgroundColor: "#000504",
+          backgroundColor: "rgba(0,5,4,0.4)",
           paddingTop: "30px",
           paddingLeft: "26px",
         }}
