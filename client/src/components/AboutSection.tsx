@@ -205,7 +205,7 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Het persoonlijke aandacht argument, geen uniek verhaal. Maar van wie of wat komt deze aandacht eigenlijk? De DJ? In welke mate? Dat maak ik met mijn Sound{" "}
+                Het persoonlijke aandacht argument, geen uniek verhaal, want 'persoonlijk' en 'vertrouwen' is in de praktijk hét sleutelwoord om interesse te wekken, door vertrouwen te scheppen. Maar van wie of wat komt deze aandacht eigenlijk? De DJ? In welke mate? Dat maak ik met mijn Sound{" "}
                 <em style={{ color: "#00c8ff", fontStyle: "normal", fontWeight: 600 }}>'vision'</em> graag concreet!
               </p>
 
