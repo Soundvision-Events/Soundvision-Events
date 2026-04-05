@@ -140,11 +140,13 @@ export default function AboutSection() {
           className="relative sv-fade-up"
           style={{
             borderRight: "1px solid rgba(0,200,255,0.18)",
-            height: "712px",
+            height: "727px",
             paddingTop: "32px",
-            paddingLeft: "143px",
+            paddingLeft: "61px",
             marginLeft: "0px",
-            width: "892px",
+            width: "918px",
+            backgroundColor: "#00b4e0",
+            opacity: 0.8,
           }}
         >
           {/* Purple tint overlay */}
@@ -292,7 +294,7 @@ export default function AboutSection() {
                 }}
                 style={{
                   display: "inline-block",
-                  padding: "0.8rem 2.2rem",
+                  padding: "0.8rem 2.5rem 0.8rem 2.2rem",
                   background: "linear-gradient(135deg, #8100eb 0%, #00e1ff 100%)",
                   color: "#ffffff",
                   fontFamily: "'Cinzel', serif",
@@ -337,6 +339,7 @@ export default function AboutSection() {
             className="absolute inset-0"
             style={{
               background: "radial-gradient(ellipse at 80% 40%, rgba(0,200,255,0.10) 0%, transparent 65%)",
+              opacity: 0.5,
               pointerEvents: "none",
             }}
           />
