@@ -569,11 +569,11 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
         transform: `translateY(${calcFade.translateY}px)`,
         transition: "opacity 0.8s ease, transform 0.8s ease",
         marginTop: "4rem",
-        background: "linear-gradient(135deg, rgba(0,20,60,0.95) 0%, rgba(30,0,80,0.95) 50%, rgba(0,20,60,0.95) 100%)",
-        border: "2px solid rgba(0,200,255,0.35)",
+        background: "rgba(0, 30, 60, 0.90)",
+        border: "2px solid rgba(0,200,255,0.55)",
         borderRadius: "1.5rem",
         padding: "2.5rem",
-        boxShadow: "0 0 40px rgba(0,200,255,0.12), 0 0 80px rgba(96,64,224,0.10)",
+        boxShadow: "0 0 40px rgba(0,200,255,0.18), 0 0 80px rgba(0,144,255,0.12)",
         backdropFilter: "blur(12px)",
       }}
     >
@@ -662,7 +662,7 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
 
           {/* Right: total + CTA */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1.5rem", textAlign: "center" }}>
-            <div style={{ padding: "1.5rem 2rem", background: "rgba(0,0,0,0.4)", border: "2px solid rgba(0,200,255,0.35)", borderRadius: "1.25rem", boxShadow: "0 0 30px rgba(0,200,255,0.15)", width: "100%" }}>
+            <div style={{ padding: "1.5rem 2rem", background: "rgba(0, 40, 80, 0.90)", border: "2px solid rgba(0,200,255,0.60)", borderRadius: "1.25rem", boxShadow: "0 0 30px rgba(0,200,255,0.22)", width: "100%" }}>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.7rem", letterSpacing: "0.25em", color: "rgba(240,244,248,0.45)", textTransform: "uppercase", marginBottom: "0.5rem" }}>
                 Totaalprijs vanaf
               </p>

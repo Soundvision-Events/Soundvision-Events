@@ -234,3 +234,6 @@
 - [x] Audit and fix mobile layout for AddOnsSection
 - [x] Audit and fix mobile layout for PageLayout / Navigation
 - [x] Move Trustoo score widget to top of TestimonialsSection
+- [x] Enlarge VisionSection badge texts (keep same proportions between lines)
+- [x] Change booking form (ContactSection) to cyan-blue at 90% opacity
+- [x] Change price calculator sum section to cyan-blue at 90% opacity
