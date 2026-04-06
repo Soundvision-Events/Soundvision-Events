@@ -58,7 +58,7 @@ export default function Navbar() {
         }}
       />
       <div className="relative" style={{ paddingRight: "clamp(0.75rem, 3vw, 3rem)", paddingLeft: "clamp(0.75rem, 3vw, 3rem)", marginTop: "0", opacity: 1.0 }}>
-        <div className="flex items-center justify-between" style={{height: '74px'}}>
+        <div className="flex items-center justify-between" style={{height: '66px'}}>
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img
@@ -83,7 +83,7 @@ export default function Navbar() {
                   className={`sv-nav-link${isActive ? ' active' : ''}`}
                   style={{
                     fontFamily: "'Outfit', sans-serif",
-                    fontSize: "1.125rem",
+                    fontSize: '16px',
                     letterSpacing: "0.05em",
                     color: isActive ? "#00c8ff" : "rgba(240, 244, 248, 0.85)",
                     paddingBottom: "4px",
@@ -101,7 +101,7 @@ export default function Navbar() {
               className="sv-btn-primary"
               onClick={scrollToContact}
               style={{
-                fontSize: '13px',
+                fontSize: '11px',
                 paddingTop: '5px',
                 paddingRight: '3px',
                 paddingBottom: '5px',
@@ -111,6 +111,9 @@ export default function Navbar() {
                 borderWidth: '3px',
                 borderStyle: 'ridge',
                 borderColor: '#f5f5f5',
+                height: '32px',
+                fontFamily: "'Outfit', sans-serif",
+                width: '147px',
               }}
             >
               Offerte Aanvragen
