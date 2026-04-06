@@ -8,8 +8,8 @@ import { Check } from "lucide-react";
 const LIGHTS_VIDEO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Lights_change_colours_202603270757-5eMFKZjbLFBcMUFMcBxFzH.mp4";
 
 const INTIEM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/intiem_show_template_bf04918d.png";
-const LUXE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/luxe_show_template_outer_spots_only_7f624280.webp";
-const ELITE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/elite_show_template_b350cc54.webp";
+const LUXE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/luxe_show_template_16cc28b3.png";
+const ELITE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/elite_show_template_cc6cd11c.png";
 
 const packages = [
   {
@@ -68,7 +68,7 @@ const packages = [
     duration: "Tot 8 uur",
     highlight: false,
     color: "#ff5500",
-    video: LIGHTS_VIDEO_URL,
+    video: null,
     image: ELITE_IMG,
     features: [
       "Professionele DJ setup (Pioneer CDJ-3000)",
