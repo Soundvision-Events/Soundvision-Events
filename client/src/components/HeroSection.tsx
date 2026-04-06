@@ -272,7 +272,8 @@ export default function HeroSection() {
           className="w-full h-full object-cover"
           style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
         >
-          <source src="/api/video-proxy?file=hero-loop-new_3c2c71bc.mp4" type="video/mp4" />
+          <source src="/api/video-proxy?file=hero-loop-new_3c2c71bc.mp4&v=2" type="video/mp4" />
+          <source src="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/hero-loop-new_3c2c71bc.mp4" type="video/mp4" />
         </video>
       </div>
       {/* Dark color overlay — sits above video, below all text/buttons/reviews (z-index 1) */}
