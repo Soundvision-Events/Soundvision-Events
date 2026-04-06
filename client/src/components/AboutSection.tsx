@@ -336,12 +336,7 @@ export default function AboutSection() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "0px",
-            paddingBottom: "0px",
-            paddingLeft: "0px",
-            paddingRight: "0px",
-            width: "730px",
-            height: "434px",
+            padding: "3rem 2.5rem",
           }}
         >
           {/* Cyan glow accent */}
@@ -357,25 +352,26 @@ export default function AboutSection() {
           <div
             className="relative"
             style={{
-              width: '552px',
-              maxWidth: "627px",
-              height: '371px',
-              marginLeft: '0px',
-              marginRight: '4px',
+              width: "100%",
+              maxWidth: "560px",
               zIndex: 2,
               display: "flex",
               flexDirection: "column",
               gap: "1rem",
-              marginTop: '112px',
-              marginBottom: '-3px',
             }}
           >
             {/* YouTube frame — 16:9 landscape */}
             <div
               className="relative rounded-xl overflow-hidden w-full"
               style={{
-                border: "1px solid rgba(0,200,255,0.30)",
-                boxShadow: "0 0 40px rgba(0,200,255,0.15), 0 12px 40px rgba(0,0,0,0.6)",
+                border: "2px solid rgba(0,200,255,0.55)",
+                boxShadow: [
+                  "0 0 0 1px rgba(115,0,255,0.35)",
+                  "0 0 18px rgba(0,200,255,0.55)",
+                  "0 0 40px rgba(0,200,255,0.25)",
+                  "0 0 80px rgba(115,0,255,0.20)",
+                  "0 12px 40px rgba(0,0,0,0.7)",
+                ].join(", "),
                 aspectRatio: "16/9",
               }}
             >
