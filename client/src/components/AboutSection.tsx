@@ -55,11 +55,14 @@ export default function AboutSection() {
         style={{
           zIndex: 10,
           borderBottom: "1px solid rgba(0,200,255,0.18)",
-          paddingTop: "2.5rem",
+          paddingTop: '138px',
           paddingBottom: "2rem",
           textAlign: "center",
           background: "linear-gradient(90deg, transparent 0%, rgba(0,200,255,0.08) 50%, transparent 100%)",
           backgroundColor: 'rgba(114,120,151,0.5)',
+          paddingRight: '27px',
+          marginTop: '12px',
+          marginLeft: '-1px',
         }}
       >
         <p
@@ -80,12 +83,13 @@ export default function AboutSection() {
             fontSize: "clamp(1.8rem, 5vw, 3.5rem)",
             letterSpacing: "0.12em",
             lineHeight: 1.1,
-            color: "#ffffff",
+            color: '#002657',
             margin: 0,
             textShadow: "0 0 40px rgba(0,200,255,0.25), 0 2px 20px rgba(0,0,0,0.8)",
+            fontWeight: 700,
           }}
         >
-          De visie in de praktijk
+          Visie op uw wensen in de praktijk
         </h2>
 
         {/* Badge — gecentreerd onder sectietitel */}
@@ -95,7 +99,7 @@ export default function AboutSection() {
               color: "#003a66",
               backgroundColor: "#00c4eb",
               fontFamily: "'Cinzel', serif",
-              fontSize: "0.9rem",
+              fontSize: '26px',
               padding: "0.25rem 0.9rem",
               borderRadius: "2px",
               border: "3px groove #000000",
@@ -115,6 +119,8 @@ export default function AboutSection() {
               marginTop: "0.5rem",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
+              textAlign: 'justify',
+              textDecoration: 'overline',
             }}
           >
             Oprichter en de vaste allround DJ @ SoundVision Events sinds 2016
@@ -131,6 +137,8 @@ export default function AboutSection() {
           zIndex: 10,
           alignItems: "stretch",
           margin: "0 2rem",
+          paddingLeft: '6px',
+          height: '584px',
         }}
       >
 
@@ -139,14 +147,17 @@ export default function AboutSection() {
           className="relative sv-fade-up"
           style={{
             borderRight: "1px solid rgba(0,200,255,0.18)",
-            paddingTop: "3rem",
-            paddingBottom: "19px",
+            paddingTop: '63px',
+            paddingBottom: '20px',
             paddingLeft: "54px",
-            paddingRight: "24px",
-            opacity: 0.7,
+            paddingRight: '0px',
+            opacity: '0.9',
             borderRadius: "12px",
             border: "13px inset #eff0f5",
-            width: '835px',
+            marginRight: '33px',
+            marginLeft: '68px',
+            width: '1168px',
+            height: '605px',
           }}
         >
           {/* Purple tint overlay */}
@@ -177,11 +188,11 @@ export default function AboutSection() {
               height: "100%",
             }}
           >
-            <div className="space-y-4" style={{ flex: 1 }}>
+            <div className="space-y-4" style={{ flex: 1, height: '438px' }}>
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.95rem",
+                  fontSize: '22px',
                   color: "rgba(240, 244, 248, 0.85)",
                   lineHeight: 1.8,
                   fontWeight: 300,
@@ -200,7 +211,9 @@ export default function AboutSection() {
                   fontWeight: 300,
                 }}
               >
-                Persoonlijk contact is geen marketingterm — het is de basis van vertrouwen. Maar wie staat er écht voor u? De DJ zelf. In welke mate? Dat maak ik met mijn Sound{" "}
+                Persoonlijk contact is geen marketingterm — het is de basis van vertrouwen.{" "}
+                Maar wie staat er écht voor u klaar bij het organiseren van uw feest? De DJ zelf?{" "}
+                of de partyplanner zonder ervaring of affectie van het vak, die met een wensen formulier een DJ toewijst op boekiingnummer 333... In welke mate? Dat maak ik met mijn Sound{" "}
                 <em style={{ color: "#00c8ff", fontStyle: "normal", fontWeight: 600 }}>'vision'</em> graag concreet.
               </p>
 
