@@ -145,6 +145,7 @@ export default function AboutSection() {
             opacity: 0.7,
             borderRadius: "12px",
             border: "13px inset #eff0f5",
+            width: '835px',
           }}
         >
           {/* Purple tint overlay */}
@@ -342,15 +343,17 @@ export default function AboutSection() {
           <div
             className="relative"
             style={{
-              width: "627px",
+              width: '552px',
               maxWidth: "627px",
-              height: "517px",
-              marginLeft: "34px",
-              marginRight: "47px",
+              height: '371px',
+              marginLeft: '0px',
+              marginRight: '4px',
               zIndex: 2,
               display: "flex",
               flexDirection: "column",
               gap: "1rem",
+              marginTop: '112px',
+              marginBottom: '-3px',
             }}
           >
             {/* YouTube frame — 16:9 landscape */}
