@@ -142,7 +142,7 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
           <h3
             style={{
               fontFamily: "'Cinzel', serif", fontSize: "1.2rem",
-              letterSpacing: "0.06em", color: "#f50a87",
+              letterSpacing: "0.06em", color: '#f6eef3',
               fontWeight: 700,
               textShadow: "0 0 15px rgba(245,10,135,0.7)", textAlign: "center",
             }}
@@ -192,7 +192,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
           <p
             style={{
               fontSize: "16px", letterSpacing: "0.1em", textTransform: "none",
-              color: theme.accent, marginBottom: "0.75rem", fontFamily: "'Outfit', sans-serif",
+              color: '#f0f4f5', marginBottom: "0.75rem", fontFamily: "'Outfit', sans-serif",
               maxWidth: "700px", margin: "0 auto 0.75rem", lineHeight: 1.6,
             }}
           >
