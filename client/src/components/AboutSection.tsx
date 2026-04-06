@@ -59,6 +59,7 @@ export default function AboutSection() {
           paddingBottom: "2rem",
           textAlign: "center",
           background: "linear-gradient(90deg, transparent 0%, rgba(0,200,255,0.08) 50%, transparent 100%)",
+          backgroundColor: 'rgba(114,120,151,0.5)',
         }}
       >
         <p
