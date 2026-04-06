@@ -594,7 +594,7 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
           </p>
         </div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start" }}>
+        <div className="calc-breakdown-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start" }}>
 
           {/* Left: breakdown */}
           <div>
@@ -805,6 +805,18 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false, them
         @keyframes glowPulse {
           0%, 100% { box-shadow: 0 0 18px ${GLOW_BLUE}22, 0 0 40px ${GLOW_PURPLE}11; }
           50% { box-shadow: 0 0 28px ${GLOW_BLUE}44, 0 0 60px ${GLOW_PURPLE}22; }
+        }
+        /* Mobile: package cards stack vertically */
+        @media (max-width: 860px) {
+          #packages [style*="repeat(3, 1fr)"] {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        /* Mobile: price calculator breakdown stacks vertically */
+        @media (max-width: 640px) {
+          #packages .calc-breakdown-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>

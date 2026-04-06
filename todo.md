@@ -237,3 +237,5 @@
 - [x] Enlarge VisionSection badge texts (keep same proportions between lines)
 - [x] Change booking form (ContactSection) to cyan-blue at 90% opacity
 - [x] Change price calculator sum section to cyan-blue at 90% opacity
+- [x] VisionSection mobile: YouTube first (full width), then text, then infographic
+- [x] Pricing tables mobile: package cards stack vertically (not side by side)

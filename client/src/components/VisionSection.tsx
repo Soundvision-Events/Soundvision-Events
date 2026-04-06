@@ -182,7 +182,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
       >
         {/* ── LEFT: Text column ── */}
         <div
-          className="relative sv-fade-up"
+          className="relative sv-fade-up vision-text-col"
           style={{
             padding: "2.5rem 2.5rem",
             borderRadius: "12px",
@@ -331,7 +331,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
 
         {/* ── RIGHT: YouTube column ── */}
         <div
-          className="relative sv-fade-up"
+          className="relative sv-fade-up vision-yt-col"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -476,6 +476,13 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
             grid-template-columns: 1fr !important;
             padding: 1rem 1rem 0 !important;
             gap: 1rem !important;
+          }
+          /* YouTube column first on mobile */
+          #vision .vision-yt-col {
+            order: -1 !important;
+          }
+          #vision .vision-text-col {
+            order: 0 !important;
           }
           #vision [style*="margin: 2.5rem 2rem"] {
             margin: 1.5rem 1rem 0 !important;
