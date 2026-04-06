@@ -65,7 +65,7 @@ export default function FloatingButtons() {
             opacity: waOpen ? 1 : 0,
             transition: "max-height 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease",
             marginBottom: waOpen ? "0.625rem" : "0",
-            width: "300px",
+            width: "min(300px, calc(100vw - 3rem))",
           }}
         >
           <div

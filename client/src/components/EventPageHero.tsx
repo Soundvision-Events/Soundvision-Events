@@ -105,7 +105,7 @@ export default function EventPageHero({
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
           style={{
-            width: "700px",
+            width: "min(700px, 100vw)",
             height: "350px",
             background: `radial-gradient(ellipse, ${accentColor}20 0%, transparent 70%)`,
           }}
@@ -143,15 +143,15 @@ export default function EventPageHero({
             {/* Icon + Title */}
             <div
               className="sv-fade-up"
-              style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}
+              style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "1rem", marginBottom: "1.5rem" }}
             >
               {iconUrl && (
                 <img
                   src={iconUrl}
                   alt={iconAlt}
                   style={{
-                    width: "70px",
-                    height: "70px",
+                    width: "clamp(50px, 8vw, 70px)",
+                    height: "clamp(50px, 8vw, 70px)",
                     objectFit: "contain",
                     flexShrink: 0,
                     filter: `drop-shadow(0 0 20px ${accentColor}cc)`,
@@ -269,7 +269,7 @@ export default function EventPageHero({
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
         style={{
-          width: "600px",
+          width: "min(600px, 100vw)",
           height: "300px",
           background: `radial-gradient(ellipse, ${accentColor}15 0%, transparent 70%)`,
         }}
@@ -277,7 +277,7 @@ export default function EventPageHero({
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-28 pb-16">
         <div className="max-w-3xl">
-          <div style={{ background: "rgba(8,12,16,0.50)", borderRadius: "1.25rem", backdropFilter: "blur(4px)", padding: "2.5rem 2rem" }}>
+          <div style={{ background: "rgba(8,12,16,0.50)", borderRadius: "1.25rem", backdropFilter: "blur(4px)", padding: "clamp(1.25rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem)" }}>
             <span
               className="sv-fade-up"
               style={{
@@ -295,15 +295,15 @@ export default function EventPageHero({
 
             <div
               className="sv-fade-up"
-              style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}
+              style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}
             >
               {iconUrl && (
                 <img
                   src={iconUrl}
                   alt={iconAlt}
                   style={{
-                    width: "90px",
-                    height: "90px",
+                    width: "clamp(55px, 10vw, 90px)",
+                    height: "clamp(55px, 10vw, 90px)",
                     objectFit: "contain",
                     flexShrink: 0,
                     filter: `drop-shadow(0 0 20px ${accentColor}99)`,

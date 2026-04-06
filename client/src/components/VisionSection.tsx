@@ -474,6 +474,22 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
         @media (max-width: 900px) {
           #vision [style*="gridTemplateColumns"] {
             grid-template-columns: 1fr !important;
+            padding: 1rem 1rem 0 !important;
+            gap: 1rem !important;
+          }
+          #vision [style*="margin: 2.5rem 2rem"] {
+            margin: 1.5rem 1rem 0 !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #vision [style*="gridTemplateColumns"] {
+            padding: 0.75rem 0.75rem 0 !important;
+          }
+          #vision [style*="padding: 2.5rem 2.5rem"] {
+            padding: 1.25rem 1rem !important;
+          }
+          #vision [style*="padding: 2.5rem 2rem"] {
+            padding: 1.25rem 1rem !important;
           }
         }
       `}</style>

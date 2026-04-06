@@ -227,7 +227,7 @@ export default function GallerySection() {
         </div>
 
         {/* Photo gallery grid */}
-        <div className="grid grid-cols-3 gap-3 sv-fade-up">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 sv-fade-up">
           {photoItems.map((item) => (
             <div
               key={item.alt}
@@ -292,7 +292,7 @@ export default function GallerySection() {
         </div>
 
         {/* Video grid — hover to play */}
-        <div className="grid grid-cols-3 gap-3 sv-fade-up">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 sv-fade-up">
           {videoItems.map((item) => (
             <VideoCard key={item.src} item={item} />
           ))}

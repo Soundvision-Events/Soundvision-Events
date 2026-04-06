@@ -224,3 +224,12 @@
 - [x] Add VisionSection to Studentenfeesten page with studentenfeesten theme
 - [x] Add VisionSection to Privé page with prive theme
 - [x] Make VisionSection colors fully theme-dynamic (replace all hardcoded cyan with theme.accent/secondary)
+- [x] Audit and fix mobile layout for HeroSection
+- [x] Audit and fix mobile layout for VisionSection (50/50 grid → stacked)
+- [x] Audit and fix mobile layout for USPSection (kernwaarden cards)
+- [x] Audit and fix mobile layout for PackagesSection
+- [x] Audit and fix mobile layout for GallerySection
+- [x] Audit and fix mobile layout for TestimonialsSection
+- [x] Audit and fix mobile layout for ContactSection
+- [x] Audit and fix mobile layout for AddOnsSection
+- [x] Audit and fix mobile layout for PageLayout / Navigation

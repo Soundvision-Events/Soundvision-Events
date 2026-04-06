@@ -50,9 +50,10 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
   return (
     <div
       className="relative sv-fade-up"
-      style={{ perspective: "1000px", height: "280px" }}
+      style={{ perspective: "1000px", height: "clamp(240px, 30vw, 280px)", minHeight: "240px" }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
+      onTouchEnd={(e) => { e.preventDefault(); setFlipped(f => !f); }}
       onFocus={() => setFlipped(true)}
       onBlur={() => setFlipped(false)}
       tabIndex={0}
@@ -111,7 +112,7 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
           </div>
 
           <p style={{ fontSize: "0.65rem", color: "#ffffff33", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            Zweef voor meer ▸
+            Zweef / tik voor meer ▸
           </p>
         </div>
 

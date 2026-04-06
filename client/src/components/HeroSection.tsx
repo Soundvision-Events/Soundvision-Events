@@ -309,8 +309,8 @@ export default function HeroSection() {
 
       {/* Content */}
       <div
-        className="relative z-10 text-center px-4 max-w-5xl mx-auto"
-        style={{ paddingTop: '157px', paddingRight: '22px', paddingBottom: '280px', paddingLeft: '21px', height: '1073px' }}
+        className="relative z-10 text-center px-4 max-w-5xl mx-auto w-full"
+        style={{ paddingTop: 'clamp(100px, 14vh, 160px)', paddingRight: 'clamp(1rem, 3vw, 1.5rem)', paddingBottom: 'clamp(180px, 22vh, 280px)', paddingLeft: 'clamp(1rem, 3vw, 1.5rem)', minHeight: '100vh' }}
       >
         {/* Main heading: animated logo ring LEFT of h1 */}
         <div
@@ -318,7 +318,8 @@ export default function HeroSection() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "clamp(1rem, 3vw, 2rem)",
+            flexWrap: "wrap",
+            gap: "clamp(0.5rem, 2vw, 2rem)",
             marginBottom: "0.5rem",
           }}
         >
@@ -417,14 +418,11 @@ export default function HeroSection() {
           <h1
             style={{
               fontFamily: "'Cinzel', serif",
-              fontSize: "clamp(2rem, 5.5vw, 4rem)",
+              fontSize: "clamp(1.8rem, 5.5vw, 4rem)",
               letterSpacing: "0.03em",
               lineHeight: 1.1,
               color: "#ffffff",
               margin: 0,
-              marginTop: "9px",
-              marginRight: "54px",
-              marginLeft: "-23px",
             }}
           >
             SOUND<span style={{ color: "#ffffff" }}>VISION</span><span style={{ color: "#2ec0ff" }}>{" events"}</span>
@@ -449,7 +447,7 @@ export default function HeroSection() {
             paddingTop: "0px",
             paddingRight: "0px",
             paddingBottom: "0px",
-            paddingLeft: "clamp(2rem, 8vw, 127px)",
+            paddingLeft: "clamp(1rem, 5vw, 127px)",
             fontWeight: 100,
             textAlign: "left",
             textDecoration: "overline",
@@ -461,8 +459,8 @@ export default function HeroSection() {
           Allround DJ Shows
         </h2>
 
-        {/* CTA Buttons — positioned at 600px from hero top */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ position: "absolute", top: "600px", left: 0, right: 0, paddingLeft: "1rem", paddingRight: "1rem" }}>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ marginTop: "clamp(1.5rem, 4vh, 3rem)", paddingLeft: "1rem", paddingRight: "1rem" }}>
           <button
             className="sv-btn-primary"
             style={{
@@ -510,10 +508,10 @@ export default function HeroSection() {
           </button>
         </div>
 
-        {/* Stats row — positioned at 580px from hero top, behind CTA buttons */}
+        {/* Stats row */}
         <div
-          className="flex flex-wrap justify-center gap-8"
-          style={{ position: "absolute", top: "500px", left: 0, right: 0, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.5rem", paddingLeft: "1rem", paddingRight: "1rem" }}
+          className="flex flex-wrap justify-center gap-6 sm:gap-8"
+          style={{ marginTop: "clamp(1rem, 3vh, 2rem)", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.5rem", paddingLeft: "1rem", paddingRight: "1rem" }}
         >
           {[
             { target: 500, suffix: "+", decimals: 0, label: "Shows Gespeeld" },
