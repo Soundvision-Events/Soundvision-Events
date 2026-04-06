@@ -308,7 +308,7 @@ export default function GallerySection() {
               color: "rgba(240, 244, 248, 0.6)",
             }}
           >
-            Bekijk ook onze video's op YouTube
+            Bekijk ook de video's op YouTube
           </p>
           <a
             href="https://youtube.com/@soundvision.events"

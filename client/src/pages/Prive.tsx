@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import VisionSection from "@/components/VisionSection";
 import BentoGallery from "@/components/BentoGallery";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_THEMES } from "@/lib/pageThemes";
@@ -32,17 +33,19 @@ export default function Prive() {
         path="/prive"
         keywords="privéfeest DJ, verjaardag DJ, jubileum DJ, familiefeest DJ, DJ inhuren Groningen, feest DJ Noord-Nederland"
       />
+
+      {/* 1. Hero */}
       <EventPageHero
         title="PRIVÉ FEESTEN"
         subtitle="SoundVision Events — Privé"
-        description="Jubileum, verjaardag, familiefeest of een andere bijzondere gelegenheid — wij maken er een feest van dat bij u past. Persoonlijk, op maat en onvergetelijk."
+        description="Jubileum, verjaardag, familiefeest of een andere bijzondere gelegenheid — DJ Tonicity maakt er een feest van dat bij u past. Persoonlijk, op maat en onvergetelijk."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-equipment-kHkQsh8fv4YHpAoghakmXA.webp"
         accentColor="#9b59b6"
         iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_star_8f6a17c1.png"
         iconAlt="Anime Star"
       />
 
-      {/* Private events content */}
+      {/* 2. Private events intro content */}
       <section className="relative py-20 overflow-hidden" style={{ backgroundColor: "rgba(10, 15, 21, 0.10)" }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -91,7 +94,7 @@ export default function Prive() {
                     fontWeight: 300,
                   }}
                 >
-                  Elk privéfeest is uniek. Of het nu gaat om een 50-jarig jubileum, een bijzondere verjaardag, een familiebijeenkomst of een ander feest — wij stemmen de muziek en de show volledig af op uw wensen en uw gasten.
+                  Elk privéfeest is uniek. Of het nu gaat om een 50-jarig jubileum, een bijzondere verjaardag, een familiebijeenkomst of een ander feest — DJ Tonicity stemt de muziek en de show volledig af op uw wensen en uw gasten.
                 </p>
                 <p
                   style={{
@@ -102,7 +105,7 @@ export default function Prive() {
                     fontWeight: 300,
                   }}
                 >
-                  Van rustige achtergrondmuziek tot een volledig dansfeest — wij passen ons aan. Met een persoonlijk voorgesprek zorgen wij ervoor dat de muziek perfect aansluit bij de sfeer en de leeftijdsgroep van uw gasten.
+                  Van rustige achtergrondmuziek tot een volledig dansfeest — hij past zich aan. Met een persoonlijk voorgesprek zorgt DJ Tonicity ervoor dat de muziek perfect aansluit bij de sfeer en de leeftijdsgroep van uw gasten.
                 </p>
               </div>
             </div>
@@ -115,7 +118,7 @@ export default function Prive() {
                   { icon: "👨‍👩‍👧‍👦", title: "Familiefeesten", desc: "Muziek waar jong en oud van geniet" },
                   { icon: "🥂", title: "Vrijgezellenfeest", desc: "Een onvergetelijke avond voor de bruid of bruidegom" },
                   { icon: "🎵", title: "Op Maat", desc: "Volledig afgestemd op uw muziekwensen" },
-                  { icon: "🎛️", title: "Flexibel", desc: "Van intiem tot groot — wij schalen mee" },
+                  { icon: "🎛️", title: "Flexibel", desc: "Van intiem tot groot — hij schaalt mee" },
                 ].map((item) => (
                   <div
                     key={item.title}
@@ -154,14 +157,26 @@ export default function Prive() {
         </div>
       </section>
 
+      {/* 3. USP */}
+      <USPSection theme={PAGE_THEMES.prive} />
+
+      {/* 4. Vision */}
+      <VisionSection theme={PAGE_THEMES.prive} />
+
+      {/* 5. Gallery */}
       <BentoGallery
         accentColor="#9b59b6"
         title="PRIVÉ IMPRESSIES"
         subtitle="Onze Privé Shows"
       />
-      <USPSection theme={PAGE_THEMES.prive} />
-      <VisionSection theme={PAGE_THEMES.prive} />
+
+      {/* 6. Uitbreidingen */}
       <UitbreidingenSection theme={PAGE_THEMES.prive} />
+
+      {/* 7. Testimonials */}
+      <TestimonialsSection />
+
+      {/* 8. Contact */}
       <ContactSection />
     </PageLayout>
   );

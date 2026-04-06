@@ -10,6 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import VisionSection from "@/components/VisionSection";
 import BentoGallery from "@/components/BentoGallery";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_THEMES } from "@/lib/pageThemes";
@@ -31,17 +32,19 @@ export default function Studentenfeesten() {
         path="/studentenfeesten"
         keywords="studentenfeest DJ, schoolfeest DJ, DJ introweek, gala DJ Groningen, studentenfeest entertainment"
       />
+
+      {/* 1. Hero */}
       <EventPageHero
         title="STUDENTEN & SCHOOLFEESTEN"
         subtitle="SoundVision Events — Studenten"
-        description="Introweek, gala, eindfeest of schoolfeest — wij brengen de energie die studenten en scholieren verwachten. Harde beats, spectaculaire effecten en een volle dansvloer."
+        description="Introweek, gala, eindfeest of schoolfeest — DJ Tonicity brengt de energie die studenten en scholieren verwachten. Harde beats, spectaculaire effecten en een volle dansvloer."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/party-dj-2QDn4hBrwJPQD44Ji8JRhm.webp"
         accentColor="#ff5500"
         iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_fire_fb70ea64.png"
         iconAlt="Anime Fire"
       />
 
-      {/* Student-specific content */}
+      {/* 2. Student-specific intro content */}
       <section className="relative py-20 overflow-hidden" style={{ backgroundColor: "rgba(10, 15, 21, 0.0)" }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -90,7 +93,7 @@ export default function Studentenfeesten() {
                     fontWeight: 300,
                   }}
                 >
-                  Studentenfeesten en schoolfeesten draaien om energie, beleving en een onvergetelijke nacht. Wij weten precies welke muziek de zaal laat ontploffen en hoe we de sfeer opbouwen van begin tot eind.
+                  Studentenfeesten en schoolfeesten draaien om energie, beleving en een onvergetelijke nacht. DJ Tonicity weet precies welke muziek de zaal laat ontploffen en hoe hij de sfeer opbouwt van begin tot eind.
                 </p>
                 <p
                   style={{
@@ -101,7 +104,7 @@ export default function Studentenfeesten() {
                     fontWeight: 300,
                   }}
                 >
-                  Van een volledige lichtshow met lasers tot harde beats op maat — wij maken er een spectakel van dat iedereen nog weken bespreekt. Geschikt voor studentenverenigingen, middelbare scholen en HBO/WO evenementen.
+                  Van een volledige lichtshow met lasers tot harde beats op maat — hij maakt er een spectakel van dat iedereen nog weken bespreekt. Geschikt voor studentenverenigingen, middelbare scholen en HBO/WO evenementen.
                 </p>
               </div>
             </div>
@@ -113,7 +116,7 @@ export default function Studentenfeesten() {
                   { icon: "🎉", title: "Introfeesten", desc: "Onvergetelijke introductieweek feesten" },
                   { icon: "🏫", title: "Schoolfeesten", desc: "Eindfeest, diploma-uitreiking of thema-avond" },
                   { icon: "🔴", title: "Laser Show", desc: "Professionele lasers die de zaal vullen" },
-                  { icon: "🎵", title: "Alle Genres", desc: "Van hardstyle tot hiphop — wij draaien alles" },
+                  { icon: "🎵", title: "Alle Genres", desc: "Van hardstyle tot hiphop — hij draait alles" },
                 ].map((item) => (
                   <div
                     key={item.title}
@@ -152,14 +155,26 @@ export default function Studentenfeesten() {
         </div>
       </section>
 
+      {/* 3. USP */}
+      <USPSection theme={PAGE_THEMES.studentenfeesten} />
+
+      {/* 4. Vision */}
+      <VisionSection theme={PAGE_THEMES.studentenfeesten} />
+
+      {/* 5. Gallery */}
       <BentoGallery
         accentColor="#00ff88"
         title="STUDENTENFEEST IMPRESSIES"
         subtitle="Onze Studenten Shows"
       />
-      <USPSection theme={PAGE_THEMES.studentenfeesten} />
-      <VisionSection theme={PAGE_THEMES.studentenfeesten} />
+
+      {/* 6. Uitbreidingen */}
       <UitbreidingenSection theme={PAGE_THEMES.studentenfeesten} />
+
+      {/* 7. Testimonials */}
+      <TestimonialsSection />
+
+      {/* 8. Contact */}
       <ContactSection />
     </PageLayout>
   );

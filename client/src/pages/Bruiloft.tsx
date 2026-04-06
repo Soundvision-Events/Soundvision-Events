@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import VisionSection from "@/components/VisionSection";
 import BentoGallery from "@/components/BentoGallery";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_THEMES } from "@/lib/pageThemes";
@@ -38,9 +39,6 @@ export default function Bruiloft() {
         path="/bruiloft"
         keywords="bruiloft DJ, trouwfeest DJ, wedding DJ Groningen, DJ huwelijksfeest, bruiloft entertainment Noord-Nederland"
       />
-
-      {/* ── Full-length rose gradient backdrop wrapper ── */}
-      <div style={{ position: "relative", minHeight: "100vh" }}>
 
       <style>{`
         @keyframes gradientRoll {
@@ -124,150 +122,165 @@ export default function Bruiloft() {
         }
       `}</style>
 
-      {/* Animated gradient backdrop */}
-      <div className="bruiloft-backdrop" />
+      {/* ── Full-length rose gradient backdrop wrapper ── */}
+      <div style={{ position: "relative", minHeight: "100vh" }}>
+        <div className="bruiloft-backdrop" />
 
-      {/* ── Hero ── */}
-      <EventPageHero
-        title="BRUILOFT DJ SHOW"
-        subtitle="SoundVision Events — Trouwen"
-        description="Van de ceremonie tot de laatste dans — wij zorgen voor de perfecte muzikale begeleiding van uw trouwdag. Romantisch, elegant en onvergetelijk. Afgestemd op uw smaak en de sfeer van uw bruiloft."
-        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans116_aa3b0634.jpg"
-        accentColor={ROSE}
-        iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_heart_82e6d4ab.png"
-        iconAlt="Anime Heart"
-        showPhoto={[
-          "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans116_aa3b0634.jpg",
-          "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans117_6b3efa5b.webp",
-          "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/bruiloft_reportage3_a784e486.webp",
-          "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/bruiloftfeest_64ee6a35.webp",
-        ]}
-      />
-      {/* ── Wedding intro content ── */}
-      <section
-        className="relative py-20 overflow-hidden"
-        style={{ position: "relative", zIndex: 1, backgroundColor: 'transparent' }}
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* 1. Hero */}
+        <EventPageHero
+          title="BRUILOFT DJ SHOW"
+          subtitle="SoundVision Events — Trouwen"
+          description="Van de ceremonie tot de laatste dans — DJ Tonicity zorgt voor de perfecte muzikale begeleiding van uw trouwdag. Romantisch, elegant en onvergetelijk. Volledig afgestemd op uw smaak en de sfeer van uw bruiloft."
+          image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans116_aa3b0634.jpg"
+          accentColor={ROSE}
+          iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_heart_82e6d4ab.png"
+          iconAlt="Anime Heart"
+          showPhoto={[
+            "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans116_aa3b0634.jpg",
+            "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans117_6b3efa5b.webp",
+            "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/bruiloft_reportage3_a784e486.webp",
+            "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/bruiloftfeest_64ee6a35.webp",
+          ]}
+        />
 
-            {/* Left: text */}
-            <div className="sv-fade-up">
-              <span
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.3em",
-                  color: ROSE_SOFT,
-                  textTransform: "uppercase",
-                }}
-              >
-                Uw Trouwdag
-              </span>
-
-              <h2
-                className="mt-3 mb-6"
-                style={{
-                  fontFamily: "'Cinzel', serif",
-                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                  letterSpacing: "0.05em",
-                  lineHeight: 1.05,
-                  color: "#f0f4f8",
-                }}
-              >
-                EEN ONVERGETELIJKE
-                <br />
+        {/* 2. Wedding intro content */}
+        <section
+          className="relative py-20 overflow-hidden"
+          style={{ position: "relative", zIndex: 1, backgroundColor: 'transparent' }}
+        >
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left: text */}
+              <div className="sv-fade-up">
                 <span
                   style={{
-                    background: "linear-gradient(135deg, #5e00bd, #9b59b6)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    textShadow: "none",
-                    filter: `drop-shadow(0 0 12px rgba(94,0,189,0.45))`,
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.3em",
+                    color: ROSE_SOFT,
+                    textTransform: "uppercase",
                   }}
                 >
-                  MUZIKALE ERVARING
+                  Uw Trouwdag
                 </span>
-              </h2>
 
-              <div className="space-y-4" style={{ marginBottom: "2rem" }}>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1rem", color: "rgba(240,244,248,0.75)", lineHeight: 1.8, fontWeight: 300 }}>
-                  Uw bruiloft verdient de perfecte soundtrack. Van het ontvangst met achtergrondmuziek, door het diner met sfeervolle lounge, tot het avondfeest waar de dansvloer vol staat — wij regelen het allemaal.
-                </p>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1rem", color: "rgba(240,244,248,0.75)", lineHeight: 1.8, fontWeight: 300 }}>
-                  Wij stemmen alles vooraf met u af: uw favoriete nummers, de eerste dans, speciale momenten en de sfeer die u voor ogen heeft. Zo wordt uw trouwdag precies zoals u het wilt.
-                </p>
-              </div>
-
-              {/* CTA buttons with rose accent */}
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                <a href="#contact" className="btn-rose">Offerte Aanvragen</a>
-                <a href="#packages" className="btn-rose-outline">Bekijk Pakketten</a>
-              </div>
-            </div>
-
-            {/* Right: feature grid */}
-            <div className="sv-fade-up">
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: "💍", title: "Eerste Dans", desc: "Het perfecte nummer voor uw eerste dans als getrouwd stel" },
-                  { icon: "🎵", title: "Ceremonie Muziek", desc: "Sfeervolle begeleiding tijdens de ceremonie" },
-                  { icon: "🍽️", title: "Diner DJ", desc: "Achtergrondmuziek tijdens het diner" },
-                  { icon: "🎉", title: "Avondfeest", desc: "De dansvloer vol van begin tot eind" },
-                  { icon: "💡", title: "Sfeerverlichting", desc: "Romantische en feestelijke verlichting" },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="p-4 rounded-xl"
+                <h2
+                  className="mt-3 mb-6"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                    letterSpacing: "0.05em",
+                    lineHeight: 1.05,
+                    color: "#f0f4f8",
+                  }}
+                >
+                  EEN ONVERGETELIJKE
+                  <br />
+                  <span
                     style={{
-                      background: `linear-gradient(135deg, rgba(20,8,50,0.30), ${ROSE_GLOW_S})`,
-                      border: `1px solid ${ROSE}33`,
-                      transition: "border-color 0.3s ease, box-shadow 0.3s ease",
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLDivElement).style.borderColor = `${ROSE}88`;
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 16px ${ROSE_GLOW_S}`;
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLDivElement).style.borderColor = `${ROSE}33`;
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
+                      background: "linear-gradient(135deg, #5e00bd, #9b59b6)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      textShadow: "none",
+                      filter: `drop-shadow(0 0 12px rgba(94,0,189,0.45))`,
                     }}
                   >
-                    <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{item.icon}</div>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.85rem", fontWeight: 600, color: ROSE_SOFT, marginBottom: "0.25rem" }}>
-                      {item.title}
+                    MUZIKALE ERVARING
+                  </span>
+                </h2>
+
+                <div className="space-y-4" style={{ marginBottom: "2rem" }}>
+                  <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1rem", color: "rgba(240,244,248,0.75)", lineHeight: 1.8, fontWeight: 300 }}>
+                    Uw bruiloft verdient de perfecte soundtrack. Van het ontvangst met achtergrondmuziek, door het diner met sfeervolle lounge, tot het avondfeest waar de dansvloer vol staat — DJ Tonicity regelt het allemaal.
+                  </p>
+                  <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1rem", color: "rgba(240,244,248,0.75)", lineHeight: 1.8, fontWeight: 300 }}>
+                    DJ Tonicity stemt alles vooraf met u af: uw favoriete nummers, de eerste dans, speciale momenten en de sfeer die u voor ogen heeft. Zo wordt uw trouwdag precies zoals u het wilt.
+                  </p>
+                </div>
+
+                {/* CTA buttons with rose accent */}
+                <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                  <a href="#contact" className="btn-rose">Offerte Aanvragen</a>
+                  <a href="#packages" className="btn-rose-outline">Bekijk Pakketten</a>
+                </div>
+              </div>
+
+              {/* Right: feature grid */}
+              <div className="sv-fade-up">
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { icon: "💍", title: "Eerste Dans", desc: "Het perfecte nummer voor uw eerste dans als getrouwd stel" },
+                    { icon: "🎵", title: "Ceremonie Muziek", desc: "Sfeervolle begeleiding tijdens de ceremonie" },
+                    { icon: "🍽️", title: "Diner DJ", desc: "Achtergrondmuziek tijdens het diner" },
+                    { icon: "🎉", title: "Avondfeest", desc: "De dansvloer vol van begin tot eind" },
+                    { icon: "💡", title: "Sfeerverlichting", desc: "Romantische en feestelijke verlichting" },
+                  ].map((item) => (
+                    <div
+                      key={item.title}
+                      className="p-4 rounded-xl"
+                      style={{
+                        background: `linear-gradient(135deg, rgba(20,8,50,0.30), ${ROSE_GLOW_S})`,
+                        border: `1px solid ${ROSE}33`,
+                        transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLDivElement).style.borderColor = `${ROSE}88`;
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 16px ${ROSE_GLOW_S}`;
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLDivElement).style.borderColor = `${ROSE}33`;
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
+                      }}
+                    >
+                      <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{item.icon}</div>
+                      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.85rem", fontWeight: 600, color: ROSE_SOFT, marginBottom: "0.25rem" }}>
+                        {item.title}
+                      </div>
+                      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", color: "rgba(240,244,248,0.5)" }}>
+                        {item.desc}
+                      </div>
                     </div>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", color: "rgba(240,244,248,0.5)" }}>
-                      {item.desc}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+        </section>
+
+        {/* 3. USP */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <USPSection theme={PAGE_THEMES.bruiloft} />
         </div>
-      </section>
 
-      {/* ── Divider with rose glow ── */}
-      <div style={{ height: "1px", background: `linear-gradient(90deg, transparent, ${ROSE}66, transparent)`, boxShadow: `0 0 12px ${ROSE_GLOW}`, margin: "0 2rem", position: "relative", zIndex: 1 }} />
+        {/* 4. Vision */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <VisionSection theme={PAGE_THEMES.bruiloft} />
+        </div>
 
-      {/* ── Bento Gallery ── */}
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <BentoGallery
-          accentColor={ROSE}
-          title="BRUILOFT IMPRESSIES"
-          subtitle="Onze Bruiloftsshows"
-        />
-      </div>
+        {/* 5. Gallery */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <BentoGallery
+            accentColor={ROSE}
+            title="BRUILOFT IMPRESSIES"
+            subtitle="Onze Bruiloftsshows"
+          />
+        </div>
 
-      {/* ── USP, Packages, Add-ons, Contact ── */}
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <USPSection theme={PAGE_THEMES.bruiloft} />
-        <VisionSection theme={PAGE_THEMES.bruiloft} />
-        <UitbreidingenSection showOpeningsdansMix={true} theme={PAGE_THEMES.bruiloft} />
-        <ContactSection />
-      </div>
+        {/* 6. Uitbreidingen */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <UitbreidingenSection showOpeningsdansMix={true} theme={PAGE_THEMES.bruiloft} />
+        </div>
+
+        {/* 7. Testimonials */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <TestimonialsSection />
+        </div>
+
+        {/* 8. Contact */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <ContactSection />
+        </div>
 
       </div>{/* end bruiloft-backdrop wrapper */}
 

@@ -140,7 +140,7 @@ export default function ContactSection() {
               fontWeight: 300,
             }}
           >
-            Vul het formulier in voor een vrijblijvende offerte. We reageren binnen 24 uur.
+            Vul het formulier in voor een vrijblijvende offerte. DJ Tonicity reageert binnen 24 uur.
           </p>
         </div>
 
@@ -237,7 +237,7 @@ export default function ContactSection() {
                   marginBottom: "1rem",
                 }}
               >
-                Volg Ons
+                Volg SoundVision
               </div>
               <div className="flex gap-3">
                 {[
@@ -535,7 +535,7 @@ export default function ContactSection() {
                   color: "rgba(240, 244, 248, 0.35)",
                 }}
               >
-                Wij reageren binnen 24 uur op uw aanvraag.
+                DJ Tonicity reageert binnen 24 uur op uw aanvraag.
               </p>
             </form>
           </div>

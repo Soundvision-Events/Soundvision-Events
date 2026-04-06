@@ -240,3 +240,5 @@
 - [x] VisionSection mobile: YouTube first (full width), then text, then infographic
 - [x] Pricing tables mobile: package cards stack vertically (not side by side)
 - [x] Full mobile audit (390px portrait): fix ALL side-by-side grids, overflow, and large empty spaces across entire site
+- [x] Make section order consistent across all event pages (same template order)
+- [x] Fix pronoun inconsistencies: replace "wij doen" with "DJ Tonicity" / "hij" across all text content

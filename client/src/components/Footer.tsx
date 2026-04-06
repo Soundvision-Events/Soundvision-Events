@@ -67,7 +67,7 @@ export default function Footer() {
               paddingTop: "6px",
               marginTop: "-37px",
             }}>
-              Beoordeeld door onze klanten
+              Beoordeeld door klanten van SoundVision
             </p>
           </div>
           {/* Trustoo Widget */}

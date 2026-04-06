@@ -137,7 +137,7 @@ export default function TestimonialsSection() {
             textAlign: "center",
             margin: 0,
           }}>
-            Beoordeeld door onze klanten
+            Beoordeeld door klanten van SoundVision
           </p>
           <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <div

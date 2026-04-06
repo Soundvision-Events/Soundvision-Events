@@ -10,6 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
 import VisionSection from "@/components/VisionSection";
 import BentoGallery from "@/components/BentoGallery";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_THEMES } from "@/lib/pageThemes";
@@ -31,17 +32,19 @@ export default function Bedrijfsfeesten() {
         path="/bedrijfsfeesten"
         keywords="bedrijfsfeest DJ, zakelijk DJ, corporate DJ Groningen, DJ personeelsfeest, bedrijfsgala entertainment"
       />
+
+      {/* 1. Hero */}
       <EventPageHero
         title="BEDRIJFSFEESTEN DJ SHOW"
         subtitle="SoundVision Events — Zakelijk"
-        description="Teambuilding, jubileumfeest, bedrijfsgala of personeelsfeest — wij leveren een professionele DJ show die past bij uw bedrijfscultuur en uw gasten imponeert."
+        description="Teambuilding, jubileumfeest, bedrijfsgala of personeelsfeest — DJ Tonicity levert een professionele DJ show die past bij uw bedrijfscultuur en uw gasten imponeert."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/corporate-event-Efxd4ZRCNusPmXbgkrD8mM.webp"
         accentColor="#0090ff"
         iconUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/anime_rocket_80e1c8ce.png"
         iconAlt="Anime Rocket"
       />
 
-      {/* Corporate-specific content */}
+      {/* 2. Corporate-specific intro content */}
       <section className="relative py-20 overflow-hidden" style={{ backgroundColor: "rgba(10, 15, 21, 0.10)" }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -90,7 +93,7 @@ export default function Bedrijfsfeesten() {
                     fontWeight: 300,
                   }}
                 >
-                  Een bedrijfsfeest vraagt om een andere aanpak dan een privéfeest. Wij begrijpen dat en passen onze show aan op de sfeer en het karakter van uw organisatie. Van stijlvolle lounge tot energiek dansfeest.
+                  Een bedrijfsfeest vraagt om een andere aanpak dan een privéfeest. DJ Tonicity begrijpt dat en past zijn show aan op de sfeer en het karakter van uw organisatie. Van stijlvolle lounge tot energiek dansfeest.
                 </p>
                 <p
                   style={{
@@ -101,7 +104,7 @@ export default function Bedrijfsfeesten() {
                     fontWeight: 300,
                   }}
                 >
-                  Wij overleggen vooraf over het programma, de muziekstijl en eventuele speciale wensen. Zo garanderen wij een avond die uw collega's nog lang zullen onthouden.
+                  DJ Tonicity overlegt vooraf over het programma, de muziekstijl en eventuele speciale wensen. Zo garandeert hij een avond die uw collega's nog lang zullen onthouden.
                 </p>
               </div>
             </div>
@@ -153,14 +156,26 @@ export default function Bedrijfsfeesten() {
         </div>
       </section>
 
+      {/* 3. USP */}
+      <USPSection theme={PAGE_THEMES.bedrijfsfeesten} />
+
+      {/* 4. Vision */}
+      <VisionSection theme={PAGE_THEMES.bedrijfsfeesten} />
+
+      {/* 5. Gallery */}
       <BentoGallery
         accentColor="#ffaa00"
         title="BEDRIJFSFEEST IMPRESSIES"
         subtitle="Onze Zakelijke Shows"
       />
-      <USPSection theme={PAGE_THEMES.bedrijfsfeesten} />
-      <VisionSection theme={PAGE_THEMES.bedrijfsfeesten} />
+
+      {/* 6. Uitbreidingen */}
       <UitbreidingenSection theme={PAGE_THEMES.bedrijfsfeesten} />
+
+      {/* 7. Testimonials */}
+      <TestimonialsSection />
+
+      {/* 8. Contact */}
       <ContactSection />
     </PageLayout>
   );

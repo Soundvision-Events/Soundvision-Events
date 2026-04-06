@@ -13,7 +13,7 @@ interface Message {
 
 const WELCOME_MESSAGE: Message = {
   role: "assistant",
-  content: "Hoi! 👋 Ik ben de SoundVision assistent. Stel me gerust een vraag over onze DJ shows, pakketten of beschikbaarheid!",
+  content: "Hoi! 👋 Ik ben de SoundVision assistent. Stel me gerust een vraag over de DJ shows, pakketten of beschikbaarheid!",
 };
 
 export default function ChatBot() {
