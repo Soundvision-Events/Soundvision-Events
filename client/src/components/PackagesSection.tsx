@@ -7,7 +7,7 @@ import { Check } from "lucide-react";
 
 const LIGHTS_VIDEO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Lights_change_colours_202603270757-5eMFKZjbLFBcMUFMcBxFzH.mp4";
 
-const INTIEM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/intiem_show_template_9ed0a8d4.webp";
+const INTIEM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/intiem_show_template_bf04918d.png";
 const LUXE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/luxe_show_template_outer_spots_only_7f624280.webp";
 const ELITE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/elite_show_template_b350cc54.webp";
 
@@ -213,6 +213,48 @@ export default function PackagesSection() {
                 }
               }}
             >
+              {/* Show image at top — for non-video packages (Intiem, Luxe) */}
+              {!pkg.video && pkg.image && (
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ height: "200px", flexShrink: 0 }}
+                >
+                  <img
+                    src={pkg.image}
+                    alt={`${pkg.name} DJ show setup`}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                    }}
+                  />
+                  {/* Gradient overlay so card content blends in */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(to bottom, rgba(10,15,21,0) 35%, rgba(10,15,21,0.92) 100%)",
+                    }}
+                  />
+                  {/* Show name badge */}
+                  <div
+                    className="absolute top-3 right-3"
+                    style={{
+                      background: `linear-gradient(135deg, ${pkg.color}cc, ${pkg.color}88)`,
+                      color: "#fff",
+                      fontFamily: "'Cinzel', serif",
+                      fontSize: "0.8rem",
+                      letterSpacing: "0.15em",
+                      padding: "0.25rem 0.75rem",
+                      borderRadius: "100px",
+                      backdropFilter: "blur(4px)",
+                    }}
+                  >
+                    {pkg.name} SHOW
+                  </div>
+                </div>
+              )}
+
               {/* Elite package: video showcase at top */}
               {pkg.video && (
                 <div
