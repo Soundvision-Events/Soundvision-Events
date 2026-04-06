@@ -44,14 +44,16 @@ export default function Navbar() {
         boxShadow: scrolled
           ? "0 4px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.06)"
           : "none",
+        borderRadius: "4px",
+        height: "80px",
       }}
     >
       {/* Colour overlay — only this layer gets opacity */}
       <div
         className="absolute inset-0 transition-all duration-300"
         style={{
-          backgroundColor: "#3000b3",
-          opacity: 0.8,
+          backgroundColor: "#00294d",
+          opacity: 0.6,
           pointerEvents: "none",
         }}
       />
