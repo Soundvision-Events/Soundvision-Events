@@ -33,7 +33,7 @@ const packages = [
     extraHourIncluded: 0,
     highlight: false,
     photoLabel: "Intiem DJ Setup",
-    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-intimate_1e8d3f11.jpg",
+    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/intiem_show_setup_188d1e22.jpg",
     features: [
       "Professionele DJ setup (Pioneer)",
       "Muziek op maat voor uw feest",

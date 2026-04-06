@@ -243,3 +243,4 @@
 - [x] Make section order consistent across all event pages (same template order)
 - [x] Fix pronoun inconsistencies: replace "wij doen" with "DJ Tonicity" / "hij" across all text content
 - [x] Make all YouTube background videos autoplay on all pages
+- [x] Replace Intiem Show package card image with top-left photo from IMG_0542 collage (blue curtains setup)
