@@ -248,7 +248,7 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
       ref={ref}
       style={{
         perspective: "1200px",
-        height: pkg.highlight ? "520px" : "480px",
+        height: pkg.highlight ? "640px" : "600px",
         opacity,
         transform: `translateY(${translateY}px) scale(${scale})`,
         transition: `opacity 0.7s ease ${index * 0.15}s, transform 0.7s ease ${index * 0.15}s`,
@@ -301,7 +301,7 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
           boxShadow: shadowStyle, transition: "box-shadow 0.4s ease, border 0.4s ease",
           display: "flex", flexDirection: "column",
         }}>
-          <div style={{ width: "100%", aspectRatio: "1/1", maxHeight: "55%", borderBottom: `1px solid ${GLOW_BLUE}33`, position: "relative", overflow: "hidden", flexShrink: 0 }}>
+          <div style={{ width: "100%", aspectRatio: "4/3", maxHeight: "62%", borderBottom: `1px solid ${GLOW_BLUE}33`, position: "relative", overflow: "hidden", flexShrink: 0 }}>
             <img src={pkg.photoUrl} alt={pkg.photoLabel} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 60%, ${GLOW_PURPLE}44 100%)`, pointerEvents: "none" }} />
             <div style={{ position: "absolute", bottom: "10px", left: "50%", transform: "translateX(-50%)", background: "rgba(0,0,0,0.65)", border: `1px solid ${GLOW_BLUE}66`, borderRadius: "999px", padding: "4px 14px", backdropFilter: "blur(6px)" }}>

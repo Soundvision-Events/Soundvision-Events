@@ -245,3 +245,4 @@
 - [x] Make all YouTube background videos autoplay on all pages
 - [x] Replace Intiem Show package card image with top-left photo from IMG_0542 collage (blue curtains setup)
 - [x] Zoom Luxe show package card image to match same distance perspective as other cards
+- [x] Increase package card photo height so full DJ setup is visible (less cropping)
