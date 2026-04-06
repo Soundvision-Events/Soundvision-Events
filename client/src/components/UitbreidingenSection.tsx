@@ -538,6 +538,12 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
   theme?: PageTheme;
 }) {
   const calcFade = useScrollFade(0.05);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 640 : false);
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const selectedPkg = packages.find((p) => p.id === selectedPackageId) ?? null;
 
@@ -594,7 +600,7 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
           </p>
         </div>
       ) : (
-        <div className="calc-breakdown-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start" }}>
+        <div className="calc-breakdown-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "1rem" : "2rem", alignItems: "start" }}>
 
           {/* Left: breakdown */}
           <div>
@@ -713,6 +719,13 @@ function PriceCalculator({ selectedPackageId, selectedAddonIds, onContact, theme
 export default function UitbreidingenSection({ showOpeningsdansMix = false, theme = DEFAULT_THEME }: { showOpeningsdansMix?: boolean; theme?: PageTheme }) {
   const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
   const [selectedAddonIds, setSelectedAddonIds] = useState<string[]>([]);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 860 : false);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 860);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const handleContact = () => {
     const el = document.querySelector("#contact");
@@ -754,7 +767,7 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false, them
         </div>
 
         {/* ── PACKAGES ── */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem", paddingTop: "2rem", alignItems: "start" }}>
+        <div className="packages-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: isMobile ? "1rem" : "1.5rem", paddingTop: "2rem", alignItems: "start" }}>
           {packages.map((pkg, i) => (
             <PackageFlipCard
               key={pkg.id}

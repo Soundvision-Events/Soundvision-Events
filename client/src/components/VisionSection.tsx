@@ -34,9 +34,17 @@ function hexToRgba(hex: string, alpha: number): string {
 
 export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 860 : false);
   const [autoplayUrl, setAutoplayUrl] = useState(
     `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&modestbranding=1&color=white`
   );
+
+  /* Track mobile breakpoint */
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 860);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   /* Autoplay-on-scroll: switch URL when section enters viewport */
   useEffect(() => {
@@ -170,21 +178,21 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
 
       {/* ═══════════════ ZONE 2 — 50/50 grid: text | YouTube ═══════════════ */}
       <div
-        className="relative"
+        className="relative vision-grid-zone2"
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "1.5rem",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: isMobile ? "1rem" : "1.5rem",
           zIndex: 10,
           alignItems: "stretch",
-          padding: "2rem 2rem 0",
+          padding: isMobile ? "1rem 1rem 0" : "2rem 2rem 0",
         }}
       >
         {/* ── LEFT: Text column ── */}
         <div
           className="relative sv-fade-up vision-text-col"
           style={{
-            padding: "2.5rem 2.5rem",
+            padding: isMobile ? "1.25rem 1rem" : "2.5rem 2.5rem",
             borderRadius: "12px",
             border: `2px solid ${accentRgba(0.18)}`,
             background: "rgba(0,5,20,0.45)",
@@ -333,11 +341,12 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
         <div
           className="relative sv-fade-up vision-yt-col"
           style={{
+            order: isMobile ? -1 : 0,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "2.5rem 2rem",
+            padding: isMobile ? "1rem 0.75rem" : "2.5rem 2rem",
             borderRadius: "12px",
             border: `2px solid ${accentRgba(0.18)}`,
             background: "rgba(0,5,20,0.35)",
@@ -435,10 +444,10 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
 
       {/* ═══════════════ ZONE 3 — Infographic (summary) ═══════════════ */}
       <div
-        className="sv-fade-up relative"
+        className="sv-fade-up relative vision-infographic"
         style={{
           zIndex: 10,
-          margin: "2.5rem 2rem 0",
+          margin: isMobile ? "1.5rem 0.75rem 0" : "2.5rem 2rem 0",
           borderRadius: "1.25rem",
           border: `1.5px solid ${accentRgba(0.35)}`,
           boxShadow: `0 0 0 1px ${accentRgba(0.10)}, 0 0 40px ${accentRgba(0.12)}, 0 8px 48px rgba(0,0,0,0.55)`,
@@ -469,37 +478,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
         />
       </div>
 
-      {/* Mobile responsive overrides */}
-      <style>{`
-        @media (max-width: 900px) {
-          #vision [style*="gridTemplateColumns"] {
-            grid-template-columns: 1fr !important;
-            padding: 1rem 1rem 0 !important;
-            gap: 1rem !important;
-          }
-          /* YouTube column first on mobile */
-          #vision .vision-yt-col {
-            order: -1 !important;
-          }
-          #vision .vision-text-col {
-            order: 0 !important;
-          }
-          #vision [style*="margin: 2.5rem 2rem"] {
-            margin: 1.5rem 1rem 0 !important;
-          }
-        }
-        @media (max-width: 480px) {
-          #vision [style*="gridTemplateColumns"] {
-            padding: 0.75rem 0.75rem 0 !important;
-          }
-          #vision [style*="padding: 2.5rem 2.5rem"] {
-            padding: 1.25rem 1rem !important;
-          }
-          #vision [style*="padding: 2.5rem 2rem"] {
-            padding: 1.25rem 1rem !important;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }

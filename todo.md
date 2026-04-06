@@ -239,3 +239,4 @@
 - [x] Change price calculator sum section to cyan-blue at 90% opacity
 - [x] VisionSection mobile: YouTube first (full width), then text, then infographic
 - [x] Pricing tables mobile: package cards stack vertically (not side by side)
+- [x] Full mobile audit (390px portrait): fix ALL side-by-side grids, overflow, and large empty spaces across entire site

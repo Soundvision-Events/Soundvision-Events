@@ -700,3 +700,89 @@
     opacity: 1 !important;
   }
 }
+
+/* ================================================================
+   SOUNDVISION MOBILE RESPONSIVE OVERRIDES
+   These rules use class names and IDs to reliably override inline
+   styles that cannot be targeted by attribute selectors.
+   Breakpoint: 860px (matches isMobile in components)
+   ================================================================ */
+
+/* ── VisionSection: stack grid on mobile ── */
+@media (max-width: 860px) {
+  #vision .vision-grid-zone2 {
+    grid-template-columns: 1fr !important;
+    padding: 1rem 1rem 0 !important;
+    gap: 1rem !important;
+  }
+  #vision .vision-yt-col {
+    order: -1 !important;
+    padding: 1rem 0.75rem !important;
+  }
+  #vision .vision-text-col {
+    order: 0 !important;
+    padding: 1.25rem 1rem !important;
+  }
+  #vision .vision-infographic {
+    margin: 1.5rem 0.75rem 0 !important;
+  }
+}
+
+/* ── Packages grid: stack on mobile ── */
+@media (max-width: 860px) {
+  #packages .packages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+/* ── Price calculator breakdown: stack on mobile ── */
+@media (max-width: 640px) {
+  .calc-breakdown-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+/* ── HeroSection: prevent title overflow on mobile ── */
+@media (max-width: 600px) {
+  #home h1 {
+    font-size: clamp(1.4rem, 8vw, 2.5rem) !important;
+    word-break: break-word !important;
+  }
+  #home h2 {
+    font-size: clamp(0.7rem, 3.5vw, 1rem) !important;
+    padding-left: 1rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+  #home .sv-hero-logo-ring {
+    width: 70px !important;
+    height: 70px !important;
+  }
+}
+
+/* ── EventPageHero: prevent overflow on mobile ── */
+@media (max-width: 640px) {
+  .event-hero-glow {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .event-hero-icon {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 1.75rem !important;
+  }
+}
+
+/* ── General overflow prevention ── */
+@media (max-width: 860px) {
+  body {
+    overflow-x: hidden !important;
+  }
+  section {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
