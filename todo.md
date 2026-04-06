@@ -252,3 +252,4 @@
 - [ ] Configure djgroningen.nl as custom domain in Manus (Settings → Domains) and update DNS at mijn.host
 - [x] Remove sv-float bounce animation from logo wrapper in HeroSection
 - [x] Replace sv-burn-glow with real fire/burning effect (orange/red/yellow/white-hot colors)
+- [x] Replace Cinzel font with Champagne & Limousines across entire website (Optie A)

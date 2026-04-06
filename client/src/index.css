@@ -5,8 +5,38 @@
    SOUNDVISION EVENTS — Electric Dark Spectacle Design System
    Design Philosophy: Dark luxury nightclub meets premium booking
    Colors: Deep black (#080c10) + Cyan (#00c8ff) + Amber (#ff5500)
-   Fonts: Bebas Neue (display) + Outfit (body)
+   Fonts: Champagne & Limousines (display/headings) + Outfit (body)
    ============================================================ */
+
+/* Champagne & Limousines — custom font, replaces Cinzel on all headings */
+@font-face {
+  font-family: 'Cinzel';
+  src: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Champagne%20%26%20Limousines_04ac5238.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Champagne%20%26%20Limousines%20Bold_f01eea2e.ttf') format('truetype');
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Champagne%20%26%20Limousines%20Italic_c96c2684.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Champagne%20%26%20Limousines%20Bold%20Italic_27fe0e85.ttf') format('truetype');
+  font-weight: 600 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 @custom-variant dark (&:is(.dark *));
 
