@@ -233,3 +233,4 @@
 - [x] Audit and fix mobile layout for ContactSection
 - [x] Audit and fix mobile layout for AddOnsSection
 - [x] Audit and fix mobile layout for PageLayout / Navigation
+- [x] Move Trustoo score widget to top of TestimonialsSection

@@ -2,6 +2,7 @@
  * SoundVision Events — Testimonials Section
  * Customer reviews and testimonials
  */
+import { useEffect } from "react";
 import { Star } from "lucide-react";
 
 const testimonials = [
@@ -50,6 +51,23 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
+  // Ensure Trustoo widget script is loaded
+  useEffect(() => {
+    const existing = document.querySelector('script[src*="trustoo.nl"]');
+    if (!existing) {
+      const script = document.createElement("script");
+      script.src = "https://static.trustoo.nl/widget/widget_v2.js";
+      script.async = true;
+      document.body.appendChild(script);
+    } else {
+      // Script already present — re-trigger widget init if available
+      if ((window as unknown as Record<string, unknown>).TrustooWidget) {
+        const tw = (window as unknown as Record<string, () => void>).TrustooWidget;
+        if (typeof tw === "function") tw();
+      }
+    }
+  }, []);
+
   return (
     <section
       id="testimonials"
@@ -106,6 +124,37 @@ export default function TestimonialsSection() {
               {" "}KLANTEN ZEGGEN
             </span>
           </h2>
+        </div>
+
+        {/* Trustoo Score Widget — top of section */}
+        <div className="sv-fade-up mb-12" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
+          <p style={{
+            fontFamily: "'Cinzel', serif",
+            fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
+            letterSpacing: "0.2em",
+            color: "#ff8800",
+            textTransform: "uppercase",
+            textAlign: "center",
+            margin: 0,
+          }}>
+            Beoordeeld door onze klanten
+          </p>
+          <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+            <div
+              className="trustoo-widget"
+              data-id="ONJgD-vB6EbwidLkvtbyvjZyloyw81bQnaBPtYozTPP8rw"
+              data-language-code="nl"
+              data-country-code="NL"
+              data-badge="default"
+              data-quote="hidden"
+              data-size="large"
+              data-type="landscape"
+              data-border="hidden"
+              data-theme="dark"
+              data-background="transparent"
+              data-google="hidden"
+            />
+          </div>
         </div>
 
         {/* Testimonials grid */}
