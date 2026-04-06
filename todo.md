@@ -217,3 +217,10 @@
 - [x] Remove redundant grids and simplify layout for clarity
 - [x] Condense VisionSection + AboutSection into one clean section (text + YouTube on same grid line, infographic below)
 - [x] Remove AboutSection import from Home.tsx
+- [x] Update soundvision-section-builder skill with consolidation/cleanup workflow
+- [x] Finetune VisionSection text — polish bullet points and paragraphs
+- [x] Add VisionSection to Bruiloft page with bruiloft theme
+- [x] Add VisionSection to Bedrijfsfeesten page with bedrijfsfeesten theme
+- [x] Add VisionSection to Studentenfeesten page with studentenfeesten theme
+- [x] Add VisionSection to Privé page with prive theme
+- [x] Make VisionSection colors fully theme-dynamic (replace all hardcoded cyan with theme.accent/secondary)

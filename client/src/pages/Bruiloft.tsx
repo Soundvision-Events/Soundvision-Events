@@ -9,6 +9,7 @@ import EventPageHero from "@/components/EventPageHero";
 import UitbreidingenSection from "@/components/UitbreidingenSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
+import VisionSection from "@/components/VisionSection";
 import BentoGallery from "@/components/BentoGallery";
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
@@ -263,6 +264,7 @@ export default function Bruiloft() {
       {/* ── USP, Packages, Add-ons, Contact ── */}
       <div style={{ position: "relative", zIndex: 1 }}>
         <USPSection theme={PAGE_THEMES.bruiloft} />
+        <VisionSection theme={PAGE_THEMES.bruiloft} />
         <UitbreidingenSection showOpeningsdansMix={true} theme={PAGE_THEMES.bruiloft} />
         <ContactSection />
       </div>
