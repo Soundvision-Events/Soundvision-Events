@@ -244,3 +244,4 @@
 - [x] Fix pronoun inconsistencies: replace "wij doen" with "DJ Tonicity" / "hij" across all text content
 - [x] Make all YouTube background videos autoplay on all pages
 - [x] Replace Intiem Show package card image with top-left photo from IMG_0542 collage (blue curtains setup)
+- [x] Zoom Luxe show package card image to match same distance perspective as other cards

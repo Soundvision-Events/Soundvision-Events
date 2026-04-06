@@ -58,7 +58,7 @@ const packages = [
     extraHourIncluded: 0,
     highlight: true,
     photoLabel: "Luxe DJ Setup",
-    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-luxe_ab77481b.jpg",
+    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/luxe_show_zoomed_aa3cadc1.jpg",
     features: [
       "Professionele DJ setup (Pioneer CDJ)",
       "Muziek volledig op maat",
