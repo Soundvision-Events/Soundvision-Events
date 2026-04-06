@@ -334,7 +334,7 @@ export default function HeroSection() {
           }}
         >
           {/* Animated logo ring — left of title, badge overlaid at bottom */}
-          <div className="relative sv-float flex-shrink-0" style={{ paddingBottom: "1.8rem" }}>
+          <div className="relative flex-shrink-0" style={{ paddingBottom: "1.8rem" }}>
             <div
               className="sv-ring-1"
               style={{
@@ -372,8 +372,8 @@ export default function HeroSection() {
                     width: "64px",
                     height: "64px",
                     borderRadius: "12px",
-                    background: "linear-gradient(to bottom, rgba(0,212,255,0.18) 0%, rgba(96,64,224,0.22) 100%)",
-                    border: "2px solid #00d4ff",
+                    background: "linear-gradient(to bottom, rgba(255,120,0,0.18) 0%, rgba(180,40,0,0.22) 100%)",
+                    border: "2px solid #ff6600",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

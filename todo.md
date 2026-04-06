@@ -247,3 +247,8 @@
 - [x] Zoom Luxe show package card image to match same distance perspective as other cards
 - [x] Increase package card photo height so full DJ setup is visible (less cropping)
 - [x] Fix hero video not playing on desktop — proxy rewritten with Readable.fromWeb piping + correct Content-Type: video/mp4
+- [ ] Fix hero video not visible on desktop (works on iPad/iPhone) — deep debug
+- [ ] Fix iPad/iPhone cannot connect to the published app (internet works fine)
+- [ ] Configure djgroningen.nl as custom domain in Manus (Settings → Domains) and update DNS at mijn.host
+- [x] Remove sv-float bounce animation from logo wrapper in HeroSection
+- [x] Replace sv-burn-glow with real fire/burning effect (orange/red/yellow/white-hot colors)
