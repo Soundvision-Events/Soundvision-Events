@@ -11,6 +11,7 @@ import BentoGallery from "@/components/BentoGallery";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import USPSection from "@/components/USPSection";
+import VisionSection from "@/components/VisionSection";
 import VideoBackground from "@/components/VideoBackground";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_THEMES } from "@/lib/pageThemes";
@@ -33,6 +34,7 @@ export default function Home() {
       />
       <HeroSection />
       <USPSection theme={PAGE_THEMES.home} />
+      <VisionSection theme={PAGE_THEMES.home} />
       <AboutSection />
       <BentoGallery
         accentColor="#00c8ff"
