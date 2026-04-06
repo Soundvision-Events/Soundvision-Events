@@ -45,7 +45,7 @@ export default function Navbar() {
           ? "0 4px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.06)"
           : "none",
         borderRadius: "4px",
-        height: "80px",
+        height: '61px',
       }}
     >
       {/* Colour overlay — only this layer gets opacity */}
@@ -58,7 +58,7 @@ export default function Navbar() {
         }}
       />
       <div className="relative" style={{ paddingRight: "clamp(0.75rem, 3vw, 3rem)", paddingLeft: "clamp(0.75rem, 3vw, 3rem)", marginTop: "0", opacity: 1.0 }}>
-        <div className="flex items-center justify-between" style={{height: '66px'}}>
+        <div className="flex items-center justify-between" style={{height: '61px'}}>
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img
@@ -102,11 +102,11 @@ export default function Navbar() {
               onClick={scrollToContact}
               style={{
                 fontSize: '11px',
-                paddingTop: '5px',
+                paddingTop: '0px',
                 paddingRight: '3px',
-                paddingBottom: '5px',
+                paddingBottom: '0px',
                 paddingLeft: '3px',
-                marginTop: '8px',
+                marginTop: '0px',
                 borderRadius: '0px',
                 borderWidth: '3px',
                 borderStyle: 'ridge',
