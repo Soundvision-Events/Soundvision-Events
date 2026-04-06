@@ -1,11 +1,13 @@
 /**
- * SoundVision Events — VisionSection
- * Balanced 3-zone layout placed after the Core Principles (USP) section:
- *   TOP:    Section header (centered)
- *   MIDDLE: 50/50 grid — text column left | YouTube 16:9 frame right
- *   BOTTOM: Full-width infographic in a glowing bordered frame
+ * SoundVision Events — VisionSection (consolidated "Over de DJ")
  *
- * Animations: sv-fade-up (text), sv-zoom-reveal (video frame), sv-bg-zoom (infographic)
+ * Single clean section replacing the old duplicate VisionSection + AboutSection.
+ * Layout:
+ *   TOP:    Centered section header (overline + Cinzel title + badge)
+ *   MIDDLE: 50/50 grid — text column LEFT | YouTube 16:9 RIGHT (same grid line)
+ *   BOTTOM: Full-width infographic summarising the content above
+ *
+ * Animations: sv-fade-up (text), sv-zoom-reveal (video), sv-bg-zoom (infographic)
  */
 import { useEffect, useRef, useState } from "react";
 import { type PageTheme, DEFAULT_THEME } from "@/lib/pageThemes";
@@ -24,6 +26,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
     `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&modestbranding=1&color=white`
   );
 
+  /* Autoplay-on-scroll: switch URL when section enters viewport */
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -45,7 +48,15 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
   }, []);
 
   const accent = theme.accent ?? "#00c8ff";
-  const secondary = theme.secondary ?? "#7300ff";
+
+  /* ── Shared text style ── */
+  const bodyText: React.CSSProperties = {
+    fontFamily: "'Outfit', sans-serif",
+    fontSize: "1rem",
+    color: "rgba(240,244,248,0.85)",
+    lineHeight: 1.8,
+    fontWeight: 300,
+  };
 
   return (
     <section
@@ -58,18 +69,19 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
       <div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,200,255,0.06) 0%, transparent 70%)`,
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,200,255,0.06) 0%, transparent 70%)",
           pointerEvents: "none",
           zIndex: 1,
         }}
       />
 
-      {/* ── Section header ── */}
+      {/* ═══════════════ ZONE 1 — Section header ═══════════════ */}
       <div
         className="relative w-full"
         style={{
           zIndex: 10,
-          borderBottom: `1px solid rgba(0,200,255,0.18)`,
+          borderBottom: "1px solid rgba(0,200,255,0.18)",
           paddingTop: "4rem",
           paddingBottom: "2rem",
           textAlign: "center",
@@ -83,12 +95,13 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
             fontSize: "0.7rem",
             letterSpacing: "0.3em",
             textTransform: "uppercase",
-            color: `rgba(0,200,255,0.65)`,
+            color: "rgba(0,200,255,0.65)",
             marginBottom: "0.6rem",
           }}
         >
           Over de DJ
         </p>
+
         <h2
           style={{
             fontFamily: "'Cinzel', serif",
@@ -97,7 +110,8 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
             lineHeight: 1.1,
             color: "#f0f4f8",
             margin: 0,
-            textShadow: `0 0 40px rgba(0,200,255,0.25), 0 2px 20px rgba(0,0,0,0.8)`,
+            textShadow:
+              "0 0 40px rgba(0,200,255,0.25), 0 2px 20px rgba(0,0,0,0.8)",
           }}
         >
           Visie op uw wensen in de praktijk
@@ -139,177 +153,169 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
         </div>
       </div>
 
-      {/* ── 50/50 grid: text | YouTube ── */}
+      {/* ═══════════════ ZONE 2 — 50/50 grid: text | YouTube ═══════════════ */}
       <div
         className="relative"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
+          gap: "1.5rem",
           zIndex: 10,
           alignItems: "stretch",
-          margin: "0 2rem",
+          padding: "2rem 2rem 0",
         }}
       >
-        {/* LEFT: Text column */}
+        {/* ── LEFT: Text column ── */}
         <div
           className="relative sv-fade-up"
           style={{
-            borderRight: `1px solid rgba(0,200,255,0.18)`,
-            padding: "3rem 2.5rem",
+            padding: "2.5rem 2.5rem",
             borderRadius: "12px",
-            border: `2px solid rgba(0,200,255,0.18)`,
+            border: "2px solid rgba(0,200,255,0.18)",
             background: "rgba(0,5,20,0.45)",
             backdropFilter: "blur(6px)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
           {/* Purple tint overlay */}
           <div
             className="absolute inset-0 rounded-xl"
             style={{
-              background: `linear-gradient(135deg, rgba(115,0,255,0.08) 0%, transparent 60%)`,
+              background:
+                "linear-gradient(135deg, rgba(115,0,255,0.08) 0%, transparent 60%)",
               pointerEvents: "none",
             }}
           />
 
-          {/* Text content */}
-          <div
-            className="relative"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <div className="space-y-4" style={{ flex: 1 }}>
-              <p
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.85)",
-                  lineHeight: 1.8,
-                  fontWeight: 300,
-                }}
-              >
-                Ik ben{" "}
-                <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>
-                  Bert — DJ Tonicity
-                </strong>
-                , uw vaste DJ én allround partner voor een feestconcept op maat.
-              </p>
+          <div className="relative space-y-4" style={{ zIndex: 2 }}>
+            <p style={bodyText}>
+              Ik ben{" "}
+              <strong style={{ color: "#f0f4f8", fontWeight: 600 }}>
+                Bert — DJ Tonicity
+              </strong>
+              , uw vaste DJ én allround partner voor een feestconcept op maat.
+              Al meer dan{" "}
+              <strong style={{ color: accent, fontWeight: 600 }}>
+                15 jaar
+              </strong>{" "}
+              zet SoundVision Events sfeervolle muziek en DJ-shows neer die
+              precies passen bij uw evenement.
+            </p>
 
-              <p
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.85)",
-                  lineHeight: 1.8,
-                  fontWeight: 300,
-                }}
-              >
-                Met{" "}
-                <strong style={{ color: "#00c8ff", fontWeight: 600 }}>
-                  15+ jaar ervaring
-                </strong>{" "}
-                op bruiloften, bedrijfsfeesten en studentenfeesten lever ik
-                professioneel{" "}
-                <strong style={{ color: "#f0f4f8", fontWeight: 500 }}>
-                  licht, geluid en muziek
-                </strong>{" "}
-                — volledig op maat, zonder tussenpersonen.
-              </p>
+            <p style={bodyText}>
+              Persoonlijk contact is geen marketingterm — het is de basis van
+              vertrouwen. Maar wie staat er écht voor u klaar bij het
+              organiseren van uw feest? De DJ zelf? Of de partyplanner zonder
+              ervaring of affiniteit met het vak, die met een wensenformulier
+              een DJ toewijst op boekingnummer 333...
+            </p>
 
-              <p
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.85)",
-                  lineHeight: 1.8,
-                  fontWeight: 300,
-                }}
-              >
-                Persoonlijk contact is geen marketingterm — het is de basis van
-                vertrouwen. Maar wie staat er écht voor u klaar bij het
-                organiseren van uw feest? De DJ zelf? Of de partyplanner zonder
-                ervaring of affiniteit met het vak, die met een wensenformulier
-                een DJ toewijst op boekingnummer 333...
-              </p>
+            <p style={bodyText}>
+              Eén aanspreekpunt, van eerste idee tot laatste nummer — directe
+              feedback, geen tussenpersonen, en uitvoering precies zoals u het
+              voor ogen heeft. Dat maak ik met mijn{" "}
+              <strong style={{ color: accent, fontWeight: 600 }}>
+                Sound 'vision'
+              </strong>{" "}
+              graag concreet.
+            </p>
 
-              <p
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "1rem",
-                  color: "rgba(240, 244, 248, 0.85)",
-                  lineHeight: 1.8,
-                  fontWeight: 300,
-                }}
-              >
-                Dat maak ik met mijn{" "}
-                <strong style={{ color: "#00c8ff", fontWeight: 600 }}>
-                  Sound 'vision'
-                </strong>{" "}
-                graag concreet.
-              </p>
-
-              {/* Key stats row */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: "1.5rem",
-                  marginTop: "1.5rem",
-                  flexWrap: "wrap",
-                }}
-              >
-                {[
-                  { value: "500+", label: "Shows gespeeld" },
-                  { value: "15+", label: "Jaar ervaring" },
-                  { value: "9.8/10", label: "Trustoo score" },
-                ].map((stat) => (
-                  <div key={stat.label} style={{ textAlign: "center" }}>
-                    <div
-                      style={{
-                        fontFamily: "'Cinzel', serif",
-                        fontSize: "1.6rem",
-                        color: accent,
-                        fontWeight: 700,
-                        lineHeight: 1,
-                        textShadow: `0 0 20px ${accent}60`,
-                      }}
-                    >
-                      {stat.value}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: "'Outfit', sans-serif",
-                        fontSize: "0.65rem",
-                        letterSpacing: "0.15em",
-                        textTransform: "uppercase",
-                        color: "rgba(240,244,248,0.5)",
-                        marginTop: "4px",
-                      }}
-                    >
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <a
-                href="#contact"
-                className="inline-block sv-btn-primary"
-                style={{
-                  marginTop: "1.5rem",
-                  paddingRight: "40px",
-                }}
-              >
-                Neem direct contact op
-              </a>
+            {/* Bullet highlights */}
+            <div
+              style={{
+                paddingLeft: "1rem",
+                borderLeft: "2px solid rgba(0,200,255,0.35)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
+              {[
+                "Uw unieke ideeën omzetten naar een helder feestconcept met concrete keuzemogelijkheden.",
+                "Muzikale en technische voorbereiding op maat — licht, geluid en sfeer in perfecte balans.",
+                "Uitvoering zoals u het altijd voor ogen had, zonder compromissen.",
+              ].map((item, i) => (
+                <p
+                  key={i}
+                  style={{
+                    ...bodyText,
+                    fontSize: "0.9rem",
+                    color: "rgba(240,244,248,0.75)",
+                    lineHeight: 1.65,
+                    margin: 0,
+                  }}
+                >
+                  <span style={{ color: accent, marginRight: "0.5rem" }}>
+                    —
+                  </span>
+                  {item}
+                </p>
+              ))}
             </div>
+
+            {/* Key stats row */}
+            <div
+              style={{
+                display: "flex",
+                gap: "1.5rem",
+                marginTop: "1.5rem",
+                flexWrap: "wrap",
+              }}
+            >
+              {[
+                { value: "500+", label: "Shows gespeeld" },
+                { value: "15+", label: "Jaar ervaring" },
+                { value: "9.8/10", label: "Trustoo score" },
+              ].map((stat) => (
+                <div key={stat.label} style={{ textAlign: "center" }}>
+                  <div
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      fontSize: "1.6rem",
+                      color: accent,
+                      fontWeight: 700,
+                      lineHeight: 1,
+                      textShadow: `0 0 20px ${accent}60`,
+                    }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: "0.65rem",
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      color: "rgba(240,244,248,0.5)",
+                      marginTop: "4px",
+                    }}
+                  >
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .querySelector("#contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="inline-block sv-btn-primary"
+              style={{ marginTop: "1.5rem" }}
+            >
+              Neem Contact Op →
+            </a>
           </div>
         </div>
 
-        {/* RIGHT: YouTube column */}
+        {/* ── RIGHT: YouTube column ── */}
         <div
           className="relative sv-fade-up"
           style={{
@@ -317,14 +323,19 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "3rem 2.5rem",
+            padding: "2.5rem 2rem",
+            borderRadius: "12px",
+            border: "2px solid rgba(0,200,255,0.18)",
+            background: "rgba(0,5,20,0.35)",
+            backdropFilter: "blur(4px)",
           }}
         >
           {/* Cyan glow accent */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 rounded-xl"
             style={{
-              background: `radial-gradient(ellipse 70% 70% at 70% 50%, rgba(0,200,255,0.06) 0%, transparent 70%)`,
+              background:
+                "radial-gradient(ellipse 70% 70% at 70% 50%, rgba(0,200,255,0.06) 0%, transparent 70%)",
               pointerEvents: "none",
             }}
           />
@@ -344,13 +355,13 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
             <div
               className="relative rounded-xl overflow-hidden w-full"
               style={{
-                border: `2px solid rgba(0,200,255,0.55)`,
+                border: "2px solid rgba(0,200,255,0.55)",
                 boxShadow: [
-                  `0 0 0 1px rgba(115,0,255,0.35)`,
-                  `0 0 18px rgba(0,200,255,0.55)`,
-                  `0 0 40px rgba(0,200,255,0.25)`,
-                  `0 0 80px rgba(115,0,255,0.20)`,
-                  `0 12px 40px rgba(0,0,0,0.7)`,
+                  "0 0 0 1px rgba(115,0,255,0.35)",
+                  "0 0 18px rgba(0,200,255,0.55)",
+                  "0 0 40px rgba(0,200,255,0.25)",
+                  "0 0 80px rgba(115,0,255,0.20)",
+                  "0 12px 40px rgba(0,0,0,0.7)",
                 ].join(", "),
                 aspectRatio: "16/9",
               }}
@@ -377,7 +388,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
               style={{
                 background: "rgba(0,10,30,0.80)",
                 backdropFilter: "blur(8px)",
-                border: `1px solid rgba(0,200,255,0.22)`,
+                border: "1px solid rgba(0,200,255,0.22)",
                 textAlign: "center",
               }}
             >
@@ -409,14 +420,14 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
         </div>
       </div>
 
-      {/* ── INFOGRAPHIC: full-width framed block ── */}
+      {/* ═══════════════ ZONE 3 — Infographic (summary) ═══════════════ */}
       <div
         className="sv-fade-up relative"
         style={{
           zIndex: 10,
-          margin: "3rem 2rem 0",
+          margin: "2.5rem 2rem 0",
           borderRadius: "1.25rem",
-          border: `1.5px solid rgba(0,200,255,0.35)`,
+          border: "1.5px solid rgba(0,200,255,0.35)",
           boxShadow:
             "0 0 0 1px rgba(0,200,255,0.10), 0 0 40px rgba(0,200,255,0.12), 0 8px 48px rgba(0,0,0,0.55)",
           overflow: "hidden",
@@ -436,11 +447,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
           className="sv-bg-zoom"
           src={INFOGRAPHIC_URL}
           alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
-          style={{
-            width: "100%",
-            height: "auto",
-            display: "block",
-          }}
+          style={{ width: "100%", height: "auto", display: "block" }}
         />
         {/* Bottom accent line */}
         <div
@@ -457,10 +464,6 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
         @media (max-width: 900px) {
           #vision [style*="gridTemplateColumns"] {
             grid-template-columns: 1fr !important;
-          }
-          #vision [style*="gridTemplateColumns"] > div:first-child {
-            border-right: none !important;
-            border-bottom: 1px solid rgba(0,200,255,0.18) !important;
           }
         }
       `}</style>

@@ -5,7 +5,6 @@
  */
 import PageLayout from "@/components/PageLayout";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
 import UitbreidingenSection from "@/components/UitbreidingenSection";
 import BentoGallery from "@/components/BentoGallery";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -35,7 +34,6 @@ export default function Home() {
       <HeroSection />
       <USPSection theme={PAGE_THEMES.home} />
       <VisionSection theme={PAGE_THEMES.home} />
-      <AboutSection />
       <BentoGallery
         accentColor="#00c8ff"
         title="DE SHOW IN BEELD"

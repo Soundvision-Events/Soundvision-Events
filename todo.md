@@ -213,3 +213,7 @@
 - [x] Update soundvision-webdev skill with universal animation/hover/scroll standards
 - [x] Upload 4 event videos (IMG_0047, IMG_0107, IMG_0139, IMG_0616) to CDN
 - [x] Integrate 4 videos into GallerySection alongside existing photos (hover-to-play, 3-col grid with divider)
+- [x] Clean up duplicate sections and chaotic overlapping grids on homepage (VisionSection + AboutSection overlap)
+- [x] Remove redundant grids and simplify layout for clarity
+- [x] Condense VisionSection + AboutSection into one clean section (text + YouTube on same grid line, infographic below)
+- [x] Remove AboutSection import from Home.tsx
