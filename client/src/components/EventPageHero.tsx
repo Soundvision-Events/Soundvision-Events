@@ -162,7 +162,7 @@ export default function EventPageHero({
               <h1
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  fontSize: "clamp(2.2rem, 5vw, 4.4rem)",
+                  fontSize: "clamp(2.6rem, 6vw, 5.2rem)",
                   letterSpacing: "0.04em",
                   lineHeight: 1.1,
                   color: "#f0f4f8",
@@ -314,7 +314,7 @@ export default function EventPageHero({
               <h1
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  fontSize: "clamp(2.3rem, 5.5vw, 4.4rem)",
+                  fontSize: "clamp(2.8rem, 6.5vw, 5.4rem)",
                   letterSpacing: "0.04em",
                   lineHeight: 1.1,
                   color: "#f0f4f8",

@@ -428,11 +428,12 @@ export default function HeroSection() {
           <h1
             style={{
               fontFamily: "'Cinzel', serif",
-              fontSize: "clamp(1.8rem, 5.5vw, 4rem)",
-              letterSpacing: "0.03em",
-              lineHeight: 1.1,
+              fontSize: "clamp(2.4rem, 7vw, 5.2rem)",
+              letterSpacing: "0.04em",
+              lineHeight: 1.05,
               color: "#ffffff",
               margin: 0,
+              whiteSpace: "nowrap",
             }}
           >
             SOUND<span style={{ color: "#ffffff" }}>VISION</span><span style={{ color: "#2ec0ff" }}>{" events"}</span>
@@ -443,7 +444,7 @@ export default function HeroSection() {
         <h2
           style={{
             fontFamily: "'Cinzel', serif",
-            fontSize: "clamp(0.9rem, 2.5vw, 1.7rem)",
+            fontSize: "clamp(1rem, 2.8vw, 2rem)",
             letterSpacing: "0.25em",
             color: "#fcfcfc",
             backgroundColor: "rgba(0,16,41,0.85)",

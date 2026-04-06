@@ -101,19 +101,20 @@ export default function Navbar() {
               className="sv-btn-primary"
               onClick={scrollToContact}
               style={{
-                fontSize: '11px',
+                fontSize: '13px',
                 paddingTop: '0px',
-                paddingRight: '3px',
+                paddingRight: '6px',
                 paddingBottom: '0px',
-                paddingLeft: '3px',
+                paddingLeft: '6px',
                 marginTop: '0px',
                 borderRadius: '0px',
                 borderWidth: '3px',
                 borderStyle: 'ridge',
                 borderColor: '#f5f5f5',
                 height: '32px',
-                fontFamily: "'Outfit', sans-serif",
-                width: '147px',
+                fontFamily: "'Cinzel', serif",
+                letterSpacing: '0.08em',
+                width: '155px',
               }}
             >
               Offerte Aanvragen

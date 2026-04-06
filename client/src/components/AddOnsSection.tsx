@@ -82,7 +82,7 @@ export default function AddOnsSection() {
             className="mt-3"
             style={{
               fontFamily: "'Cinzel', serif",
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(3rem, 6vw, 5rem)",
               letterSpacing: "0.05em",
               lineHeight: 1.05,
               color: "#f0f4f8",

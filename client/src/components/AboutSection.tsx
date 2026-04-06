@@ -80,7 +80,7 @@ export default function AboutSection() {
         <h2
           style={{
             fontFamily: "'Cinzel', serif",
-            fontSize: "clamp(1.8rem, 5vw, 3.5rem)",
+            fontSize: "clamp(2.2rem, 6vw, 4.5rem)",
             letterSpacing: "0.12em",
             lineHeight: 1.1,
             color: '#002657',

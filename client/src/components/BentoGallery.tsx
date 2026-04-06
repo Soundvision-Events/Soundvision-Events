@@ -101,7 +101,7 @@ export default function BentoGallery({
             className="mt-3"
             style={{
               fontFamily: "'Cinzel', serif",
-              fontSize: "clamp(2.2rem, 4vw, 3.5rem)",
+              fontSize: "clamp(2.6rem, 5vw, 4.5rem)",
               letterSpacing: "0.05em",
               lineHeight: 1.05,
               color: "#f0f4f8",

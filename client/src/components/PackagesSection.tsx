@@ -7,6 +7,10 @@ import { Check } from "lucide-react";
 
 const LIGHTS_VIDEO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Lights_change_colours_202603270757-5eMFKZjbLFBcMUFMcBxFzH.mp4";
 
+const INTIEM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/intiem_show_template_9ed0a8d4.webp";
+const LUXE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/luxe_show_template_outer_spots_only_7f624280.webp";
+const ELITE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/elite_show_template_b350cc54.webp";
+
 const packages = [
   {
     id: "intiem",
@@ -17,6 +21,7 @@ const packages = [
     highlight: false,
     color: "#0090ff",
     video: null,
+    image: INTIEM_IMG,
     features: [
       "Professionele DJ setup (Pioneer)",
       "Muziek op maat voor uw feest",
@@ -39,6 +44,7 @@ const packages = [
     highlight: true,
     color: "#00c8ff",
     video: null,
+    image: LUXE_IMG,
     features: [
       "Professionele DJ setup (Pioneer CDJ)",
       "Muziek volledig op maat",
@@ -63,6 +69,7 @@ const packages = [
     highlight: false,
     color: "#ff5500",
     video: LIGHTS_VIDEO_URL,
+    image: ELITE_IMG,
     features: [
       "Professionele DJ setup (Pioneer CDJ-3000)",
       "Volledig gepersonaliseerde muziekervaring",
