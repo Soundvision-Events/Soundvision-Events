@@ -33,11 +33,12 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  // Video proxy — serves CDN videos with correct Content-Type: video/mp4
-  // Needed because the CDN returns application/octet-stream which browsers refuse to play
+  // Video proxy — serves CDN videos with correct Content-Type: video/mp4 and Range support.
+  // Desktop browsers require Range/206 support and correct content-type to play video.
   app.get("/api/video-proxy", async (req, res) => {
     const allowed = [
       "hero-loop-new_3c2c71bc.mp4",
+      "hero-loop-new_89edd0d5.mp4",
       "backdrop-v3-hd_d354f7b7.mp4",
     ];
     const file = req.query.file as string;
@@ -47,30 +48,34 @@ async function startServer() {
     const cdnBase = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/";
     const url = cdnBase + file;
     try {
-      const upstream = await fetch(url, {
-        headers: req.headers.range ? { Range: req.headers.range as string } : {},
-      });
-      const contentLength = upstream.headers.get("content-length");
-      const status = upstream.status === 206 ? 206 : 200;
-      res.status(status);
+      const rangeHeader = req.headers.range as string | undefined;
+      const fetchHeaders: Record<string, string> = {};
+      if (rangeHeader) fetchHeaders["Range"] = rangeHeader;
+
+      const upstream = await fetch(url, { headers: fetchHeaders });
+      const totalSize = upstream.headers.get("content-length");
+      const contentRange = upstream.headers.get("content-range");
+      const isPartial = upstream.status === 206 || (rangeHeader && upstream.status === 200);
+
+      res.status(isPartial ? 206 : 200);
       res.setHeader("Content-Type", "video/mp4");
       res.setHeader("Accept-Ranges", "bytes");
-      if (contentLength) res.setHeader("Content-Length", contentLength);
-      if (upstream.headers.get("content-range")) {
-        res.setHeader("Content-Range", upstream.headers.get("content-range")!);
-      }
       res.setHeader("Cache-Control", "public, max-age=86400");
+      if (totalSize) res.setHeader("Content-Length", totalSize);
+      if (contentRange) res.setHeader("Content-Range", contentRange);
+
       if (!upstream.body) return res.end();
-      const reader = upstream.body.getReader();
-      const pump = async () => {
-        const { done, value } = await reader.read();
-        if (done) { res.end(); return; }
-        res.write(Buffer.from(value));
-        pump();
-      };
-      pump();
+
+      // Use Readable.fromWeb for proper Node.js stream piping
+      const { Readable } = await import("stream");
+      // @ts-ignore — fromWeb is available in Node 18+
+      const nodeStream = Readable.fromWeb(upstream.body as any);
+      nodeStream.pipe(res);
+      nodeStream.on("error", () => { if (!res.writableEnded) res.end(); });
+      req.on("close", () => { nodeStream.destroy(); });
     } catch (e) {
-      res.status(502).send("Video proxy error");
+      console.error("[video-proxy] error:", e);
+      if (!res.headersSent) res.status(502).send("Video proxy error");
     }
   });
 

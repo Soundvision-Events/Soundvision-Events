@@ -246,3 +246,4 @@
 - [x] Replace Intiem Show package card image with top-left photo from IMG_0542 collage (blue curtains setup)
 - [x] Zoom Luxe show package card image to match same distance perspective as other cards
 - [x] Increase package card photo height so full DJ setup is visible (less cropping)
+- [x] Fix hero video not playing on desktop — proxy rewritten with Readable.fromWeb piping + correct Content-Type: video/mp4
