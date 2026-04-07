@@ -145,19 +145,19 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
           <span
             style={{
               color: "#003a66",
-              backgroundColor: '#00eeff',
+              backgroundColor: '#fafafa',
               fontFamily: "'Cinzel', serif",
-              fontSize: '39px',
+              fontSize: '35px',
               padding: "0.35rem 1.2rem",
               borderRadius: '0px',
               border: "3px groove #000000",
               display: "inline-block",
-              fontWeight: 500,
+              fontWeight: '700',
               letterSpacing: "0.06em",
-              opacity: 0.8,
+              opacity: 1,
               borderWidth: '19px',
               borderStyle: 'inset',
-              borderColor: '#002b4d',
+              borderColor: '#f70893',
             }}
           >
             DJ Tonicity: Visie op de gewenste Sound, met de perfecte Shows

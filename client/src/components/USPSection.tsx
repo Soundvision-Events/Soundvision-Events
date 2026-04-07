@@ -126,7 +126,7 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
             borderRadius: "1.5rem",
             display: "flex", flexDirection: "column", alignItems: "center",
             justifyContent: "center", gap: "1rem", padding: "2rem",
-            boxShadow: `0 0 32px ${theme.glow}, 0 0 70px ${theme.glowSubtle}, 0 0 120px ${theme.glowSubtle}`,
+            boxShadow: `0 0 32px ${theme.glow}, 0 0 70px ${theme.glowSubtle}, 0 0 120px ${theme.glowSubtle}`, opacity: 0.7,
           }}
         >
           <div
