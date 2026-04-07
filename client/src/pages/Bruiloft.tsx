@@ -124,7 +124,6 @@ export default function Bruiloft() {
 
       {/* ── Full-length rose gradient backdrop wrapper ── */}
       <div style={{ position: "relative", minHeight: "100vh" }}>
-        <div className="bruiloft-backdrop" />
 
         {/* 1. Hero */}
         <EventPageHero
