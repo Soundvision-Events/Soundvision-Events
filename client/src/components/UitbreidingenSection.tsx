@@ -744,7 +744,7 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false, them
   const visibleAddons = addons.filter((addon) => addon.id !== "openingsdans" || showOpeningsdansMix);
 
   return (
-    <section id="packages" style={{ position: "relative", padding: "6rem 0", overflow: "hidden" }}>
+    <section id="packages" style={{ position: "relative", padding: "6rem 0", overflow: "hidden", backgroundColor: 'rgba(0,19,36,0.8)' }}>
       <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 20%, ${GLOW_PURPLE}0d 0%, transparent 60%)`, pointerEvents: "none", zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 80%, ${GLOW_BLUE}08 0%, transparent 60%)`, pointerEvents: "none", zIndex: 0 }} />
       <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", fontFamily: "'Cinzel', serif", fontSize: "22vw", color: "rgba(115,0,255,0.025)", letterSpacing: "0.1em", whiteSpace: "nowrap", pointerEvents: "none", userSelect: "none", zIndex: 0 }}>
