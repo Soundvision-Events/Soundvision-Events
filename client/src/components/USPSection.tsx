@@ -182,7 +182,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
           position: "absolute",
           inset: 0,
           backgroundColor: "#02212c",
-          opacity: 0.8,
+          opacity: 0.5,
           zIndex: 1,
           pointerEvents: "none",
         }}

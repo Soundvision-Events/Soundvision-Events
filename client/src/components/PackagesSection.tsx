@@ -114,7 +114,7 @@ export default function PackagesSection() {
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(180deg, rgba(0,60,70,0.55) 0%, rgba(0,40,55,0.60) 50%, rgba(0,30,45,0.55) 100%)",
+          background: "linear-gradient(180deg, rgba(0,60,70,0.30) 0%, rgba(0,40,55,0.30) 50%, rgba(0,30,45,0.30) 100%)",
           pointerEvents: "none",
           zIndex: 0,
         }}

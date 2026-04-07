@@ -72,7 +72,7 @@ export default function PageLayout({ children, backgroundOverride }: PageLayoutP
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#080c10", color: "#f0f4f8" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "transparent", color: "#f0f4f8" }}>
       {backgroundOverride ?? <VideoBackground />}
       <BeatCursor />
       <Navbar />
