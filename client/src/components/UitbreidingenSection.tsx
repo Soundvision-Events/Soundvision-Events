@@ -188,7 +188,7 @@ const addons = [
     id: "uplights",
     icon: "💡",
     title: "Uplights",
-    subtitle: "360° Sfeerverlichting",
+    subtitle: "extra licht decoratie",
     price: 75,
     priceLabel: "€75",
     accentColor: "#ffaa00",
@@ -197,7 +197,7 @@ const addons = [
     backTitle: "Toepassingen",
     backPoints: [
       "360° verlichting van de zaal/locatie",
-      "Kleur aanpasbaar aan uw thema",
+      "Kleur aanpasbaar aan uw thema en synchroon met de lichtshows",
       "Ideaal voor bruiloften en gala's",
       "Professionele positionering inbegrepen",
       "Draadloos en dimbaar",
@@ -460,7 +460,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
             </span>
           </div>
 
-          <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.06em", color: '#022e40', margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1 }}>
+          <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.06em", color: '#022e40', margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1, height: '28px', paddingBottom: '26px', paddingLeft: '3px', marginBottom: '49px' }}>
             {addon.title}
           </h3>
 
