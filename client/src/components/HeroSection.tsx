@@ -286,16 +286,7 @@ export default function HeroSection() {
           <source src="/api/video-proxy?file=hero-loop-new_89edd0d5.mp4" type="video/mp4" />
         </video>
       </div>
-      {/* Dark color overlay — sits above video, below all text/buttons/reviews (z-index 1) */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundColor: "#000000",
-          opacity: 0.25,
-          zIndex: 1,
-          pointerEvents: "none",
-        }}
-      />
+      {/* Dark color overlay — removed so hero video shows full color */}
       {/* Light gradient overlay — keeps text readable while both videos show through */}
       <div
         className="absolute inset-0"
