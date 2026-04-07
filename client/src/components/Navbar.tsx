@@ -57,8 +57,8 @@ export default function Navbar() {
           pointerEvents: "none",
         }}
       />
-      <div className="relative" style={{ paddingRight: "clamp(0.75rem, 3vw, 3rem)", paddingLeft: "clamp(0.75rem, 3vw, 3rem)", marginTop: "0", backgroundColor: 'rgba(73,4,200,0.3)' }}>
-        <div className="flex items-center justify-between" style={{height: '61px'}}>
+      <div className="relative" style={{ paddingRight: "clamp(0.75rem, 3vw, 3rem)", paddingLeft: "clamp(0.75rem, 3vw, 3rem)", marginTop: "0", backgroundColor: 'rgba(0,28,46,0.5)' }}>
+        <div className="flex items-center justify-between" style={{height: '61px', backgroundColor: 'rgba(76,0,138,0.5)'}}>
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img

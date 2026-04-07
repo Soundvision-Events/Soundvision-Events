@@ -119,7 +119,7 @@ export default function EventPageHero({
           <div
             className="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-14 pt-32 pb-24"
             style={{
-              background: "linear-gradient(to right, transparent 0%, rgba(8,12,16,0.75) 30%, rgba(8,12,16,0.88) 100%)",
+              background: "linear-gradient(to right, transparent 0%, rgba(45,0,82,0.5) 30%, rgba(45,0,82,0.65) 100%)",
               minHeight: "100vh",
             }}
           >
