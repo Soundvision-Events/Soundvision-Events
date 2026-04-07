@@ -73,8 +73,14 @@ export default function YouTubeBackground({
     ensureYTApi(() => {
       if (!document.getElementById(playerId)) return;
 
+      // Force the player div to fill the container before creating the player
+      playerDiv.style.width = "100%";
+      playerDiv.style.height = "100%";
+
       playerRef.current = new (window as any).YT.Player(playerId, {
         videoId,
+        width: "100%",
+        height: "100%",
         playerVars: {
           autoplay: 1,
           mute: 1,
@@ -128,6 +134,13 @@ export default function YouTubeBackground({
 
   return (
     <>
+      {/* Force YouTube iframe to fill its container */}
+      <style>{`
+        [id^="yt-bg-"] iframe {
+          width: 100% !important;
+          height: 100% !important;
+        }
+      `}</style>
       {/* YouTube player container — scaled to cover the full viewport */}
       <div
         style={{
