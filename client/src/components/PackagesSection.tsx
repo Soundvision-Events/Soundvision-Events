@@ -1,11 +1,8 @@
 /**
  * SoundVision Events — Packages Section
- * Intiem / Luxe / Elite DJ show packages with glassmorphism cards
- * Elite package features the lights video showcase
+ * Flip cards: front = photo + key highlights, back = full features + CTA
  */
 import { Check } from "lucide-react";
-
-const LIGHTS_VIDEO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Lights_change_colours_202603270757-5eMFKZjbLFBcMUFMcBxFzH.mp4";
 
 const INTIEM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/intiem_show_template_v2_75b64794.png";
 const LUXE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/luxe_show_template_16cc28b3.png";
@@ -20,7 +17,6 @@ const packages = [
     duration: "Tot 4 uur",
     highlight: false,
     color: "#0090ff",
-    video: null,
     image: INTIEM_IMG,
     highlights: [
       { icon: "👥", text: "Capaciteit 50 – 100 personen" },
@@ -48,7 +44,6 @@ const packages = [
     duration: "Tot 6 uur",
     highlight: true,
     color: "#00c8ff",
-    video: null,
     image: LUXE_IMG,
     highlights: [
       { icon: "👥", text: "Capaciteit 100 – 200 personen" },
@@ -79,9 +74,9 @@ const packages = [
     duration: "Tot 8 uur",
     highlight: false,
     color: "#ff5500",
-    video: null,
     image: ELITE_IMG,
     highlights: [
+      { icon: "👥", text: "Capaciteit 200+ personen" },
       { icon: "💡", text: "8 RGB parspots + 2x mini movinghead + 4x Hybride movinghead groot" },
       { icon: "🌫️", text: "Rookmachine met LED-verlichte rookoutput" },
       { icon: "🎛️", text: "Unieke LED DJ Booth · Pioneer XDJ-AZ (nieuwste model)" },
@@ -115,7 +110,7 @@ export default function PackagesSection() {
       className="relative py-24 overflow-hidden"
       style={{ position: "relative" }}
     >
-      {/* Deep teal section overlay — sits above the YouTube background */}
+      {/* Deep teal section overlay */}
       <div
         className="absolute inset-0"
         style={{
@@ -194,321 +189,385 @@ export default function PackagesSection() {
               fontWeight: 300,
             }}
           >
-            Drie zorgvuldig samengestelde pakketten voor elk type evenement en budget. Alle prijzen zijn op aanvraag — neem contact op voor een vrijblijvende offerte.
+            Drie zorgvuldig samengestelde pakketten voor elk type evenement en budget. Hover over een kaart voor alle details. Alle prijzen zijn op aanvraag.
+          </p>
+          <p
+            className="mt-2"
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "0.8rem",
+              color: "rgba(240, 244, 248, 0.35)",
+              letterSpacing: "0.05em",
+            }}
+          >
+            ↕ Hover over een kaart voor alle details
           </p>
         </div>
 
-        {/* Package cards */}
+        {/* Flip card grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {packages.map((pkg, i) => (
             <div
               key={pkg.id}
-              className={`sv-fade-up relative rounded-2xl flex flex-col overflow-hidden ${pkg.highlight ? "sv-package-featured" : ""}`}
+              className="sv-fade-up"
               style={{
                 animationDelay: `${i * 0.15}s`,
-                background: pkg.highlight
-                  ? "linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 144, 255, 0.05))"
-                  : "rgba(255, 255, 255, 0.03)",
-                border: `1px solid ${pkg.highlight ? "rgba(0, 200, 255, 0.35)" : "rgba(255, 255, 255, 0.07)"}`,
-                boxShadow: pkg.highlight
-                  ? "0 0 40px rgba(0, 200, 255, 0.12), 0 0 80px rgba(0, 200, 255, 0.05)"
-                  : "none",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                if (!pkg.highlight) {
-                  e.currentTarget.style.transform = "translateY(-6px)";
-                  e.currentTarget.style.borderColor = `${pkg.color}44`;
-                } else {
-                  e.currentTarget.style.transform = "translateY(-6px)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                if (!pkg.highlight) {
-                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.07)";
-                }
+                perspective: "1200px",
+                height: "580px",
               }}
             >
-              {/* Show image at top — for non-video packages (Intiem, Luxe) */}
-              {!pkg.video && pkg.image && (
+              {/* Flip container */}
+              <div
+                className="sv-flip-card-inner"
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  transformStyle: "preserve-3d",
+                  transition: "transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotateY(180deg)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotateY(0deg)";
+                }}
+              >
+                {/* ── FRONT FACE ── */}
                 <div
-                  className="relative w-full overflow-hidden"
-                  style={{ height: "200px", flexShrink: 0 }}
-                >
-                  <img
-                    src={pkg.image}
-                    alt={`${pkg.name} DJ show setup`}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "center",
-                    }}
-                  />
-                  {/* Gradient overlay so card content blends in */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: "linear-gradient(to bottom, rgba(10,15,21,0) 35%, rgba(10,15,21,0.92) 100%)",
-                    }}
-                  />
-                  {/* Show name badge */}
-                  <div
-                    className="absolute top-3 right-3"
-                    style={{
-                      background: `linear-gradient(135deg, ${pkg.color}cc, ${pkg.color}88)`,
-                      color: "#fff",
-                      fontFamily: "'Cinzel', serif",
-                      fontSize: "0.8rem",
-                      letterSpacing: "0.15em",
-                      padding: "0.25rem 0.75rem",
-                      borderRadius: "100px",
-                      backdropFilter: "blur(4px)",
-                    }}
-                  >
-                    {pkg.name} SHOW
-                  </div>
-                </div>
-              )}
-
-              {/* Elite package: video showcase at top */}
-              {pkg.video && (
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{ height: "180px", flexShrink: 0 }}
-                >
-                  <video
-                    src={pkg.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                  {/* Gradient overlay so card content blends in */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: "linear-gradient(to bottom, rgba(10,15,21,0) 40%, rgba(10,15,21,0.95) 100%)",
-                    }}
-                  />
-                  {/* Elite badge on video */}
-                  <div
-                    className="absolute top-3 right-3"
-                    style={{
-                      background: "linear-gradient(135deg, #ff5500, #ff8800)",
-                      color: "#fff",
-                      fontFamily: "'Cinzel', serif",
-                      fontSize: "0.8rem",
-                      letterSpacing: "0.15em",
-                      padding: "0.25rem 0.75rem",
-                      borderRadius: "100px",
-                    }}
-                  >
-                    ELITE SHOW
-                  </div>
-                </div>
-              )}
-
-              {/* Key highlights under photo */}
-              {pkg.highlights && pkg.highlights.length > 0 && (
-                <div
-                  className="px-5 pt-4 pb-3"
                   style={{
-                    borderBottom: "1px solid rgba(255,255,255,0.07)",
-                    background: "rgba(0,0,0,0.18)",
+                    position: "absolute",
+                    inset: 0,
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    background: pkg.highlight
+                      ? "linear-gradient(135deg, rgba(0,200,255,0.10), rgba(0,144,255,0.06))"
+                      : "rgba(12, 18, 28, 0.85)",
+                    border: `1px solid ${pkg.highlight ? "rgba(0,200,255,0.40)" : "rgba(255,255,255,0.09)"}`,
+                    boxShadow: pkg.highlight
+                      ? "0 0 40px rgba(0,200,255,0.14), 0 0 80px rgba(0,200,255,0.06)"
+                      : "0 8px 32px rgba(0,0,0,0.4)",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
-                  <ul className="space-y-1.5">
-                    {pkg.highlights.map((h, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span style={{ fontSize: "0.85rem", lineHeight: 1.4, flexShrink: 0 }}>{h.icon}</span>
+                  {/* "MEEST GEKOZEN" badge */}
+                  {pkg.highlight && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "-1px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        background: "linear-gradient(135deg, #00c8ff, #0090ff)",
+                        color: "#080c10",
+                        fontFamily: "'Cinzel', serif",
+                        fontSize: "0.75rem",
+                        letterSpacing: "0.15em",
+                        padding: "0.3rem 1.1rem",
+                        borderRadius: "0 0 10px 10px",
+                        whiteSpace: "nowrap",
+                        zIndex: 10,
+                      }}
+                    >
+                      MEEST GEKOZEN
+                    </div>
+                  )}
+
+                  {/* Show photo — fills top half */}
+                  <div style={{ position: "relative", height: "260px", flexShrink: 0 }}>
+                    <img
+                      src={pkg.image}
+                      alt={`${pkg.name} DJ show setup`}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                        display: "block",
+                      }}
+                    />
+                    {/* Gradient overlay bottom of photo */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "linear-gradient(to bottom, rgba(10,15,21,0) 40%, rgba(10,15,21,0.88) 100%)",
+                      }}
+                    />
+                    {/* Package name badge top-right */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "12px",
+                        right: "12px",
+                        background: `linear-gradient(135deg, ${pkg.color}cc, ${pkg.color}88)`,
+                        color: "#fff",
+                        fontFamily: "'Cinzel', serif",
+                        fontSize: "0.75rem",
+                        letterSpacing: "0.15em",
+                        padding: "0.2rem 0.7rem",
+                        borderRadius: "100px",
+                        backdropFilter: "blur(4px)",
+                      }}
+                    >
+                      {pkg.name} SHOW
+                    </div>
+                    {/* Package title bottom of photo */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        bottom: "12px",
+                        left: "16px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontFamily: "'Outfit', sans-serif",
+                          fontSize: "0.65rem",
+                          letterSpacing: "0.2em",
+                          color: pkg.color,
+                          textTransform: "uppercase",
+                          marginBottom: "2px",
+                        }}
+                      >
+                        {pkg.tagline}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: "'Cinzel', serif",
+                          fontSize: "1.6rem",
+                          letterSpacing: "0.08em",
+                          color: "#f0f4f8",
+                          lineHeight: 1,
+                        }}
+                      >
+                        {pkg.name}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Key highlights — fills bottom half */}
+                  <div
+                    style={{
+                      flex: 1,
+                      padding: "1.1rem 1.25rem 1rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+                      {pkg.highlights.map((h, idx) => (
+                        <li
+                          key={idx}
+                          style={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: "0.5rem",
+                            marginBottom: idx < pkg.highlights.length - 1 ? "0.6rem" : 0,
+                          }}
+                        >
+                          <span style={{ fontSize: "0.9rem", lineHeight: 1.4, flexShrink: 0, marginTop: "1px" }}>
+                            {h.icon}
+                          </span>
+                          <span
+                            style={{
+                              fontFamily: "'Outfit', sans-serif",
+                              fontSize: "0.82rem",
+                              color: "rgba(240,244,248,0.85)",
+                              lineHeight: 1.45,
+                            }}
+                          >
+                            {h.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Hover hint */}
+                    <div
+                      style={{
+                        marginTop: "0.75rem",
+                        textAlign: "center",
+                        fontFamily: "'Outfit', sans-serif",
+                        fontSize: "0.7rem",
+                        color: `${pkg.color}99`,
+                        letterSpacing: "0.08em",
+                      }}
+                    >
+                      ↕ Hover voor alle details
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── BACK FACE ── */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    background: pkg.highlight
+                      ? "linear-gradient(160deg, rgba(0,200,255,0.12), rgba(0,144,255,0.07), rgba(8,12,20,0.97))"
+                      : "linear-gradient(160deg, rgba(255,255,255,0.05), rgba(8,12,20,0.97))",
+                    border: `1px solid ${pkg.highlight ? "rgba(0,200,255,0.40)" : `${pkg.color}33`}`,
+                    boxShadow: `0 0 40px ${pkg.color}22, 0 8px 32px rgba(0,0,0,0.5)`,
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "1.5rem",
+                  }}
+                >
+                  {/* Back header */}
+                  <div style={{ marginBottom: "0.75rem" }}>
+                    <div style={{ fontSize: "1.5rem", marginBottom: "0.25rem" }}>{pkg.icon}</div>
+                    <h3
+                      style={{
+                        fontFamily: "'Cinzel', serif",
+                        fontSize: "1.5rem",
+                        letterSpacing: "0.08em",
+                        color: "#f0f4f8",
+                        lineHeight: 1,
+                        marginBottom: "0.25rem",
+                      }}
+                    >
+                      {pkg.name}
+                    </h3>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        paddingBottom: "0.75rem",
+                        borderBottom: "1px solid rgba(255,255,255,0.08)",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "'Outfit', sans-serif",
+                          fontSize: "1rem",
+                          fontWeight: 600,
+                          color: pkg.color,
+                        }}
+                      >
+                        {pkg.price}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "'Outfit', sans-serif",
+                          fontSize: "0.75rem",
+                          color: "rgba(240,244,248,0.4)",
+                          padding: "0.15rem 0.5rem",
+                          border: "1px solid rgba(255,255,255,0.1)",
+                          borderRadius: "100px",
+                        }}
+                      >
+                        {pkg.duration}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Features list */}
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      margin: 0,
+                      padding: 0,
+                      flex: 1,
+                      overflowY: "auto",
+                      marginBottom: "0.75rem",
+                    }}
+                  >
+                    {pkg.features.map((feature) => (
+                      <li
+                        key={feature}
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "0.5rem",
+                          marginBottom: "0.45rem",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "16px",
+                            height: "16px",
+                            borderRadius: "50%",
+                            background: `${pkg.color}22`,
+                            border: `1px solid ${pkg.color}66`,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexShrink: 0,
+                            marginTop: "2px",
+                          }}
+                        >
+                          <Check size={9} color={pkg.color} />
+                        </div>
                         <span
                           style={{
                             fontFamily: "'Outfit', sans-serif",
-                            fontSize: "0.78rem",
-                            color: "rgba(240,244,248,0.82)",
-                            lineHeight: 1.4,
+                            fontSize: "0.8rem",
+                            color: "rgba(240,244,248,0.75)",
+                            lineHeight: 1.45,
                           }}
                         >
-                          {h.text}
+                          {feature}
                         </span>
                       </li>
                     ))}
                   </ul>
-                </div>
-              )}
 
-              {/* Most popular badge */}
-              {pkg.highlight && (
-                <div
-                  className="absolute -top-4 left-1/2 -translate-x-1/2"
-                  style={{
-                    background: "linear-gradient(135deg, #00c8ff, #0090ff)",
-                    color: "#080c10",
-                    fontFamily: "'Cinzel', serif",
-                    fontSize: "0.85rem",
-                    letterSpacing: "0.15em",
-                    padding: "0.35rem 1.25rem",
-                    borderRadius: "100px",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  MEEST GEKOZEN
-                </div>
-              )}
-
-              <div className="p-8 flex flex-col flex-1">
-                {/* Package header */}
-                <div className="mb-6">
-                  <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{pkg.icon}</div>
+                  {/* Ideal for */}
                   <div
                     style={{
-                      fontFamily: "'Outfit', sans-serif",
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.2em",
-                      color: pkg.color,
-                      textTransform: "uppercase",
-                      marginBottom: "0.5rem",
+                      marginBottom: "0.75rem",
+                      padding: "0.5rem 0.75rem",
+                      borderRadius: "8px",
+                      background: `${pkg.color}0d`,
+                      border: `1px solid ${pkg.color}22`,
                     }}
                   >
-                    {pkg.tagline}
-                  </div>
-                  <h3
-                    style={{
-                      fontFamily: "'Cinzel', serif",
-                      fontSize: "2rem",
-                      letterSpacing: "0.08em",
-                      color: "#f0f4f8",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {pkg.name}
-                  </h3>
-                  <div
-                    className="mt-3 flex items-center gap-3"
-                    style={{
-                      paddingBottom: "1.25rem",
-                      borderBottom: "1px solid rgba(255, 255, 255, 0.07)",
-                    }}
-                  >
-                    <span
+                    <p
                       style={{
                         fontFamily: "'Outfit', sans-serif",
-                        fontSize: "1.25rem",
-                        fontWeight: 600,
+                        fontSize: "0.75rem",
                         color: pkg.color,
+                        lineHeight: 1.4,
+                        margin: 0,
                       }}
                     >
-                      {pkg.price}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: "'Outfit', sans-serif",
-                        fontSize: "0.8rem",
-                        color: "rgba(240, 244, 248, 0.4)",
-                        padding: "0.2rem 0.6rem",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                        borderRadius: "100px",
-                      }}
-                    >
-                      {pkg.duration}
-                    </span>
+                      {pkg.ideal}
+                    </p>
                   </div>
-                </div>
 
-                {/* Features list */}
-                <ul className="space-y-3 flex-1 mb-6">
-                  {pkg.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <div
-                        className="flex-shrink-0 mt-0.5"
-                        style={{
-                          width: "18px",
-                          height: "18px",
-                          borderRadius: "50%",
-                          background: `${pkg.color}22`,
-                          border: `1px solid ${pkg.color}66`,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <Check size={10} color={pkg.color} />
-                      </div>
-                      <span
-                        style={{
-                          fontFamily: "'Outfit', sans-serif",
-                          fontSize: "0.875rem",
-                          color: "rgba(240, 244, 248, 0.75)",
-                          lineHeight: 1.5,
-                          opacity: 1,
-                        }}
-                      >
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Ideal for */}
-                <div
-                  className="mb-6 p-3 rounded-lg"
-                  style={{
-                    background: `${pkg.color}0d`,
-                    border: `1px solid ${pkg.color}22`,
-                  }}
-                >
-                  <p
+                  {/* CTA Button */}
+                  <button
+                    onClick={handleContact}
                     style={{
-                      fontFamily: "'Outfit', sans-serif",
-                      fontSize: "0.8rem",
-                      color: pkg.color,
-                      lineHeight: 1.5,
+                      width: "100%",
+                      padding: "0.75rem 1rem",
+                      borderRadius: "8px",
+                      fontFamily: "'Cinzel', serif",
+                      fontSize: "0.85rem",
+                      letterSpacing: "0.15em",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease",
+                      background: pkg.highlight
+                        ? "linear-gradient(135deg, #00c8ff, #0090ff)"
+                        : `linear-gradient(135deg, ${pkg.color}33, ${pkg.color}11)`,
+                      color: pkg.highlight ? "#080c10" : pkg.color,
+                      border: pkg.highlight ? "none" : `1px solid ${pkg.color}66`,
                     }}
                   >
-                    {pkg.ideal}
-                  </p>
+                    OFFERTE AANVRAGEN
+                  </button>
                 </div>
-
-                {/* CTA Button */}
-                <button
-                  onClick={handleContact}
-                  style={{
-                    width: "100%",
-                    padding: "0.875rem 1.5rem",
-                    borderRadius: "8px",
-                    fontFamily: "'Cinzel', serif",
-                    fontSize: "1rem",
-                    letterSpacing: "0.15em",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
-                    background: pkg.highlight
-                      ? "linear-gradient(135deg, #00c8ff, #0090ff)"
-                      : "transparent",
-                    color: pkg.highlight ? "#080c10" : pkg.color,
-                    border: pkg.highlight ? "none" : `1px solid ${pkg.color}66`,
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!pkg.highlight) {
-                      (e.currentTarget as HTMLButtonElement).style.background = `${pkg.color}22`;
-                      (e.currentTarget as HTMLButtonElement).style.borderColor = pkg.color;
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!pkg.highlight) {
-                      (e.currentTarget as HTMLButtonElement).style.background = "transparent";
-                      (e.currentTarget as HTMLButtonElement).style.borderColor = `${pkg.color}66`;
-                    }
-                  }}
-                >
-                  OFFERTE AANVRAGEN
-                </button>
               </div>
             </div>
           ))}

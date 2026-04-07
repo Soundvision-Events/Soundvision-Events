@@ -253,8 +253,9 @@
 - [x] Remove sv-float bounce animation from logo wrapper in HeroSection
 - [x] Replace sv-burn-glow with real fire/burning effect (orange/red/yellow/white-hot colors)
 - [x] Replace Cinzel font with Champagne & Limousines across entire website (Optie A)
-- [ ] Add show setup images to pricing table cards: intiem_show_template → Intiem, luxe_show_template → Luxe, elite_show_template → Elite
+- [x] Add show setup images to pricing table cards: intiem_show_template → Intiem, luxe_show_template → Luxe, elite_show_template → Elite
 - [x] Increase heading font sizes for Champagne & Limousines (smaller than Cinzel)
 - [x] Fix mobile hero title wrapping/breakpoints for new font width
 - [x] Apply Champagne & Limousines to "Offerte Aanvragen" CTA button
-- [ ] Add key highlights under photos on front of pricing cards (Intiem, Luxe, Elite)
+- [x] Add key highlights under photos on front of pricing cards (Intiem, Luxe, Elite)
+- [x] Rebuild PackagesSection as flip cards: front=photo+highlights, back=full features+CTA
