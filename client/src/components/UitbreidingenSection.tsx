@@ -428,7 +428,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
     <div
       ref={ref}
       style={{
-        perspective: "1000px", height: "220px", opacity,
+        perspective: "1000px", height: "260px", opacity,
         transform: `translateY(${translateY}px)`,
         transition: `opacity 0.7s ease ${index * 0.1}s, transform 0.7s ease ${index * 0.1}s`,
         cursor: isIncluded ? "default" : "pointer",
@@ -460,7 +460,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
             </span>
           </div>
 
-          <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.06em", color: '#022e40', margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1, height: '28px', paddingBottom: '26px', paddingLeft: '3px', marginBottom: '49px' }}>
+          <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.06em", color: '#022e40', margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1 }}>
             {addon.title}
           </h3>
 
