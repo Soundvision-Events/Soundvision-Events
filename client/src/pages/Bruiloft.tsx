@@ -146,7 +146,7 @@ export default function Bruiloft() {
         {/* 2. Wedding intro content */}
         <section
           className="relative py-20 overflow-hidden"
-          style={{ position: "relative", zIndex: 1, backgroundColor: 'transparent' }}
+          style={{ position: "relative", zIndex: 1, backgroundColor: 'rgba(20,0,20,0.5)' }}
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">

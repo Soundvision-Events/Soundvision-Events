@@ -82,8 +82,7 @@ export default function EventPageHero({
             backgroundSize: "cover",
             backgroundPosition: "center",
             transition: "opacity 0.6s ease",
-            opacity: fading ? 0 : 0.55,
-            mixBlendMode: "luminosity",
+            opacity: fading ? 0 : 1,
           }}
         />
 
