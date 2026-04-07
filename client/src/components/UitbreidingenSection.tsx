@@ -445,7 +445,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
         {/* ── FRONT ── */}
         <div style={{
           position: "absolute", inset: 0, backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden", background: '#c2c2c2',
+          WebkitBackfaceVisibility: "hidden", background: 'rgba(255,255,255,0.75)',
           border: borderStyle, borderRadius: "1.25rem", boxShadow: shadowStyle,
           padding: "1.25rem 1.25rem 1rem", display: "flex", flexDirection: "column",
           justifyContent: "space-between", overflow: "hidden",
