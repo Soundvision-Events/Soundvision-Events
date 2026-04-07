@@ -257,3 +257,4 @@
 - [x] Increase heading font sizes for Champagne & Limousines (smaller than Cinzel)
 - [x] Fix mobile hero title wrapping/breakpoints for new font width
 - [x] Apply Champagne & Limousines to "Offerte Aanvragen" CTA button
+- [ ] Add key highlights under photos on front of pricing cards (Intiem, Luxe, Elite)

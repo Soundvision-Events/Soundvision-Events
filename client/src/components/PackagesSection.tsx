@@ -22,6 +22,11 @@ const packages = [
     color: "#0090ff",
     video: null,
     image: INTIEM_IMG,
+    highlights: [
+      { icon: "👥", text: "Capaciteit 50 – 100 personen" },
+      { icon: "💡", text: "4 RGB parspots + 2x mini movinghead spots" },
+      { icon: "🎛️", text: "Unieke LED DJ Booth · Pioneer XDJ-AZ (nieuwste model)" },
+    ],
     features: [
       "Professionele DJ setup (Pioneer)",
       "Muziek op maat voor uw feest",
@@ -45,6 +50,12 @@ const packages = [
     color: "#00c8ff",
     video: null,
     image: LUXE_IMG,
+    highlights: [
+      { icon: "👥", text: "Capaciteit 100 – 200 personen" },
+      { icon: "💡", text: "8 RGB parspots + 2x mini movinghead + 2x Hybride movinghead groot" },
+      { icon: "🎛️", text: "Unieke LED DJ Booth · Pioneer XDJ-AZ (nieuwste model)" },
+      { icon: "🔊", text: "Hoogwaardige geluidsinstallatie (QSC)" },
+    ],
     features: [
       "Professionele DJ setup (Pioneer CDJ)",
       "Muziek volledig op maat",
@@ -70,6 +81,12 @@ const packages = [
     color: "#ff5500",
     video: null,
     image: ELITE_IMG,
+    highlights: [
+      { icon: "💡", text: "8 RGB parspots + 2x mini movinghead + 4x Hybride movinghead groot" },
+      { icon: "🌫️", text: "Rookmachine met LED-verlichte rookoutput" },
+      { icon: "🎛️", text: "Unieke LED DJ Booth · Pioneer XDJ-AZ (nieuwste model)" },
+      { icon: "🔊", text: "Hoogwaardige geluidsinstallatie (QSC 6KW)" },
+    ],
     features: [
       "Professionele DJ setup (Pioneer CDJ-3000)",
       "Volledig gepersonaliseerde muziekervaring",
@@ -295,6 +312,35 @@ export default function PackagesSection() {
                   >
                     ELITE SHOW
                   </div>
+                </div>
+              )}
+
+              {/* Key highlights under photo */}
+              {pkg.highlights && pkg.highlights.length > 0 && (
+                <div
+                  className="px-5 pt-4 pb-3"
+                  style={{
+                    borderBottom: "1px solid rgba(255,255,255,0.07)",
+                    background: "rgba(0,0,0,0.18)",
+                  }}
+                >
+                  <ul className="space-y-1.5">
+                    {pkg.highlights.map((h, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span style={{ fontSize: "0.85rem", lineHeight: 1.4, flexShrink: 0 }}>{h.icon}</span>
+                        <span
+                          style={{
+                            fontFamily: "'Outfit', sans-serif",
+                            fontSize: "0.78rem",
+                            color: "rgba(240,244,248,0.82)",
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          {h.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
 
