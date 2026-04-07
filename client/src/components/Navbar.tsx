@@ -48,17 +48,16 @@ export default function Navbar() {
         height: '61px',
       }}
     >
-      {/* Colour overlay — only this layer gets opacity */}
+      {/* Colour overlay — transparent */}
       <div
         className="absolute inset-0 transition-all duration-300"
         style={{
-          backgroundColor: "#00294d",
-          opacity: 0.6,
+          backgroundColor: "transparent",
           pointerEvents: "none",
         }}
       />
-      <div className="relative" style={{ paddingRight: "clamp(0.75rem, 3vw, 3rem)", paddingLeft: "clamp(0.75rem, 3vw, 3rem)", marginTop: "0", backgroundColor: 'rgba(194,5,188,0.4)' }}>
-        <div className="flex items-center justify-between" style={{height: '61px', backgroundColor: 'rgba(138,0,80,0.7)'}}>
+      <div className="relative" style={{ paddingRight: "clamp(0.75rem, 3vw, 3rem)", paddingLeft: "clamp(0.75rem, 3vw, 3rem)", marginTop: "0" }}>
+        <div className="flex items-center justify-between" style={{height: '61px'}}>
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img
