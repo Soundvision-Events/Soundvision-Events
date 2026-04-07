@@ -85,7 +85,7 @@ const packages = [
     extraHourIncluded: 1,     // 1 extra hour included
     highlight: false,
     photoLabel: "Elite DJ Setup",
-    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/show-elite_c781eb31.png",
+    photoUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/elite_show_template_cc6cd11c.png",
     features: [
       "Professionele DJ setup (Pioneer CDJ-3000)",
       "Volledig gepersonaliseerde muziekervaring",
