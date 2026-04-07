@@ -587,7 +587,7 @@ export default function HeroSection() {
           left: "50%",
           transform: "translateX(-50%)",
           width: "min(560px, 90vw)",
-          background: "rgba(4, 8, 20, 0.55)",
+          background: "rgba(4, 8, 20, 0.50)",
           backdropFilter: "blur(14px)",
           WebkitBackdropFilter: "blur(14px)",
           border: "1px solid rgba(0, 200, 255, 0.22)",

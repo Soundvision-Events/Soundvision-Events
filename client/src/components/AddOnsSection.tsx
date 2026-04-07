@@ -53,7 +53,7 @@ export default function AddOnsSection() {
       {/* 50% dark overlay — lets YouTube backdrop show through */}
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: "rgba(8, 12, 16, 0.30)", pointerEvents: "none", zIndex: 0 }}
+        style={{ backgroundColor: "rgba(8, 12, 16, 0.50)", pointerEvents: "none", zIndex: 0 }}
       />
       {/* Background decoration */}
       <div

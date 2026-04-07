@@ -395,7 +395,7 @@ export default function AboutSection() {
             <div
               className="relative rounded-xl px-4 py-3 w-full"
               style={{
-                background: "rgba(0,10,30,0.80)",
+                background: "rgba(0,10,30,0.50)",
                 backdropFilter: "blur(8px)",
                 border: "1px solid rgba(0,200,255,0.22)",
                 textAlign: "center",

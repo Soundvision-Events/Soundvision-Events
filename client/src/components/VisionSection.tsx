@@ -414,7 +414,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
             <div
               className="relative rounded-xl px-4 py-3 w-full"
               style={{
-                background: "rgba(0,10,30,0.80)",
+                background: "rgba(0,10,30,0.50)",
                 backdropFilter: "blur(8px)",
                 border: `1px solid ${accentRgba(0.22)}`,
                 textAlign: "center",
