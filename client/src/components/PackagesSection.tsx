@@ -13,8 +13,8 @@ const packages = [
     id: "intiem",
     name: "INTIEM",
     tagline: "Compact & Krachtig",
-    price: "Op aanvraag",
-    duration: "Tot 4 uur",
+    price: "vanaf €495,-",
+    duration: "4 uur · €100/extra uur",
     highlight: false,
     color: "#0090ff",
     image: INTIEM_IMG,
@@ -40,8 +40,8 @@ const packages = [
     id: "luxe",
     name: "LUXE",
     tagline: "Meest Gekozen",
-    price: "Op aanvraag",
-    duration: "Tot 6 uur",
+    price: "vanaf €650,-",
+    duration: "4 uur · €100/extra uur",
     highlight: true,
     color: "#00c8ff",
     image: LUXE_IMG,
@@ -70,8 +70,8 @@ const packages = [
     id: "elite",
     name: "ELITE",
     tagline: "Spectaculair & Groots",
-    price: "Op aanvraag",
-    duration: "Tot 8 uur",
+    price: "vanaf €895,-",
+    duration: "5 uur min · +1u gratis",
     highlight: false,
     color: "#ff5500",
     image: ELITE_IMG,
@@ -189,7 +189,7 @@ export default function PackagesSection() {
               fontWeight: 300,
             }}
           >
-            Drie zorgvuldig samengestelde pakketten voor elk type evenement en budget. Hover over een kaart voor alle details. Alle prijzen zijn op aanvraag.
+            Drie zorgvuldig samengestelde pakketten voor elk type evenement en budget. Hover over een kaart voor alle details.
           </p>
           <p
             className="mt-2"
@@ -359,6 +359,14 @@ export default function PackagesSection() {
                       justifyContent: "space-between",
                     }}
                   >
+                    {/* Price row */}
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", marginBottom: "0.75rem", paddingBottom: "0.6rem", borderBottom: `1px solid ${pkg.color}22` }}>
+                      <span style={{ fontFamily: "'Champagne & Limousines', serif", fontSize: "1.35rem", fontWeight: 700, color: pkg.highlight ? "#00c8ff" : pkg.color, letterSpacing: "0.04em", textShadow: `0 0 14px ${pkg.color}66` }}>
+                        {pkg.price}
+                      </span>
+                      <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.7rem", color: "rgba(240,244,248,0.4)" }}>incl. btw</span>
+                      <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", color: `${pkg.color}88`, marginLeft: "auto", letterSpacing: "0.05em" }}>{pkg.duration}</span>
+                    </div>
                     <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
                       {pkg.highlights.map((h, idx) => (
                         <li

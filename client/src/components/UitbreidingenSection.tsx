@@ -336,7 +336,7 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
                 )}
               </div>
             </div>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase", marginTop: "0.75rem" }}>
+            <p style={{ fontFamily: "'Champagne & Limousines', serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: '#00ffe1', textTransform: "uppercase", marginTop: "0.75rem" }}>
               Zweef voor details · Klik om te selecteren →
             </p>
           </div>

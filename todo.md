@@ -259,3 +259,6 @@
 - [x] Apply Champagne & Limousines to "Offerte Aanvragen" CTA button
 - [x] Add key highlights under photos on front of pricing cards (Intiem, Luxe, Elite)
 - [x] Rebuild PackagesSection as flip cards: front=photo+highlights, back=full features+CTA
+- [x] Show concrete prices on PackagesSection flip card fronts (Intiem €495, Luxe €650, Elite €895)
+- [x] Show concrete prices on UitbreidingenSection package cards
+- [x] Clean up visual editor CSS artifacts in UitbreidingenSection
