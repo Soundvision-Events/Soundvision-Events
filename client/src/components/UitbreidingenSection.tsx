@@ -393,8 +393,8 @@ function PackageFlipCard({ pkg, index, selected, onSelect, onContact, theme = DE
 }
 
 // ── Add-on card (click to select/deselect)
-const NEON_FRONT_BG = "linear-gradient(145deg, #1e0055 0%, #2d1a8a 45%, #1a2a9a 100%)";
-const NEON_BACK_BG = "linear-gradient(145deg, #160040 0%, #261570 50%, #1530a0 100%)";
+const NEON_FRONT_BG = "#0ac2ff";
+const NEON_BACK_BG = "#00b8f5";
 const NEON_BORDER = "2px solid rgba(100,120,255,0.60)";
 const NEON_BORDER_HOVER = "2px solid #7b8fff";
 const NEON_BORDER_SELECTED = "2px solid #00ff88";
@@ -449,7 +449,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
           border: borderStyle, borderRadius: "1.25rem", boxShadow: shadowStyle,
           padding: "1.25rem 1.25rem 1rem", display: "flex", flexDirection: "column",
           justifyContent: "space-between", overflow: "hidden",
-          transition: "box-shadow 0.4s ease, border 0.4s ease", backdropFilter: "blur(8px)", backgroundColor: '#0ac2ff',
+          transition: "box-shadow 0.4s ease, border 0.4s ease", backdropFilter: "blur(8px)",
         }}>
           <div style={{ position: "absolute", top: 0, left: "15%", right: "15%", height: "1px", background: `linear-gradient(90deg, transparent, ${NEON_CYAN}, transparent)`, borderRadius: "999px", boxShadow: `0 0 8px ${NEON_CYAN}` }} />
 
@@ -501,7 +501,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
           WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)",
           background: NEON_BACK_BG, border: borderStyle, borderRadius: "1.25rem",
           boxShadow: shadowStyle, padding: "1.1rem 1.25rem", display: "flex",
-          flexDirection: "column", overflow: "hidden", backdropFilter: "blur(10px)", backgroundColor: '#00b8f5', opacity: '0.9',
+          flexDirection: "column", overflow: "hidden", backdropFilter: "blur(10px)",
         }}>
           <div style={{ position: "absolute", top: 0, left: "15%", right: "15%", height: "1px", background: `linear-gradient(90deg, transparent, ${NEON_CYAN}, transparent)`, borderRadius: "999px", boxShadow: `0 0 8px ${NEON_CYAN}` }} />
           <div style={{ marginBottom: "0.5rem" }}>
