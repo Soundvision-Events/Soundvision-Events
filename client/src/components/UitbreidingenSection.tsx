@@ -117,12 +117,12 @@ const addons = [
     backTitle: "Hoe werkt het?",
     backPoints: [
       "Standaard Intiem & Luxe: 4 uur",
-      "Standaard Elite: 5 uur minimaal",
+      "Standaard Elite: 5 uur (incl. 1 uur gratis)",
       "Elk extra uur: €100 (incl. BTW)",
-      "Vooraf afstemmen in overleg",
+      "Uur tarief extra na standaard uren van gekozen show",
       "Flexibel bij te boeken op de avond zelf",
     ],
-    backNote: "Van toepassing op alle shows",
+    backNote: "Van toepassing op alle shows — extra uren na standaard duur",
   },
   {
     id: "rookmachine",
@@ -445,7 +445,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
         {/* ── FRONT ── */}
         <div style={{
           position: "absolute", inset: 0, backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden", background: NEON_FRONT_BG,
+          WebkitBackfaceVisibility: "hidden", background: '#c2c2c2',
           border: borderStyle, borderRadius: "1.25rem", boxShadow: shadowStyle,
           padding: "1.25rem 1.25rem 1rem", display: "flex", flexDirection: "column",
           justifyContent: "space-between", overflow: "hidden",
@@ -455,12 +455,12 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <span style={{ fontSize: "2rem", filter: `drop-shadow(0 0 10px ${NEON_CYAN}88)`, lineHeight: 1 }}>{addon.icon}</span>
-            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: NEON_CYAN, padding: "0.2rem 0.6rem", border: `1px solid ${NEON_CYAN_DIM}`, borderRadius: "100px", textTransform: "uppercase", background: "rgba(0,200,255,0.08)" }}>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: '#001c42', padding: "0.2rem 0.6rem", border: `1px solid ${NEON_CYAN_DIM}`, borderRadius: "100px", textTransform: "uppercase", background: '#29d1ff' }}>
               {addon.subtitle}
             </span>
           </div>
 
-          <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.06em", color: "#e8f8ff", margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1 }}>
+          <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.06em", color: '#022e40', margin: "0.5rem 0 0", textShadow: `0 0 18px ${NEON_CYAN}55, 0 2px 4px rgba(0,0,0,0.9)`, lineHeight: 1.1 }}>
             {addon.title}
           </h3>
 
@@ -486,10 +486,10 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
           )}
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "0.5rem" }}>
-            <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.08em", color: NEON_CYAN, textShadow: `0 0 10px ${NEON_CYAN}99` }}>
+            <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1.05rem", letterSpacing: "0.08em", color: '#011f32', textShadow: `0 0 10px ${NEON_CYAN}99` }}>
               {addon.priceLabel}
             </span>
-            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.55rem", letterSpacing: "0.15em", color: NEON_CYAN_DIM, textTransform: "uppercase" }}>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.55rem", letterSpacing: "0.15em", color: '#002252', textTransform: "uppercase" }}>
               {isIncluded ? "Gratis" : "Klik om toe te voegen →"}
             </span>
           </div>
@@ -517,7 +517,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
                 <div style={{ width: "13px", height: "13px", borderRadius: "50%", flexShrink: 0, marginTop: "2px", background: NEON_CHECK_BG, border: `1px solid ${NEON_CHECK_BORDER}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Check size={7} color={NEON_CYAN} />
                 </div>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.74rem", color: "rgba(220,240,255,0.88)", lineHeight: 1.35 }}>{point}</span>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.74rem", color: '#012541', lineHeight: 1.35 }}>{point}</span>
               </li>
             ))}
           </ul>
