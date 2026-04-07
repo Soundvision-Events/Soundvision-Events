@@ -262,3 +262,5 @@
 - [x] Show concrete prices on PackagesSection flip card fronts (Intiem €495, Luxe €650, Elite €895)
 - [x] Show concrete prices on UitbreidingenSection package cards
 - [x] Clean up visual editor CSS artifacts in UitbreidingenSection
+- [ ] Activate contact form: send booking email to bert_sv@icloud.com on submission
+- [ ] Add Manus push notification on new booking form submission

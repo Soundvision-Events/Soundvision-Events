@@ -449,7 +449,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
           border: borderStyle, borderRadius: "1.25rem", boxShadow: shadowStyle,
           padding: "1.25rem 1.25rem 1rem", display: "flex", flexDirection: "column",
           justifyContent: "space-between", overflow: "hidden",
-          transition: "box-shadow 0.4s ease, border 0.4s ease", backdropFilter: "blur(8px)",
+          transition: "box-shadow 0.4s ease, border 0.4s ease", backdropFilter: "blur(8px)", backgroundColor: '#0ac2ff',
         }}>
           <div style={{ position: "absolute", top: 0, left: "15%", right: "15%", height: "1px", background: `linear-gradient(90deg, transparent, ${NEON_CYAN}, transparent)`, borderRadius: "999px", boxShadow: `0 0 8px ${NEON_CYAN}` }} />
 

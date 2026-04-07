@@ -129,7 +129,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
         <h2
           style={{
             fontFamily: "'Cinzel', serif",
-            fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)",
+            fontSize: '84px',
             letterSpacing: "0.12em",
             lineHeight: 1.1,
             color: "#f0f4f8",
@@ -145,15 +145,19 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
           <span
             style={{
               color: "#003a66",
-              backgroundColor: accent,
+              backgroundColor: '#00eeff',
               fontFamily: "'Cinzel', serif",
-              fontSize: "clamp(1rem, 2vw, 1.3rem)",
+              fontSize: '39px',
               padding: "0.35rem 1.2rem",
-              borderRadius: "2px",
+              borderRadius: '0px',
               border: "3px groove #000000",
               display: "inline-block",
               fontWeight: 500,
               letterSpacing: "0.06em",
+              opacity: 0.8,
+              borderWidth: '19px',
+              borderStyle: 'inset',
+              borderColor: '#002b4d',
             }}
           >
             DJ Tonicity: Visie op de gewenste Sound, met de perfecte Shows
@@ -164,11 +168,13 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
               marginTop: "0.5rem",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: "clamp(0.75rem, 1.2vw, 0.9rem)",
-              color: accentRgba(0.5),
+              fontFamily: 'champagne',
+              fontSize: '20px',
+              color: '#fafeff',
               textDecoration: "overline",
               textAlign: "center",
+              backgroundColor: '#000a2e',
+              opacity: 0.8,
             }}
           >
             Oprichter en de vaste allround DJ @ SoundVision Events sinds 2016
