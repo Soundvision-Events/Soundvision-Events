@@ -173,7 +173,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
     <section
       style={{
         padding: "6rem 0", position: "relative", overflow: "hidden",
-        paddingTop: "65px", paddingBottom: "53px", marginTop: "0px", marginBottom: "0px",
+        paddingTop: "65px", paddingBottom: "53px", marginTop: "0px", marginBottom: "0px", backgroundColor: 'rgba(151,2,54,0.2)',
       }}
     >
       {/* Colour overlay layer — only this layer gets opacity */}
