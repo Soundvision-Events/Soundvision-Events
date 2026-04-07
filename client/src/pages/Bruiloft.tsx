@@ -146,9 +146,11 @@ export default function Bruiloft() {
         {/* 2. Wedding intro content */}
         <section
           className="relative py-20 overflow-hidden"
-          style={{ position: "relative", zIndex: 1, backgroundColor: 'rgba(20,0,20,0.5)' }}
+          style={{ position: "relative", zIndex: 1 }}
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Background overlay — only this layer is transparent, not the content */}
+          <div style={{ position: "absolute", inset: 0, backgroundColor: 'rgba(0,0,0,0.4)', pointerEvents: "none", zIndex: 0 }} />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8" style={{ position: "relative", zIndex: 1 }}>
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left: text */}
               <div className="sv-fade-up">
