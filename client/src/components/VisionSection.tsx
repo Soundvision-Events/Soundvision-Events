@@ -473,7 +473,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
           className="sv-bg-zoom"
           src={INFOGRAPHIC_URL}
           alt="SoundVision Events — De Sleutel tot een Onvergetelijk Feest"
-          style={{ width: "100%", height: "auto", display: "block" }}
+          style={{ width: '1134px', height: '649px', display: "block", margin: "0 auto" }}
         />
         {/* Bottom accent line — themed gradient (reversed) */}
         <div
