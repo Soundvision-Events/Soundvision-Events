@@ -501,7 +501,7 @@ function AddonFlipCard({ addon, index, selected, onToggle, selectedPackageId, th
           WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)",
           background: NEON_BACK_BG, border: borderStyle, borderRadius: "1.25rem",
           boxShadow: shadowStyle, padding: "1.1rem 1.25rem", display: "flex",
-          flexDirection: "column", overflow: "hidden", backdropFilter: "blur(10px)",
+          flexDirection: "column", overflow: "hidden", backdropFilter: "blur(10px)", backgroundColor: '#00b8f5', opacity: '0.9',
         }}>
           <div style={{ position: "absolute", top: 0, left: "15%", right: "15%", height: "1px", background: `linear-gradient(90deg, transparent, ${NEON_CYAN}, transparent)`, borderRadius: "999px", boxShadow: `0 0 8px ${NEON_CYAN}` }} />
           <div style={{ marginBottom: "0.5rem" }}>
