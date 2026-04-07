@@ -7,7 +7,7 @@ import { Check } from "lucide-react";
 
 const LIGHTS_VIDEO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/Lights_change_colours_202603270757-5eMFKZjbLFBcMUFMcBxFzH.mp4";
 
-const INTIEM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/intiem_show_template_bf04918d.png";
+const INTIEM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/intiem_show_template_v2_75b64794.png";
 const LUXE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/luxe_show_template_16cc28b3.png";
 const ELITE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/elite_show_template_cc6cd11c.png";
 
