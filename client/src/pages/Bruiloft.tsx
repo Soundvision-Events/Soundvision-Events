@@ -128,7 +128,7 @@ export default function Bruiloft() {
         {/* 1. Hero */}
         <EventPageHero
           title="BRUILOFT DJ SHOW"
-          subtitle="SoundVision Events — Trouwen"
+          subtitle="SoundVision Events — bruiloft-dj"
           description="Van de ceremonie tot de laatste dans — DJ Tonicity zorgt voor de perfecte muzikale begeleiding van uw trouwdag. Romantisch, elegant en onvergetelijk. Volledig afgestemd op uw smaak en de sfeer van uw bruiloft."
           image="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/openingsdans116_aa3b0634.jpg"
           accentColor={ROSE}

@@ -196,7 +196,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
             style={{
               fontSize: "16px", letterSpacing: "0.1em", textTransform: "none",
               color: '#f0f4f5', marginBottom: "0.75rem", fontFamily: "'Outfit', sans-serif",
-              maxWidth: "700px", margin: "0 auto 0.75rem", lineHeight: 1.6,
+              maxWidth: "700px", margin: "0 auto 0.75rem", lineHeight: 1.6, fontWeight: '200',
             }}
           >
             DJ Tonicity is betrokken bij het totaal plaatje vanaf het eerste intake gesprek. Door professionelle feedback / inzicht m.b.t. uw unieke feest ideeën eerst concreet te maken. Pas dan is de voorbereiding doeltreffend!
@@ -204,7 +204,7 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
           <h2
             style={{
               fontFamily: "'Cinzel', serif", fontSize: "clamp(1.7rem, 4vw, 2.7rem)",
-              letterSpacing: "0.05em", color: "#f0f4f8", lineHeight: 1.15,
+              letterSpacing: "0.05em", color: '#a653f9', lineHeight: 1.15,
               textShadow: `0 0 40px ${theme.glowSubtle}`,
               marginBottom: "1.5rem",
             }}
