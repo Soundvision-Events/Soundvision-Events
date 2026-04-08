@@ -34,9 +34,9 @@ const DEFAULT_ITEMS: BentoItem[] = [
     area: "a",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/dj-equipment-2x_7YnFqWLqPHXVBkJsVAYLJP.webp",
-    alt: "DJ Equipment",
-    label: "Professionele Apparatuur",
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_5501_54b2e5f0.webp",
+    alt: "Bruiloft DJ Tonicity",
+    label: "Bruiloft DJ Tonicity",
     area: "b",
   },
   {
