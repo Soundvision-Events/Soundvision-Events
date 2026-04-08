@@ -268,29 +268,49 @@ export default function Bruiloft() {
             subtitle="Onze Bruiloftsshows"
             items={[
               {
-                // Area a: large hero — bride & groom with DJ Tonicity, SoundVision branded setup
+                // Area a: large hero — bride with mic + extra bruiloft shots
                 src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/IMG_0007_d5030403.webp",
+                extraSrcs: [
+                  // DSC_5501: DJ Tonicity at the decks, dancing crowd in pink/purple light
+                  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_5501_54b2e5f0.webp",
+                  // DSC_3938: DJ close-up in blue light
+                  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_3938_5eeaf311.webp",
+                ],
                 alt: "Bruid met microfoon bij DJ Tonicity",
                 label: "Bruiloft DJ Tonicity — Eerste Dans",
                 area: "a",
               },
               {
-                // Area b: couple slow dancing in purple/blue light
+                // Area b: couple slow dancing + silhouette shot
                 src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_2127_4b6a3d22.webp",
+                extraSrcs: [
+                  // DSC_2172: DJ Tonicity with bride & groom, SoundVision logo visible
+                  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_2172_397932df.webp",
+                ],
                 alt: "Bruidspaar dansend",
                 label: "Romantische Eerste Dans",
                 area: "b",
               },
               {
-                // Area c: couple embracing on dance floor, blue/pink light
+                // Area c: couple embracing + DJ Tonicity consulting couple
                 src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_2128_a92a0d1a.webp",
+                extraSrcs: [
+                  // DSC_3915: DJ Tonicity talking to guest in pink light
+                  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_3915_7845b38d.webp",
+                ],
                 alt: "Bruidspaar op dansvloer",
                 label: "Sfeer & Emotie",
                 area: "c",
               },
               {
-                // Area e: wide — DJ Tonicity with bride & groom at the decks, SoundVision logo visible
+                // Area e: wide — SoundVision branded + dancing crowd shots
                 src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_2172_397932df.webp",
+                extraSrcs: [
+                  // DSC_3887: dancing crowd in blue/pink light
+                  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_3887_94802f82.webp",
+                  // DSC_3864: couple celebrating in green light
+                  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_3864_96d64945.webp",
+                ],
                 alt: "DJ Tonicity met bruidspaar",
                 label: "SoundVision Events — Bruiloft Show",
                 area: "e",
