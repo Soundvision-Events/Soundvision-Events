@@ -11,7 +11,7 @@
  * Each cell cycles independently at a staggered interval so they never all
  * switch at the same time.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface BentoItem {
   /** Primary image URL — required */
@@ -92,6 +92,7 @@ function BentoCell({
   glowRgba,
   glowStrong,
   cycleInterval,
+  isVisible,
 }: {
   item: BentoItem;
   accentColor: string;
@@ -99,22 +100,33 @@ function BentoCell({
   glowStrong: string;
   /** ms between photo switches */
   cycleInterval: number;
+  /** Whether the gallery section is in the viewport */
+  isVisible: boolean;
 }) {
   const allSrcs = [item.src, ...(item.extraSrcs ?? [])];
   const [activeIdx, setActiveIdx] = useState(0);
   const [fadingIdx, setFadingIdx] = useState<number | null>(null);
+  // Track which images have finished loading (for blur-up effect)
+  const [loadedSrcs, setLoadedSrcs] = useState<Set<string>>(() => new Set());
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const handleLoad = useCallback((src: string) => {
+    setLoadedSrcs((prev) => {
+      const next = new Set(prev);
+      next.add(src);
+      return next;
+    });
+  }, []);
+
   useEffect(() => {
-    if (allSrcs.length <= 1) return;
+    // Only start cycling once the section is visible in the viewport
+    if (!isVisible || allSrcs.length <= 1) return;
 
     timerRef.current = setTimeout(function tick() {
       setFadingIdx((prev) => {
-        // start fade-out of current
         return prev ?? activeIdx;
       });
       setActiveIdx((prev) => (prev + 1) % allSrcs.length);
-      // after fade completes, clear the fading layer
       setTimeout(() => setFadingIdx(null), 800);
       timerRef.current = setTimeout(tick, cycleInterval);
     }, cycleInterval);
@@ -123,7 +135,7 @@ function BentoCell({
       if (timerRef.current) clearTimeout(timerRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cycleInterval, allSrcs.length]);
+  }, [isVisible, cycleInterval, allSrcs.length]);
 
   return (
     <div
@@ -145,29 +157,40 @@ function BentoCell({
       }}
     >
       {/* All images stacked; only active one is visible */}
-      {allSrcs.map((src, idx) => (
-        <img
-          key={src}
-          src={src}
-          alt={idx === 0 ? item.alt : `${item.alt} ${idx + 1}`}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transition: "opacity 0.8s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-            opacity: idx === activeIdx ? 1 : 0,
-            transform: idx === activeIdx ? "scale(1.0)" : "scale(1.04)",
-            zIndex: idx === activeIdx ? 2 : idx === fadingIdx ? 1 : 0,
-          }}
-          className={idx === activeIdx ? "group-hover:scale-105" : ""}
-          onError={(e) => {
-            const el = e.currentTarget as HTMLImageElement;
-            el.src = `https://placehold.co/800x600/0a0f15/444?text=${encodeURIComponent(item.alt)}`;
-          }}
-        />
-      ))}
+      {allSrcs.map((src, idx) => {
+        const isLoaded = loadedSrcs.has(src);
+        // First image: eager load (above the fold or first visible); rest: lazy
+        const loadingAttr = idx === 0 ? ("eager" as const) : ("lazy" as const);
+        return (
+          <img
+            key={src}
+            src={src}
+            alt={idx === 0 ? item.alt : `${item.alt} ${idx + 1}`}
+            loading={loadingAttr}
+            decoding="async"
+            onLoad={() => handleLoad(src)}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              // Blur-up: start blurred, sharpen once loaded
+              filter: isLoaded ? "blur(0px)" : "blur(8px)",
+              transition:
+                "opacity 0.8s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease",
+              opacity: idx === activeIdx ? 1 : 0,
+              transform: idx === activeIdx ? "scale(1.0)" : "scale(1.04)",
+              zIndex: idx === activeIdx ? 2 : idx === fadingIdx ? 1 : 0,
+            }}
+            className={idx === activeIdx ? "group-hover:scale-105" : ""}
+            onError={(e) => {
+              const el = e.currentTarget as HTMLImageElement;
+              el.src = `https://placehold.co/800x600/0a0f15/444?text=${encodeURIComponent(item.alt)}`;
+            }}
+          />
+        );
+      })}
 
       {/* Dark gradient overlay */}
       <div
@@ -276,8 +299,23 @@ export default function BentoGallery({
   // Stagger intervals so cells don't all switch at the same time
   const INTERVALS = [4500, 5200, 4800, 5600];
 
+  // IntersectionObserver: start carousel only when gallery enters viewport
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="relative py-20 overflow-hidden"
       style={{ backgroundColor: "rgba(3, 3, 3, 0.45)", paddingTop: "83px", marginTop: "44px" }}
     >
@@ -364,6 +402,7 @@ export default function BentoGallery({
               glowRgba={glowRgba}
               glowStrong={glowStrong}
               cycleInterval={INTERVALS[idx % INTERVALS.length]}
+              isVisible={isVisible}
             />
           ))}
         </div>
