@@ -134,50 +134,188 @@ export default function BruiloftContactForm() {
         className="relative py-24 overflow-hidden"
         style={{ position: "relative", zIndex: 1 }}
       >
+        {/* Keyframes for the confirmation animations */}
+        <style>{`
+          @keyframes svConfirmFadeIn {
+            from { opacity: 0; transform: translateY(32px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0)   scale(1);    }
+          }
+          @keyframes svCheckPulse {
+            0%, 100% { filter: drop-shadow(0 0 8px ${ROSE}) drop-shadow(0 0 20px ${ROSE_GLOW}); }
+            50%       { filter: drop-shadow(0 0 18px ${ROSE}) drop-shadow(0 0 40px ${ROSE_GLOW}); }
+          }
+          @keyframes svGlowBurst {
+            0%   { opacity: 0.0; transform: scale(0.5); }
+            30%  { opacity: 0.5; }
+            100% { opacity: 0.0; transform: scale(2.2); }
+          }
+          @keyframes svStepSlide {
+            from { opacity: 0; transform: translateX(-16px); }
+            to   { opacity: 1; transform: translateX(0); }
+          }
+        `}</style>
+
         <div
           className="absolute inset-0"
           style={{ backgroundColor: "rgba(8,4,20,0.70)", pointerEvents: "none", zIndex: 0 }}
         />
+
+        {/* Radial glow burst behind the card */}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "500px",
+            height: "500px",
+            borderRadius: "50%",
+            background: `radial-gradient(circle, ${ROSE_GLOW} 0%, transparent 70%)`,
+            animation: "svGlowBurst 1.4s ease-out forwards",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        />
+
         <div
           className="container mx-auto px-4 sm:px-6 lg:px-8 relative"
-          style={{ zIndex: 1, textAlign: "center", maxWidth: "600px" }}
+          style={{ zIndex: 1, textAlign: "center", maxWidth: "640px" }}
         >
           <div
             style={{
-              background: `linear-gradient(135deg, rgba(20,8,50,0.60), ${ROSE_GLOW_XS})`,
-              border: `1px solid ${ROSE}44`,
-              borderRadius: "20px",
-              padding: "3rem 2rem",
-              boxShadow: `0 0 60px ${ROSE_GLOW_S}`,
+              background: `linear-gradient(135deg, rgba(20,8,50,0.75), ${ROSE_GLOW_XS})`,
+              border: `1px solid ${ROSE}55`,
+              borderRadius: "24px",
+              padding: "3.5rem 2.5rem",
+              boxShadow: `0 0 80px ${ROSE_GLOW_S}, 0 8px 48px rgba(0,0,0,0.55)`,
+              animation: "svConfirmFadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
             }}
           >
-            <CheckCircle2
-              size={56}
-              style={{ color: ROSE, margin: "0 auto 1.5rem", display: "block" }}
-            />
+            {/* Pulsing checkmark */}
+            <div style={{ marginBottom: "1.5rem" }}>
+              <CheckCircle2
+                size={64}
+                style={{
+                  color: ROSE,
+                  margin: "0 auto",
+                  display: "block",
+                  animation: "svCheckPulse 2s ease-in-out infinite",
+                }}
+              />
+            </div>
+
+            {/* Heading */}
             <h3
               style={{
                 fontFamily: "'Cinzel', serif",
-                fontSize: "clamp(1.4rem, 3vw, 2rem)",
+                fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
                 color: "#f0f4f8",
-                letterSpacing: "0.05em",
-                marginBottom: "1rem",
+                letterSpacing: "0.06em",
+                marginBottom: "0.75rem",
               }}
             >
               Aanvraag Ontvangen!
             </h3>
+
+            {/* Accent divider */}
+            <div
+              style={{
+                width: "60px",
+                height: "2px",
+                background: `linear-gradient(90deg, transparent, ${ROSE}, transparent)`,
+                margin: "0 auto 1.25rem",
+                borderRadius: "2px",
+              }}
+            />
+
+            {/* Confirmation text */}
             <p
               style={{
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: "1rem",
-                color: "rgba(240,244,248,0.75)",
-                lineHeight: 1.7,
+                color: "rgba(240,244,248,0.80)",
+                lineHeight: 1.8,
                 fontWeight: 300,
                 marginBottom: "2rem",
               }}
             >
-              Bedankt voor uw bruiloftaanvraag. DJ Tonicity neemt binnen 24 uur persoonlijk contact met u op om uw trouwdag te bespreken.
+              Bedankt voor uw bruiloftaanvraag. DJ Tonicity neemt{" "}
+              <strong style={{ color: ROSE_SOFT, fontWeight: 500 }}>binnen 24 uur</strong>{" "}
+              persoonlijk contact met u op om uw trouwdag te bespreken.
             </p>
+
+            {/* What happens next — timeline */}
+            <div
+              style={{
+                textAlign: "left",
+                background: "rgba(255,61,138,0.06)",
+                border: `1px solid ${ROSE}22`,
+                borderRadius: "14px",
+                padding: "1.25rem 1.5rem",
+                marginBottom: "2rem",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.25em",
+                  color: ROSE_SOFT,
+                  textTransform: "uppercase",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                Wat gebeurt er nu?
+              </p>
+              {[
+                { step: "1", text: "DJ Tonicity bekijkt uw aanvraag en datum" },
+                { step: "2", text: "U ontvangt een persoonlijk bericht binnen 24 uur" },
+                { step: "3", text: "Vrijblijvend kennismakingsgesprek — online of op locatie" },
+                { step: "4", text: "Offerte op maat voor uw trouwdag" },
+              ].map((item, i) => (
+                <div
+                  key={item.step}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "0.75rem",
+                    marginBottom: i < 3 ? "0.6rem" : 0,
+                    animation: `svStepSlide 0.4s ease ${0.3 + i * 0.12}s both`,
+                  }}
+                >
+                  <span
+                    style={{
+                      flexShrink: 0,
+                      width: "22px",
+                      height: "22px",
+                      borderRadius: "50%",
+                      background: `linear-gradient(135deg, ${ROSE}, #c0185e)`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "0.65rem",
+                      fontWeight: 700,
+                      color: "#fff",
+                      marginTop: "1px",
+                    }}
+                  >
+                    {item.step}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: "0.88rem",
+                      color: "rgba(240,244,248,0.75)",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Action buttons */}
             <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
               <a
                 href="tel:+31622764233"
@@ -185,14 +323,24 @@ export default function BruiloftContactForm() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.5rem",
-                  padding: "0.75rem 1.5rem",
+                  padding: "0.8rem 1.75rem",
                   background: `linear-gradient(135deg, ${ROSE} 0%, #c0185e 100%)`,
                   color: "#fff",
-                  borderRadius: "8px",
+                  borderRadius: "10px",
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "0.9rem",
+                  fontWeight: 500,
                   textDecoration: "none",
-                  boxShadow: `0 0 20px ${ROSE_GLOW}`,
+                  boxShadow: `0 0 24px ${ROSE_GLOW}`,
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 36px ${ROSE_GLOW}`;
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 24px ${ROSE_GLOW}`;
                 }}
               >
                 <Phone size={16} /> Direct Bellen
@@ -205,16 +353,29 @@ export default function BruiloftContactForm() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.5rem",
-                  padding: "0.75rem 1.5rem",
+                  padding: "0.8rem 1.75rem",
                   background: "transparent",
                   color: ROSE,
                   border: `1.5px solid ${ROSE}`,
-                  borderRadius: "8px",
+                  borderRadius: "10px",
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "0.9rem",
+                  fontWeight: 500,
                   textDecoration: "none",
+                  transition: "background 0.2s ease, transform 0.2s ease",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = ROSE_GLOW_S;
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
                 }}
               >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
                 WhatsApp
               </a>
             </div>
