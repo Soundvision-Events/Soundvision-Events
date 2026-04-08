@@ -203,7 +203,7 @@ export default function Bruiloft() {
 
                 {/* CTA buttons with rose accent */}
                 <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                  <a href="#contact" className="btn-rose">Offerte Aanvragen</a>
+                  <a href="#bruiloft-contact" className="btn-rose">Offerte Aanvragen</a>
                   <a href="#packages" className="btn-rose-outline">Bekijk Pakketten</a>
                 </div>
               </div>
