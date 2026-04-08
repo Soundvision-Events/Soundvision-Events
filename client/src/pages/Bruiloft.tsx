@@ -8,6 +8,7 @@ import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
 import UitbreidingenSection from "@/components/UitbreidingenSection";
 import ContactSection from "@/components/ContactSection";
+import BruiloftContactForm from "@/components/BruiloftContactForm";
 import USPSection from "@/components/USPSection";
 import VisionSection from "@/components/VisionSection";
 import BentoGallery from "@/components/BentoGallery";
@@ -278,7 +279,12 @@ export default function Bruiloft() {
           <TestimonialsSection />
         </div>
 
-        {/* 8. Contact */}
+        {/* 8. Bruiloft-specific inquiry form */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <BruiloftContactForm />
+        </div>
+
+        {/* 9. General contact section */}
         <div style={{ position: "relative", zIndex: 1 }}>
           <ContactSection />
         </div>
