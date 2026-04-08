@@ -171,13 +171,16 @@ function FlipCard({ card, index, theme }: { card: USPCard; index: number; theme:
 export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageTheme }) {
   return (
     <section
+      className="sv-parallax"
       style={{
         padding: "6rem 0", position: "relative", overflow: "hidden",
         paddingTop: "65px", paddingBottom: "53px", marginTop: "0px", marginBottom: "0px", backgroundColor: 'rgba(151,2,54,0.2)',
       }}
     >
-      {/* Colour overlay layer — only this layer gets opacity */}
+      {/* Colour overlay layer — only this layer gets opacity, parallax bg */}
       <div
+        className="sv-parallax-bg"
+        data-parallax-speed="0.14"
         style={{
           position: "absolute",
           inset: 0,

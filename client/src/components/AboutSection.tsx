@@ -35,12 +35,13 @@ export default function AboutSection() {
     <section
       id="about"
       ref={containerRef}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden sv-parallax"
       style={{ paddingBottom: "0" }}
     >
-      {/* Global section colour overlay */}
+      {/* Global section colour overlay — parallax bg layer */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 sv-parallax-bg"
+        data-parallax-speed="0.15"
         style={{
           backgroundColor: "#00bfff",
           opacity: 0.2,

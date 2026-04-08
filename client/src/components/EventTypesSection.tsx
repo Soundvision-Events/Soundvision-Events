@@ -36,12 +36,13 @@ export default function EventTypesSection() {
   return (
     <section
       id="events"
-      className="relative py-24 overflow-hidden"
+      className="relative py-24 overflow-hidden sv-parallax"
       style={{ backgroundColor: "rgba(8, 12, 16, 0.50)" }}
     >
-      {/* Background decoration */}
+      {/* Background decoration — parallax bg layer */}
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 sv-parallax-bg"
+        data-parallax-speed="0.16"
         style={{
           backgroundImage: `
             radial-gradient(ellipse at 20% 50%, rgba(0, 200, 255, 0.06) 0%, transparent 50%),

@@ -107,21 +107,23 @@ export default function PackagesSection() {
   return (
     <section
       id="packages"
-      className="relative py-24 overflow-hidden"
+      className="relative py-24 overflow-hidden sv-parallax"
       style={{ position: "relative" }}
     >
-      {/* Deep teal section overlay */}
+      {/* Deep teal section overlay — parallax bg layer */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 sv-parallax-bg"
+        data-parallax-speed="0.12"
         style={{
           background: "linear-gradient(180deg, rgba(0,60,70,0.30) 0%, rgba(0,40,55,0.30) 50%, rgba(0,30,45,0.30) 100%)",
           pointerEvents: "none",
           zIndex: 0,
         }}
       />
-      {/* Radial accent glow at top */}
+      {/* Radial accent glow at top — parallax bg layer */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 sv-parallax-bg"
+        data-parallax-speed="0.22"
         style={{
           backgroundImage: `radial-gradient(ellipse at 50% 0%, rgba(0, 200, 200, 0.12) 0%, transparent 60%)`,
           pointerEvents: "none",
@@ -579,6 +581,350 @@ export default function PackagesSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* ═══════════════ COMPARISON TABLE ═══════════════ */}
+        <div
+          className="mt-20 sv-fade-up"
+          style={{
+            background: "linear-gradient(135deg, rgba(20,0,60,0.85) 0%, rgba(0,10,40,0.90) 100%)",
+            border: "1px solid rgba(0,200,255,0.18)",
+            borderRadius: "20px",
+            overflow: "hidden",
+            boxShadow: "0 0 60px rgba(0,200,255,0.06), 0 0 120px rgba(115,0,255,0.04)",
+          }}
+        >
+          {/* Table header */}
+          <div
+            style={{
+              padding: "2rem 2rem 1.25rem",
+              textAlign: "center",
+              borderBottom: "1px solid rgba(0,200,255,0.12)",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "0.7rem",
+                letterSpacing: "0.3em",
+                textTransform: "uppercase",
+                color: "rgba(0,200,255,0.6)",
+                marginBottom: "0.5rem",
+              }}
+            >
+              Overzicht
+            </p>
+            <h3
+              style={{
+                fontFamily: "'Cinzel', serif",
+                fontSize: "clamp(1.4rem, 3vw, 2rem)",
+                letterSpacing: "0.08em",
+                color: "#f0f4f8",
+                margin: 0,
+              }}
+            >
+              PAKKET{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #00c8ff, #0090ff)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                VERGELIJKING
+              </span>
+            </h3>
+          </div>
+
+          {/* Responsive table */}
+          <div style={{ overflowX: "auto" }}>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                fontFamily: "'Outfit', sans-serif",
+              }}
+            >
+              <thead>
+                <tr>
+                  <th
+                    style={{
+                      padding: "1.25rem 1.5rem",
+                      textAlign: "left",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      color: "rgba(240,244,248,0.4)",
+                      borderBottom: "1px solid rgba(255,255,255,0.06)",
+                      width: "30%",
+                    }}
+                  >
+                    Kenmerk
+                  </th>
+                  {[
+                    { name: "INTIEM", color: "#0090ff", price: "v.a. €495,-", highlight: false },
+                    { name: "LUXE", color: "#00c8ff", price: "v.a. €650,-", highlight: true },
+                    { name: "ELITE", color: "#ff5500", price: "v.a. €895,-", highlight: false },
+                  ].map((col) => (
+                    <th
+                      key={col.name}
+                      style={{
+                        padding: "1.25rem 1rem",
+                        textAlign: "center",
+                        borderBottom: "1px solid rgba(255,255,255,0.06)",
+                        borderLeft: `1px solid ${col.color}22`,
+                        background: col.highlight
+                          ? "rgba(0,200,255,0.06)"
+                          : "transparent",
+                        position: "relative",
+                        width: "23.3%",
+                      }}
+                    >
+                      {col.highlight && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            height: "3px",
+                            background: "linear-gradient(90deg, #00c8ff, #0090ff)",
+                            boxShadow: "0 0 12px rgba(0,200,255,0.6)",
+                          }}
+                        />
+                      )}
+                      <div
+                        style={{
+                          fontFamily: "'Cinzel', serif",
+                          fontSize: "1.1rem",
+                          letterSpacing: "0.12em",
+                          color: col.color,
+                          textShadow: `0 0 12px ${col.color}66`,
+                          marginBottom: "0.25rem",
+                        }}
+                      >
+                        {col.name}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "0.85rem",
+                          color: "rgba(240,244,248,0.75)",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {col.price}
+                      </div>
+                      {col.highlight && (
+                        <div
+                          style={{
+                            display: "inline-block",
+                            marginTop: "0.4rem",
+                            padding: "0.15rem 0.6rem",
+                            borderRadius: "999px",
+                            background: "rgba(0,200,255,0.15)",
+                            border: "1px solid rgba(0,200,255,0.4)",
+                            fontSize: "0.6rem",
+                            letterSpacing: "0.12em",
+                            color: "#00c8ff",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          Meest gekozen
+                        </div>
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {
+                    feature: "Capaciteit",
+                    intiem: "50 – 100 pers.",
+                    luxe: "100 – 200 pers.",
+                    elite: "200+ pers.",
+                  },
+                  {
+                    feature: "Duur",
+                    intiem: "4 uur",
+                    luxe: "4 uur",
+                    elite: "5 uur min.",
+                  },
+                  {
+                    feature: "Vermogen geluid",
+                    intiem: "1.500 W",
+                    luxe: "3.000 W (QSC)",
+                    elite: "6.000 W (QSC)",
+                  },
+                  {
+                    feature: "Speakers",
+                    intiem: "2× actief",
+                    luxe: "4× actief",
+                    elite: "6× actief + sub",
+                  },
+                  {
+                    feature: "DJ Setup",
+                    intiem: "Pioneer XDJ-AZ",
+                    luxe: "Pioneer CDJ",
+                    elite: "Pioneer CDJ-3000",
+                  },
+                  {
+                    feature: "LED DJ Booth",
+                    intiem: "✓",
+                    luxe: "✓",
+                    elite: "✓",
+                  },
+                  {
+                    feature: "PAR spots",
+                    intiem: "4× RGB",
+                    luxe: "8× RGB",
+                    elite: "8× RGB",
+                  },
+                  {
+                    feature: "Moving heads",
+                    intiem: "2× mini",
+                    luxe: "2× mini + 2× groot",
+                    elite: "2× mini + 4× groot",
+                  },
+                  {
+                    feature: "Rookmachine",
+                    intiem: "—",
+                    luxe: "✓",
+                    elite: "✓ + LED-rook",
+                  },
+                  {
+                    feature: "Microfoons",
+                    intiem: "1× draadloos",
+                    luxe: "2× draadloos",
+                    elite: "4× draadloos",
+                  },
+                  {
+                    feature: "Voorbesprekingen",
+                    intiem: "1×",
+                    luxe: "Uitgebreid",
+                    elite: "Meerdere",
+                  },
+                  {
+                    feature: "Extra uur",
+                    intiem: "€100,-",
+                    luxe: "€100,-",
+                    elite: "+1u gratis",
+                  },
+                ].map((row, ri) => (
+                  <tr
+                    key={row.feature}
+                    style={{
+                      background: ri % 2 === 0 ? "rgba(255,255,255,0.015)" : "transparent",
+                    }}
+                  >
+                    <td
+                      style={{
+                        padding: "0.85rem 1.5rem",
+                        fontSize: "0.85rem",
+                        color: "rgba(240,244,248,0.55)",
+                        letterSpacing: "0.04em",
+                        borderBottom: "1px solid rgba(255,255,255,0.04)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {row.feature}
+                    </td>
+                    {[
+                      { val: row.intiem, color: "#0090ff", highlight: false },
+                      { val: row.luxe,   color: "#00c8ff", highlight: true },
+                      { val: row.elite,  color: "#ff5500", highlight: false },
+                    ].map((cell, ci) => (
+                      <td
+                        key={ci}
+                        style={{
+                          padding: "0.85rem 1rem",
+                          textAlign: "center",
+                          fontSize: "0.85rem",
+                          color: cell.val === "—" ? "rgba(240,244,248,0.2)" : cell.val === "✓" ? cell.color : "rgba(240,244,248,0.8)",
+                          fontWeight: cell.val === "✓" ? 700 : 400,
+                          borderBottom: "1px solid rgba(255,255,255,0.04)",
+                          borderLeft: `1px solid ${cell.color}18`,
+                          background: cell.highlight ? "rgba(0,200,255,0.03)" : "transparent",
+                          textShadow: cell.val === "✓" ? `0 0 8px ${cell.color}88` : "none",
+                        }}
+                      >
+                        {cell.val}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* CTA row */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "30% 23.3% 23.3% 23.3%",
+              borderTop: "1px solid rgba(255,255,255,0.06)",
+              padding: "1.25rem 0",
+            }}
+          >
+            <div
+              style={{
+                padding: "0 1.5rem",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.75rem",
+                  color: "rgba(240,244,248,0.35)",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                Vrijblijvende offerte
+              </span>
+            </div>
+            {[
+              { name: "INTIEM", color: "#0090ff", highlight: false },
+              { name: "LUXE",   color: "#00c8ff", highlight: true },
+              { name: "ELITE",  color: "#ff5500", highlight: false },
+            ].map((col) => (
+              <div
+                key={col.name}
+                style={{
+                  padding: "0 1rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderLeft: `1px solid ${col.color}22`,
+                  background: col.highlight ? "rgba(0,200,255,0.03)" : "transparent",
+                }}
+              >
+                <button
+                  onClick={handleContact}
+                  style={{
+                    padding: "0.6rem 1.25rem",
+                    borderRadius: "8px",
+                    fontFamily: "'Cinzel', serif",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.12em",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease",
+                    background: col.highlight
+                      ? "linear-gradient(135deg, #00c8ff, #0090ff)"
+                      : `linear-gradient(135deg, ${col.color}33, ${col.color}11)`,
+                    color: col.highlight ? "#080c10" : col.color,
+                    border: col.highlight ? "none" : `1px solid ${col.color}66`,
+                    boxShadow: col.highlight ? "0 0 20px rgba(0,200,255,0.3)" : "none",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  AANVRAGEN
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom note */}

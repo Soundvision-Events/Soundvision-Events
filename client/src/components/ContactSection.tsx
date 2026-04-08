@@ -77,16 +77,18 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-24 overflow-hidden"
+      className="relative py-24 overflow-hidden sv-parallax"
     >
-      {/* 50% dark overlay — lets YouTube backdrop show through */}
+      {/* 50% dark overlay — lets YouTube backdrop show through, parallax bg */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 sv-parallax-bg"
+        data-parallax-speed="0.10"
         style={{ backgroundColor: "rgba(8, 12, 16, 0.50)", pointerEvents: "none", zIndex: 0 }}
       />
-      {/* Background */}
+      {/* Background glow — parallax bg layer */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 sv-parallax-bg"
+        data-parallax-speed="0.20"
         style={{
           backgroundImage: `radial-gradient(ellipse at 30% 50%, rgba(0, 200, 255, 0.06) 0%, transparent 50%)`,
           pointerEvents: "none",

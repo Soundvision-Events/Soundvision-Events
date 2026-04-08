@@ -31,6 +31,7 @@ import BeatCursor from "@/components/BeatCursor";
 import FloatingButtons from "@/components/FloatingButtons";
 import ChatBot from "@/components/ChatBot";
 import { useParallax } from "@/hooks/useParallax";
+import { useLenis } from "@/hooks/useLenis";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -40,6 +41,7 @@ interface PageLayoutProps {
 
 export default function PageLayout({ children, backgroundOverride }: PageLayoutProps) {
   useParallax();
+  useLenis();
 
   useEffect(() => {
     window.scrollTo(0, 0);

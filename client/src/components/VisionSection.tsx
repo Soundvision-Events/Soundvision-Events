@@ -88,12 +88,13 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
     <section
       id="vision"
       ref={containerRef}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden sv-parallax"
       style={{ paddingBottom: "4rem" }}
     >
-      {/* Subtle colour wash — themed */}
+      {/* Subtle colour wash — themed, parallax bg layer */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 sv-parallax-bg"
+        data-parallax-speed="0.18"
         style={{
           background: `radial-gradient(ellipse 80% 60% at 50% 0%, ${accentRgba(0.06)} 0%, transparent 70%)`,
           pointerEvents: "none",
@@ -154,7 +155,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
               display: "inline-block",
               fontWeight: '700',
               letterSpacing: "0.06em",
-              opacity: 1,
+              opacity: '0.29999999999999993',
               borderWidth: '19px',
               borderStyle: 'inset',
               borderColor: '#f70893',
