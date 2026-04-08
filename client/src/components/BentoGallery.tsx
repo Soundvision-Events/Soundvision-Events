@@ -41,7 +41,6 @@ const DEFAULT_ITEMS: BentoItem[] = [
     src: `${CDN}/DSC_5501_54b2e5f0.webp`,
     extraSrcs: [
       `${CDN}/SV2025-08-23.22,47,53@SoundvisionEvents_2d137e52.webp`,
-      `${CDN}/DSC_3938_5eeaf311.webp`,
       `${CDN}/DSC_3915_7845b38d.webp`,
     ],
     alt: "DJ Tonicity achter de decks",
