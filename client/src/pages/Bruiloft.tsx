@@ -273,8 +273,6 @@ export default function Bruiloft() {
                 extraSrcs: [
                   // DSC_5501: DJ Tonicity at the decks, dancing crowd in pink/purple light
                   "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_5501_54b2e5f0.webp",
-                  // DSC_3938: DJ close-up in blue light
-                  "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_3938_5eeaf311.webp",
                 ],
                 alt: "Bruid met microfoon bij DJ Tonicity",
                 label: "Bruiloft DJ Tonicity — Eerste Dans",
