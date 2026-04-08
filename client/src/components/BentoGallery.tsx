@@ -28,27 +28,31 @@ interface BentoGalleryProps {
 
 const DEFAULT_ITEMS: BentoItem[] = [
   {
-    videoSrc: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/elitehero_b0a6d286.mp4",
-    alt: "Elite Show",
-    label: "Elite Show — Sfeer & Energie",
+    // Area a: large hero — DJ Tonicity at the decks, dancing crowd in pink/purple light
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_5501_54b2e5f0.webp",
+    alt: "DJ Tonicity achter de decks",
+    label: "DJ Tonicity — Allround DJ Shows",
     area: "a",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_5501_54b2e5f0.webp",
-    alt: "Bruiloft DJ Tonicity",
-    label: "Bruiloft DJ Tonicity",
+    // Area b: top-right — big dance floor, elite show setup with truss & moving heads
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_5410_467814ae.webp",
+    alt: "Elite Show Dansvloer",
+    label: "Elite Show — Grote Dansvloer",
     area: "b",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/party-dj-2x_RLBxVBqWLqPHXVBkJsVAYLJP.webp",
-    alt: "Party DJ",
-    label: "Dansende Gasten",
+    // Area c: top-right — corporate/karaoke event, guests with mic
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/IMG_4943_73f62d8d.jpg",
+    alt: "Bedrijfsfeest met karaoke",
+    label: "Bedrijfsfeest — Karaoke & Entertainment",
     area: "c",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/corporate-event-2x_JzPjSqAKqcKZZxjEEFJxLd.webp",
-    alt: "Corporate Event",
-    label: "Bedrijfsfeest",
+    // Area e: wide bottom — SoundVision Events branded show, crowd dancing
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/SV2025-09-19-DSC_8785EVENTS_7d68b142.webp",
+    alt: "SoundVision Events Show",
+    label: "SoundVision Events — Allround DJ Show",
     area: "e",
   },
 ];

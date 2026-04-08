@@ -266,6 +266,36 @@ export default function Bruiloft() {
             accentColor={ROSE}
             title="BRUILOFT IMPRESSIES"
             subtitle="Onze Bruiloftsshows"
+            items={[
+              {
+                // Area a: large hero — bride & groom with DJ Tonicity, SoundVision branded setup
+                src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/IMG_0007_d5030403.webp",
+                alt: "Bruid met microfoon bij DJ Tonicity",
+                label: "Bruiloft DJ Tonicity — Eerste Dans",
+                area: "a",
+              },
+              {
+                // Area b: couple slow dancing in purple/blue light
+                src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_2127_4b6a3d22.webp",
+                alt: "Bruidspaar dansend",
+                label: "Romantische Eerste Dans",
+                area: "b",
+              },
+              {
+                // Area c: couple embracing on dance floor, blue/pink light
+                src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_2128_a92a0d1a.webp",
+                alt: "Bruidspaar op dansvloer",
+                label: "Sfeer & Emotie",
+                area: "c",
+              },
+              {
+                // Area e: wide — DJ Tonicity with bride & groom at the decks, SoundVision logo visible
+                src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/DSC_2172_397932df.webp",
+                alt: "DJ Tonicity met bruidspaar",
+                label: "SoundVision Events — Bruiloft Show",
+                area: "e",
+              },
+            ]}
           />
         </div>
 
