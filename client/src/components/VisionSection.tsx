@@ -157,7 +157,7 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
               letterSpacing: "0.06em",
               opacity: '0.29999999999999993',
               borderWidth: '19px',
-              borderStyle: 'inset',
+              borderStyle: 'none',
               borderColor: '#f70893',
             }}
           >
@@ -358,6 +358,10 @@ export default function VisionSection({ theme = DEFAULT_THEME }: VisionSectionPr
             border: `2px solid ${accentRgba(0.18)}`,
             background: "rgba(0,5,20,0.35)",
             backdropFilter: "blur(4px)",
+            paddingTop: '0px',
+            paddingBottom: '20px',
+            marginTop: '4px',
+            marginBottom: '340px',
           }}
         >
           {/* Accent glow overlay */}
