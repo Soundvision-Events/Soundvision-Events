@@ -5,6 +5,7 @@
  * Includes wedding-specific fields: ceremony time, venue, first dance song.
  */
 import { useState } from "react";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { Phone, Mail, MapPin, Heart, Music, Calendar, Users, MessageSquare, Send, CheckCircle2 } from "lucide-react";
@@ -313,6 +314,105 @@ export default function BruiloftContactForm() {
                   </span>
                 </div>
               ))}
+            </div>
+
+            {/* FAQ accordion */}
+            <div
+              style={{
+                textAlign: "left",
+                marginBottom: "2rem",
+                animation: "svStepSlide 0.4s ease 0.8s both",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.25em",
+                  color: ROSE_SOFT,
+                  textTransform: "uppercase",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                Veelgestelde vragen
+              </p>
+              <Accordion type="single" collapsible>
+                {[
+                  {
+                    q: "Hoe snel ontvang ik een reactie?",
+                    a: "DJ Tonicity reageert persoonlijk binnen 24 uur op uw aanvraag — vaak al eerder. U ontvangt een bevestigingsmail op het door u opgegeven adres.",
+                  },
+                  {
+                    q: "Is de datum al zeker gereserveerd?",
+                    a: "De datum wordt pas definitief vastgelegd na ondertekening van de overeenkomst en ontvangst van de aanbetaling. Neem contact op om uw datum zo snel mogelijk veilig te stellen.",
+                  },
+                  {
+                    q: "Kan ik van pakket wisselen na de aanvraag?",
+                    a: "Ja, dat is altijd mogelijk zolang de definitieve overeenkomst nog niet is getekend. Tijdens het kennismakingsgesprek bespreekt DJ Tonicity alle opties met u.",
+                  },
+                  {
+                    q: "Wat kost een bruiloft DJ show?",
+                    a: "De prijzen variëren per pakket (Intiem, Luxe of Elite) en de duur van het evenement. U ontvangt een offerte op maat na het kennismakingsgesprek — volledig vrijblijvend.",
+                  },
+                  {
+                    q: "Verzorgt DJ Tonicity ook de ceremoniemuziek?",
+                    a: "Ja! DJ Tonicity kan de volledige muzikale begeleiding verzorgen: van de ceremonie en het diner tot de avondfeest. Alles wordt in overleg met u samengesteld.",
+                  },
+                  {
+                    q: "Welke regio's worden bediend?",
+                    a: "SoundVision Events is actief in heel Nederland, met een thuisbasis in Groningen. Reiskosten buiten de regio worden transparant vermeld in de offerte.",
+                  },
+                ].map((faq, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`faq-${i}`}
+                    className=""
+                    style={{
+                      borderBottom: `1px solid ${ROSE}22`,
+                    }}
+                  >
+                    <AccordionTrigger
+                      className="hover:no-underline"
+                      style={{
+                        fontFamily: "'Outfit', sans-serif",
+                        fontSize: "0.88rem",
+                        fontWeight: 500,
+                        color: "rgba(240,244,248,0.90)",
+                        paddingTop: "0.75rem",
+                        paddingBottom: "0.75rem",
+                        gap: "0.75rem",
+                      }}
+                    >
+                      <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                        <span
+                          style={{
+                            flexShrink: 0,
+                            width: "6px",
+                            height: "6px",
+                            borderRadius: "50%",
+                            background: ROSE,
+                            display: "inline-block",
+                          }}
+                        />
+                        {faq.q}
+                      </span>
+                    </AccordionTrigger>
+                    <AccordionContent
+                      style={{
+                        fontFamily: "'Outfit', sans-serif",
+                        fontSize: "0.85rem",
+                        color: "rgba(240,244,248,0.65)",
+                        lineHeight: 1.7,
+                        fontWeight: 300,
+                        paddingLeft: "1rem",
+                        paddingBottom: "0.75rem",
+                      }}
+                    >
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
 
             {/* Action buttons */}
