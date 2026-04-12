@@ -11,7 +11,7 @@ interface SEOHeadProps {
   keywords?: string;
 }
 
-const BASE_URL = "https://soundvision-6rh3pkve.manus.space";
+const BASE_URL = "https://www.soundvisionevents.nl";
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/logo_dark_aae3c78f.png";
 
