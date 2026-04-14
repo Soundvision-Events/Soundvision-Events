@@ -9,6 +9,7 @@ import Bruiloft from "./pages/Bruiloft";
 import Bedrijfsfeesten from "./pages/Bedrijfsfeesten";
 import Studentenfeesten from "./pages/Studentenfeesten";
 import Prive from "./pages/Prive";
+import GalleryStudio from "./pages/GalleryStudio";
 import SocialProofPopup from "./components/SocialProofPopup";
 import AnnouncementBanner from "./components/AnnouncementBanner";
 import PushNotificationPrompt from "./components/PushNotificationPrompt";
@@ -22,6 +23,7 @@ function Router() {
       <Route path={"/bedrijfsfeesten"} component={Bedrijfsfeesten} />
       <Route path={"/studentenfeesten"} component={Studentenfeesten} />
       <Route path={"/prive"} component={Prive} />
+      <Route path={"/gallery-studio"} component={GalleryStudio} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

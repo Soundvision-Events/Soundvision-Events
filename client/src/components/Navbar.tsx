@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Bedrijfsfeest", href: "/bedrijfsfeesten" },
   { href: "/studentenfeesten", label: "Studentenfeest" },
   { label: "Privé feest", href: "/prive" },
+  { label: "Gallery Studio", href: "/gallery-studio" },
 ];
 
 export default function Navbar() {
