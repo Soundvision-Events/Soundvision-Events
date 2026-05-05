@@ -142,8 +142,8 @@ export default function BruiloftContactForm() {
             to   { opacity: 1; transform: translateY(0)   scale(1);    }
           }
           @keyframes svCheckPulse {
-            0%, 100% { filter: drop-shadow(0 0 8px ${ROSE}) drop-shadow(0 0 20px ${ROSE_GLOW}); }
-            50%       { filter: drop-shadow(0 0 18px ${ROSE}) drop-shadow(0 0 40px ${ROSE_GLOW}); }
+            0%, 100% { opacity: 1;    transform: scale(1); }
+            50%       { opacity: 0.85; transform: scale(1.08); }
           }
           @keyframes svGlowBurst {
             0%   { opacity: 0.0; transform: scale(0.5); }

@@ -50,8 +50,8 @@ export default function AnnouncementBanner() {
     <>
       <style>{`
         @keyframes sv-banner-shimmer {
-          0% { background-position: -200% center; }
-          100% { background-position: 200% center; }
+          0%   { background-position: -200% 50%; }
+          100% { background-position:  200% 50%; }
         }
       `}</style>
       <div

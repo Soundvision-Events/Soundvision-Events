@@ -34,10 +34,18 @@
     <link rel="icon" type="image/png" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision-logo_e5b2fca8.png" />
     <link rel="apple-touch-icon" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663484862365/6RH3PKVEJrkwHnmCKCLqmc/soundvision-logo_e5b2fca8.png" />
 
-    <!-- Fonts: Champagne & Limousines (headings, via @font-face) + Bebas Neue + Outfit (body) -->
+    <!-- CDN preconnect (no crossorigin — images served via <img> tags, not fetch) -->
+    <link rel="preconnect" href="https://d2xsxph8kpxj0f.cloudfront.net" />
+    <link rel="preconnect" href="https://files.manuscdn.com" />
+    <!-- Fonts: Champagne & Limousines (WOFF2 via @font-face) + Bebas Neue + Outfit (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Preload critical WOFF2 font weights used in above-fold headings -->
+    <link rel="preload" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663484862365/SuAjOHGHLMwTkCDX.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663484862365/LOYdxMDQbPimxMJB.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Google Fonts: async non-render-blocking load -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" /></noscript>
 
     <!-- JSON-LD Structured Data: LocalBusiness -->
     <script type="application/ld+json">

@@ -816,8 +816,8 @@ export default function UitbreidingenSection({ showOpeningsdansMix = false, them
 
       <style>{`
         @keyframes glowPulse {
-          0%, 100% { box-shadow: 0 0 18px ${GLOW_BLUE}22, 0 0 40px ${GLOW_PURPLE}11; }
-          50% { box-shadow: 0 0 28px ${GLOW_BLUE}44, 0 0 60px ${GLOW_PURPLE}22; }
+          0%, 100% { opacity: 1;    transform: scale(1); }
+          50%       { opacity: 0.88; transform: scale(1.02); }
         }
         /* Mobile: package cards stack vertically */
         @media (max-width: 860px) {

@@ -4,15 +4,16 @@
  * Accent: Rose/Pink neon (#ff3d8a) + warm blush (#ffb3cc)
  * Backdrop: YouTube video c7qIEesCHFE (romantic / wedding energy)
  */
+import { lazy, Suspense } from "react";
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
-import UitbreidingenSection from "@/components/UitbreidingenSection";
-import ContactSection from "@/components/ContactSection";
+const UitbreidingenSection = lazy(() => import("@/components/UitbreidingenSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
 import BruiloftContactForm from "@/components/BruiloftContactForm";
 import USPSection from "@/components/USPSection";
-import VisionSection from "@/components/VisionSection";
-import BentoGallery from "@/components/BentoGallery";
-import TestimonialsSection from "@/components/TestimonialsSection";
+const VisionSection = lazy(() => import("@/components/VisionSection"));
+const BentoGallery = lazy(() => import("@/components/BentoGallery"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_THEMES } from "@/lib/pageThemes";
@@ -42,11 +43,6 @@ export default function Bruiloft() {
       />
 
       <style>{`
-        @keyframes gradientRoll {
-          0%   { background-position: 50% 0%; }
-          50%  { background-position: 50% 100%; }
-          100% { background-position: 50% 0%; }
-        }
         .bruiloft-backdrop {
           position: absolute;
           top: 0;
@@ -71,14 +67,14 @@ export default function Bruiloft() {
             rgba(32,6,24,0.20) 90%,
             rgba(26,5,21,0.20) 100%
           );
-          background-size: 100% 400%;
-          animation: gradientRoll 22s ease infinite;
+          
+          
         }
 
         /* Rose neon pulse for icon circles */
         @keyframes rosePulse {
-          0%, 100% { box-shadow: 0 0 14px ${ROSE_GLOW}, 0 0 28px ${ROSE_GLOW}; }
-          50%       { box-shadow: 0 0 24px ${ROSE_GLOW}, 0 0 48px ${ROSE_GLOW}; }
+          0%, 100% { opacity: 1;    transform: scale(1); }
+          50%       { opacity: 0.85; transform: scale(1.06); }
         }
 
         /* CTA button rose glow */
@@ -255,6 +251,8 @@ export default function Bruiloft() {
           <USPSection theme={PAGE_THEMES.bruiloft} />
         </div>
 
+        {/* Below-fold: lazy loaded */}
+        <Suspense fallback={null}>
         {/* 4. Vision */}
         <div style={{ position: "relative", zIndex: 1 }}>
           <VisionSection theme={PAGE_THEMES.bruiloft} />
@@ -337,8 +335,9 @@ export default function Bruiloft() {
           <ContactSection />
         </div>
 
+        </Suspense>
       </div>{/* end bruiloft-backdrop wrapper */}
 
-    </PageLayout>
+      </PageLayout>
   );
 }

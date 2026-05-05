@@ -3,14 +3,15 @@
  * Design: Electric Dark Spectacle — Student/School variant
  * Backdrop: YouTube video NwhOxUrjZcU (student energy)
  */
+import { lazy, Suspense } from "react";
 import PageLayout from "@/components/PageLayout";
 import EventPageHero from "@/components/EventPageHero";
-import UitbreidingenSection from "@/components/UitbreidingenSection";
-import ContactSection from "@/components/ContactSection";
+const UitbreidingenSection = lazy(() => import("@/components/UitbreidingenSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
 import USPSection from "@/components/USPSection";
-import VisionSection from "@/components/VisionSection";
-import BentoGallery from "@/components/BentoGallery";
-import TestimonialsSection from "@/components/TestimonialsSection";
+const VisionSection = lazy(() => import("@/components/VisionSection"));
+const BentoGallery = lazy(() => import("@/components/BentoGallery"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 import YouTubeBackground from "@/components/YouTubeBackground";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_THEMES } from "@/lib/pageThemes";
@@ -159,6 +160,7 @@ export default function Studentenfeesten() {
       <USPSection theme={PAGE_THEMES.studentenfeesten} />
 
       {/* 4. Vision */}
+      <Suspense fallback={null}>
       <VisionSection theme={PAGE_THEMES.studentenfeesten} />
 
       {/* 5. Gallery */}
@@ -176,6 +178,7 @@ export default function Studentenfeesten() {
 
       {/* 8. Contact */}
       <ContactSection />
-    </PageLayout>
+      </Suspense>
+      </PageLayout>
   );
 }

@@ -167,6 +167,20 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        // Static object-based manualChunks — NEVER use function-based (causes black screen)
+        manualChunks: {
+          "vendor-react":     ["react", "react-dom", "react/jsx-runtime"],
+          "vendor-trpc":      ["@trpc/client", "@trpc/react-query", "@tanstack/react-query", "superjson"],
+          "vendor-ui":        ["lucide-react", "clsx", "tailwind-merge", "wouter"],
+          "vendor-animation": ["framer-motion"],
+          "vendor-lenis":     ["lenis"],
+          "vendor-sonner":    ["sonner"],
+          "vendor-helmet":    ["react-helmet-async"],
+        },
+      },
+    },
   },
   server: {
     host: true,

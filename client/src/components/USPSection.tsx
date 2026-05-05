@@ -251,8 +251,8 @@ export default function USPSection({ theme = DEFAULT_THEME }: { theme?: PageThem
 
       <style>{`
         @keyframes neonPulse {
-          0%, 100% { box-shadow: 0 0 15px var(--glow), 0 0 30px var(--glow); opacity: 1; }
-          50% { box-shadow: 0 0 25px var(--glow), 0 0 50px var(--glow); opacity: 0.85; }
+          0%, 100% { opacity: 1;    transform: scale(1); }
+          50%       { opacity: 0.85; transform: scale(1.04); }
         }
         .sv-pill {
           transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;

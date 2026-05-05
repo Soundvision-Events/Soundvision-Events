@@ -12,9 +12,9 @@ if (typeof document !== "undefined" && !document.getElementById(STAR_STYLE_ID)) 
   style.id = STAR_STYLE_ID;
   style.textContent = `
     @keyframes sv-star-pop {
-      0%   { opacity: 0.15; transform: scale(0.6); filter: brightness(0.4); }
-      50%  { opacity: 1;    transform: scale(1.35); filter: brightness(1.8) drop-shadow(0 0 4px #ffc84a); }
-      100% { opacity: 1;    transform: scale(1);    filter: brightness(1.2) drop-shadow(0 0 2px #ffc84a88); }
+      0%   { opacity: 0.15; transform: scale(0.6); }
+      50%  { opacity: 1;    transform: scale(1.35); }
+      100% { opacity: 1;    transform: scale(1); }
     }
   `;
   document.head.appendChild(style);
