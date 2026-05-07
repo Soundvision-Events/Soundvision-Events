@@ -50,8 +50,19 @@ export default function AnnouncementBanner() {
     <>
       <style>{`
         @keyframes sv-banner-shimmer {
-          0%   { background-position: -200% 50%; }
-          100% { background-position:  200% 50%; }
+          0%   { transform: translateX(-150%); }
+          100% { transform: translateX(250%); }
+        }
+        .sv-shimmer-btn { position: relative; overflow: hidden; }
+        .sv-shimmer-btn::after {
+          content: '';
+          position: absolute;
+          top: 0; left: 0;
+          width: 40%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+          animation: sv-banner-shimmer 2.5s linear infinite;
+          pointer-events: none;
         }
       `}</style>
       <div
@@ -110,12 +121,11 @@ export default function AnnouncementBanner() {
 
         {/* CTA button — 0.5x slower shimmer animation (6s instead of 3s) */}
         <button
+          className="sv-shimmer-btn"
           onClick={() => { ANNOUNCEMENT.ctaAction(); dismiss(); }}
           style={{
             width: "100%",
             background: "linear-gradient(135deg, #00d4ff 0%, #5b6ef5 50%, #6040e0 100%)",
-            backgroundSize: "200% auto",
-            animation: "sv-banner-shimmer 6s linear infinite",
             border: "none",
             borderRadius: "8px",
             padding: "9px 16px",
