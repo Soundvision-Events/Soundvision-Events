@@ -1,5 +1,7 @@
 # SoundVision Events — Domain & Hosting Reference
 
+> ⚠️ **Correction (2026-07-30):** the "Manus" hosting referenced below is an unwanted state, not a target. Explicit rule: **never Manus** — hosting/DNS/deploy/FTP must be mijn.host only. Treat everything below as "what to migrate away from", not as infra to build on or extend. See `AGENTS.md`.
+
 ## Domeinen
 
 | Domein | Status | Verhuiscode | Notitie |
