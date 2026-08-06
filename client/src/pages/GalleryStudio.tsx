@@ -3,6 +3,8 @@ import JSZip from "jszip";
 import PageLayout from "@/components/PageLayout";
 import SEOHead from "@/components/SEOHead";
 import { toast } from "sonner";
+import { useIsMobile } from "@/hooks/useMobile";
+import { Camera, ChevronDown, ImagePlus } from "lucide-react";
 
 type GalleryCategory =
   | "sfeer"
@@ -108,7 +110,7 @@ function titleCase(value: string) {
   return value
     .split(" ")
     .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
 
@@ -136,7 +138,10 @@ function downloadBlob(blob: Blob, filename: string) {
 function getSummaryLabel(categories: GalleryCategory[]) {
   if (categories.length === 0) return "Nog geen categorie";
   return categories
-    .map((category) => CATEGORY_OPTIONS.find((item) => item.id === category)?.label ?? category)
+    .map(
+      category =>
+        CATEGORY_OPTIONS.find(item => item.id === category)?.label ?? category
+    )
     .join(", ");
 }
 
@@ -152,7 +157,7 @@ function buildCsv(items: ProcessedAsset[]) {
     "Thumbnail",
   ];
 
-  const rows = items.map((item) => [
+  const rows = items.map(item => [
     item.originalName,
     `${item.cleanName}.webp`,
     item.alt,
@@ -164,13 +169,15 @@ function buildCsv(items: ProcessedAsset[]) {
   ]);
 
   return [header, ...rows]
-    .map((row) => row.map((value) => `"${String(value).replace(/"/g, '""')}"`).join(";"))
+    .map(row =>
+      row.map(value => `"${String(value).replace(/"/g, '""')}"`).join(";")
+    )
     .join("\n");
 }
 
 function buildJsonManifest(items: ProcessedAsset[]) {
   return JSON.stringify(
-    items.map((item) => ({
+    items.map(item => ({
       originalName: item.originalName,
       fileName: `${item.cleanName}.webp`,
       thumbFileName: `${item.cleanName}.webp`,
@@ -185,21 +192,21 @@ function buildJsonManifest(items: ProcessedAsset[]) {
       },
     })),
     null,
-    2,
+    2
   );
 }
 
 function buildTypeScriptManifest(items: ProcessedAsset[]) {
   const rows = items
     .map(
-      (item) => `  {
+      item => `  {
     src: "__CDN_BASE__/gallery_images/${item.cleanName}.webp",
     thumbSrc: "__CDN_BASE__/gallery_thumbnails/${item.cleanName}.webp",
     alt: ${JSON.stringify(item.alt)},
     seoTitle: ${JSON.stringify(item.seoTitle)},
     label: ${JSON.stringify(item.label)},
     categories: ${JSON.stringify(item.categories)},
-  },`,
+  },`
     )
     .join("\n");
 
@@ -239,11 +246,11 @@ function processImage(
   quality: number,
   forceSquare: boolean,
   wmText: string,
-  wmOpacity: number,
+  wmOpacity: number
 ) {
   return new Promise<Blob>((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = (event) => {
+    reader.onload = event => {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement("canvas");
@@ -273,7 +280,7 @@ function processImage(
             0,
             0,
             maxWidth,
-            maxWidth,
+            maxWidth
           );
         } else {
           const scale = Math.min(maxWidth / width, 1);
@@ -292,11 +299,15 @@ function processImage(
           ctx.textBaseline = "bottom";
           ctx.shadowColor = "rgba(0, 0, 0, 0.55)";
           ctx.shadowBlur = 8;
-          ctx.fillText(wmText, canvas.width - fontSize / 2, canvas.height - fontSize / 2);
+          ctx.fillText(
+            wmText,
+            canvas.width - fontSize / 2,
+            canvas.height - fontSize / 2
+          );
         }
 
         canvas.toBlob(
-          (blob) => {
+          blob => {
             if (!blob) {
               reject(new Error(`WebP-export mislukt voor ${file.name}.`));
               return;
@@ -304,7 +315,7 @@ function processImage(
             resolve(blob);
           },
           "image/webp",
-          quality,
+          quality
         );
       };
       img.onerror = () => reject(new Error(`Kon ${file.name} niet verwerken.`));
@@ -337,19 +348,24 @@ function StudioCard({
           </div>
           <div className="mt-3 rounded-2xl border border-white/8 bg-slate-950/60 p-3 text-xs text-slate-400">
             <p>
-              <span className="font-semibold text-slate-200">Bestand:</span> {item.cleanName}.webp
+              <span className="font-semibold text-slate-200">Bestand:</span>{" "}
+              {item.cleanName}.webp
             </p>
             <p className="mt-1">
-              <span className="font-semibold text-slate-200">Formaat:</span> {item.dimensions.width} × {item.dimensions.height}
+              <span className="font-semibold text-slate-200">Formaat:</span>{" "}
+              {item.dimensions.width} × {item.dimensions.height}
             </p>
             <p className="mt-1">
-              <span className="font-semibold text-slate-200">Origineel:</span> {formatBytes(item.originalSize)}
+              <span className="font-semibold text-slate-200">Origineel:</span>{" "}
+              {formatBytes(item.originalSize)}
             </p>
             <p className="mt-1 text-emerald-400">
-              <span className="font-semibold text-emerald-300">WebP:</span> {formatBytes(item.fullSize)}
+              <span className="font-semibold text-emerald-300">WebP:</span>{" "}
+              {formatBytes(item.fullSize)}
             </p>
             <p className="mt-1 text-sky-400">
-              <span className="font-semibold text-sky-300">Thumb:</span> {formatBytes(item.thumbSize)}
+              <span className="font-semibold text-sky-300">Thumb:</span>{" "}
+              {formatBytes(item.thumbSize)}
             </p>
           </div>
         </div>
@@ -362,7 +378,9 @@ function StudioCard({
               </label>
               <textarea
                 value={item.alt}
-                onChange={(event) => onUpdate(item.id, { alt: event.target.value })}
+                onChange={event =>
+                  onUpdate(item.id, { alt: event.target.value })
+                }
                 rows={3}
                 className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
               />
@@ -373,7 +391,9 @@ function StudioCard({
               </label>
               <input
                 value={item.seoTitle}
-                onChange={(event) => onUpdate(item.id, { seoTitle: event.target.value })}
+                onChange={event =>
+                  onUpdate(item.id, { seoTitle: event.target.value })
+                }
                 className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
               />
               <label className="mb-1 mt-4 block text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
@@ -381,7 +401,9 @@ function StudioCard({
               </label>
               <input
                 value={item.label}
-                onChange={(event) => onUpdate(item.id, { label: event.target.value })}
+                onChange={event =>
+                  onUpdate(item.id, { label: event.target.value })
+                }
                 className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
               />
             </div>
@@ -389,11 +411,15 @@ function StudioCard({
 
           <div>
             <div className="mb-2 flex items-center justify-between gap-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Categorieën</p>
-              <p className="text-xs text-slate-500">Meerdere selecties zijn mogelijk.</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+                Categorieën
+              </p>
+              <p className="text-xs text-slate-500">
+                Meerdere selecties zijn mogelijk.
+              </p>
             </div>
             <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-              {CATEGORY_OPTIONS.map((option) => {
+              {CATEGORY_OPTIONS.map(option => {
                 const active = item.categories.includes(option.id);
                 return (
                   <button
@@ -401,10 +427,13 @@ function StudioCard({
                     type="button"
                     onClick={() => {
                       const nextCategories = active
-                        ? item.categories.filter((entry) => entry !== option.id)
+                        ? item.categories.filter(entry => entry !== option.id)
                         : [...item.categories, option.id];
                       onUpdate(item.id, {
-                        categories: nextCategories.length > 0 ? nextCategories : ["sfeer"],
+                        categories:
+                          nextCategories.length > 0
+                            ? nextCategories
+                            : ["sfeer"],
                       });
                     }}
                     className={`rounded-2xl border px-4 py-3 text-left transition ${
@@ -414,7 +443,9 @@ function StudioCard({
                     }`}
                   >
                     <p className="text-sm font-semibold">{option.label}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-400">{option.description}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-slate-400">
+                      {option.description}
+                    </p>
                   </button>
                 );
               })}
@@ -422,9 +453,13 @@ function StudioCard({
           </div>
 
           <div className="rounded-2xl border border-white/8 bg-slate-950/60 px-4 py-3 text-xs text-slate-400">
-            <span className="font-semibold uppercase tracking-[0.2em] text-slate-300">Klaar voor export</span>
+            <span className="font-semibold uppercase tracking-[0.2em] text-slate-300">
+              Klaar voor export
+            </span>
             <p className="mt-2 leading-relaxed">
-              Dit item wordt opgenomen in de ZIP-bundel, de SEO CSV, de JSON-manifest en een TypeScript-template voor verdere integratie in je galeriecode.
+              Dit item wordt opgenomen in de ZIP-bundel, de SEO CSV, de
+              JSON-manifest en een TypeScript-template voor verdere integratie
+              in je galeriecode.
             </p>
           </div>
         </div>
@@ -435,12 +470,15 @@ function StudioCard({
 
 export default function GalleryStudio() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
   const previewUrlsRef = useRef<string[]>([]);
+  const isMobile = useIsMobile();
   const [config, setConfig] = useState<StudioConfig>(DEFAULT_CONFIG);
   const [processedItems, setProcessedItems] = useState<ProcessedAsset[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [mobileSettingsOpen, setMobileSettingsOpen] = useState(false);
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY);
@@ -466,15 +504,27 @@ export default function GalleryStudio() {
 
   useEffect(() => {
     return () => {
-      previewUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
+      previewUrlsRef.current.forEach(url => URL.revokeObjectURL(url));
     };
   }, []);
 
   const summary = useMemo(() => {
-    const totalOriginal = processedItems.reduce((sum, item) => sum + item.originalSize, 0);
-    const totalFull = processedItems.reduce((sum, item) => sum + item.fullSize, 0);
-    const totalThumb = processedItems.reduce((sum, item) => sum + item.thumbSize, 0);
-    const savings = totalOriginal > 0 ? ((totalOriginal - totalFull) / totalOriginal) * 100 : 0;
+    const totalOriginal = processedItems.reduce(
+      (sum, item) => sum + item.originalSize,
+      0
+    );
+    const totalFull = processedItems.reduce(
+      (sum, item) => sum + item.fullSize,
+      0
+    );
+    const totalThumb = processedItems.reduce(
+      (sum, item) => sum + item.thumbSize,
+      0
+    );
+    const savings =
+      totalOriginal > 0
+        ? ((totalOriginal - totalFull) / totalOriginal) * 100
+        : 0;
 
     return {
       itemCount: processedItems.length,
@@ -486,14 +536,16 @@ export default function GalleryStudio() {
   }, [processedItems]);
 
   async function handleFiles(fileList: FileList | File[]) {
-    const files = Array.from(fileList).filter((file) => file.type.startsWith("image/"));
+    const files = Array.from(fileList).filter(file =>
+      file.type.startsWith("image/")
+    );
     if (files.length === 0) {
       toast.error("Selecteer minstens één afbeeldingsbestand.");
       return;
     }
 
     setIsProcessing(true);
-    previewUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
+    previewUrlsRef.current.forEach(url => URL.revokeObjectURL(url));
     previewUrlsRef.current = [];
     setProcessedItems([]);
 
@@ -502,11 +554,22 @@ export default function GalleryStudio() {
 
       for (const file of files) {
         const baseName = slugify(file.name) || `gallery-item-${Date.now()}`;
-        const cleanName = `${config.seoPrefix ? slugify(config.seoPrefix) + "-" : ""}${baseName}`.replace(/-{2,}/g, "-");
+        const cleanName =
+          `${config.seoPrefix ? slugify(config.seoPrefix) + "-" : ""}${baseName}`.replace(
+            /-{2,}/g,
+            "-"
+          );
         const readableName = titleCase(cleanName.replace(/-/g, " "));
         const [dimensions, fullBlob, thumbBlob] = await Promise.all([
           getImageDimensions(file),
-          processImage(file, config.maxFull, config.quality, false, config.wmText, config.wmOpacity),
+          processImage(
+            file,
+            config.maxFull,
+            config.quality,
+            false,
+            config.wmText,
+            config.wmOpacity
+          ),
           processImage(file, config.maxThumb, config.quality, true, "", 0),
         ]);
 
@@ -528,11 +591,16 @@ export default function GalleryStudio() {
         });
       }
 
-      previewUrlsRef.current = nextItems.map((item) => item.previewUrl);
+      previewUrlsRef.current = nextItems.map(item => item.previewUrl);
       setProcessedItems(nextItems);
-      toast.success(`${nextItems.length} afbeelding${nextItems.length === 1 ? "" : "en"} verwerkt.`);
+      toast.success(
+        `${nextItems.length} afbeelding${nextItems.length === 1 ? "" : "en"} verwerkt.`
+      );
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Onbekende fout tijdens het verwerken.";
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Onbekende fout tijdens het verwerken.";
       toast.error(message);
     } finally {
       setIsProcessing(false);
@@ -541,7 +609,9 @@ export default function GalleryStudio() {
 
   async function handleDownloadBundle() {
     if (processedItems.length === 0) {
-      toast.error("Voeg eerst afbeeldingen toe voordat je een bundel downloadt.");
+      toast.error(
+        "Voeg eerst afbeeldingen toe voordat je een bundel downloadt."
+      );
       return;
     }
 
@@ -552,14 +622,20 @@ export default function GalleryStudio() {
       const thumbFolder = zip.folder("gallery_thumbnails");
       const metadataFolder = zip.folder("metadata");
 
-      processedItems.forEach((item) => {
+      processedItems.forEach(item => {
         fullFolder?.file(`${item.cleanName}.webp`, item.fullBlob);
         thumbFolder?.file(`${item.cleanName}.webp`, item.thumbBlob);
       });
 
       metadataFolder?.file("seo-data.csv", buildCsv(processedItems));
-      metadataFolder?.file("gallery-manifest.json", buildJsonManifest(processedItems));
-      metadataFolder?.file("gallery-manifest.ts", buildTypeScriptManifest(processedItems));
+      metadataFolder?.file(
+        "gallery-manifest.json",
+        buildJsonManifest(processedItems)
+      );
+      metadataFolder?.file(
+        "gallery-manifest.ts",
+        buildTypeScriptManifest(processedItems)
+      );
 
       zip.file(
         "README.txt",
@@ -577,11 +653,14 @@ export default function GalleryStudio() {
           "1. Upload de WebP-bestanden naar de CDN of webdev-assets.",
           "2. Vervang __CDN_BASE__ in gallery-manifest.ts door je echte CDN-map.",
           "3. Gebruik de metadata voor BentoGallery, GallerySection of toekomstige gallery tooling.",
-        ].join("\n"),
+        ].join("\n")
       );
 
       const blob = await zip.generateAsync({ type: "blob" });
-      downloadBlob(blob, `soundvision-gallery-studio-${new Date().toISOString().slice(0, 10)}.zip`);
+      downloadBlob(
+        blob,
+        `soundvision-gallery-studio-${new Date().toISOString().slice(0, 10)}.zip`
+      );
       toast.success("De galerijbundel is gedownload.");
     } catch {
       toast.error("De ZIP-bundel kon niet worden samengesteld.");
@@ -597,7 +676,9 @@ export default function GalleryStudio() {
     }
 
     try {
-      await navigator.clipboard.writeText(buildTypeScriptManifest(processedItems));
+      await navigator.clipboard.writeText(
+        buildTypeScriptManifest(processedItems)
+      );
       toast.success("TypeScript-manifest gekopieerd naar het klembord.");
     } catch {
       toast.error("Kopiëren naar het klembord is niet gelukt.");
@@ -605,8 +686,8 @@ export default function GalleryStudio() {
   }
 
   function updateItem(id: string, updates: Partial<ProcessedAsset>) {
-    setProcessedItems((current) =>
-      current.map((item) => (item.id === id ? { ...item, ...updates } : item)),
+    setProcessedItems(current =>
+      current.map(item => (item.id === id ? { ...item, ...updates } : item))
     );
   }
 
@@ -641,173 +722,264 @@ export default function GalleryStudio() {
         path="/gallery-studio"
         keywords="gallery studio, afbeeldingen optimaliseren, webp converter, gallery workflow, SoundVision Events, SEO afbeeldingen, thumbnails maken"
       />
-      <main className="relative overflow-hidden px-4 pb-24 pt-32 sm:px-6 lg:px-8">
+      <main
+        className={`relative overflow-hidden px-4 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32 ${
+          isMobile && processedItems.length > 0 ? "pb-36" : "pb-24"
+        }`}
+      >
         <div className="mx-auto max-w-7xl">
-          <section className="sv-fade-up rounded-[2rem] border border-cyan-500/15 bg-slate-950/60 p-8 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-sm md:p-12">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-cyan-300">Gallery Studio</p>
-            <div className="mt-5 grid gap-8 lg:grid-cols-[1.4fr,0.8fr] lg:items-end">
+          <section className="sv-fade-up rounded-[1.5rem] border border-cyan-500/15 bg-slate-950/60 p-5 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:rounded-[2rem] sm:p-8 md:p-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300 sm:text-sm sm:tracking-[0.34em]">
+              Gallery Studio
+            </p>
+            <div className="mt-4 grid gap-6 sm:mt-5 sm:gap-8 lg:grid-cols-[1.4fr,0.8fr] lg:items-end">
               <div>
-                <h1 className="font-[Cinzel] text-4xl tracking-[0.08em] text-slate-50 md:text-6xl">
+                <h1 className="font-[Cinzel] text-3xl leading-tight tracking-[0.04em] text-slate-50 sm:text-4xl sm:tracking-[0.08em] md:text-6xl">
                   DE WEBSITEKLARE
                   <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">
-                    {" "}GALLERY WORKFLOW
+                    {" "}
+                    GALLERY WORKFLOW
                   </span>
                 </h1>
-                <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
-                  Deze studio integreert jouw browser-based beeldverwerking direct in de SoundVision-websitecodebase. Je zet ruwe foto's om naar geoptimaliseerde WebP-bestanden, maakt vierkante thumbnails, beheert SEO-metadata en exporteert meteen een bundel die klaar is voor CDN-upload en verdere gallery-integratie.
+                <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-300 sm:mt-6 sm:text-lg">
+                  {isMobile
+                    ? "Optimaliseer foto's van je show direct vanaf je telefoon: WebP-conversie, thumbnails, SEO-teksten en een kant-en-klare exportbundel."
+                    : "Deze studio integreert jouw browser-based beeldverwerking direct in de SoundVision-websitecodebase. Je zet ruwe foto's om naar geoptimaliseerde WebP-bestanden, maakt vierkante thumbnails, beheert SEO-metadata en exporteert meteen een bundel die klaar is voor CDN-upload en verdere gallery-integratie."}
                 </p>
               </div>
-              <div className="rounded-3xl border border-cyan-500/20 bg-cyan-500/8 p-5 text-sm leading-relaxed text-slate-300">
-                <p className="font-semibold uppercase tracking-[0.2em] text-cyan-200">Toegevoegde waarde</p>
+              <div className="hidden rounded-3xl border border-cyan-500/20 bg-cyan-500/8 p-5 text-sm leading-relaxed text-slate-300 lg:block">
+                <p className="font-semibold uppercase tracking-[0.2em] text-cyan-200">
+                  Toegevoegde waarde
+                </p>
                 <p className="mt-3">
-                  Naast conversie bevat deze versie ook categoriebeheer, lokale opslag van jouw voorkeuren, SEO-velden per foto en directe export naar CSV, JSON én TypeScript. Daarmee wordt dit niet alleen een optimizer, maar een praktische content-ops tool voor je gallery-systeem.
+                  Naast conversie bevat deze versie ook categoriebeheer, lokale
+                  opslag van jouw voorkeuren, SEO-velden per foto en directe
+                  export naar CSV, JSON én TypeScript. Daarmee wordt dit niet
+                  alleen een optimizer, maar een praktische content-ops tool
+                  voor je gallery-systeem.
                 </p>
               </div>
             </div>
           </section>
 
-          <section className="mt-8 grid gap-6 lg:grid-cols-[360px,1fr]">
-            <aside className="sv-fade-up space-y-6 rounded-[2rem] border border-white/8 bg-slate-900/65 p-6 shadow-[0_24px_60px_rgba(0,0,0,0.28)] backdrop-blur-sm">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Instellingen</p>
-                <h2 className="mt-2 text-2xl font-semibold text-slate-50">Verwerking & SEO</h2>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    SEO prefix
-                  </label>
-                  <input
-                    value={config.seoPrefix}
-                    onChange={(event) => setConfig((current) => ({ ...current, seoPrefix: event.target.value }))}
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
-                  />
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+          <section className="mt-6 grid gap-6 sm:mt-8 lg:grid-cols-[360px,1fr]">
+            <aside className="sv-fade-up order-2 space-y-6 rounded-[1.5rem] border border-white/8 bg-slate-900/65 p-5 shadow-[0_24px_60px_rgba(0,0,0,0.28)] backdrop-blur-sm sm:rounded-[2rem] sm:p-6 lg:order-1">
+              {isMobile ? (
+                <button
+                  type="button"
+                  onClick={() => setMobileSettingsOpen(open => !open)}
+                  className="flex w-full items-center justify-between gap-3 text-left"
+                  aria-expanded={mobileSettingsOpen}
+                >
                   <div>
-                    <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                      Max breedte
-                    </label>
-                    <input
-                      type="number"
-                      min={600}
-                      max={3200}
-                      value={config.maxFull}
-                      onChange={(event) => setConfig((current) => ({ ...current, maxFull: Number(event.target.value) || 1600 }))}
-                      className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
-                    />
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+                      Instellingen
+                    </p>
+                    <h2 className="mt-2 text-xl font-semibold text-slate-50">
+                      Verwerking & SEO
+                    </h2>
                   </div>
-                  <div>
-                    <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                      Thumbnail
-                    </label>
-                    <input
-                      type="number"
-                      min={150}
-                      max={1200}
-                      value={config.maxThumb}
-                      onChange={(event) => setConfig((current) => ({ ...current, maxThumb: Number(event.target.value) || 400 }))}
-                      className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Watermerk
-                  </label>
-                  <input
-                    value={config.wmText}
-                    onChange={(event) => setConfig((current) => ({ ...current, wmText: event.target.value }))}
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
+                  <ChevronDown
+                    className={`h-5 w-5 shrink-0 text-slate-400 transition-transform ${mobileSettingsOpen ? "rotate-180" : ""}`}
                   />
-                </div>
-
+                </button>
+              ) : (
                 <div>
-                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Transparantie {Math.round(config.wmOpacity * 100)}%
-                  </label>
-                  <input
-                    type="range"
-                    min={0.1}
-                    max={1}
-                    step={0.05}
-                    value={config.wmOpacity}
-                    onChange={(event) => setConfig((current) => ({ ...current, wmOpacity: Number(event.target.value) }))}
-                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-slate-700"
-                  />
-                </div>
-
-                <div>
-                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    WebP kwaliteit {Math.round(config.quality * 100)}%
-                  </label>
-                  <input
-                    type="range"
-                    min={0.4}
-                    max={1}
-                    step={0.01}
-                    value={config.quality}
-                    onChange={(event) => setConfig((current) => ({ ...current, quality: Number(event.target.value) }))}
-                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-slate-700"
-                  />
-                  <p className="mt-2 text-xs leading-relaxed text-slate-500">
-                    Een bereik rond 78–85% geeft meestal de beste balans tussen kwaliteit en laadsnelheid.
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+                    Instellingen
                   </p>
+                  <h2 className="mt-2 text-2xl font-semibold text-slate-50">
+                    Verwerking & SEO
+                  </h2>
                 </div>
-              </div>
+              )}
 
-              <div className="rounded-3xl border border-white/8 bg-slate-950/55 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Standaard categorieën</p>
-                <div className="mt-4 grid gap-3">
-                  {CATEGORY_OPTIONS.map((option) => {
-                    const active = config.defaultCategories.includes(option.id);
-                    return (
-                      <button
-                        key={option.id}
-                        type="button"
-                        onClick={() => {
-                          setConfig((current) => {
-                            const nextCategories = current.defaultCategories.includes(option.id)
-                              ? current.defaultCategories.filter((entry) => entry !== option.id)
-                              : [...current.defaultCategories, option.id];
-                            return {
+              {(!isMobile || mobileSettingsOpen) && (
+                <>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                        SEO prefix
+                      </label>
+                      <input
+                        value={config.seoPrefix}
+                        onChange={event =>
+                          setConfig(current => ({
+                            ...current,
+                            seoPrefix: event.target.value,
+                          }))
+                        }
+                        className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
+                      />
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                      <div>
+                        <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                          Max breedte
+                        </label>
+                        <input
+                          type="number"
+                          min={600}
+                          max={3200}
+                          value={config.maxFull}
+                          onChange={event =>
+                            setConfig(current => ({
                               ...current,
-                              defaultCategories: nextCategories.length > 0 ? nextCategories : ["sfeer"],
-                            };
-                          });
-                        }}
-                        className={`rounded-2xl border px-4 py-3 text-left transition ${
-                          active
-                            ? "border-cyan-400/70 bg-cyan-500/10 text-cyan-100"
-                            : "border-white/8 bg-slate-900/75 text-slate-300 hover:border-cyan-500/40"
-                        }`}
-                      >
-                        <p className="text-sm font-semibold">{option.label}</p>
-                        <p className="mt-1 text-xs text-slate-400">{option.description}</p>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+                              maxFull: Number(event.target.value) || 1600,
+                            }))
+                          }
+                          className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                          Thumbnail
+                        </label>
+                        <input
+                          type="number"
+                          min={150}
+                          max={1200}
+                          value={config.maxThumb}
+                          onChange={event =>
+                            setConfig(current => ({
+                              ...current,
+                              maxThumb: Number(event.target.value) || 400,
+                            }))
+                          }
+                          className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                        Watermerk
+                      </label>
+                      <input
+                        value={config.wmText}
+                        onChange={event =>
+                          setConfig(current => ({
+                            ...current,
+                            wmText: event.target.value,
+                          }))
+                        }
+                        className="w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                        Transparantie {Math.round(config.wmOpacity * 100)}%
+                      </label>
+                      <input
+                        type="range"
+                        min={0.1}
+                        max={1}
+                        step={0.05}
+                        value={config.wmOpacity}
+                        onChange={event =>
+                          setConfig(current => ({
+                            ...current,
+                            wmOpacity: Number(event.target.value),
+                          }))
+                        }
+                        className="h-2 w-full cursor-pointer appearance-none rounded-full bg-slate-700"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                        WebP kwaliteit {Math.round(config.quality * 100)}%
+                      </label>
+                      <input
+                        type="range"
+                        min={0.4}
+                        max={1}
+                        step={0.01}
+                        value={config.quality}
+                        onChange={event =>
+                          setConfig(current => ({
+                            ...current,
+                            quality: Number(event.target.value),
+                          }))
+                        }
+                        className="h-2 w-full cursor-pointer appearance-none rounded-full bg-slate-700"
+                      />
+                      <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                        Een bereik rond 78–85% geeft meestal de beste balans
+                        tussen kwaliteit en laadsnelheid.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="rounded-3xl border border-white/8 bg-slate-950/55 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+                      Standaard categorieën
+                    </p>
+                    <div className="mt-4 grid gap-3">
+                      {CATEGORY_OPTIONS.map(option => {
+                        const active = config.defaultCategories.includes(
+                          option.id
+                        );
+                        return (
+                          <button
+                            key={option.id}
+                            type="button"
+                            onClick={() => {
+                              setConfig(current => {
+                                const nextCategories =
+                                  current.defaultCategories.includes(option.id)
+                                    ? current.defaultCategories.filter(
+                                        entry => entry !== option.id
+                                      )
+                                    : [...current.defaultCategories, option.id];
+                                return {
+                                  ...current,
+                                  defaultCategories:
+                                    nextCategories.length > 0
+                                      ? nextCategories
+                                      : ["sfeer"],
+                                };
+                              });
+                            }}
+                            className={`rounded-2xl border px-4 py-3 text-left transition ${
+                              active
+                                ? "border-cyan-400/70 bg-cyan-500/10 text-cyan-100"
+                                : "border-white/8 bg-slate-900/75 text-slate-300 hover:border-cyan-500/40"
+                            }`}
+                          >
+                            <p className="text-sm font-semibold">
+                              {option.label}
+                            </p>
+                            <p className="mt-1 text-xs text-slate-400">
+                              {option.description}
+                            </p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
             </aside>
 
-            <section className="space-y-6">
+            <section className="order-1 space-y-6 lg:order-2">
               <div
-                className={`sv-fade-up rounded-[2rem] border-2 border-dashed p-10 text-center transition ${
+                className={`sv-fade-up rounded-[1.5rem] border-2 border-dashed p-6 text-center transition sm:rounded-[2rem] sm:p-10 ${
                   isDragging
                     ? "border-cyan-300 bg-cyan-500/10"
                     : "border-cyan-500/35 bg-slate-950/45 hover:border-cyan-400 hover:bg-slate-900/55"
                 }`}
-                onClick={() => inputRef.current?.click()}
-                onDragOver={(event) => {
+                onClick={() => {
+                  if (!isMobile) inputRef.current?.click();
+                }}
+                onDragOver={event => {
                   event.preventDefault();
                   setIsDragging(true);
                 }}
                 onDragLeave={() => setIsDragging(false)}
-                onDrop={(event) => {
+                onDrop={event => {
                   event.preventDefault();
                   setIsDragging(false);
                   void handleFiles(event.dataTransfer.files);
@@ -819,31 +991,92 @@ export default function GalleryStudio() {
                   multiple
                   accept="image/*"
                   className="hidden"
-                  onChange={(event) => {
+                  onChange={event => {
                     if (event.target.files) {
                       void handleFiles(event.target.files);
                     }
                   }}
                 />
-                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">Uploadzone</p>
-                <h2 className="mt-4 text-3xl font-semibold text-slate-50">Sleep je foto's hierheen</h2>
-                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
-                  Of klik om bestanden te kiezen. De studio genereert automatisch geoptimaliseerde WebP-afbeeldingen, square thumbnails, SEO-teksten en metadata die direct bruikbaar zijn in jouw website-workflow.
+                <input
+                  ref={cameraInputRef}
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  className="hidden"
+                  onChange={event => {
+                    if (event.target.files) {
+                      void handleFiles(event.target.files);
+                    }
+                  }}
+                />
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300 sm:text-sm sm:tracking-[0.28em]">
+                  Uploadzone
                 </p>
-                <div className="mt-6 inline-flex rounded-full border border-cyan-400/30 bg-cyan-500/10 px-5 py-2 text-sm font-semibold text-cyan-100">
-                  {isProcessing ? "Beelden worden verwerkt…" : "Klik of drop afbeeldingen"}
-                </div>
+                <h2 className="mt-3 text-2xl font-semibold text-slate-50 sm:mt-4 sm:text-3xl">
+                  {isMobile
+                    ? "Voeg foto's toe vanaf je telefoon"
+                    : "Sleep je foto's hierheen"}
+                </h2>
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-400 sm:mt-4 sm:text-base">
+                  {isMobile
+                    ? "Maak direct een nieuwe foto of kies bestaande foto's uit je bibliotheek. De studio genereert automatisch WebP-afbeeldingen, thumbnails, SEO-teksten en metadata."
+                    : "Of klik om bestanden te kiezen. De studio genereert automatisch geoptimaliseerde WebP-afbeeldingen, square thumbnails, SEO-teksten en metadata die direct bruikbaar zijn in jouw website-workflow."}
+                </p>
+
+                {isMobile ? (
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                    <button
+                      type="button"
+                      onClick={event => {
+                        event.stopPropagation();
+                        cameraInputRef.current?.click();
+                      }}
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+                    >
+                      <Camera className="h-4 w-4" />
+                      Maak een foto
+                    </button>
+                    <button
+                      type="button"
+                      onClick={event => {
+                        event.stopPropagation();
+                        inputRef.current?.click();
+                      }}
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-400/60"
+                    >
+                      <ImagePlus className="h-4 w-4" />
+                      Kies uit bibliotheek
+                    </button>
+                  </div>
+                ) : (
+                  <div className="mt-6 inline-flex rounded-full border border-cyan-400/30 bg-cyan-500/10 px-5 py-2 text-sm font-semibold text-cyan-100">
+                    {isProcessing
+                      ? "Beelden worden verwerkt…"
+                      : "Klik of drop afbeeldingen"}
+                  </div>
+                )}
+                {isMobile && isProcessing && (
+                  <p className="mt-4 text-sm font-medium text-cyan-200">
+                    Beelden worden verwerkt…
+                  </p>
+                )}
               </div>
 
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                {statCards.map((card) => (
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+                {statCards.map(card => (
                   <article
                     key={card.label}
-                    className="rounded-3xl border border-white/8 bg-slate-900/60 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.2)] backdrop-blur-sm"
+                    className="rounded-2xl border border-white/8 bg-slate-900/60 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.2)] backdrop-blur-sm sm:rounded-3xl sm:p-5"
                   >
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">{card.label}</p>
-                    <p className="mt-3 text-3xl font-semibold text-slate-50">{card.value}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-400">{card.detail}</p>
+                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-slate-400 sm:text-xs sm:tracking-[0.24em]">
+                      {card.label}
+                    </p>
+                    <p className="mt-2 text-xl font-semibold text-slate-50 sm:mt-3 sm:text-3xl">
+                      {card.value}
+                    </p>
+                    <p className="mt-1 hidden text-sm leading-relaxed text-slate-400 sm:mt-2 sm:block">
+                      {card.detail}
+                    </p>
                   </article>
                 ))}
               </div>
@@ -851,10 +1084,17 @@ export default function GalleryStudio() {
               <div className="rounded-[2rem] border border-white/8 bg-slate-900/65 p-6 shadow-[0_24px_60px_rgba(0,0,0,0.28)] backdrop-blur-sm">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">Output</p>
-                    <h3 className="mt-2 text-2xl font-semibold text-slate-50">Websiteklare export</h3>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
+                      Output
+                    </p>
+                    <h3 className="mt-2 text-2xl font-semibold text-slate-50">
+                      Websiteklare export
+                    </h3>
                     <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-400">
-                      De bundel bevat de hoofdbeelden, thumbnails, een SEO CSV, een JSON-manifest en een TypeScript-template. Daarmee kun je razendsnel de CDN vullen en gallery-data in je code verwerken.
+                      De bundel bevat de hoofdbeelden, thumbnails, een SEO CSV,
+                      een JSON-manifest en een TypeScript-template. Daarmee kun
+                      je razendsnel de CDN vullen en gallery-data in je code
+                      verwerken.
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-3">
@@ -871,7 +1111,9 @@ export default function GalleryStudio() {
                       disabled={isDownloading || processedItems.length === 0}
                       className="rounded-full bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                      {isDownloading ? "Bundel wordt gemaakt…" : "Download ZIP bundel"}
+                      {isDownloading
+                        ? "Bundel wordt gemaakt…"
+                        : "Download ZIP bundel"}
                     </button>
                   </div>
                 </div>
@@ -879,12 +1121,19 @@ export default function GalleryStudio() {
 
               <div className="space-y-5">
                 {processedItems.length === 0 ? (
-                  <div className="rounded-[2rem] border border-white/8 bg-slate-900/50 px-8 py-12 text-center text-slate-400">
-                    Zodra je foto's uploadt, verschijnen hier previews, metadata-velden en categoriebeheer. De huidige standaardcategorieën zijn: {getSummaryLabel(config.defaultCategories)}.
+                  <div className="rounded-[1.5rem] border border-white/8 bg-slate-900/50 px-6 py-10 text-center text-slate-400 sm:rounded-[2rem] sm:px-8 sm:py-12">
+                    Zodra je foto's uploadt, verschijnen hier previews,
+                    metadata-velden en categoriebeheer. De huidige
+                    standaardcategorieën zijn:{" "}
+                    {getSummaryLabel(config.defaultCategories)}.
                   </div>
                 ) : (
-                  processedItems.map((item) => (
-                    <StudioCard key={item.id} item={item} onUpdate={updateItem} />
+                  processedItems.map(item => (
+                    <StudioCard
+                      key={item.id}
+                      item={item}
+                      onUpdate={updateItem}
+                    />
                   ))
                 )}
               </div>
@@ -892,6 +1141,28 @@ export default function GalleryStudio() {
           </section>
         </div>
       </main>
+
+      {isMobile && processedItems.length > 0 && (
+        <div
+          className="pointer-events-none fixed inset-x-0 z-40 flex justify-center px-4"
+          style={{ bottom: "calc(5.75rem + env(safe-area-inset-bottom))" }}
+        >
+          <div className="pointer-events-auto flex max-w-full items-center gap-3 rounded-full border border-cyan-500/30 bg-slate-950/95 py-2 pl-4 pr-2 shadow-[0_10px_40px_rgba(0,0,0,0.55)] backdrop-blur-md">
+            <p className="whitespace-nowrap text-xs text-slate-300">
+              {processedItems.length} foto
+              {processedItems.length === 1 ? "" : "'s"} klaar
+            </p>
+            <button
+              type="button"
+              onClick={() => void handleDownloadBundle()}
+              disabled={isDownloading}
+              className="whitespace-nowrap rounded-full bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {isDownloading ? "Bezig…" : "Download ZIP"}
+            </button>
+          </div>
+        </div>
+      )}
     </PageLayout>
   );
 }
