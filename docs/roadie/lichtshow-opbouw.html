@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soundvision Events — Lichtshow opbouw (roadie-kaart)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Cinzel:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b10;
+      --card: #121a24;
+      --line: rgba(255,255,255,.10);
+      --text: #f3f7fb;
+      --muted: #9eb0c0;
+      --cyan: #00c8ff;
+      --amber: #ff6a1a;
+      --purple: #d09cff;
+      --green: #3dffb0;
+      --blue: #7db3ff;
+      --danger: #ff5d7a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #070b10; color: var(--text); font-family: Outfit, sans-serif; }
+    .poster {
+      width: 2400px;
+      height: 1600px;
+      padding: 28px 32px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background:
+        radial-gradient(1000px 420px at 8% -8%, rgba(0,200,255,.13), transparent 55%),
+        radial-gradient(900px 500px at 100% 100%, rgba(155,89,182,.13), transparent 50%),
+        #070b10;
+    }
+
+    /* header */
+    .header { display: flex; align-items: center; gap: 22px; }
+    .mark { width: 58px; height: 58px; flex: none; }
+    .brand { font-family: Cinzel, serif; font-size: 15px; letter-spacing: .2em; line-height: 1.25; color: #cfe0ee; }
+    .brand b { color: var(--cyan); font-weight: 700; }
+    h1 { font-family: Cinzel, serif; font-size: 40px; letter-spacing: .1em; flex: 1; }
+    .header p { color: var(--muted); font-size: 16px; max-width: 760px; line-height: 1.35; }
+    .header p strong { color: var(--cyan); font-weight: 650; }
+
+    /* gold rule */
+    .gold {
+      display: grid;
+      grid-template-columns: 1.25fr .9fr .95fr;
+      gap: 12px;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+    .panel h2 {
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .side {
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: #0c131b;
+    }
+    .side.no { opacity: .55; }
+    .side .tag {
+      font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .side.no .tag { color: var(--danger); }
+    .side.yes .tag { color: var(--green); }
+    .pair { display: flex; align-items: center; gap: 10px; margin: 6px 0; font-size: 18px; font-weight: 700; }
+    .pair span { color: var(--muted); font-size: 14px; font-weight: 500; }
+    .xlr {
+      width: 42px; height: 42px; flex: none;
+    }
+    .cable {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0c131b;
+      border-radius: 12px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      font-size: 15px;
+      font-weight: 650;
+    }
+    .cable .bar {
+      flex: 1; height: 5px; border-radius: 99px;
+      background: linear-gradient(90deg, var(--amber), var(--cyan));
+    }
+    .hint { color: var(--muted); font-size: 15px; line-height: 1.4; }
+    .hint b { color: var(--text); }
+
+    /* chain */
+    .chain { display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 0; }
+    .row { display: flex; gap: 0; align-items: stretch; min-height: 0; flex: 1; }
+    .card {
+      flex: 1;
+      min-width: 0;
+      background: linear-gradient(180deg, #18222e, #101820);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 11px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+    .num {
+      position: absolute; top: -1px; right: 10px;
+      width: 26px; height: 26px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 13px; color: #071018;
+    }
+    .card.pwr { border-color: rgba(255,106,26,.45); }
+    .card.pwr .num { background: var(--amber); }
+    .card.ctrl { border-color: rgba(0,200,255,.5); }
+    .card.ctrl .num { background: var(--cyan); }
+    .card.mh { border-color: rgba(125,179,255,.42); }
+    .card.mh .num { background: var(--blue); }
+    .card.par { border-color: rgba(208,156,255,.5); }
+    .card.par .num { background: var(--purple); color: #1a0b24; }
+    .card.laser { border-color: rgba(61,255,176,.42); }
+    .card.laser .num { background: var(--green); color: #062016; }
+    .card.end { border-style: dashed; }
+    h3 { font-size: 16px; font-weight: 800; line-height: 1.15; padding-right: 28px; }
+    .model { color: var(--muted); font-size: 12.5px; margin-top: -2px; }
+    .art { height: 52px; display: grid; place-items: center; }
+    .ports { display: flex; flex-direction: column; gap: 5px; margin-top: auto; }
+    .port {
+      border-radius: 9px;
+      padding: 6px 8px;
+      font-size: 12.5px;
+      line-height: 1.28;
+      border: 1px solid transparent;
+    }
+    .port b { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1px; }
+    .in { background: rgba(0,200,255,.11); border-color: rgba(0,200,255,.28); }
+    .out { background: rgba(255,106,26,.11); border-color: rgba(255,106,26,.28); }
+    .multi { background: linear-gradient(90deg, rgba(255,106,26,.14), rgba(0,200,255,.12)); border-color: rgba(255,255,255,.16); }
+    .void { background: rgba(255,255,255,.04); border: 1px dashed rgba(255,255,255,.18); color: var(--muted); }
+
+    .arrow {
+      width: 28px;
+      flex: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      color: var(--cyan);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .arrow svg { display: block; }
+    .arrow.multi-a { color: #ffb084; }
+    .arrow.multi-a svg path { stroke: url(#mgrad); }
+    .arrow.dmx svg path { stroke: #00c8ff; }
+    .arrow.pwr-a { color: var(--amber); }
+    .arrow.pwr-a svg path { stroke: #ff6a1a; }
+
+    .midbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    .midbar .line {
+      flex: 1; height: 4px; border-radius: 99px;
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--green));
+    }
+    .chip {
+      background: #0c131b;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 12px;
+      color: var(--text);
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    /* footer */
+    .foot {
+      display: grid;
+      grid-template-columns: 1.2fr .85fr 1fr .7fr;
+      gap: 10px;
+    }
+    .box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+    .box h2 { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px; }
+    .check { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }
+    .check::before {
+      content: ""; width: 13px; height: 13px; margin-top: 3px; flex: none;
+      border: 2px solid var(--cyan); border-radius: 3px;
+    }
+    ul { padding-left: 16px; }
+    li { font-size: 13.5px; line-height: 1.35; margin-bottom: 3px; }
+    .faults li::marker { color: var(--danger); }
+    .tips li::marker { color: var(--green); }
+
+    .stage { display: flex; align-items: flex-end; justify-content: space-between; height: 78px; padding-top: 4px; }
+    .totem { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .head { width: 20px; height: 14px; border-radius: 5px 5px 2px 2px; background: var(--blue); }
+    .truss { width: 9px; height: 44px; background: repeating-linear-gradient(#8ea3b8 0 3px, transparent 3px 8px), #1b2733; border: 1px solid #6d8296; }
+    .lbl { font-size: 11px; font-weight: 800; color: var(--blue); }
+    .booth { width: 54px; height: 34px; background: linear-gradient(#eef3f8, #9eacb8); clip-path: polygon(50% 0, 100% 100%, 0 100%); margin-bottom: 12px; }
+    .dots { display: flex; gap: 4px; }
+    .pd { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 7px var(--purple); }
+    .ld { width: 7px; height: 7px; border-radius: 2px; background: var(--green); box-shadow: 0 0 7px var(--green); }
+
+    @page { size: A3 landscape; margin: 0; }
+    @media print {
+      html, body { width: 420mm; height: 297mm; background: #070b10; }
+      .poster { width: 420mm; height: 297mm; padding: 10mm 11mm 8mm; }
+    }
+  </style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="mgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff6a1a"/>
+      <stop offset="1" stop-color="#00c8ff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="poster" id="poster">
+  <header class="header">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+      <defs>
+        <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#00c8ff"/><stop offset="1" stop-color="#ff6a1a"/>
+        </linearGradient>
+      </defs>
+      <circle cx="32" cy="32" r="30" fill="#0b1118" stroke="url(#ring)" stroke-width="2.5"/>
+      <path d="M20 16 L32 8 L44 16 V56 H20 Z" fill="none" stroke="#d7e6f2" stroke-width="1.6"/>
+      <path d="M38.6 24.4c0-3.4-2.8-5.5-7.4-5.5-4.2 0-7.2 1.7-8.6 4.3l3.7 1.9c.8-1.5 2.4-2.4 4.8-2.4 2.4 0 3.6.9 3.6 2.2 0 1.2-.8 1.9-3.4 2.5l-3.3.8c-4.2 1-6.4 3.1-6.4 6.6 0 3.8 3.1 6.3 8.1 6.3 4.6 0 7.7-1.8 9.2-4.8l-3.8-1.9c-.9 1.7-2.7 2.8-5.4 2.8-2.5 0-4.1-1-4.1-2.6 0-1.2.9-2 3.6-2.6l3.4-.8c4.5-1.1 6.8-3.3 6.8-6.8z" fill="#f3f7fb"/>
+    </svg>
+    <div class="brand">SOUNDVISION<br /><b>EVENTS</b></div>
+    <h1>LICHTSHOW OPBOUW</h1>
+    <p>Roadie-kaart voor de grote set. <strong>Kleinere set = dezelfde volgorde</strong>, alleen minder fixtures. Adressen staan al goed — niet in de menu’s, alleen stekkers.</p>
+  </header>
+
+  <section class="gold">
+    <div class="panel">
+      <h2>Gouden regel · XLR is bij licht andersom dan bij geluid</h2>
+      <div class="compare">
+        <div class="side no">
+          <div class="tag">Geluid — niet gebruiken</div>
+          <div class="pair">
+            <svg class="xlr" viewBox="0 0 42 42"><circle cx="21" cy="21" r="18" fill="none" stroke="#ff5d7a" stroke-width="2"/><circle cx="21" cy="12" r="3.2" fill="none" stroke="#ff5d7a" stroke-width="1.8"/><circle cx="13.5" cy="26" r="3.2" fill="none" stroke="#ff5d7a" stroke-width="1.8"/><circle cx="28.5" cy="26" r="3.2" fill="none" stroke="#ff5d7a" stroke-width="1.8"/></svg>
+            IN = gaatjes (female)
+          </div>
+          <div class="pair">
+            <svg class="xlr" viewBox="0 0 42 42"><circle cx="21" cy="21" r="18" fill="none" stroke="#ff5d7a" stroke-width="2"/><circle cx="21" cy="12" r="2.4" fill="#ff5d7a"/><circle cx="13.5" cy="26" r="2.4" fill="#ff5d7a"/><circle cx="28.5" cy="26" r="2.4" fill="#ff5d7a"/></svg>
+            OUT = pinnetjes (male)
+          </div>
+        </div>
+        <div class="side yes">
+          <div class="tag">Licht / DMX — dit doen</div>
+          <div class="pair">
+            <svg class="xlr" viewBox="0 0 42 42"><circle cx="21" cy="21" r="18" fill="none" stroke="#3dffb0" stroke-width="2"/><circle cx="21" cy="12" r="2.4" fill="#3dffb0"/><circle cx="13.5" cy="26" r="2.4" fill="#3dffb0"/><circle cx="28.5" cy="26" r="2.4" fill="#3dffb0"/></svg>
+            IN = pinnetjes (male)
+          </div>
+          <div class="pair">
+            <svg class="xlr" viewBox="0 0 42 42"><circle cx="21" cy="21" r="18" fill="none" stroke="#3dffb0" stroke-width="2"/><circle cx="21" cy="12" r="3.2" fill="none" stroke="#3dffb0" stroke-width="1.8"/><circle cx="13.5" cy="26" r="3.2" fill="none" stroke="#3dffb0" stroke-width="1.8"/><circle cx="28.5" cy="26" r="3.2" fill="none" stroke="#3dffb0" stroke-width="1.8"/></svg>
+            OUT = gaatjes (female)
+          </div>
+        </div>
+      </div>
+      <div class="cable">
+        <svg class="xlr" viewBox="0 0 42 42"><circle cx="21" cy="21" r="18" fill="#1a100c" stroke="#ff6a1a" stroke-width="2"/><circle cx="21" cy="12" r="2.4" fill="#ff6a1a"/><circle cx="13.5" cy="26" r="2.4" fill="#ff6a1a"/><circle cx="28.5" cy="26" r="2.4" fill="#ff6a1a"/></svg>
+        <div>MALE-kant<br /><span style="color:var(--muted);font-size:12px;font-weight:500">in de OUT (gaatjes)</span></div>
+        <div class="bar"></div>
+        <div style="text-align:right">FEMALE-kant<br /><span style="color:var(--muted);font-size:12px;font-weight:500">op de IN (pinnetjes)</span></div>
+        <svg class="xlr" viewBox="0 0 42 42"><circle cx="21" cy="21" r="18" fill="#07141a" stroke="#00c8ff" stroke-width="2"/><circle cx="21" cy="12" r="3.2" fill="none" stroke="#00c8ff" stroke-width="1.8"/><circle cx="13.5" cy="26" r="3.2" fill="none" stroke="#00c8ff" stroke-width="1.8"/><circle cx="28.5" cy="26" r="3.2" fill="none" stroke="#00c8ff" stroke-width="1.8"/></svg>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Richting</h2>
+      <p class="hint" style="font-size:22px;font-weight:800;color:var(--text);line-height:1.2;margin-bottom:8px">OUT van de vorige → IN van de volgende</p>
+      <p class="hint">Als het niet soepel in elkaar gaat, zit je achterstevoren. Nooit twee males of twee females forceren. Eén foute stekker = alles erna krijgt geen signaal.</p>
+    </div>
+    <div class="panel">
+      <h2>Stroom</h2>
+      <p class="hint" style="font-size:22px;font-weight:800;color:var(--text);line-height:1.2;margin-bottom:8px">Heads: 1 Schuko, daarna multikabel</p>
+      <p class="hint">Alleen moving head 1 uit het stopcontact. Head 2–4 krijgen stroom + DMX via de <b>multikabel</b>. Pars en lasers hebben hun <b>eigen</b> stroom — niet de head-kabel daarop zetten.</p>
+    </div>
+  </section>
+
+  <section class="chain">
+    <div class="row">
+      <article class="card pwr">
+        <div class="num">1</div>
+        <h3>Stopcontact 230V</h3>
+        <p class="model">Gewone Schuko · alleen voor head 1</p>
+        <div class="art">
+          <svg width="70" height="48" viewBox="0 0 70 48"><rect x="15" y="6" width="40" height="36" rx="7" fill="none" stroke="#ff6a1a" stroke-width="2.4"/><circle cx="29" cy="24" r="3.6" fill="#ff6a1a"/><circle cx="41" cy="24" r="3.6" fill="#ff6a1a"/><rect x="33" y="31" width="4.5" height="6" rx="1" fill="#ff6a1a"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port out"><b>Stroom start hier</b>Schuko-kabel naar POWER IN van moving head 1. Enige stopcontact voor de vier heads.</div>
+          <div class="port void">Geen DMX. Alleen voeding.</div>
+        </div>
+      </article>
+      <div class="arrow pwr-a">stroom<svg width="28" height="18" viewBox="0 0 28 18"><path d="M2 9h20m0 0-6-6m6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <article class="card ctrl">
+        <div class="num">2</div>
+        <h3>Wolfmix W1 MKII</h3>
+        <p class="model">Lichttafel · hier begint DMX</p>
+        <div class="art">
+          <svg width="96" height="48" viewBox="0 0 96 48"><rect x="6" y="8" width="84" height="32" rx="7" fill="none" stroke="#00c8ff" stroke-width="2.2"/><rect x="12" y="14" width="24" height="12" rx="2" fill="#00c8ff" opacity=".35"/><circle cx="50" cy="20" r="5" fill="none" stroke="#00c8ff"/><circle cx="64" cy="20" r="5" fill="none" stroke="#00c8ff"/><circle cx="78" cy="20" r="5" fill="none" stroke="#00c8ff"/><rect x="12" y="30" width="10" height="5" rx="1" fill="#00c8ff"/><rect x="26" y="30" width="10" height="5" rx="1" fill="#ff6a1a"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port out"><b>DMX OUT · 3-pins · female</b>Male-kant van de kabel in OUT A of B. Niet de 5-pins WLINK.</div>
+          <div class="port in"><b>USB-C voeding</b>Eerst aanzetten. Geen USB = geen show.</div>
+        </div>
+      </article>
+      <div class="arrow dmx">dmx<svg width="28" height="18" viewBox="0 0 28 18"><path d="M2 9h20m0 0-6-6m6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <article class="card mh">
+        <div class="num">3</div>
+        <h3>Moving head 1</h3>
+        <p class="model">Ayra IRAY 150 PSV MKII</p>
+        <div class="art">
+          <svg width="72" height="48" viewBox="0 0 72 48"><rect x="24" y="32" width="24" height="11" rx="2" fill="none" stroke="#7db3ff" stroke-width="2"/><path d="M28 32l4-16h8l4 16" fill="none" stroke="#7db3ff" stroke-width="2"/><circle cx="36" cy="13" r="9" fill="none" stroke="#7db3ff" stroke-width="2"/><circle cx="36" cy="13" r="3.2" fill="#7db3ff"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port in"><b>POWER IN</b>Schuko / PowerCON IN vanaf het stopcontact (vaak blauw).</div>
+          <div class="port in"><b>DMX IN · male</b>Female-kant vanaf de Wolfmix.</div>
+          <div class="port multi"><b>Multikabel UIT</b>Stroom + DMX samen naar head 2.</div>
+        </div>
+      </article>
+      <div class="arrow multi-a">multi<svg width="28" height="18" viewBox="0 0 28 18"><path d="M2 9h20m0 0-6-6m6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <article class="card mh">
+        <div class="num">4</div>
+        <h3>Moving head 2</h3>
+        <p class="model">Ayra IRAY 150 PSV MKII</p>
+        <div class="art">
+          <svg width="72" height="48" viewBox="0 0 72 48"><rect x="24" y="32" width="24" height="11" rx="2" fill="none" stroke="#7db3ff" stroke-width="2"/><path d="M28 32l4-16h8l4 16" fill="none" stroke="#7db3ff" stroke-width="2"/><circle cx="36" cy="13" r="9" fill="none" stroke="#7db3ff" stroke-width="2"/><circle cx="36" cy="13" r="3.2" fill="#7db3ff"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port multi"><b>Multikabel IN</b>Van head 1. Beide stekkers in deze lamp.</div>
+          <div class="port multi"><b>Multikabel UIT</b>Doorlussen naar head 3. OUT → IN.</div>
+        </div>
+      </article>
+      <div class="arrow multi-a">multi<svg width="28" height="18" viewBox="0 0 28 18"><path d="M2 9h20m0 0-6-6m6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <article class="card mh">
+        <div class="num">5</div>
+        <h3>Moving head 3</h3>
+        <p class="model">Ayra IRAY 150 PSV MKII</p>
+        <div class="art">
+          <svg width="72" height="48" viewBox="0 0 72 48"><rect x="24" y="32" width="24" height="11" rx="2" fill="none" stroke="#7db3ff" stroke-width="2"/><path d="M28 32l4-16h8l4 16" fill="none" stroke="#7db3ff" stroke-width="2"/><circle cx="36" cy="13" r="9" fill="none" stroke="#7db3ff" stroke-width="2"/><circle cx="36" cy="13" r="3.2" fill="#7db3ff"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port multi"><b>Multikabel IN</b>Van head 2.</div>
+          <div class="port multi"><b>Multikabel UIT</b>Doorlussen naar head 4.</div>
+        </div>
+      </article>
+      <div class="arrow multi-a">multi<svg width="28" height="18" viewBox="0 0 28 18"><path d="M2 9h20m0 0-6-6m6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <article class="card mh">
+        <div class="num">6</div>
+        <h3>Moving head 4</h3>
+        <p class="model">Laatste head · stroom stopt</p>
+        <div class="art">
+          <svg width="72" height="48" viewBox="0 0 72 48"><rect x="24" y="32" width="24" height="11" rx="2" fill="none" stroke="#7db3ff" stroke-width="2"/><path d="M28 32l4-16h8l4 16" fill="none" stroke="#7db3ff" stroke-width="2"/><circle cx="36" cy="13" r="9" fill="none" stroke="#7db3ff" stroke-width="2"/><circle cx="36" cy="13" r="3.2" fill="#7db3ff"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port multi"><b>Multikabel IN</b>Van head 3. Power OUT blijft leeg.</div>
+          <div class="port out"><b>DMX OUT · female</b>Nu gewone XLR naar PAR-kit A. Alleen signaal.</div>
+        </div>
+      </article>
+    </div>
+
+    <div class="midbar">
+      <span>oranje = stroom · cyaan = DMX · oranje→cyaan = multikabel</span>
+      <div class="line"></div>
+      <span class="chip">▼ Signaal gaat verder met gewone DMX · stroom van de heads stopt hier</span>
+    </div>
+
+    <div class="row">
+      <article class="card par">
+        <div class="num">7</div>
+        <h3>ComPar Kit 2 — A</h3>
+        <p class="model">Ayra · 4 pars op 1 bar · 1 adres</p>
+        <div class="art">
+          <svg width="120" height="44" viewBox="0 0 120 44"><rect x="6" y="22" width="108" height="6" rx="1" fill="#d09cff" opacity=".75"/><rect x="12" y="6" width="18" height="16" rx="2" fill="none" stroke="#d09cff" stroke-width="1.8"/><rect x="38" y="6" width="18" height="16" rx="2" fill="none" stroke="#d09cff" stroke-width="1.8"/><rect x="64" y="6" width="18" height="16" rx="2" fill="none" stroke="#d09cff" stroke-width="1.8"/><rect x="90" y="6" width="18" height="16" rx="2" fill="none" stroke="#d09cff" stroke-width="1.8"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port in"><b>DMX IN · male</b>Female-kant vanaf head 4. 4 pars zitten vast op de bar — niet elk los DMX’en.</div>
+          <div class="port out"><b>DMX OUT · female</b>Doorlussen naar kit B.</div>
+          <div class="port in"><b>Stroom IEC / Schuko</b>Eigen voeding. Niet de head-multikabel.</div>
+        </div>
+      </article>
+      <div class="arrow dmx">dmx<svg width="28" height="18" viewBox="0 0 28 18"><path d="M2 9h20m0 0-6-6m6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <article class="card par">
+        <div class="num">8</div>
+        <h3>ComPar Kit 2 — B</h3>
+        <p class="model">Ayra · 4 pars op 1 bar · 2e adres</p>
+        <div class="art">
+          <svg width="120" height="44" viewBox="0 0 120 44"><rect x="6" y="22" width="108" height="6" rx="1" fill="#d09cff" opacity=".75"/><rect x="12" y="6" width="18" height="16" rx="2" fill="none" stroke="#d09cff" stroke-width="1.8"/><rect x="38" y="6" width="18" height="16" rx="2" fill="none" stroke="#d09cff" stroke-width="1.8"/><rect x="64" y="6" width="18" height="16" rx="2" fill="none" stroke="#d09cff" stroke-width="1.8"/><rect x="90" y="6" width="18" height="16" rx="2" fill="none" stroke="#d09cff" stroke-width="1.8"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port in"><b>DMX IN · male</b>Van kit A. Female-kabel op male IN.</div>
+          <div class="port out"><b>DMX OUT · female</b>Doorlussen naar laser 1.</div>
+          <div class="port in"><b>Stroom IEC / Schuko</b>Eigen voeding, of doorlussen vanaf kit A.</div>
+        </div>
+      </article>
+      <div class="arrow dmx">dmx<svg width="28" height="18" viewBox="0 0 28 18"><path d="M2 9h20m0 0-6-6m6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <article class="card laser">
+        <div class="num">9</div>
+        <h3>Laser 1 · duo-show</h3>
+        <p class="model">Scanning laser · 30° · zelfde type als 2</p>
+        <div class="art">
+          <svg width="90" height="44" viewBox="0 0 90 44"><rect x="18" y="14" width="30" height="18" rx="3" fill="none" stroke="#3dffb0" stroke-width="2"/><path d="M48 18l28-8M48 23l30 0M48 28l28 8" stroke="#3dffb0" stroke-width="1.6"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port in"><b>DMX IN · male</b>Van PAR-kit B.</div>
+          <div class="port out"><b>DMX OUT · female</b>Doorlussen naar laser 2.</div>
+          <div class="port in"><b>Eigen voeding</b>Los stopcontact / adapter. Key/interlock zoals altijd.</div>
+        </div>
+      </article>
+      <div class="arrow dmx">dmx<svg width="28" height="18" viewBox="0 0 28 18"><path d="M2 9h20m0 0-6-6m6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <article class="card laser">
+        <div class="num">10</div>
+        <h3>Laser 2 · einde</h3>
+        <p class="model">Zelfde apparaat · OUT blijft leeg</p>
+        <div class="art">
+          <svg width="90" height="44" viewBox="0 0 90 44"><rect x="18" y="14" width="30" height="18" rx="3" fill="none" stroke="#3dffb0" stroke-width="2"/><path d="M48 18l28-8M48 23l30 0M48 28l28 8" stroke="#3dffb0" stroke-width="1.6"/></svg>
+        </div>
+        <div class="ports">
+          <div class="port in"><b>DMX IN · male</b>Van laser 1. Reageert deze? Dan is de hele ketting heel.</div>
+          <div class="port void"><b>DMX OUT niet nodig</b>Einde van de keten. Niks forceren.</div>
+          <div class="port in"><b>Eigen voeding</b>Zelfde als laser 1.</div>
+        </div>
+      </article>
+      <div class="arrow" style="width:18px"></div>
+      <article class="card end">
+        <h3>Zo in de zaal</h3>
+        <p class="model">Volg de nummers, niet links-rechts op gevoel</p>
+        <div class="stage">
+          <div class="totem"><div class="head"></div><div class="truss"></div><div class="lbl">MH1</div></div>
+          <div class="totem"><div class="dots"><i class="pd"></i><i class="ld"></i></div><div class="head"></div><div class="truss"></div><div class="lbl">MH2</div></div>
+          <div class="booth"></div>
+          <div class="totem"><div class="dots"><i class="pd"></i><i class="ld"></i></div><div class="head"></div><div class="truss"></div><div class="lbl">MH3</div></div>
+          <div class="totem"><div class="head"></div><div class="truss"></div><div class="lbl">MH4</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="box">
+      <h2>Checklist vóór “het is aangesloten”</h2>
+      <div class="checks">
+        <div class="check">Wolfmix aan (USB-C)</div>
+        <div class="check">Schuko in moving head 1</div>
+        <div class="check">DMX Wolfmix → head 1 IN</div>
+        <div class="check">Multikabel 1→2, 2→3, 3→4</div>
+        <div class="check">DMX head 4 → kit A → kit B</div>
+        <div class="check">DMX kit B → laser 1 → laser 2</div>
+        <div class="check">Pars + lasers eigen stroom</div>
+        <div class="check">Laatste laser reageert? Klaar</div>
+      </div>
+    </div>
+    <div class="box">
+      <h2>Als het signaal wegvalt</h2>
+      <ul class="faults">
+        <li>Eerste lamp die niks doet: fout zit in de kabel ernaartoe of de IN van die lamp.</li>
+        <li>Male in male / female op female = achterstevoren.</li>
+        <li>Multikabel: stroom én XLR in dezelfde lamp.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Niet doen</h2>
+      <ul class="tips">
+        <li>Geen adressen of modes wijzigen.</li>
+        <li>Geen audio-XLR-denkwerk: bij licht is IN male.</li>
+        <li>Geen head-stroom doorzetten naar pars/lasers.</li>
+        <li>Kleinere set: sla fixtures over, breek de ketting niet.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Onthouden</h2>
+      <p class="hint" style="font-size:18px;font-weight:800;color:var(--text)">IN = pinnetjes<br />OUT = gaatjes</p>
+      <p class="hint" style="margin-top:6px">Male-kabel in OUT.<br />Female-kabel op IN.</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
